@@ -1,0 +1,8 @@
+IN:
+POST: hoal
+PRE: crack
+PRE: hello
+IN: bye
+IN: risas
+POST: richi
+CAST: lusias
