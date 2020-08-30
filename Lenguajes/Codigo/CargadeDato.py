@@ -1,33 +1,57 @@
 import re
+import Evaluador
+from Operacion import opPost
+from Operacion import opPre
+from Operacion import opInf
+
+op = opPost()
+pre = opPre()
+inf = opInf()
+
+expresion_infija = ""
 
 
 class CargadeDato:
     def archivo(self):
         try:
             entrada = input("Ingresar Nombre de Archivo: ")
-            file = open(entrada)
-            lectura = file.read()
-            F = lectura.split("\n")
+            file = open(entrada, "r")
+            lecture = file.read()
+            F = lecture.split("\n")
             for F in F:
                 CargadeDato().comparacion(F)
             file.close()
         except:
-            print("La cagaste bai")
+            print("No se lee el archivo")
             CargadeDato().archivo()
 
-    def comparacion(self, lectura):
-        pattern = lectura
+    def comparacion(self, lecture):
+        pattern = lecture
         if re.match("IN", pattern):
-            print('Encontrado el IN')
-            Operaciones().Obasicas()
+            CargadeDato().inf(pattern)
         elif re.match("POST", pattern):
-            print("Encontraste POST")
+            '''p = pattern.split("POST:")
+            for A in p:
+                op.post(A)'''
+            print(0)
         elif re.match("PRE", pattern):
-            print('Encontraste el PRE')
+            print(0)
         else:
-            print('caguasaqui')
+            print('Error')
+
+    def inf(self, dato):
+        PR = dato.split("IN: ")
+        for A in PR:
+            print(A)
+            convertir(A)
+
+    def pref(self, date):
+        In = date.split("PRE: ")
+        for A in In:
+            pre.pre(A)
 
 
-class Operaciones:
-    def Obasicas(self):
-        print("holis")
+def convertir(expresion_infija):
+    expresion_infija = list(expresion_infija.upper())
+    expresion_postfija = []
+    return Evaluador.evaluar(expresion_infija, 100, expresion_postfija)
