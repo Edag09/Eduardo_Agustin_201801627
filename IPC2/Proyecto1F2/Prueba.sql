@@ -10,3 +10,9 @@ Fecha_Nacimiento DATE,
 Pais VARCHAR(60),
 Correo VARCHAR(70)
 );
+
+CREATE TABLE Partida(
+Id_Partida INT PRIMARY KEY IDENTITY NOT NULL,
+Estado_Jugador VARCHAR(50) NOT NULL,
+
+);
