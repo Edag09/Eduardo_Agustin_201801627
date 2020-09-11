@@ -1,29 +1,39 @@
 create database Proyecto1F2
 
+use Proyecto1F2
+
 CREATE TABLE Usuario(
-Id INT PRIMARY  KEY IDENTITY NOT NULL,
-Nombre VARCHAR(40) NOT NULL,
-Apellido VARCHAR(40) NOT NULL,
-Nom_Usuario VARCHAR(60) NOT NULL,
-Contrasena VARCHAR(50) NOT NULL,
-Fecha_Nacimiento DATE,
-Pais VARCHAR(60),
-Correo VARCHAR(70)
+Id int primary  key identity NOT NULL,
+Nombre varchar(40) NOT NULL,
+Apellido varchar(40) NOT NULL,
+Nom_Usuario varchar(60) NOT NULL,
+Contrasena varchar(50) NOT NULL,
+Fecha_Nacimiento date,
+Pais varchar(60),
+Correo varchar(70)
 );
 
 CREATE TABLE Partida(
-Id_Partida INT PRIMARY KEY IDENTITY NOT NULL,
+Id_Partida int primary key identity NOT NULL,
 Estado_Jugador varchar(50) not null,
 No_Movimiento int not null
 );
 
 CREATE TABLE Tipo_Partida(
-Id_TPartida INT PRIMARY KEY IDENTITY NOT NULL,
+Id_TPartida int primary key identity NOT NULL,
 Tipo_Partida varchar(50) not null,
-No_Partida int not null
+No_Partida int not null,
+IdJugador int not null,
+IdPartida int not null,
+CONSTRAINT fk_Player FOREIGN KEY (IdJugador) REFERENCES Usuario (Id),
+CONSTRAINT fk_Part FOREIGN KEY (IdPartida) REFERENCES Partida(Id_Partida)
 );
 
 CREATE TABLE Torneo(
-Id_Torneo INT PRIMARY KEY IDENTITY NOT NULL,
-Estado_Jugador Varchar(60) not null
+Id_Torneo int primary key identity NOT NULL,
+Estado_Jugador varchar(60) not null,
+No_Torneos int not null,
+IdJugador int not null,
+CONSTRAINT fk_Jugador FOREIGN KEY (IdJugador) REFERENCES Usuario (Id)
 );
+
