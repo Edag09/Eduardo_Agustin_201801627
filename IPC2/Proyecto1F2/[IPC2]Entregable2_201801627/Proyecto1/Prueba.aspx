@@ -6,11 +6,13 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Página Principal</title>
+    <link rel="stylesheet" href="StyleForm.css"/>
 </head>
 <body>
     <header>
         <div id="Titulo">Othello</div>
     </header>
+
     <form id="form1" runat="server">
         <div>
 
@@ -21,12 +23,14 @@
             <br />
             <asp:Label ID="Label2" runat="server" Text="Apellido: "></asp:Label>
             <br />
-            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" runat="server" ></asp:TextBox>
             <br />
             <br />
             <asp:Label ID="Label3" runat="server" Text="Nombre de Usuario: "></asp:Label>
             <br />
             <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="Label10" runat="server" Text="Usuario ya registrado" ForeColor="Red" ></asp:Label>
             <br />
             <br />
             <asp:Label ID="Label4" runat="server" Text="Contraseña: "></asp:Label>
@@ -36,7 +40,7 @@
             <br />
             <asp:Label ID="Label5" runat="server" Text="Fecha de Nacimiento: "></asp:Label>
             <br />
-            <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox5" runat="server" placeholder="AAAA/MM/DD" ></asp:TextBox>
             <br />
             <br />
             <asp:Label ID="Label6" runat="server" Text="Pais: "></asp:Label>
@@ -49,11 +53,11 @@
             <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
             <br />
             <br />
-            <asp:Button ID="Button1" runat="server" Text="Enviar" OnClick="Button1_Click" />
+            <asp:Button ID="Enviar" runat="server" Text="Enviar" OnClick="Button1_Click" />
 
             <br />
             <br />
-            <asp:Button ID="Button3" runat="server" Text="Mostrar Datos" />
+            <asp:Label ID="Label8" runat="server" Text="Llenar los campos requeridos" forecolor="Red"></asp:Label>
 
             <br />
             <br />

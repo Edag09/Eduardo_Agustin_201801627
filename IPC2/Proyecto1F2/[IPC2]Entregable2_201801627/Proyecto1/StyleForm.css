@@ -1,0 +1,45 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    background: #cecece;
+}
+
+nav {
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 20px;
+    background: black;
+}
+
+
+header table td {
+    text-align: center;
+}
+
+  header table {
+    
+    position: relative;
+    margin: 20px auto;
+    width: 800px;
+    height: 140px;
+    background: gray;
+}
+
+h1 {
+    font-family: 'Sriracha', cursive;
+    font-size: 40px;
+    margin: 20px;
+    text-align: center;
+}
+
+form table {
+    position: relative;
+    margin: 20px auto;
+    width: 600px;
+    height: 10px;
+}

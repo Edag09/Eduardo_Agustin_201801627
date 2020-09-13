@@ -7,14 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace Proyecto1
 {
-    public partial class Juego : System.Web.UI.Page
+    public partial class Principal : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Button5_Click(object sender, EventArgs e)
         {
             Response.Redirect("Inicio.aspx");
         }
