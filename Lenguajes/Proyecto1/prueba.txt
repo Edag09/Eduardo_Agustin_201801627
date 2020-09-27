@@ -1,0 +1,136 @@
+<ruta>
+    <nombre>
+        ruta_central
+    </nombre>
+    <peso>2.5</peso>
+    <inicio>
+        estacioNzona1
+    </inicio>
+    <fin>
+        estacionZonA6
+    </fin>
+</ruta>
+
+<estacIon>
+    <nombre>EstacionZona6</nombre>
+    <estado>disponible</estado>
+    <color>#1A5AAF</color>
+</estacion>
+
+<estacIon>
+    <color>#AF5B1A</color>
+    <nombre>
+        EstacionZona2</nombre>
+    <estado>disponible</estado>
+</estacion>
+
+<estacIon>
+    <nombre>EstacionZona1</nombre>
+    <color>#E52E22</color>
+    <estado>disponible</estado>
+</estacion>
+
+<ruta>
+    <nombre>
+        ruta_central2
+    </nombre>
+    <peso>4</peso>
+    <inicio>
+        estacionzona6
+    </inicio>
+    <fin>
+        EstacionZona2
+    </fin>$
+</ruta>
+
+<estacIon>
+    <estado>disponible</estado>
+    <color>#208E40</color>
+    <nombre>EstacionZona5</nombre>
+</estacion>
+
+<ruta>
+    <nombre>
+        ruta2
+    </nombre>
+    <peso>5</peso>
+    <inicio>
+        estacionzona6
+    </inicio>
+    <fin>
+        EstacionZona1
+    </fin>
+</ruta>
+<ruta>
+    <nombre>
+        rutaExpress
+    </nombre>
+    <peso>0.7</peso>
+    <inicio>
+        estacionzona2
+    </inicio>
+    <fin>
+        estacionzona1
+    </fin>
+</ruta>
+
+<ruta>
+    <nombre>
+        rutaJardines
+    </nombre>
+    <peso>2</peso>
+    <inicio>
+        estacionzona1
+    </inicio>
+    <fin>
+        estacionzona5
+    </fin>
+</ruta>
+
+<ruta>
+    <nombre>
+        ruta4
+    </nombre>
+    <peso>1.2</peso>
+    <inicio>
+        estacionzona6
+    </inicio>
+    <fin>
+        estacionzona4
+    </fin>
+</ruta>
+
+<ruta>
+    <nombre>
+        ruta_4_5
+    </nombre>
+    <peso>2</peso>
+    <inicio>
+        estacionzona4
+    </inicio>
+    <fin>
+        estacionzona5
+    </fin>
+</ruta>
+
+
+<ruta>
+    <nombre>
+        ruta_2_5
+    </nombre>
+    <peso>3</peso>
+    <inicio>
+        estacionzona2
+    </inicio>
+    <fin>
+        estacionzona5
+    </fin>
+</ruta>
+
+<estacIon>
+    <color>#AF5B1A</color>
+    <nombre>estacionzona4</nombre>
+    <estado>cerrada</estado>
+</estacion>@
+
+<nombre>Mapa Central</nombre>
