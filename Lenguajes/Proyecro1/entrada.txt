@@ -40,7 +40,7 @@
     </inicio>
     <fin>
         EstacionZona2
-    </fin>$
+    </fin> $
 </ruta>
 
 <estacIon>
@@ -131,6 +131,6 @@
     <color>#AF5B1A</color>
     <nombre>estacionzona4</nombre>
     <estado>cerrada</estado>
-</estacion>@
+</estacion> @
 
 <nombre>Mapa Central</nombre>
