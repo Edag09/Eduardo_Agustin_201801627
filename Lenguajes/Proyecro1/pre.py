@@ -8,13 +8,14 @@ Row = 0
 Column = -1
 state = 0
 chain = ''
-#Errores
+concatenar= ''
+# Errores
 desc = 'Desconocido'
 charStack = []
 rowStack = []
 columnStack = []
 descStack = []
-#Tokens
+# Tokens
 lStack = []
 vStack = []
 pStack = []
@@ -48,28 +49,31 @@ for line in lines:
                         print('T_Ruta:', chain, 'Fila :', Row, 'Columna', Column)
 
                     elif 'estacion' in chain.lower():
-                        print('T_Estacion:', chain, 'Fila :', Row, 'Columna', Column)
+                        print('T_Station:', chain, 'Fila :', Row, 'Columna', Column)
 
                     elif 'disponible' in chain.lower() or 'cerrada' in chain.lower():
-                        print('T_Estado:', chain, 'Fila :', Row, 'Columna', Column)
+                        print('T_Status:', chain, 'Fila :', Row, 'Columna', Column)
 
-                    elif 'Mapa' in chain:
-                        print('T_Mapa:', chain, 'Fila :', Row, 'Columna', Column)
+                    elif 'mapa' in chain.lower():
+                        concatenar = concatenar + chain
+                        concatenar = concatenar + " "
 
-                    else:
-                        print('Error', chain)
+                    if 'central' in chain.lower():
+                        concatenar = concatenar+chain
+                        print('T_Mapa:', concatenar, 'Fila :', Row, 'Columna', Column)
+
                 elif state == 3:
                     print('T_Peso: ', chain, 'Fila :', Row, 'Columna', Column)
-                    #ltStack.append(chain.lower())
-                    #ftStack.append(Row)
-                    #ctStack.append(Column)
-                    #PDFTokens.Tokens(ltStack, ftStack, ctStack, pStack)
+                    # ltStack.append(chain.lower())
+                    # ftStack.append(Row)
+                    # ctStack.append(Column)
+                    # PDFTokens.Tokens(ltStack, ftStack, ctStack, pStack)
                 elif state == 4:
                     print('T_Color: ', chain, 'Fila :', Row, 'Columna', Column)
-                    #ltStack.append(chain.lower())
-                    #ftStack.append(Row)
-                    #ctStack.append(Column)
-                    #PDFTokens.Tokens(ltStack, ftStack, ctStack, cStack)
+                    # ltStack.append(chain.lower())
+                    # ftStack.append(Row)
+                    # ctStack.append(Column)
+                    # PDFTokens.Tokens(ltStack, ftStack, ctStack, cStack)
                 print('')
             else:
                 print('')
@@ -131,28 +135,24 @@ for line in lines:
             if 'ruta' in chain.lower():
                 print('T_Ruta:', chain, 'Fila :', Row, 'Columna', Column)
 
-            elif 'estacion' in chain.lower():
-                print('T_Estacion:', chain, 'Fila :', Row, 'Columna', Column)
+            if 'estacion' in chain.lower():
+                print('T_Station:', chain, 'Fila :', Row, 'Columna', Column)
 
-            elif 'disponible' in chain.lower() or 'cerrada' in chain.lower():
-                print('T_Estado:', chain, 'Fila :', Row, 'Columna', Column)
+            if 'disponible' in chain.lower() or 'cerrada' in chain.lower():
+                print('T_Status:', chain, 'Fila :', Row, 'Columna', Column)
 
-            elif 'Mapa' in chain:
-                print('T_Mapa:', chain, 'Fila :', Row, 'Columna', Column)
-            else:
-                print('error', chain)
         elif state == 3:
             print('T_Peso: ', chain, 'Fila :', Row, 'Columna', Column)
-            #ltStack.append(chain.lower())
-            #ftStack.append(Row)
-            #ctStack.append(Column)
-            #PDFTokens.Tokens(ltStack, ftStack, ctStack, pStack)
+            # ltStack.append(chain.lower())
+            # ftStack.append(Row)
+            # ctStack.append(Column)
+            # PDFTokens.Tokens(ltStack, ftStack, ctStack, pStack)
         elif state == 4:
             print('T_Color: ', chain, 'Fila :', Row, 'Columna', Column)
-            #ltStack.append(chain.lower())
-            #ftStack.append(Row)
-            #ctStack.append(Column)
-            #PDFTokens.Tokens(ltStack, ftStack, ctStack, cStack)
+            # ltStack.append(chain.lower())
+            # ftStack.append(Row)
+            # ctStack.append(Column)
+            # PDFTokens.Tokens(ltStack, ftStack, ctStack, cStack)
         print(' ')
     else:
         print('--> Cadena:', chain, 'invalida, Fila :', Row, 'Columna', Column, 'Descipcion: ', desc)

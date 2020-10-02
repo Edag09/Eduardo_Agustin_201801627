@@ -10,6 +10,7 @@ def Error(fila, columna, caracter, descripcion):
         ['Fila', 'Columna', 'Caracter', 'Descripcion'],
         fila, columna, caracter, descripcion
     ]
+
     fileName = 'TablaErrores.pdf'
     pdf = SimpleDocTemplate(fileName, pagesize=letter)
     table = Table(data)
