@@ -14,7 +14,6 @@ class Data:
             Column = -1
             state = 0
             chain = ''
-            connect = ''
             # -----------------------------------------------
             # Errores
             desc = 'Desconocido'
@@ -25,18 +24,9 @@ class Data:
             # -----------------------------------------------
             # Tokens
             lblStack = []
-            valStack = []
-            pesStack = []
-            colorStack = []
             Label = 'Etiqueta'
-            Value = 'Valor'
-            Peso = 'Peso'
-            Color = 'Color'
             lStack = []
             vStack = []
-            eStack = []
-            pStack = []
-            cStack = []
             fStack = []
             colStack = []
             # -------------------------------------------------
@@ -59,11 +49,12 @@ class Data:
                                 Tokens(lStack, fStack, colStack, lblStack)
                             elif state == 2:
                                 print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
-                            elif state == 3:
-                                print('T_Peso: ', chain, 'Fila :', Row, 'Columna', Column)
-                            elif state == 4:
-                                print('T_Color: ', chain, 'Fila :', Row, 'Columna', Column)
-                            print('')
+                                vStack.append(chain.lower())
+                                GRuta.value = vStack
+                            elif state == 3 or state == 4:
+                                print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
+                                vStack.append(chain)
+                                GRuta.value = vStack
                         else:
                             print('')
                         state = 0

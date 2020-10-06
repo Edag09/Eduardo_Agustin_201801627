@@ -4,7 +4,9 @@
     <nombre>FUEGO</nombre>
 </estacion>
 !
-<estacion><estado>disponible%</estado><nombre>AGUA</nombre><color>#dae8fc</color></estacion><estacion><nombre>HIERBA</nombre><estado>disponible</estado><color>#dae8fc</color><PESO>1</PESO></estacion>    <nombre>TR1F0RC3</nombre>
+<estacion><estado>disponible
+%
+</estado><nombre>AGUA</nombre><color>#dae8fc</color></estacion><estacion><nombre>HIERBA</nombre><estado>disponible</estado><color>#dae8fc</color><PESO>1</PESO></estacion>    <nombre>TR1F0RC3</nombre>
 
 <estacion>
     <estado>cerrada</estado>
@@ -40,7 +42,7 @@ estacion>
 
 <ruta>
     <peso>6.21</peso>
-    & ? <inicio>HIERBA</inicio>
+    &?<inicio>HIERBA</inicio>
     <nombre>rutaZ2</nombre>
         <fin>AGUA</fin>
 </ruta><ruta>

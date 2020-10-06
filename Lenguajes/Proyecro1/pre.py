@@ -1,7 +1,8 @@
 import ErrorPDF
 import TokensPDF
+import GRuta
 
-'''Entry = input('Ingresa la ruta del archivo: ')
+Entry = input('Ingresa la ruta del archivo: ')
 file = open(Entry, "r")
 lines = file.readlines()
 Row = 0
@@ -53,11 +54,10 @@ for line in lines:
                     TokensPDF.Tokens(lStack, fStack, colStack, lblStack)
                 elif state == 2:
                     print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
-                elif state == 3:
-                    print('T_Peso: ', chain, 'Fila :', Row, 'Columna', Column)
-                elif state == 4:
-                    print('T_Color: ', chain, 'Fila :', Row, 'Columna', Column)
-                print('')
+                    vStack.append(chain.lower())
+                elif state == 3 or state == 4:
+                    print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
+                    vStack.append(chain)
             else:
                 print('')
             state = 0
@@ -67,7 +67,7 @@ for line in lines:
         chain = chain + character
 
         if state == 0:
-            if 65 <= ord(character) <= 122:  # es letter
+            if character.isalpha():  # es letter
                 state = 2
             elif 48 <= ord(character) <= 57:  # es Digit
                 state = 3
@@ -75,11 +75,13 @@ for line in lines:
                 state = 1
             elif character == '#':
                 state = 4
+            elif character == '%':
+                print('Encontrado')
             else:
                 print('')
 
         if state == 1:
-            if 65 <= ord(character) <= 122:  # es letter
+            if character.isalpha():  # es letter
                 state = 1
             elif character == '<' or character == '>':
                 state = 1
@@ -89,7 +91,7 @@ for line in lines:
                 print('')
 
         elif state == 2:
-            if 65 <= ord(character) <= 122:  # es letter
+            if character.isalpha():  # es letter
                 state = 2
             elif 48 <= ord(character) <= 57:  # es digit
                 state = 2
@@ -107,7 +109,7 @@ for line in lines:
                 print('')
 
         elif state == 4:
-            if 65 <= ord(character) <= 122:  # es letter
+            if character.isalpha():  # es letter
                 state = 4
             elif 48 <= ord(character) <= 57:  # es digit
                 state = 4
@@ -119,4 +121,5 @@ for line in lines:
             rowStack.append(Row)
             columnStack.append(Column)
             descStack.append(desc)
-            ErrorPDF.Error(rowStack, columnStack, charStack, descStack)'''
+            ErrorPDF.Error(rowStack, columnStack, charStack, descStack)
+GRuta.printG(vStack)

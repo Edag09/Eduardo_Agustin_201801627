@@ -31,7 +31,7 @@ def printG(value):
         cad += cadE + "-> " + cadS + '\n'
 
         file.write('digraph D {\n')
-        file.write(cad + '\n')
+        file.write('['+cad+']' + '\n')
         file.write('}')
 
         file.close()
