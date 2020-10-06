@@ -1,0 +1,68 @@
+<estacion>
+    <estado>disponible</estado>
+    <color>#f5f5f5</color>
+    <nombre>FUEGO</nombre>
+</estacion>
+!
+<estacion><estado>disponible%</estado><nombre>AGUA</nombre><color>#dae8fc</color></estacion><estacion><nombre>HIERBA</nombre><estado>disponible</estado><color>#dae8fc</color><PESO>1</PESO></estacion>    <nombre>TR1F0RC3</nombre>
+
+<estacion>
+    <estado>cerrada</estado>
+    <color>#dae8fc</color>
+    <nombre>estacion_X2</nombre>
+</estacion>
+
+<estacion
+>
+    <
+    estado
+    >
+                                disponible
+                                </
+    estado>
+    
+    <color>#dae8fc</color>
+    <nombre>estacion_X</nombre>
+</
+estacion>
+
+<ruta>
+    <fin>HIERBA</fin>
+    <peso>1.0</peso><inicio>FUEGO</inicio><nombre>rutaX1</nombre>
+</ruta>
+
+<ruta>$
+    <fin>Fuego</fin>
+    <peso>6</peso>
+    <inicio>hierba</inicio>
+    <nombre>rutaX2</nombre>
+</ruta>
+
+<ruta>
+    <peso>6.21</peso>
+    & ? <inicio>HIERBA</inicio>
+    <nombre>rutaZ2</nombre>
+        <fin>AGUA</fin>
+</ruta><ruta>
+    <nombre>rutaZ1</nombre>
+
+<inicio>agua</inicio>
+
+    <fin>hierba</fin>
+    <peso>8</peso>
+
+
+</ruta>
+
+<ruta>
+    <nombre>rutaY2</nombre>
+
+    <inicio>AgUA</inicio>
+
+    <fin>fuego</fin>
+    <peso>2</peso>
+
+
+</ruta>
+
+<ruta><nombre>rutaY1</nombre><inicio>FUEGO</inicio><fin>AGUA</fin><peso>8</peso></ruta>.

@@ -1,11 +1,11 @@
-<ruta>
+<rutA>
     <nombre>
         ruta_central
     </nombre>
     <peso> 2.5 </peso>
     <inicio>
         estacioNzona1
-    </inicio>
+    </iNicio>
     <fin>
         estacionZonA6
     </fin>

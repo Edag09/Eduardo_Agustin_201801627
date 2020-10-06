@@ -1,88 +1,149 @@
+import pandas as pd
+import numpy as np
+import GRuta
+
+
 class Data:
 
     def Load(self):
-        Entry = input('Ingresa la ruta del archivo: ')
-        file = open(Entry, "r")
-        lines = file.readlines()
-        state = 0
-        chain = ''
-        for line in lines:
-            for character in line:
-                if character == '\n':
-                    continue
-                elif character == ' ':
-                    if state == 0:
-                        continue
-                    if state == 2 or state == 1 or state == 3 or state == 4:
-                        if state == 1:
-                            print('T_Label: ', chain)
-                        elif state == 2:
-                            print('T_Valor: ', chain)
-                        elif state == 3:
-                            print('T_Peso: ', chain)
-                        elif state == 4:
-                            print('T_Color: ', chain)
-                        print('')
-                    else:
-                        print('--> Cadena:', chain, 'invalida')
-
-                    state = 0
-                    chain = ''
-                    continue
-                chain = chain + character
-
-                if state == 0:
-                    if 65 <= ord(character) <= 122:  # es letter
-                        state = 2
-                    elif 48 <= ord(character) <= 57:  # es Digit
-                        state = 3
-                    elif character == '<' or character == '>':
-                        state = 1
-                    elif character == '#':
-                        state = 4
-                    else:
-                        state = -1
-
-                elif state == 1:
-                    if 65 <= ord(character) <= 122:  # es letter
-                        state = 1
-                    elif character == '<' or character == '>':
-                        state = 1
-                    elif character == '/':
-                        state = 1
-                    else:
-                        state = -1
-
-                elif state == 2:
-                    if 65 <= ord(character) <= 122:  # es letter
-                        state = 2
-                    elif 48 <= ord(character) <= 57:  # es digit
-                        state = 2
-                    elif character == '_':
-                        state = 2
-                    else:
-                        state = -1
-
-                elif state == 4:
-                    if 65 <= ord(character) <= 122:  # es letter
-                        state = 4
-                    elif 48 <= ord(character) <= 57:  # es digit
-                        state = 4
-                    else:
-                        state = -1
-
-            if state == 2 or state == 1 or state == 3 or state == 4:
-                if state == 1:
-                    print('T_Label: ', chain)
-                elif state == 2:
-                    print('T_Valor: ', chain)
-                elif state == 3:
-                    print('T_Peso: ', chain)
-                elif state == 4:
-                    print('T_Color: ', chain)
-                print(' ')
-            else:
-                print('--> Cadena:', chain, ' invalida')
-
+        try:
+            Entry = input('Ingresa la ruta del archivo: ')
+            file = open(Entry, "r")
+            lines = file.readlines()
+            Row = 0
+            Column = -1
             state = 0
             chain = ''
+            connect = ''
+            # -----------------------------------------------
+            # Errores
+            desc = 'Desconocido'
+            charStack = []
+            rowStack = []
+            columnStack = []
+            descStack = []
+            # -----------------------------------------------
+            # Tokens
+            lblStack = []
+            valStack = []
+            pesStack = []
+            colorStack = []
+            Label = 'Etiqueta'
+            Value = 'Valor'
+            Peso = 'Peso'
+            Color = 'Color'
+            lStack = []
+            vStack = []
+            eStack = []
+            pStack = []
+            cStack = []
+            fStack = []
+            colStack = []
+            # -------------------------------------------------
+            for line in lines:
+                Row = Row + 1
+                cad = line.replace(' ', '')
+                c = cad.replace('\n', '')
+                f = c.replace('<', '\n<')
+                g = f.replace('>', '>\n')
+                for character in g:
+                    Column = Column + 1
+                    if character == ' ' or character == '\n':
+                        if state == 2 or state == 1 or state == 3 or state == 4:
+                            if state == 1:
+                                print('T_Label: ', chain, 'Fila :', Row, 'Columna', Column)
+                                lStack.append(chain)
+                                fStack.append(Row)
+                                colStack.append(Column)
+                                lblStack.append(Label)
+                                Tokens(lStack, fStack, colStack, lblStack)
+                            elif state == 2:
+                                print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
+                            elif state == 3:
+                                print('T_Peso: ', chain, 'Fila :', Row, 'Columna', Column)
+                            elif state == 4:
+                                print('T_Color: ', chain, 'Fila :', Row, 'Columna', Column)
+                            print('')
+                        else:
+                            print('')
+                        state = 0
+                        chain = ''
+                        Column = 0
+                        continue
+                    chain = chain + character
+
+                    if state == 0:
+                        if 65 <= ord(character) <= 122:  # es letter
+                            state = 2
+                        elif 48 <= ord(character) <= 57:  # es Digit
+                            state = 3
+                        elif character == '<' or character == '>':
+                            state = 1
+                        elif character == '#':
+                            state = 4
+                        else:
+                            print('')
+
+                    if state == 1:
+                        if 65 <= ord(character) <= 122:  # es letter
+                            state = 1
+                        elif character == '<' or character == '>':
+                            state = 1
+                        elif character == '/':
+                            state = 1
+                        else:
+                            print('')
+
+                    elif state == 2:
+                        if 65 <= ord(character) <= 122:  # es letter
+                            state = 2
+                        elif 48 <= ord(character) <= 57:  # es digit
+                            state = 2
+                        elif character == '_':
+                            state = 2
+                        else:
+                            print('')
+
+                    elif state == 3:
+                        if character.isdigit():  # es digit
+                            state = 3
+                        elif character == '.':
+                            state = 3
+                        else:
+                            print('')
+
+                    elif state == 4:
+                        if 65 <= ord(character) <= 122:  # es letter
+                            state = 4
+                        elif 48 <= ord(character) <= 57:  # es digit
+                            state = 4
+                        else:
+                            print('')
+                    else:
+                        print('Nothing ', character + ' Fila ', Row, ' Columna ', Column)
+                        charStack.append(character)
+                        rowStack.append(Row)
+                        columnStack.append(Column)
+                        descStack.append(desc)
+                        Error(rowStack, columnStack, charStack, descStack)
+
+        except:
+            print('Documento incorrecto')
+
+
+def Error(fila, columna, caracter, descripcion):
+    Table = {'Fila': fila, 'Columna': columna, 'Caracter': caracter, 'Descripcion': descripcion}
+    df = pd.DataFrame(data=Table)
+    txtHTML = df.to_html()
+    file = open('TablaErrores.html', 'w')
+    file.write(txtHTML)
+    file.close()
+
+
+def Tokens(token, fila, columna, tokenO):
+    Table = {'Lexema': token, 'Fila': fila, 'Columna': columna, 'Token': tokenO}
+    df = pd.DataFrame(data=Table)
+    txtHTML = df.to_html()
+    file = open('TablaCompleta.html', 'w')
+    file.write(txtHTML)
+    file.close()

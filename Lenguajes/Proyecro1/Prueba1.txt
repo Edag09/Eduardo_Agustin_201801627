@@ -1,0 +1,77 @@
+    <estacIon>
+    <nombre>estNorte</nombre>
+    <estado>disponible</estado>
+    <color>#dae8fc</color>
+    </estacion>
+
+<estacion>
+    <nombre>estOeste</nombre>
+    <estado>disponible</estado>
+    <color>#f5f5f5</color>
+</estacion>
+
+<estacion>
+    <nombre>EST_ESTE</nombre>
+    <estado>disponible</estado>
+    <color>#dae8fc</color>
+</estacion>
+
+<ESTACION>
+    <nombre>SUR</nombre>
+    <estado>disponible</estado>
+    <color>#d5e8d4</color>
+</ESTACION>
+
+<ruta>
+    <nombre>ruta_central1</nombre>
+    <peso>2.5</peso>
+    <inicio>EST_ESTE</inicio>
+    <fin>ESTOESTE</fin>
+</ruta>
+
+<ruta>
+    <fin>est_este</fin>
+    <peso>1.5</peso>
+    <inicio>estoeste</inicio>
+    <nombre>ruta_central2</nombre>
+</ruta>
+
+
+<nombre>Ciudad_Guatemala</nombre>
+
+<ruta>
+    <inicio>estNorte</inicio>
+    <fin>estOeste</fin>
+    <peso>8</peso>
+    <nombre>
+    rutaNO
+    <
+    /
+    nombre
+    >
+</ruta>
+
+<ruta>
+    <inicio>estNorte</inicio>
+    <fin>est_ESTE</fin>
+    <peso>5.00001</peso>
+    <nombre>RUTA_NE</nombre>
+</ruta>
+
+
+
+
+<ruta>
+    <INICIO>ESTOESTE</INICIO>
+    <fin>sur</fin>
+    <peso>2.4</PESO>
+    <NOMBRE>ruta_OS</NOMBRE>
+</ruta>
+
+
+<ruta>
+    <fin>SUR</fin>
+        <inicio>est_este</inicio>
+    <peso>5</peso>
+    <nombre>ruta_ES</nombre>
+</ruta>

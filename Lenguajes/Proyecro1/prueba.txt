@@ -1,14 +1,14 @@
-<ruta>
-    <nombre> ruta_central </nombre>
+<rutA>
+    <nOmbre> ruta_central </nombre>
     <peso> 2.5 </peso>
     <inicio>
         estacioNzona1
-    </inicio>
+    </iNicio>
     <fin>
         estacionZonA6
     </fin> *
 </ruta> @
-<estacIon> /
+<estacIon>
     <nombre> EstacionZona6 </nombre>
     <estado> disponible </estado>
     <color> #1A5AAF </color>

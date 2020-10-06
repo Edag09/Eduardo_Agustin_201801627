@@ -1,4 +1,5 @@
 from CargarArchivo import Data
+import GRuta
 
 data = Data()
 
@@ -19,7 +20,7 @@ def Menu():
         data.Load()
         Menu()
     elif opc == "2":
-        print("Gráficar Ruta")
+        GRuta.Grafos()
         Menu()
     elif opc == "3":
         print("Gráficar Mapa")
