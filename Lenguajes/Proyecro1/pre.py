@@ -1,9 +1,11 @@
 import ErrorPDF
 import TokensPDF
 import GRuta
+import pre2
+import Mapa
 
-Entry = input('Ingresa la ruta del archivo: ')
-file = open(Entry, "r")
+#Entry = input('Ingresa la ruta del archivo: ')
+file = open('Prueba2.txt', "r")
 lines = file.readlines()
 Row = 0
 Column = -1
@@ -46,17 +48,19 @@ for line in lines:
         if character == ' ' or character == '\n':
             if state == 2 or state == 1 or state == 3 or state == 4:
                 if state == 1:
-                    print('T_Label: ', chain, 'Fila :', Row, 'Columna', Column)
+                    #print('T_Label: ', chain, 'Fila :', Row, 'Columna', Column)
                     lStack.append(chain)
                     fStack.append(Row)
                     colStack.append(Column)
                     lblStack.append(Label)
                     TokensPDF.Tokens(lStack, fStack, colStack, lblStack)
+                    vStack.append(chain)
                 elif state == 2:
-                    print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
+                    #print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
                     vStack.append(chain.lower())
+                    GRuta.value = vStack
                 elif state == 3 or state == 4:
-                    print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
+                    #print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
                     vStack.append(chain)
             else:
                 print('')
@@ -75,8 +79,6 @@ for line in lines:
                 state = 1
             elif character == '#':
                 state = 4
-            elif character == '%':
-                print('Encontrado')
             else:
                 print('')
 
@@ -122,4 +124,5 @@ for line in lines:
             columnStack.append(Column)
             descStack.append(desc)
             ErrorPDF.Error(rowStack, columnStack, charStack, descStack)
-GRuta.printG(vStack)
+Mapa.printM(vStack)
+

@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import GRuta
+import Mapa
 
 
 class Data:
@@ -55,6 +56,7 @@ class Data:
                                 print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
                                 vStack.append(chain)
                                 GRuta.value = vStack
+                                Mapa.val = vStack
                         else:
                             print('')
                         state = 0

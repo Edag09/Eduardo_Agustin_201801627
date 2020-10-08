@@ -1,4 +1,4 @@
-import os
+from graphviz import Digraph
 
 value = ''
 
@@ -10,34 +10,31 @@ def Grafos():
 def printG(value):
     try:
         print(value)
-        rutaI = input('Ingresa la ruta de Inicial: ')
+        rutaI = input('Ingresa la Estacion Inicial: ')
         cad = rutaI.lower()
         cadE = cad.replace(' ', '')
-        rutaF = input('Ingresa la ruta final: ')
+        rutaF = input('Ingresa la Estacion final: ')
         sal = rutaF.lower()
         cadS = sal.replace(' ', '')
 
         if cadE in value:
-            print('Estacion Entrada')
-        if cadS in value:
-            print('Estacion Salida')
+            print('Estacion Inicial: ', cadE)
+            if cadS in value:
+                print('Estacion final: ', cadS)
+            graph(cadE, cadS)
         else:
             print('Estacion invalida')
             printG(value)
-
-        file = open('Ruta.dot', 'w')
-        cad = ''
-
-        cad += cadE + "-> " + cadS + '\n'
-
-        file.write('digraph D {\n')
-        file.write('['+cad+']' + '\n')
-        file.write('}')
-
-        file.close()
-
-        os.system('dot -Tpng Ruta.dot -o Ruta.png')
-
     except:
         print('Estacion no analizada')
         printG(value)
+
+
+def graph(EI, EF):
+    graft = Digraph(format='pdf', name='Ruta')
+    graft.attr(rankdir='LR', size='10')
+
+    graft.attr('node', shape='ellipse', style='filled', fillcolor='red')
+    graft.edge(EI, EF, label='Ruta')
+
+    graft.view()
