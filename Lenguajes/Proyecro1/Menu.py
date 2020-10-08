@@ -24,7 +24,7 @@ def Menu():
         GRuta.Grafos()
         Menu()
     elif opc == "3":
-        Mapa.Map()
+        Mapa.Graph()
         Menu()
     elif opc == "4":
         print("Gus bai")

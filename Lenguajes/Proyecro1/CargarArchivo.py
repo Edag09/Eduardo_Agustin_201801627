@@ -48,6 +48,7 @@ class Data:
                                 colStack.append(Column)
                                 lblStack.append(Label)
                                 Tokens(lStack, fStack, colStack, lblStack)
+                                vStack.append(chain)
                             elif state == 2:
                                 print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
                                 vStack.append(chain.lower())
@@ -55,8 +56,6 @@ class Data:
                             elif state == 3 or state == 4:
                                 print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
                                 vStack.append(chain)
-                                GRuta.value = vStack
-                                Mapa.val = vStack
                         else:
                             print('')
                         state = 0
@@ -119,7 +118,8 @@ class Data:
                         columnStack.append(Column)
                         descStack.append(desc)
                         Error(rowStack, columnStack, charStack, descStack)
-
+            GRuta.value = vStack
+            Mapa.value = vStack
         except:
             print('Documento incorrecto')
 

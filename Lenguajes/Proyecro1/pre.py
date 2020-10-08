@@ -48,7 +48,7 @@ for line in lines:
         if character == ' ' or character == '\n':
             if state == 2 or state == 1 or state == 3 or state == 4:
                 if state == 1:
-                    #print('T_Label: ', chain, 'Fila :', Row, 'Columna', Column)
+                    print('T_Label: ', chain, 'Fila :', Row, 'Columna', Column)
                     lStack.append(chain)
                     fStack.append(Row)
                     colStack.append(Column)
@@ -56,11 +56,10 @@ for line in lines:
                     TokensPDF.Tokens(lStack, fStack, colStack, lblStack)
                     vStack.append(chain)
                 elif state == 2:
-                    #print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
+                    print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
                     vStack.append(chain.lower())
-                    GRuta.value = vStack
                 elif state == 3 or state == 4:
-                    #print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
+                    print('T_Valor: ', chain, 'Fila :', Row, 'Columna', Column)
                     vStack.append(chain)
             else:
                 print('')
@@ -124,5 +123,6 @@ for line in lines:
             columnStack.append(Column)
             descStack.append(desc)
             ErrorPDF.Error(rowStack, columnStack, charStack, descStack)
-Mapa.printM(vStack)
+Mapa.value = vStack
+Mapa.Graph()
 
