@@ -6,7 +6,7 @@ class Extra:
         self.apendice_colores = ['azul', 'azul2', 'azul3', 'rojo', 'rojo2', 'rojo3', 'amarillo', 'amarillo2',
                                  'amarillo3', 'anaranjado', 'anaranjado2', 'anaranjado3', 'cafe', 'cafe2', 'cafe3',
                                  'gris', 'gris2', 'gris3', 'morado', 'morado2', 'morado3', 'verde', 'verde2', 'verde3',
-                                 'blanco']
+                                 'blanco', '#']
 
     def _file_upload(self):
         Entry = input('Ingresa la ruta del archivo: ')
@@ -62,7 +62,7 @@ class Extra:
                     aux = self.Letras(i)
                     print('Token_Figura: ' + self.lexeme)
                     i = aux
-                    # si self.lexema = lista de colores:
+                    # si self.lexema = lista de figuras:
                     # impresion de token, pd NO TENES QUE INCREMENTAR LA I PENDEJO :)
                     # si nel
                     # imprimir error y break
@@ -100,7 +100,7 @@ class Extra:
                     aux = self.Open_Cad(i)
                     i = aux
                     if self.text[i] == '{':
-                        print('Token_abrir: ' + self.text[i])
+                        print('Token_Abrir: ' + self.text[i])
                         i += 1
                     else:
                         print(f'error: {self.text[i]}')
@@ -109,526 +109,22 @@ class Extra:
                     aux = self.elemento_list(i)
 
                     if self.text[aux] == '}':
-                        print('entro')
                         i = aux
                     else:
                         print('error RCURSIVO')
                         break
 
-                    '''aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Node(i)
-                    print('Token_Nodo: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Open(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value(i)
-                    print('Token_ValorNodo: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Close(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Color(i)
-                    print('Token_Color: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.PyC(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Nodes(i)
-                    print('Token_Nodos: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Open(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value_Digit(i)
-                    print('Token_ValorNumerico: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.comas(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value(i)
-                    print('Token_ValorNodo: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Close(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Color(i)
-                    print('Token_Color: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.PyC(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Node(i)
-                    print('Token_Nodo: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Open(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value(i)
-                    print('Token_ValorNodo: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Close(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value(i)
-                    print('Token_ValorNodo: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.PyC(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Commentary(i)
-                    print('Token_Comentario: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Node(i)
-                    print('Token_Nodo: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Open(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value(i)
-                    print('Token_ValorNodo: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Close(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Color(i)
-                    print('Token_Color: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.PyC(i)
-                    i = aux
-                    self.lexeme = ''
-
                     aux = self.Close_Cad(i)
                     i = aux
-                    self.lexeme = ''
-
-                    aux = self.Defect(i)
-                    print('Token_Defecto: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Open(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value_D(i)
-                    print('Token_ValordelDefecto: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Close(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Color(i)
-                    print('Token_ColorDefecto: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.PyC(i)
-                    i = aux
-                    self.lexeme = ''
-'''
-                elif self.lexeme.lower() == 'matriz':
-                    print('Token_Tipo: ' + self.lexeme)
-                    self.lexeme = ''
-
-                    aux = self.Open(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Matrix_size(i)
-                    print('Token_TamanioMatriz: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.comas(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Matrix_size(i)
-                    print('Token_TamanioMatriz: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.comas(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.title(i)
-                    print('Token_Titulo: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.comas(i)
-                    i = aux
+                    if self.text[i] == '}':
+                        print('Token_Cerrar: ' + self.text[i])
+                        i += 1
+                    else:
+                        print(f'error: {self.text[i]}')
+                        break
                     self.lexeme = ''
 
                     aux = self.Letras(i)
-                    print('Token_Figura: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.comas(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    # aux = self.Double_list(i)
-                    # print('Token_ListaDoble: ' + self.lexeme)
-                    # i = aux
-                    # self.lexeme = ''
-
-                    aux = self.Close(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Open_Cad(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Row(i)
-                    print('Token_Fila: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Open(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value(i)
-                    print('Token_ValorFila: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.comas(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value(i)
-                    print('Token_ValorFila: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Close(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Color(i)
-                    print('Token_Color: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.PyC(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Row(i)
-                    print('Token_Fila: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Open(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value(i)
-                    print('Token_ValorFila: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.comas(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value(i)
-                    print('Token_ValorFila: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.comas(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value(i)
-                    print('Token_ValorFila: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Close(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Color(i)
-                    print('Token_Color: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.PyC(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.NodeM(i)
-                    print('Token_NodoM: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Open(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.getX(i)
-                    print('X: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.comas(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.getY(i)
-                    print('Y: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.comas(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value(i)
-                    print('Token_ValorNodo: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Close(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Color(i)
-                    print('Token_Color: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.PyC(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Space(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.NodeM(i)
-                    print('Token_NodoM: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Open(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.getX(i)
-                    print('X: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.comas(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.getY(i)
-                    print('Y: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.comas(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Value(i)
-                    print('Token_ValorNodo: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Close(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Color(i)
-                    print('Token_Color: ' + self.lexeme)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.PyC(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Close_Cad(i)
-                    i = aux
-                    self.lexeme = ''
-
-                    aux = self.Defect(i)
                     print('Token_Defecto: ' + self.lexeme)
                     i = aux
                     self.lexeme = ''
@@ -636,28 +132,51 @@ class Extra:
                     aux = self.Open(i)
                     i = aux
                     self.lexeme = ''
+                    if self.text[i] == '(':
+                        print('Token_Apertura: ' + self.text[i])
+                        i += 1
+                    else:
+                        print(f'error: {self.text[i]}')
+                        break
 
-                    aux = self.Value_D(i)
-                    print('Token_ValordelDefecto: ' + self.lexeme)
+                    aux = self.Value(i)
+                    print('Token_Valor: ' + self.lexeme)
                     i = aux
                     self.lexeme = ''
 
                     aux = self.Close(i)
                     i = aux
                     self.lexeme = ''
+                    if self.text[i] == ')':
+                        print('Token_Cerradura: ' + self.text[i])
+                        i += 1
+                    else:
+                        print(f'error: {self.text[i]}')
+                        break
 
                     aux = self.Color(i)
-                    print('Token_ColorDefecto: ' + self.lexeme)
                     i = aux
-                    self.lexeme = ''
+                    if self.lexeme in self.apendice_colores:
+
+                        print('Token_Color: ' + self.lexeme)
+                        self.lexeme = ''
+                    else:
+                        break
 
                     aux = self.PyC(i)
                     i = aux
-                    self.lexeme = ''
+                    if self.text[i] == ';':
+                        print('Token_Punto_y_Coma: ' + self.text[i])
+                        self.lexeme = ''
+                        i += 1
+                    else:
+                        print(f'error: {self.text[i]}')
+                        break
 
                 else:
                     print(f'Error: {self.lexeme}')
                     break
+
             i += 1
 
     def get_Title(self, i):
@@ -755,24 +274,6 @@ class Extra:
             i += 1
         return i
 
-    def Space(self, i):
-        while i < len(self.text):
-            if self.text[i] == ' ' or self.text[i] == '\n':
-                pass
-            else:
-                return i
-            i += 1
-        return i
-
-    def Node(self, i):
-        while i < len(self.text):
-            if self.text[i].isalpha():
-                self.lexeme += self.text[i]
-            else:
-                return i
-            i += 1
-        return i
-
     def Value(self, i):
         while i < len(self.text):
             if self.text[i] == "'" or self.text[i].isalpha() or self.text[i] == '#':
@@ -819,15 +320,6 @@ class Extra:
             i += 1
         return i
 
-    def Nodes(self, i):
-        while i < len(self.text):
-            if self.text[i].isalpha():
-                self.lexeme += self.text[i]
-            else:
-                return i
-            i += 1
-        return i
-
     def Value_Digit(self, i):
         while i < len(self.text):
             if self.text[i].isdigit():
@@ -852,13 +344,14 @@ class Extra:
 
     def Close_Cad(self, i):
         while i < len(self.text):
-            if self.text[i] == '\n':
-                pass
-            elif self.text[i] == '}':
+            if self.text[i] == '}':
                 self.lexeme += self.text[i]
-                print('Token_Cerrar: ' + self.text[i])
-            else:
                 return i
+            else:
+                if self.text[i] == ' ' or self.text[i] == '\n':
+                    pass
+                else:
+                    return i
             i += 1
         return i
 
@@ -885,59 +378,6 @@ class Extra:
         return i
 
     # ---------------------------------------------MATRIZ-----------------------------------------------------------------------
-
-    def Matrix_size(self, i):
-        while i < len(self.text):
-            if self.text[i] == ' ':
-                pass
-            elif self.text[i].isdigit():
-                self.lexeme += self.text[i]
-            else:
-                return i
-            i += 1
-        return i
-
-    def Row(self, i):
-        while i < len(self.text):
-            if self.text[i].isalpha():
-                self.lexeme += self.text[i]
-            else:
-                return i
-            i += 1
-
-        return i
-
-    def NodeM(self, i):
-        while i < len(self.text):
-            if self.text[i].isalpha():
-                self.lexeme += self.text[i]
-            else:
-                return i
-            i += 1
-
-        return i
-
-    def getX(self, i):
-        while i < len(self.text):
-            if self.text[i] == ' ':
-                pass
-            elif self.text[i].isdigit():
-                self.lexeme += self.text[i]
-            else:
-                return i
-            i += 1
-        return i
-
-    def getY(self, i):
-        while i < len(self.text):
-            if self.text[i] == ' ':
-                pass
-            elif self.text[i].isdigit():
-                self.lexeme += self.text[i]
-            else:
-                return i
-            i += 1
-        return i
 
     # ------------------------------------------------TABLA---------------------------------------------
 
@@ -998,7 +438,6 @@ class Extra:
             aux = self.Color(i)
             i = aux
             if self.lexeme in self.apendice_colores:
-
                 print('Token_Color: ' + self.lexeme)
                 self.lexeme = ''
             else:
@@ -1017,7 +456,7 @@ class Extra:
             aux = self.elemento_list(i)
             return aux
 
-        #elif self.lexeme == 'nodos':
+        # elif self.lexeme == 'nodos':
         # pass
         elif self.text[i] == '}':
             return i
