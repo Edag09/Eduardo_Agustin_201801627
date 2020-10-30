@@ -3,11 +3,17 @@ file = open(Entry, "r")
 lines = file.readlines()
 file.close()
 
+Row = 0
 i = 0
-texto = ''
-for linea in lines:
-    texto += linea
+text = ''
+cad = ''
+for character in lines:
+    Row += 1
+    text += character
+while i < len(text):
+    if text[i].isalpha():
+        cad += text
+        i += 1
 
-while i < len(texto):
-    print(texto[i])
-    i += 1
+
+
