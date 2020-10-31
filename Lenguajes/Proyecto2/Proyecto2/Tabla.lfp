@@ -1,9 +1,6 @@
 tabla (3,'** Equipos **'){
     fila ('Equipo 1', 'Azul', '7') Azul2;
-    fila ('Disponible') #;
-    fila ('Equipo 3', 'Rojo') Rojo2;
-    fila ('Equipo 4',#,6)#;
+    fila ('Equipo 3', 'Rojo','4') Rojo2;
     encabezados ('Equipo','Color Asignado','No. Integrantes') amarillo2;
-    fila (#)#; //Tendrá los valores por defecto
-
+    fila ('Equipo 4',#,6)#;
 } defecto ('---') gris2;

@@ -1,6 +1,5 @@
 import ArchivoCargado
 import Analisis
-import Pruebas.PruebaAnalizador
 
 
 def Menu():
@@ -18,6 +17,7 @@ def Menu():
         ArchivoCargado.update()
         Menu()
     elif opc == "2":
+        # Analisis.Graph()
         Menu()
     elif opc == "3":
         print("Salida")

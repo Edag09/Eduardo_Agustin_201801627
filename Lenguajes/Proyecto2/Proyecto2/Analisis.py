@@ -1,3 +1,6 @@
+from Analizador import sintaxis
+
+var = sintaxis()
 
 data = ''
 
@@ -8,6 +11,4 @@ def Graph():
 
 
 def analyzed(file):
-    for line in file:
-        cad = line.split(' ', '')
-        print(cad)
+    var._file_upload()
