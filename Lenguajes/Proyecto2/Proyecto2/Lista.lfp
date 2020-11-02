@@ -1,7 +1,6 @@
 Lista ('>>> Personas <<<',circulo,verdadero){
-    nodo ('Luis') azul2 ;
-    nodo ('Eduardo') azul2 ;
-    nodos (4, 'Persona') verde2;
-    nodo (#) #;
-    nodo ('Manuel') rojo2;
+   nodo ('Luis') azul2 ;
+   nodos (2, 'Persona') verde2;
+   nodo (#) #;
+   nodo ('Manuel') rojo2;
 } defecto ('Disponible') blanco;

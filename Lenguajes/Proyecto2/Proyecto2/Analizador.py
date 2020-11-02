@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
-import Graficas
+from Graficas import draw
+
+a = draw()
 
 
 class sintaxis:
@@ -12,6 +14,7 @@ class sintaxis:
                             'amarillo3', 'anaranjado', 'anaranjado2', 'anaranjado3', 'cafe', 'cafe2', 'cafe3',
                             'gris', 'gris2', 'gris3', 'morado', 'morado2', 'morado3', 'verde', 'verde2', 'verde3',
                             'blanco', '#']
+
         self.stack_figure = ['circulo', 'rectangulo', 'triangulo', 'punto', 'hexagono', 'diamante']
 
         self.stack_value = []
@@ -28,7 +31,10 @@ class sintaxis:
         self.stack_text = []
         # ------------------------------------Valores Nodos----------------------------
         self.stack_valueNode = []
-        self.number = ''
+        self.number = 0
+        self.person = 1
+        self.component_ = ''
+        self.color_ = ''
 
     def _file_upload(self):
         Entry = input('Ingresa la ruta del archivo: ')
@@ -159,7 +165,7 @@ class sintaxis:
                     if self.text[aux] == '}':
                         i = aux
                     else:
-                        print('error RCURSIVO')
+                        print(f'error RCURSIVO{self.text[i]}')
                         self.stack_error.append(self.text[i])
                         self.Error(self.stack_error)
                         break
@@ -201,9 +207,9 @@ class sintaxis:
 
                     aux = self.Value(i)
                     print('Token_Valor: ' + self.lexeme)
-                    self.stack_value.append(self.lexeme)
                     self.stack_tokens.append(self.lexeme)
                     self.stack_text.append('Token_Valor')
+                    self.component_ = self.lexeme
                     i = aux
                     self.lexeme = ''
 
@@ -225,11 +231,10 @@ class sintaxis:
                     aux = self.Color(i)
                     i = aux
                     if self.lexeme in self.stack_color:
-
                         print('Token_Color: ' + self.lexeme)
-                        self.stack_Color.append(self.lexeme)
                         self.stack_tokens.append(self.lexeme)
                         self.stack_text.append('Token_Color')
+                        self.color_ = self.lexeme
                         self.lexeme = ''
                     else:
                         print(f'error: {self.text[i]}')
@@ -678,7 +683,9 @@ class sintaxis:
                     break
             i += 1
         self.Tokens(self.stack_tokens, self.stack_text)
-        Graficas.graph(self, self.stack_valueNode, self.stack_Color, self.stack_Figure)
+        self.person_node(self.number)
+        a.figure(self.stack_Figure, self.stack_Color, self.color_, self.stack_valueNode, self.component_, self.number)
+
 
     def get_Title(self, i):
         while i < len(self.text):
@@ -705,7 +712,7 @@ class sintaxis:
     def title(self, i):
         while i < len(self.text):
             if self.text[i] == "'" or self.text[i] == '>' or self.text[i] == '<' \
-                    or self.text[i] == '*' or self.text[i] == '*' or self.text[i].isalpha():
+                    or self.text[i] == '*' or self.text[i] == '*' or self.text[i].isalpha() or self.text[i].isdigit():
                 self.lexeme += self.text[i]
             elif self.text[i] == ' ':
                 pass
@@ -778,8 +785,8 @@ class sintaxis:
     def Value(self, i):
         while i < len(self.text):
             if self.text[i] == "'" or self.text[i].isalpha() or self.text[i] == '#' or self.text[i].isdigit() or \
-                    self.text[i] == '-' \
-                    or self.text[i] == '.':
+                    self.text[i] == '-' or self.text[i] == '.' or self.text[i] == '!' or self.text[i] == '>'\
+                    or self.text[i] == '<':
                 self.lexeme += self.text[i]
             elif self.text[i] == ' ':
                 pass
@@ -902,10 +909,6 @@ class sintaxis:
             i += 1
         return i
 
-    # ---------------------------------------------MATRIZ-----------------------------------------------------------------------
-
-    # ------------------------------------------------TABLA---------------------------------------------
-
     # --------------------------------------------------Componentes-------------------------------------
 
     def element_list(self, i):
@@ -976,10 +979,16 @@ class sintaxis:
             aux = self.Color(i)
             i = aux
             if self.lexeme in self.stack_color:
-                print('Token_Color: ' + self.lexeme)
-                self.stack_Color.append(self.lexeme)
-                self.stack_tokens.append(self.lexeme)
-                self.stack_text.append('Token_Color')
+                if self.lexeme == '#':
+                    print('Token_Color: ' + self.lexeme)
+                    self.stack_Color.append(self.lexeme)
+                    self.stack_tokens.append(self.lexeme)
+                    self.stack_text.append('Token_Color')
+                else:
+                    print('Token_Color: ' + self.lexeme)
+                    self.stack_Color.append(self.lexeme)
+                    self.stack_tokens.append(self.lexeme)
+                    self.stack_text.append('Token_Color')
                 self.lexeme = ''
             else:
                 return i
@@ -1024,6 +1033,7 @@ class sintaxis:
             print('Token_Numero: ' + self.lexeme)
             self.stack_tokens.append(self.lexeme)
             self.stack_text.append('Token_Numero')
+            self.number = self.text[i]
             i = aux
             self.lexeme = ''
 
@@ -1041,9 +1051,9 @@ class sintaxis:
 
             aux = self.Value(i)
             print('Token_Valor: ' + self.lexeme)
-            self.stack_valueNode.append(self.lexeme)
             self.stack_tokens.append(self.lexeme)
             self.stack_text.append('Token_Valor')
+            self.person_node(self.number)
             i = aux
             self.lexeme = ''
 
@@ -1456,7 +1466,7 @@ class sintaxis:
         else:
             return i
 
-    # ----------------------------------------------------------Elementos de la filas de la tabla--------------------------------------------------------------
+    # -------------------------------Elementos de la filas de la tabla------------------------------------------------
     def elements_row(self, i):
         aux = self.Value(i)
         print('Token_Valor: ' + self.lexeme)
@@ -1484,7 +1494,7 @@ class sintaxis:
         aux = self.elements_row(i)
         return aux
 
-    # -----------------------------------------------------------Elementos del encabezado de la tabla----------------------------------------------------------
+    # ------------------------------------Elementos del encabezado de la tabla-----------------------------------------
     def elements_enc(self, i):
         aux = self.Value(i)
         print('Token_Valor: ' + self.lexeme)
@@ -1512,7 +1522,7 @@ class sintaxis:
         aux = self.elements_row(i)
         return aux
 
-    # ------------------------------------------------------------Elementos fila de la matriz------------------------------------------------------------------
+    # ------------------------Elementos fila de la matriz--------------------------------------------------------------
     def elements_row_Matrix(self, i):
         aux = self.Value(i)
         print('Token_Valor: ' + self.lexeme)
@@ -1539,6 +1549,29 @@ class sintaxis:
 
         aux = self.elements_row(i)
         return aux
+
+    # ------------------------------------------------------ Node ---------------------------------------------------
+
+    def person_node(self, number):
+        i = int(number)
+        while self.person <= i:
+            if self.person <= i:
+                self.stack_valueNode.append(self.person)
+                self.person += 1
+            else:
+                break
+
+    def get_Defect(self):
+        return self.component_
+
+    def set_Defect(self, componente):
+        self.component_ = componente
+
+    def get_color(self):
+        return self.color_
+
+    def set_color(self, colorcito):
+        self.color_ = colorcito
 
     # ----------------------------------MetodosHTML----------------------------------
 

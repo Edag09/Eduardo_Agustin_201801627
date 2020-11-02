@@ -1,0 +1,13 @@
+tabla 
+    (
+        3,
+        'Disyunción'
+    )
+{
+    fila ('0', '0', '0') gris;
+    encabezados ('p','q','p v q') amarillo;
+    fila ('0','1','1') #;
+    fila ('1', '0','1') morado;
+    fila ('1','1','1') rojo;
+    nodo ('Luis') azul2 ;
+} defecto ('F') cafe; 

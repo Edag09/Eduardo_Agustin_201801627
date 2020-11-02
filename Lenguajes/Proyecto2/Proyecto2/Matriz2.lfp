@@ -1,0 +1,17 @@
+matriz (3,3,'Cara dado rubik!!!',rectangulo,verdadero){
+    nodo (1,1, #)       rojo2;
+    nodo (1,2, #)       verde3;
+    )
+    NODO (2,1,#)    AZUL;
+    NODO (2,2,#)    ROJO2;
+    NODO (2,3,#)    AZUL;
+    $
+    nodo (3,1,#)        anaranjado2;
+    nodo (3,2,#)        amarillo2;
+    nodo (3,3,#)        verde3;
+
+} 
+defecto
+defecto
+(' ') 
+blanco;

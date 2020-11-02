@@ -1,0 +1,6 @@
+lista ('DIGITOS 0123456789',diamante,falso)
+{
+    nodo ('-> 0') amarillo3 ;
+    nodos (9, '->') amariLLo3;
+} 
+defecto ('NADA') CAFE;
