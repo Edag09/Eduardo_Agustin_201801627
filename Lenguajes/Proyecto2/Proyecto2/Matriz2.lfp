@@ -1,7 +1,6 @@
 matriz (3,3,'Cara dado rubik!!!',rectangulo,verdadero){
     nodo (1,1, #)       rojo2;
     nodo (1,2, #)       verde3;
-    )
     NODO (2,1,#)    AZUL;
     NODO (2,2,#)    ROJO2;
     NODO (2,3,#)    AZUL;

@@ -10,6 +10,9 @@ class sintaxis:
     def __init__(self):  # Constructor
         self.text = ''
         self.lexeme = ''
+        self.defect = ''
+        self.list_enlace = ''
+        self.lista_nombre = ''
         self.stack_color = ['azul', 'azul2', 'azul3', 'rojo', 'rojo2', 'rojo3', 'amarillo', 'amarillo2',
                             'amarillo3', 'anaranjado', 'anaranjado2', 'anaranjado3', 'cafe', 'cafe2', 'cafe3',
                             'gris', 'gris2', 'gris3', 'morado', 'morado2', 'morado3', 'verde', 'verde2', 'verde3',
@@ -35,6 +38,9 @@ class sintaxis:
         self.person = 1
         self.component_ = ''
         self.color_ = ''
+        # ----------------------------------- Nodos Arreglados ---------------------------
+        self.nodeValue = []
+        self.nodeColor = []
 
     def _file_upload(self):
         Entry = input('Ingresa la ruta del archivo: ')
@@ -72,6 +78,7 @@ class sintaxis:
                         break
 
                     aux = self.title(i)
+                    self.lista_nombre = self.lexeme
                     self.stack_value.append(self.lexeme)
                     self.stack_tokens.append(self.lexeme)
                     i = aux
@@ -95,6 +102,7 @@ class sintaxis:
                     i = aux
                     if self.lexeme.lower() in self.stack_figure:
                         print('Token_Figura: ' + self.lexeme)
+                        self.lista_forma = self.lexeme
                         self.stack_Figure.append(self.lexeme)
                         self.stack_tokens.append(self.lexeme)
                         self.stack_text.append('Token_Figura')
@@ -121,6 +129,7 @@ class sintaxis:
                     i = aux
                     if self.lexeme.lower() == 'verdadero' or self.lexeme.lower() == 'falso':
                         print('Token_Lista: ' + self.lexeme)
+                        self.list_enlace = self.lexeme
                         self.stack_list.append(self.lexeme)
                         self.stack_tokens.append(self.lexeme)
                         self.stack_text.append('Token_Lista')
@@ -160,6 +169,7 @@ class sintaxis:
                         self.Error(self.stack_error)
                         break
                     self.lexeme = ''
+
                     aux = self.element_list(i)
 
                     if self.text[aux] == '}':
@@ -230,7 +240,7 @@ class sintaxis:
 
                     aux = self.Color(i)
                     i = aux
-                    if self.lexeme in self.stack_color:
+                    if self.lexeme.lower() in self.stack_color:
                         print('Token_Color: ' + self.lexeme)
                         self.stack_tokens.append(self.lexeme)
                         self.stack_text.append('Token_Color')
@@ -256,6 +266,10 @@ class sintaxis:
                         self.stack_error.append(self.text[i])
                         self.Error(self.stack_error)
                         break
+                    self.valuenodeArreglado(self.stack_valueNode, self.component_)
+                    self.colornodeArreglado(self.stack_Color, self.color_)
+                    a.graph(self.stack_Figure, self.nodeValue, self.nodeColor, self.list_enlace, self.lista_nombre)
+                    a.Threelist()
 
                 elif self.lexeme.lower() == 'tabla':
                     print('Token_Tipo: ' + self.lexeme)
@@ -430,6 +444,7 @@ class sintaxis:
                         self.stack_error.append(self.text[i])
                         self.Error(self.stack_error)
                         break
+                    a.ThreeTable()
 
                 elif self.lexeme.lower() == 'matriz':
                     print('Token_Tipo: ' + self.lexeme)
@@ -675,6 +690,7 @@ class sintaxis:
                         self.stack_error.append(self.text[i])
                         self.Error(self.stack_error)
                         break
+                    a.ThreeM()
 
                 else:
                     print(f'Error: {self.lexeme}')
@@ -683,8 +699,6 @@ class sintaxis:
                     break
             i += 1
         self.Tokens(self.stack_tokens, self.stack_text)
-        self.person_node(self.number)
-        a.figure(self.stack_Figure, self.stack_Color, self.color_, self.stack_valueNode, self.component_, self.number)
 
 
     def get_Title(self, i):
@@ -712,9 +726,10 @@ class sintaxis:
     def title(self, i):
         while i < len(self.text):
             if self.text[i] == "'" or self.text[i] == '>' or self.text[i] == '<' \
-                    or self.text[i] == '*' or self.text[i] == '*' or self.text[i].isalpha() or self.text[i].isdigit():
+                    or self.text[i] == '*' or self.text[i] == '*' or self.text[i].isalpha() or self.text[i].isdigit() \
+                    or self.text[i] == '!':
                 self.lexeme += self.text[i]
-            elif self.text[i] == ' ':
+            elif self.text[i] == ' ' or self.text[i] == '/':
                 pass
             else:
                 return i
@@ -785,7 +800,7 @@ class sintaxis:
     def Value(self, i):
         while i < len(self.text):
             if self.text[i] == "'" or self.text[i].isalpha() or self.text[i] == '#' or self.text[i].isdigit() or \
-                    self.text[i] == '-' or self.text[i] == '.' or self.text[i] == '!' or self.text[i] == '>'\
+                    self.text[i] == '-' or self.text[i] == '.' or self.text[i] == '!' or self.text[i] == '>' \
                     or self.text[i] == '<':
                 self.lexeme += self.text[i]
             elif self.text[i] == ' ':
@@ -1053,7 +1068,8 @@ class sintaxis:
             print('Token_Valor: ' + self.lexeme)
             self.stack_tokens.append(self.lexeme)
             self.stack_text.append('Token_Valor')
-            self.person_node(self.number)
+            self.defect = self.lexeme
+            print(self.defect)
             i = aux
             self.lexeme = ''
 
@@ -1076,9 +1092,9 @@ class sintaxis:
             i = aux
             if self.lexeme.lower() in self.stack_color:
                 print('Token_Color: ' + self.lexeme)
-                self.stack_Color.append(self.lexeme)
                 self.stack_tokens.append(self.lexeme)
                 self.stack_text.append('Token_Color')
+                self.person_node(self.number, self.lexeme, self.defect)
                 self.lexeme = ''
             else:
                 return i
@@ -1552,11 +1568,12 @@ class sintaxis:
 
     # ------------------------------------------------------ Node ---------------------------------------------------
 
-    def person_node(self, number):
+    def person_node(self, number, color, nombre):
         i = int(number)
         while self.person <= i:
             if self.person <= i:
-                self.stack_valueNode.append(self.person)
+                self.stack_valueNode.append(nombre+f'{self.person}')
+                self.stack_Color.append(color)
                 self.person += 1
             else:
                 break
@@ -1573,6 +1590,24 @@ class sintaxis:
     def set_color(self, colorcito):
         self.color_ = colorcito
 
+    def valuenodeArreglado(self, valor, defecto):
+        i = 0
+        while i < len(valor):
+            if valor[i] == '#':
+                self.nodeValue.append(defecto)
+            else:
+                self.nodeValue.append(valor[i])
+            i += 1
+
+    def colornodeArreglado(self, color, defecto):
+        i = 0
+        while i < len(color):
+            if color[i] == '#':
+                self.nodeColor.append(defecto)
+            else:
+                self.nodeColor.append(color[i])
+            i += 1
+
     # ----------------------------------MetodosHTML----------------------------------
 
     def Error(self, error):
@@ -1580,16 +1615,24 @@ class sintaxis:
         df = pd.DataFrame(data=Table)
         txtHTML = df.to_html()
         file = open('TablaErrores.html', 'w')
+        a = open('TablaErrores.txt', 'w')
         file.write(txtHTML)
+        a.write(txtHTML)
         file.close()
+        a.close()
 
     def Tokens(self, token, texto):
         Table = {'Valor': token, 'Token': texto}
         df = pd.DataFrame(data=Table)
         txtHTML = df.to_html()
-        file = open('TablaTokens.html', 'w')
+        file = open('TablaTokens.txt', 'w')
+        f = open('TablaTokens.html', 'w')
         file.write(txtHTML)
+        f.write(txtHTML)
         file.close()
+        f.close()
+
+
 
 
 var = sintaxis()

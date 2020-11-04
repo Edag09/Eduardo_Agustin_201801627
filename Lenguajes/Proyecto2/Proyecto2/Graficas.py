@@ -1,192 +1,231 @@
+from graphviz import Digraph
+
+
 class draw:
 
-    def __init__(self):
-        self.form = ''
-        self.c = ''
-        self.col = ''
-        self.attributes = ''
-
-    def figure(self, figurita, color, defecto, valor, defecto_val, number):
-        for figure in figurita:
+    def graph(self, form, valor, color, enlace, nombre):
+        i = 0
+        c = 0
+        f = Digraph(format='svg', name='lista')
+        f.attr(rankdir='LR', size='10', label=nombre)
+        for figure in form:
             if figure == 'circulo':
-                self.form = 'Circle'
+                self.form = 'circle'
                 print(self.form)
             elif figure == 'rectangulo':
-                self.form = 'Rectangle'
+                self.form = 'box'
                 print(self.form)
             elif figure == 'triangulo':
-                self.form = 'Triangle'
+                self.form = 'triangle'
                 print(self.form)
             elif figure == 'punto':
-                self.form = 'Point'
+                self.form = 'point'
                 print(self.form)
             elif figure == 'hexagono':
-                self.form = 'Hexagon'
+                self.form = 'hexagon'
                 print(self.form)
             elif figure == 'diamante':
-                self.form = 'Diamond'
+                self.form = 'diamond'
                 print(self.form)
-        for colorcito in color:
-            if colorcito.lower() == 'azul':
-                self.c = 'Aliceblue'
-                print(self.c)
-            elif colorcito.lower() == 'azul2':
-                self.c = 'Blueviolet'
-                print(self.c)
-            elif colorcito.lower() == 'azul3':
-                self.c = 'Blue'
-                print(self.c)
-            elif colorcito.lower() == 'rojo':
-                self.c = 'darksalmon'
-                print(self.c)
-            elif colorcito.lower() == 'rojo2':
-                self.c = 'tomato'
-                print(self.c)
-            elif colorcito.lower() == 'rojo3':
-                self.c = 'red'
-                print(self.c)
-            elif colorcito.lower() == 'amarillo':
-                self.c = 'gold'
-                print(self.c)
-            elif colorcito.lower() == 'amarillo2':
-                self.c = 'lightgoldenrod'
-                print(self.c)
-            elif colorcito.lower() == 'amarillo3':
-                self.c = 'yellow'
-                print(self.c)
-            elif colorcito.lower() == 'anaranjado':
-                self.c = 'orange'
-                print(self.c)
-            elif colorcito.lower() == 'anaranjado2':
-                self.c = 'darkorange'
-                print(self.c)
-            elif colorcito.lower() == 'anaranjado3':
-                self.c = 'orangered'
-                print(self.c)
-            elif colorcito.lower() == 'cafe':
-                self.c = 'burlywood'
-                print(self.c)
-            elif colorcito.lower() == 'cafe2':
-                self.c = 'chocolate'
-                print(self.c)
-            elif colorcito.lower() == 'cafe3':
-                self.c = 'brown'
-                print(self.c)
-            elif colorcito.lower() == 'gris':
-                self.c = 'lightgray'
-                print(self.c)
-            elif colorcito.lower() == 'gris2':
-                self.c = 'gray'
-                print(self.c)
-            elif colorcito.lower() == 'gris3':
-                self.c = 'dimgray'
-                print(self.c)
-            elif colorcito.lower() == 'morado':
-                self.c = 'magenta'
-                print(self.c)
-            elif colorcito.lower() == 'morado2':
-                self.c = 'darkorchid'
-                print(self.c)
-            elif colorcito.lower() == 'morado3':
-                self.c = 'purple'
-                print(self.c)
-            elif colorcito.lower() == 'verde':
-                self.c = 'lightgreen'
-                print(self.c)
-            elif colorcito.lower() == 'verde2':
-                self.c = 'forestgreen'
-                print(self.c)
-            elif colorcito.lower() == 'verde3':
-                self.c = 'green'
-                print(self.c)
-            elif colorcito.lower() == 'blanco':
-                self.c = 'White'
-                print(self.c)
-            elif colorcito == '#':
-                self.col = defecto
-                if self.col == 'azul':
-                    self.c = 'Aliceblue'
-                    print(self.c)
-                elif self.col == 'azul2':
-                    self.c = 'Blueviolet'
-                    print(self.c)
-                elif self.col == 'azul3':
-                    self.c = 'Blue'
-                    print(self.c)
-                elif self.col == 'rojo':
-                    self.c = 'darksalmon'
-                    print(self.c)
-                elif self.col == 'rojo2':
-                    self.c = 'tomato'
-                    print(self.c)
-                elif self.col == 'rojo3':
-                    self.c = 'red'
-                    print(self.c)
-                elif self.col == 'amarillo':
-                    self.c = 'gold'
-                    print(self.c)
-                elif self.col == 'amarillo2':
-                    self.c = 'lightgoldenrod'
-                    print(self.c)
-                elif self.col == 'amarillo3':
-                    self.c = 'yellow'
-                    print(self.c)
-                elif self.col == 'anaranjado':
-                    self.c = 'orange'
-                    print(self.c)
-                elif self.col == 'anaranjado2':
-                    self.c = 'darkorange'
-                    print(self.c)
-                elif self.col == 'anaranjado3':
-                    self.c = 'orangered'
-                    print(self.c)
-                elif self.col == 'cafe':
-                    self.c = 'burlywood'
-                    print(self.c)
-                elif self.col == 'cafe2':
-                    self.c = 'chocolate'
-                    print(self.c)
-                elif self.col == 'cafe3':
-                    self.c = 'brown'
-                    print(self.c)
-                elif self.col == 'gris':
-                    self.c = 'lightgray'
-                    print(self.c)
-                elif self.col == 'gris2':
-                    self.c = 'gray'
-                    print(self.c)
-                elif self.col == 'gris3':
-                    self.c = 'dimgray'
-                    print(self.c)
-                elif self.col == 'morado':
-                    self.c = 'magenta'
-                    print(self.c)
-                elif self.col == 'morado2':
-                    self.c = 'darkorchid'
-                    print(self.c)
-                elif self.col == 'morado3':
-                    self.c = 'purple'
-                    print(self.c)
-                elif self.col == 'verde':
-                    self.c = 'lightgreen'
-                    print(self.c)
-                elif self.col == 'verde2':
-                    self.c = 'forestgreen'
-                    print(self.c)
-                elif self.col == 'verde3':
-                    self.c = 'green'
-                    print(self.c)
-                elif self.col == 'blanco':
-                    self.c = 'White'
-                    print(self.c)
+        f.attr('node', shape=self.form)
+        while c <= len(color):
+            if c == len(color):
+                break
             else:
-                print('Error')
-        for val in valor:
-            if val == '#':
-                self.attributes = defecto_val
-                print(self.attributes)
-            else:
-                print(val)
+                if color[c].lower() == 'azul':
+                    f.node(valor[c], style='filled', fillcolor='Aliceblue')
+                    c += 1
+                elif color[c].lower() == 'azul2':
+                    f.node(valor[c], style='filled', fillcolor='Blueviolet')
+                    c += 1
+                elif color[c].lower() == 'azul3':
+                    f.node(valor[c], style='filled', fillcolor='Blue')
+                    c += 1
+                elif color[c].lower() == 'rojo':
+                    f.node(valor[c], style='filled', fillcolor='darksalmon')
+                    c += 1
+                elif color[c].lower() == 'rojo2':
+                    f.node(valor[c], style='filled', fillcolor='tomato')
+                    c += 1
+                elif color[c].lower() == 'rojo3':
+                    f.node(valor[c], style='filled', fillcolor='red')
+                    c += 1
+                elif color[c].lower() == 'amarillo':
+                    f.node(valor[c], style='filled', fillcolor='gold')
+                    c += 1
+                elif color[c].lower() == 'amarillo2':
+                    f.node(valor[c], style='filled', fillcolor='lightgoldenrod')
+                    c += 1
+                elif color[c].lower() == 'amarillo3':
+                    f.node(valor[c], style='filled', fillcolor='yellow')
+                    c += 1
+                elif color[c].lower() == 'anaranjado':
+                    f.node(valor[c], style='filled', fillcolor='orange')
+                    c += 1
+                elif color[c].lower() == 'anaranjado2':
+                    f.node(valor[c], style='filled', fillcolor='darkorange')
+                    c += 1
+                elif color[c].lower() == 'anaranjado3':
+                    f.node(valor[c], style='filled', fillcolor='orangered')
+                    c += 1
+                elif color[c].lower() == 'cafe':
+                    f.node(valor[c], style='filled', fillcolor='burlywood')
+                    c += 1
+                elif color[c].lower() == 'cafe2':
+                    f.node(valor[c], style='filled', fillcolor='chocolate')
+                    c += 1
+                elif color[c].lower() == 'cafe3':
+                    f.node(valor[c], style='filled', fillcolor='brown')
+                    c += 1
+                elif color[c].lower() == 'gris':
+                    f.node(valor[c], style='filled', fillcolor='lightgray')
+                    c += 1
+                elif color[c].lower() == 'gris2':
+                    f.node(valor[c], style='filled', fillcolor='gray')
+                    c += 1
+                elif color[c].lower() == 'gris3':
+                    f.node(valor[c], style='filled', fillcolor='dimgray')
+                    c += 1
+                elif color[c].lower() == 'morado':
+                    f.node(valor[c], style='filled', fillcolor='magenta')
+                    c += 1
+                elif color[c].lower() == 'morado2':
+                    f.node(valor[c], style='filled', fillcolor='darkorchid')
+                    c += 1
+                elif color[c].lower() == 'morado3':
+                    f.node(valor[c], style='filled', fillcolor='purple')
+                    c += 1
+                elif color[c].lower() == 'verde':
+                    f.node(valor[c], style='filled', fillcolor='lightgreen')
+                    c += 1
+                elif color[c].lower() == 'verde2':
+                    f.node(valor[c], style='filled', fillcolor='forestgreen')
+                    c += 1
+                elif color[c].lower() == 'verde3':
+                    f.node(valor[c], style='filled', fillcolor='green')
+                    c += 1
+                elif color[c].lower() == 'blanco':
+                    f.node(valor[c], style='filled', fillcolor='White')
+                    c += 1
+                else:
+                    print('Error')
+            while i <= len(valor):
+                if (i + 1) == len(valor):
+                    break
+                else:
+                    if enlace.lower() == 'verdadero':
+                        f.edge(valor[i], valor[i + 1], label=' ')
+                        f.edge(valor[i + 1], valor[i], label=' ')
+                    else:
+                        f.edge(valor[i], valor[i + 1], label=' ')
+                i += 1
+        f.view()
 
+    def Threelist(self):
+        f = Digraph(format='png', name='Arbol De Derivacion')
+        f.attr(rankdir='same', size='8')
 
+        f.attr('node', style='filled', fillcolor='Aliceblue')
+        f.attr('node', shape='circle')
 
+        f.edge('Lista', 'L(', label=' ')
+        f.edge('Lista', 'Titulo', label=' ')
+        f.edge('Lista', 'Figura', label=' ')
+        f.edge('Lista', 'Lista_Doble', label=' ')
+        f.edge('Lista', ')L', label=' ')
+        f.edge('Lista', '{', label=' ')
+        f.edge('{', 'nodo', label=' ')
+        f.edge('{', 'N(', label=' ')
+        f.edge('{', 'Valor', label=' ')
+        f.edge('{', ')N', label=' ')
+        f.edge('{', 'colorN', label=' ')
+        f.edge('{', ';', label=' ')
+        f.edge('{', 'nodos', label=' ')
+        f.edge('{', 'NS(', label=' ')
+        f.edge('NS(', 'numero', label=' ')
+        f.edge('NS(', ',', label=' ')
+        f.edge('NS(', 'valor', label=' ')
+        f.edge('{', ')NS', label=' ')
+        f.edge('{', 'ColorNS', label=' ')
+        f.edge('{', ';NS', label=' ')
+        f.edge(';NS', '}', label=' ')
+        f.edge('}', 'defecto', label=' ')
+        f.edge('}', 'ColorD', label=' ')
+        f.edge('}', ';D', label=' ')
+
+        f.view()
+
+    def ThreeTable(self):
+        f = Digraph(format='pdf', name='Arbol De Derivacion')
+        f.attr(rankdir='same', size='8')
+
+        f.attr('node', style='filled', fillcolor='Aliceblue')
+        f.attr('node', shape='circle')
+
+        f.edge('Tabla', 'T(', label=' ')
+        f.edge('Tabla', 'Numero', label=' ')
+        f.edge('Tabla', ',T', label=' ')
+        f.edge('Tabla', 'TituloTabla', label=' ')
+        f.edge('Tabla', ')T', label=' ')
+        f.edge('Tabla', '{', label=' ')
+        f.edge('{', 'fila', label=' ')
+        f.edge('{', 'N(', label=' ')
+        f.edge('N(', 'Valor', label=' ')
+        f.edge('N(', ',F', label=' ')
+        f.edge('{', ')N', label=' ')
+        f.edge('{', 'colorT', label=' ')
+        f.edge('{', ';', label=' ')
+        f.edge('{', 'encabezados', label=' ')
+        f.edge('{', 'E(', label=' ')
+        f.edge('E(', 'Titulo', label=' ')
+        f.edge('E(', ',', label=' ')
+        f.edge('{', ')E', label=' ')
+        f.edge('{', 'colorE', label=' ')
+        f.edge('{', ';E', label=' ')
+        f.edge(';E', '}', label=' ')
+        f.edge('}', 'defecto', label=' ')
+        f.edge('}', 'colorD', label=' ')
+        f.edge('}', ';D', label=' ')
+
+        f.view()
+
+    def ThreeM(self):
+        f = Digraph(format='pdf', name='Arbol De Derivacion')
+        f.attr(rankdir='same', size='8')
+
+        f.attr('node', style='filled', fillcolor='Aliceblue')
+        f.attr('node', shape='circle')
+
+        f.edge('Matriz', 'M(', label=' ')
+        f.edge('Matriz', 'x', label=' ')
+        f.edge('Matriz', ',1', label=' ')
+        f.edge('Matriz', 'y', label=' ')
+        f.edge('Matriz', ',2', label=' ')
+        f.edge('Matriz', 'Titulo', label=' ')
+        f.edge('Matriz', 'Figura', label=' ')
+        f.edge('Matriz', 'Lista', label=' ')
+        f.edge('Matriz', ')M', label=' ')
+        f.edge('Matriz', '{', label=' ')
+        f.edge('{', 'Fila', label=' ')
+        f.edge('{', 'F(', label=' ')
+        f.edge('F(', 'Valor', label=' ')
+        f.edge('F(', ',F', label=' ')
+        f.edge('{', ')F', label=' ')
+        f.edge('{', 'colorF', label=' ')
+        f.edge('{', ';F', label=' ')
+        f.edge('{', 'Nodo', label=' ')
+        f.edge('{', 'N(', label=' ')
+        f.edge('N(', 'X', label=' ')
+        f.edge('N(', ',x', label=' ')
+        f.edge('N(', 'Y', label=' ')
+        f.edge('N(', ',y', label=' ')
+        f.edge('N(', 'valorN', label=' ')
+        f.edge('{', ')N', label=' ')
+        f.edge('{', 'colorN', label=' ')
+        f.edge('{', ';N', label=' ')
+        f.edge(';N', '}', label=' ')
+        f.edge('}', 'valorD', label=' ')
+        f.edge('}', 'colorD', label=' ')
+        f.edge('}', ';D', label=' ')
+
+        f.view()

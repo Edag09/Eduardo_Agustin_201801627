@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: sans-serif;
+}
+
+body{
+    background: #cecece;
+}
+
+header{
+    position: relative;
+    margin: 50px auto;
+    width: 1000px;
+    height: 225px;
+    background: gray;
+}
+
+header div img{
+    position: absolute;
+    top: 20px;
+    left: 90px;
+}
+
+section{
+    position: relative;
+    margin: 20px auto;
+    width: 1000px;
+    height: 453px;
+}
+
+aside{
+    width: 200px;
+    height: 250px;
+}
+
+aside h1{
+    font-family: 'Sriracha', cursive;
+    font-size: 20px;
+}
+
+article{
+    position: absolute;
+    left: 500px;
+    top: 20px;
+    width: 600px;
+    height: 100px;
+}
+
+article h1{
+    font-family: 'Sriracha', cursive;
+    font-size: 20px;
+}

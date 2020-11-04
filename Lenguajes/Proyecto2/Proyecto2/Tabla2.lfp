@@ -1,7 +1,6 @@
 tabla 
     (
-        3,
-        'Disyunción'
+        3,      'Disyunción'
     )
 {
     fila ('0', '0', '0') gris;
