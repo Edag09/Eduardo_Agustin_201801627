@@ -9,22 +9,22 @@ class draw:
         f = Digraph(format='svg', name='lista')
         f.attr(rankdir='LR', size='10', label=nombre)
         for figure in form:
-            if figure == 'circulo':
+            if figure.lower() == 'circulo':
                 self.form = 'circle'
                 print(self.form)
-            elif figure == 'rectangulo':
+            elif figure.lower() == 'rectangulo':
                 self.form = 'box'
                 print(self.form)
-            elif figure == 'triangulo':
+            elif figure.lower() == 'triangulo':
                 self.form = 'triangle'
                 print(self.form)
-            elif figure == 'punto':
+            elif figure.lower() == 'punto':
                 self.form = 'point'
                 print(self.form)
-            elif figure == 'hexagono':
+            elif figure.lower() == 'hexagono':
                 self.form = 'hexagon'
                 print(self.form)
-            elif figure == 'diamante':
+            elif figure.lower() == 'diamante':
                 self.form = 'diamond'
                 print(self.form)
         f.attr('node', shape=self.form)
@@ -148,15 +148,15 @@ class draw:
         f.edge('{', ')NS', label=' ')
         f.edge('{', 'ColorNS', label=' ')
         f.edge('{', ';NS', label=' ')
-        f.edge(';NS', '}', label=' ')
-        f.edge('}', 'defecto', label=' ')
-        f.edge('}', 'ColorD', label=' ')
-        f.edge('}', ';D', label=' ')
+        f.edge('{', '}', label=' ')
+        f.edge('{', 'defecto', label=' ')
+        f.edge('{', 'ColorD', label=' ')
+        f.edge('{', ';D', label=' ')
 
         f.view()
 
     def ThreeTable(self):
-        f = Digraph(format='pdf', name='Arbol De Derivacion')
+        f = Digraph(format='png', name='Arbol De Derivacion')
         f.attr(rankdir='same', size='8')
 
         f.attr('node', style='filled', fillcolor='Aliceblue')
@@ -182,15 +182,15 @@ class draw:
         f.edge('{', ')E', label=' ')
         f.edge('{', 'colorE', label=' ')
         f.edge('{', ';E', label=' ')
-        f.edge(';E', '}', label=' ')
-        f.edge('}', 'defecto', label=' ')
-        f.edge('}', 'colorD', label=' ')
-        f.edge('}', ';D', label=' ')
+        f.edge('{', '}', label=' ')
+        f.edge('{', 'defecto', label=' ')
+        f.edge('{', 'colorD', label=' ')
+        f.edge('{', ';D', label=' ')
 
         f.view()
 
     def ThreeM(self):
-        f = Digraph(format='pdf', name='Arbol De Derivacion')
+        f = Digraph(format='png', name='Arbol De Derivacion')
         f.attr(rankdir='same', size='8')
 
         f.attr('node', style='filled', fillcolor='Aliceblue')
@@ -223,9 +223,9 @@ class draw:
         f.edge('{', ')N', label=' ')
         f.edge('{', 'colorN', label=' ')
         f.edge('{', ';N', label=' ')
-        f.edge(';N', '}', label=' ')
-        f.edge('}', 'valorD', label=' ')
-        f.edge('}', 'colorD', label=' ')
-        f.edge('}', ';D', label=' ')
+        f.edge('{', '}', label=' ')
+        f.edge('{', 'valorD', label=' ')
+        f.edge('{', 'colorD', label=' ')
+        f.edge('{', ';D', label=' ')
 
         f.view()

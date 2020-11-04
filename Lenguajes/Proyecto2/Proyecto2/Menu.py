@@ -17,7 +17,7 @@ def Menu():
         ArchivoCargado.update()
         Menu()
     elif opc == "2":
-        # Analisis.Graph()
+        Analisis.Graph()
         Menu()
     elif opc == "3":
         print("Salida")

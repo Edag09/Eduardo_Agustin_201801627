@@ -41,16 +41,17 @@ class sintaxis:
         # ----------------------------------- Nodos Arreglados ---------------------------
         self.nodeValue = []
         self.nodeColor = []
+        # ----------------------------------- Filas Arregladas ---------------------------
+        self.filaValue = []
+        self.filaColor = []
+        self.titulo = []
+        self.vDefect = ''
+        self.cDefect = ''
 
-    def _file_upload(self):
-        Entry = input('Ingresa la ruta del archivo: ')
-        file = open(Entry, "r", encoding='UTF=8')
-        lines = file.readlines()
-        file.close()
-
+    def _file_upload(self, e):
         i = 0
         self.text = ''
-        for linea in lines:
+        for linea in e:
             self.text += linea
         while i < len(self.text):
             if self.text[i].isalpha():
@@ -175,7 +176,7 @@ class sintaxis:
                     if self.text[aux] == '}':
                         i = aux
                     else:
-                        print(f'error RCURSIVO{self.text[i]}')
+                        print(f'error Lista{self.text[i]}')
                         self.stack_error.append(self.text[i])
                         self.Error(self.stack_error)
                         break
@@ -347,12 +348,12 @@ class sintaxis:
                         break
                     self.lexeme = ''
 
-                    aux = self.element_list(i)
+                    aux = self.elements_table(i)
 
                     if self.text[aux] == '}':
                         i = aux
                     else:
-                        print('error RCURSIVO')
+                        print('error Tabla')
                         self.stack_error.append(self.text[i])
                         self.Error(self.stack_error)
                         break
@@ -397,6 +398,7 @@ class sintaxis:
                     self.stack_value.append(self.lexeme)
                     self.stack_tokens.append(self.lexeme)
                     self.stack_text.append('Token_Valor')
+                    self.cDefect = self.lexeme
                     i = aux
                     self.lexeme = ''
 
@@ -417,12 +419,12 @@ class sintaxis:
 
                     aux = self.Color(i)
                     i = aux
-                    if self.lexeme in self.stack_color:
-
+                    if self.lexeme.lower() in self.stack_color:
                         print('Token_Color: ' + self.lexeme)
                         self.stack_Color.append(self.lexeme)
                         self.stack_tokens.append(self.lexeme)
                         self.stack_text.append('Token_Color')
+                        self.cDefect = self.lexeme
                         self.lexeme = ''
                     else:
                         print(f'error: {self.text[i]}')
@@ -444,6 +446,8 @@ class sintaxis:
                         self.stack_error.append(self.text[i])
                         self.Error(self.stack_error)
                         break
+                    self.filaColorArreglada(self.stack_Color, self.color_)
+                    self.filaValor(self.stack_valueNode, self.component_)
                     a.ThreeTable()
 
                 elif self.lexeme.lower() == 'matriz':
@@ -598,8 +602,8 @@ class sintaxis:
                     if self.text[aux] == '}':
                         i = aux
                     else:
-                        print('error RCURSIVO 4.0')
-                        self.stack_error.append(self.text[i])
+                        print('error Matriz')
+                        self.stack_error.append(self.text[i + 1])
                         self.Error(self.stack_error)
                         break
 
@@ -699,7 +703,8 @@ class sintaxis:
                     break
             i += 1
         self.Tokens(self.stack_tokens, self.stack_text)
-
+        print(self.stack_valueNode)
+        print(self.stack_Color)
 
     def get_Title(self, i):
         while i < len(self.text):
@@ -993,17 +998,11 @@ class sintaxis:
 
             aux = self.Color(i)
             i = aux
-            if self.lexeme in self.stack_color:
-                if self.lexeme == '#':
-                    print('Token_Color: ' + self.lexeme)
-                    self.stack_Color.append(self.lexeme)
-                    self.stack_tokens.append(self.lexeme)
-                    self.stack_text.append('Token_Color')
-                else:
-                    print('Token_Color: ' + self.lexeme)
-                    self.stack_Color.append(self.lexeme)
-                    self.stack_tokens.append(self.lexeme)
-                    self.stack_text.append('Token_Color')
+            if self.lexeme.lower() in self.stack_color:
+                print('Token_Color: ' + self.lexeme)
+                self.stack_Color.append(self.lexeme)
+                self.stack_tokens.append(self.lexeme)
+                self.stack_text.append('Token_Color')
                 self.lexeme = ''
             else:
                 return i
@@ -1271,6 +1270,183 @@ class sintaxis:
         else:
             return i
 
+    def elements_table(self, i):
+        self.lexeme = ''
+        while i < len(self.text):
+            variable = self.text[i]
+
+            if variable.isalpha():
+                self.lexeme += variable
+                i += 1
+                break
+            else:
+                if variable == ' ' or variable == '\n':
+                    pass
+                else:
+                    break
+            i += 1
+
+        while i < len(self.text):
+            variable = self.text[i]
+            if variable.isalpha():
+                self.lexeme += variable
+            else:
+                break
+            i += 1
+
+        if self.lexeme.lower() == 'fila':
+            print('Token_FilaTabla: ' + self.lexeme)
+            self.lexeme = ''
+
+            aux = self.Open(i)
+            i = aux
+            self.lexeme = ''
+            if self.text[i] == '(':
+                print('Token_Apertura: ' + self.text[i])
+                self.stack_open.append(self.text[i])
+                self.stack_tokens.append(self.text[i])
+                self.stack_text.append('Token_Apertura')
+                i += 1
+            else:
+                print(f'error token: {self.text[i]}')
+                self.stack_error.append(self.text[i])
+                self.Error(self.stack_error)
+                return i
+            self.lexeme = ''
+
+            aux = self.elements_row(i)
+
+            if self.text[aux] == ')':
+                i = aux
+            else:
+                print('error RCURSIVO2.0')
+                self.stack_error.append(self.text[i])
+                self.Error(self.stack_error)
+                return i
+
+            aux = self.Close(i)
+            i = aux
+            self.lexeme = ''
+            if self.text[i] == ')':
+                print('Token_Cerradura: ' + self.text[i])
+                self.stack_close.append(self.text[i])
+                self.stack_tokens.append(self.text[i])
+                self.stack_text.append('Token_Cerradura')
+                i += 1
+            else:
+                print(f'error: {self.text[i]}')
+                self.stack_error.append(self.text[i])
+                self.Error(self.stack_error)
+                return i
+
+            aux = self.Color(i)
+            i = aux
+            if self.lexeme.lower() in self.stack_color:
+                print('Token_Color: ' + self.lexeme)
+                self.stack_Color.append(self.lexeme)
+                self.stack_tokens.append(self.lexeme)
+                self.stack_text.append('Token_Color')
+                self.lexeme = ''
+            else:
+                return i
+
+            aux = self.PyC(i)
+            i = aux
+            if self.text[i] == ';':
+                print('Token_Punto_y_Coma: ' + self.text[i])
+                self.stack_puntoyComa.append(self.text[i])
+                self.stack_tokens.append(self.text[i])
+                self.stack_text.append('Token_Punto_y_Coma')
+                self.lexeme = ''
+                i += 1
+            else:
+                print(f'error: {self.text[i]}')
+                self.stack_error.append(self.text[i])
+                self.Error(self.stack_error)
+                return i
+
+            aux = self.elements_table(i)
+            return aux
+
+        elif self.lexeme.lower() == 'encabezados':
+            print('Token_Encabezado: ' + self.lexeme)
+            self.lexeme = ''
+
+            aux = self.Open(i)
+            i = aux
+            self.lexeme = ''
+            if self.text[i] == '(':
+                print('Token_Apertura: ' + self.text[i])
+                self.stack_open.append(self.text[i])
+                self.stack_tokens.append(self.text[i])
+                self.stack_text.append('Token_Apertura')
+                i += 1
+            else:
+                print(f'error token: {self.text[i]}')
+                self.stack_error.append(self.text[i])
+                self.Error(self.stack_error)
+                return i
+            self.lexeme = ''
+
+            aux = self.elements_enc(i)
+
+            if self.text[aux] == ')':
+                i = aux
+            else:
+                print('error RCURSIVO2.0')
+                self.stack_error.append(self.text[i])
+                self.Error(self.stack_error)
+                return i
+
+            aux = self.Close(i)
+            i = aux
+            self.lexeme = ''
+            if self.text[i] == ')':
+                print('Token_Cerradura: ' + self.text[i])
+                self.stack_close.append(self.text[i])
+                self.stack_tokens.append(self.text[i])
+                self.stack_text.append('Token_Cerradura')
+                i += 1
+            else:
+                print(f'error: {self.text[i]}')
+                self.stack_error.append(self.text[i])
+                self.Error(self.stack_error)
+                return i
+
+            aux = self.Color(i)
+            i = aux
+            if self.lexeme.lower() in self.stack_color:
+                print('Token_Color: ' + self.lexeme)
+                self.stack_Color.append(self.lexeme)
+                self.stack_tokens.append(self.lexeme)
+                self.stack_text.append('Token_Color')
+                self.lexeme = ''
+            else:
+                return i
+
+            aux = self.PyC(i)
+            i = aux
+            if self.text[i] == ';':
+                print('Token_Punto_y_Coma: ' + self.text[i])
+                self.stack_puntoyComa.append(self.text[i])
+                self.stack_tokens.append(self.text[i])
+                self.stack_text.append('Token_Punto_y_Coma')
+                self.lexeme = ''
+                i += 1
+            else:
+                print(f'error: {self.text[i]}')
+                self.stack_error.append(self.text[i])
+                self.Error(self.stack_error)
+                return i
+
+            aux = self.elements_table(i)
+            return aux
+
+        elif self.text[i] == '}':
+            return i
+        else:
+            return i
+
     def elements_matrix(self, i):
         self.lexeme = ''
         while i < len(self.text):
@@ -1369,7 +1545,7 @@ class sintaxis:
             aux = self.elements_matrix(i)
             return aux
 
-        elif self.lexeme == 'nodo':
+        elif self.lexeme.lower() == 'nodo':
             print('Token_NodoMatriz: ' + self.lexeme)
             self.lexeme = ''
             aux = self.Open(i)
@@ -1450,7 +1626,7 @@ class sintaxis:
 
             aux = self.Color(i)
             i = aux
-            if self.lexeme in self.stack_color:
+            if self.lexeme.lower() in self.stack_color:
                 print('Token_Color: ' + self.lexeme)
                 self.stack_Color.append(self.lexeme)
                 self.stack_tokens.append(self.lexeme)
@@ -1514,6 +1690,7 @@ class sintaxis:
     def elements_enc(self, i):
         aux = self.Value(i)
         print('Token_Valor: ' + self.lexeme)
+        self.titulo.append(self.lexeme)
         self.stack_valueNode.append(self.lexeme)
         self.stack_tokens.append(self.lexeme)
         self.stack_text.append('Token_Valor')
@@ -1572,7 +1749,7 @@ class sintaxis:
         i = int(number)
         while self.person <= i:
             if self.person <= i:
-                self.stack_valueNode.append(nombre+f'{self.person}')
+                self.stack_valueNode.append(nombre + f'{self.person}')
                 self.stack_Color.append(color)
                 self.person += 1
             else:
@@ -1590,6 +1767,8 @@ class sintaxis:
     def set_color(self, colorcito):
         self.color_ = colorcito
 
+    # ---------------------------------- nodos Arreglados --------------------------
+
     def valuenodeArreglado(self, valor, defecto):
         i = 0
         while i < len(valor):
@@ -1606,6 +1785,26 @@ class sintaxis:
                 self.nodeColor.append(defecto)
             else:
                 self.nodeColor.append(color[i])
+            i += 1
+
+    # ---------------------------------- filas arregladas ---------------------------
+
+    def filaValor(self, valor, defecto):
+        i = 0
+        while i < len(valor):
+            if valor[i] == '#':
+                self.filaValue.append(defecto)
+            else:
+                self.filaValue.append(valor[i])
+            i += 1
+
+    def filaColorArreglada(self, color, defecto):
+        i = 0
+        while i < len(color):
+            if color[i] == '#':
+                self.filaColor.append(defecto)
+            else:
+                self.filaColor.append(color[i])
             i += 1
 
     # ----------------------------------MetodosHTML----------------------------------
@@ -1633,7 +1832,3 @@ class sintaxis:
         f.close()
 
 
-
-
-var = sintaxis()
-var._file_upload()

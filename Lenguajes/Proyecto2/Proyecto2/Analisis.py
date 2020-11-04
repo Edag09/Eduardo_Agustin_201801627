@@ -11,4 +11,4 @@ def Graph():
 
 
 def analyzed(file):
-    var._file_upload()
+    var._file_upload(file)
