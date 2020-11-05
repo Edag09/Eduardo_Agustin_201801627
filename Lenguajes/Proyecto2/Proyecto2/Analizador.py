@@ -47,6 +47,11 @@ class sintaxis:
         self.titulo = []
         self.vDefect = ''
         self.cDefect = ''
+        # ----------------------------------- Filas Arregladas ---------------------------
+        self.mfilaValue = []
+        self.mfilaColor = []
+        self.mvDefect = ''
+        self.mcDefect = ''
 
     def _file_upload(self, e):
         i = 0
@@ -646,6 +651,7 @@ class sintaxis:
                     print('Token_Valor: ' + self.lexeme)
                     self.stack_value.append(self.lexeme)
                     self.stack_tokens.append(self.lexeme)
+                    self.mvDefect = self.lexeme
                     self.stack_text.append('Token_Valor')
                     i = aux
                     self.lexeme = ''
@@ -673,6 +679,7 @@ class sintaxis:
                         self.stack_Color.append(self.lexeme)
                         self.stack_tokens.append(self.lexeme)
                         self.stack_text.append('Token_Color')
+                        self.mcDefect = self.lexeme
                         self.lexeme = ''
                     else:
                         print(f'error: {self.text[i]}')
@@ -694,6 +701,8 @@ class sintaxis:
                         self.stack_error.append(self.text[i])
                         self.Error(self.stack_error)
                         break
+                    self.matrizValor(self.stack_valueNode, self.mvDefect)
+                    self.matrizColor(self.stack_Color, self.mcDefect)
                     a.ThreeM()
 
                 else:
@@ -701,10 +710,9 @@ class sintaxis:
                     self.stack_error.append(self.lexeme)
                     self.Error(self.stack_error)
                     break
+
             i += 1
         self.Tokens(self.stack_tokens, self.stack_text)
-        print(self.stack_valueNode)
-        print(self.stack_Color)
 
     def get_Title(self, i):
         while i < len(self.text):
@@ -1113,154 +1121,6 @@ class sintaxis:
                 self.Error(self.stack_error)
                 return i
             self.lexeme = ''
-
-            aux = self.element_list(i)
-            return aux
-
-        elif self.lexeme.lower() == 'fila':
-            print('Token_FilaTabla: ' + self.lexeme)
-            self.lexeme = ''
-
-            aux = self.Open(i)
-            i = aux
-            self.lexeme = ''
-            if self.text[i] == '(':
-                print('Token_Apertura: ' + self.text[i])
-                self.stack_open.append(self.text[i])
-                self.stack_tokens.append(self.text[i])
-                self.stack_text.append('Token_Apertura')
-                i += 1
-            else:
-                print(f'error token: {self.text[i]}')
-                self.stack_error.append(self.text[i])
-                self.Error(self.stack_error)
-                return i
-            self.lexeme = ''
-
-            aux = self.elements_row(i)
-
-            if self.text[aux] == ')':
-                i = aux
-            else:
-                print('error RCURSIVO2.0')
-                self.stack_error.append(self.text[i])
-                self.Error(self.stack_error)
-                return i
-
-            aux = self.Close(i)
-            i = aux
-            self.lexeme = ''
-            if self.text[i] == ')':
-                print('Token_Cerradura: ' + self.text[i])
-                self.stack_close.append(self.text[i])
-                self.stack_tokens.append(self.text[i])
-                self.stack_text.append('Token_Cerradura')
-                i += 1
-            else:
-                print(f'error: {self.text[i]}')
-                self.stack_error.append(self.text[i])
-                self.Error(self.stack_error)
-                return i
-
-            aux = self.Color(i)
-            i = aux
-            if self.lexeme.lower() in self.stack_color:
-                print('Token_Color: ' + self.lexeme)
-                self.stack_Color.append(self.lexeme)
-                self.stack_tokens.append(self.lexeme)
-                self.stack_text.append('Token_Color')
-                self.lexeme = ''
-            else:
-                return i
-
-            aux = self.PyC(i)
-            i = aux
-            if self.text[i] == ';':
-                print('Token_Punto_y_Coma: ' + self.text[i])
-                self.stack_puntoyComa.append(self.text[i])
-                self.stack_tokens.append(self.text[i])
-                self.stack_text.append('Token_Punto_y_Coma')
-                self.lexeme = ''
-                i += 1
-            else:
-                print(f'error: {self.text[i]}')
-                self.stack_error.append(self.text[i])
-                self.Error(self.stack_error)
-                return i
-
-            aux = self.element_list(i)
-            return aux
-
-        elif self.lexeme.lower() == 'encabezados':
-            print('Token_Encabezado: ' + self.lexeme)
-            self.lexeme = ''
-
-            aux = self.Open(i)
-            i = aux
-            self.lexeme = ''
-            if self.text[i] == '(':
-                print('Token_Apertura: ' + self.text[i])
-                self.stack_open.append(self.text[i])
-                self.stack_tokens.append(self.text[i])
-                self.stack_text.append('Token_Apertura')
-                i += 1
-            else:
-                print(f'error token: {self.text[i]}')
-                self.stack_error.append(self.text[i])
-                self.Error(self.stack_error)
-                return i
-            self.lexeme = ''
-
-            aux = self.elements_enc(i)
-
-            if self.text[aux] == ')':
-                i = aux
-            else:
-                print('error RCURSIVO2.0')
-                self.stack_error.append(self.text[i])
-                self.Error(self.stack_error)
-                return i
-
-            aux = self.Close(i)
-            i = aux
-            self.lexeme = ''
-            if self.text[i] == ')':
-                print('Token_Cerradura: ' + self.text[i])
-                self.stack_close.append(self.text[i])
-                self.stack_tokens.append(self.text[i])
-                self.stack_text.append('Token_Cerradura')
-                i += 1
-            else:
-                print(f'error: {self.text[i]}')
-                self.stack_error.append(self.text[i])
-                self.Error(self.stack_error)
-                return i
-
-            aux = self.Color(i)
-            i = aux
-            if self.lexeme.lower() in self.stack_color:
-                print('Token_Color: ' + self.lexeme)
-                self.stack_Color.append(self.lexeme)
-                self.stack_tokens.append(self.lexeme)
-                self.stack_text.append('Token_Color')
-                self.lexeme = ''
-            else:
-                return i
-
-            aux = self.PyC(i)
-            i = aux
-            if self.text[i] == ';':
-                print('Token_Punto_y_Coma: ' + self.text[i])
-                self.stack_puntoyComa.append(self.text[i])
-                self.stack_tokens.append(self.text[i])
-                self.stack_text.append('Token_Punto_y_Coma')
-                self.lexeme = ''
-                i += 1
-            else:
-                print(f'error: {self.text[i]}')
-                self.stack_error.append(self.text[i])
-                self.Error(self.stack_error)
-                return i
 
             aux = self.element_list(i)
             return aux
@@ -1807,6 +1667,25 @@ class sintaxis:
                 self.filaColor.append(color[i])
             i += 1
 
+    # -------------------------------------- Matriz Arreglada -------------------------
+    def matrizValor(self, valor, defecto):
+        i = 0
+        while i < len(valor):
+            if valor[i] == '#':
+                self.mfilaValue.append(defecto)
+            else:
+                self.mfilaValue.append(valor[i])
+            i += 1
+
+    def matrizColor(self, color, defecto):
+        i = 0
+        while i < len(color):
+            if color[i] == '#':
+                self.mfilaColor.append(defecto)
+            else:
+                self.mfilaColor.append(color[i])
+            i += 1
+
     # ----------------------------------MetodosHTML----------------------------------
 
     def Error(self, error):
@@ -1830,5 +1709,3 @@ class sintaxis:
         f.write(txtHTML)
         file.close()
         f.close()
-
-

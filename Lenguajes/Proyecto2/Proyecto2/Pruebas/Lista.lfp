@@ -1,7 +1,0 @@
-lista ('>>> Personas <<<',circulo,verdadero){
-    nodo ('Luis') azul2 ;
-    nodo ('Eduardo') azul2 ;
-    nodos (4, 'Persona') celeste2;
-    nodo (#) #; // Nodo con valores por defecto
-    nodo ('Manuel') rojo2;
-} defecto ('Disponible') blanco;
