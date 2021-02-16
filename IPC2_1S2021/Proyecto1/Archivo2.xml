@@ -1,0 +1,19 @@
+<matrices>
+<matriz nombre="MatrizPrueba1" n="2" m="2">
+<dato x="1" y="1">2</dato>
+<dato x="1" y="2">0</dato>
+<dato x="2" y="1">0</dato>
+<dato x="2" y="2">9</dato>
+</matriz>
+<matriz nombre="MatrizPrueba2" n="3" m="3">
+<dato x="1" y="1">2</dato>
+<dato x="1" y="2">3</dato>
+<dato x="1" y="3">3</dato>
+<dato x="2" y="1">0</dato>
+<dato x="2" y="2">8</dato>
+<dato x="2" y="3">0</dato>
+<dato x="3" y="1">9</dato>
+<dato x="3" y="2">8</dato>
+<dato x="3" y="3">0</dato>
+</matriz>
+</matrices>
