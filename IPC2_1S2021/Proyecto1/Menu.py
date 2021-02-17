@@ -1,3 +1,8 @@
+from CargarArchivo import load
+
+loading = load()
+
+
 def Menu():
     print("_________________________________________ \n")
     print("______________   Menu    ________________")
@@ -11,7 +16,7 @@ def Menu():
     opc = input("Elige una opción: ")
 
     if opc == "1":
-        print("Cargar Archivo")
+        loading.loadfile()
         Menu()
     elif opc == "2":
         print("Proceso")
