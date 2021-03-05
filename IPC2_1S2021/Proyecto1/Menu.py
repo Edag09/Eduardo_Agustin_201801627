@@ -1,6 +1,8 @@
 from CargarArchivo import load
+from ProcesarArchivo import process
 
 loading = load()
+pros = process()
 
 
 def Menu():
@@ -19,7 +21,7 @@ def Menu():
         loading.loadfile()
         Menu()
     elif opc == "2":
-        print("Proceso")
+        pros.past()
         Menu()
     elif opc == "3":
         print("Salida")
