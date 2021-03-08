@@ -1,11 +1,11 @@
 from NodoLS import nodeSimple
+from graphviz import Digraph
 
 
 class Simple_list:
     def __init__(self):
         self.root = None
         self.tam = 0
-        self.n =0
 
     def addSimple(self, x, y, value, n):
         first = nodeSimple(x, y, value)
@@ -24,6 +24,13 @@ class Simple_list:
             print(' Posicion X: ', str(aux.x) + ' Posicion Y: ', str(aux.y) + ' Valor: ', str(aux.value))
             aux = aux.next
         print('\n')
+
+    def Graphviz(self, value, x):
+        f = Digraph(format='PDF', name='MatrizReducida')
+        f.attr(rankdir='same', size='10')
+        f.attr('node', style='filled', shape='circle')
+        f.edge(value, x, label=' ')
+        f.view()
 
     def binaria(self):
         aux = self.root
@@ -50,12 +57,8 @@ class Simple_list:
         b = temp.split('\n')
         a = text.split('\n')
         cont = 0
-        while cont <= (int(row)-1):
+        while cont <= (int(row) - 1):
             print(b[cont] + ' ---> ' + a[cont])
             cont += 1
-
-
-
-
 
 

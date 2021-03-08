@@ -1,8 +1,10 @@
 from CargarArchivo import load
 from ProcesarArchivo import process
+from LS import Simple_list
 
 loading = load()
 pros = process()
+simple = Simple_list()
 
 
 def Menu():
@@ -34,7 +36,7 @@ def Menu():
         print("Semestre en Veremos")
         Menu()
     elif opc == '5':
-        print("Grafiquita")
+        print('Grafiquita')
         Menu()
     elif opc == '6':
         print("Gus bai")

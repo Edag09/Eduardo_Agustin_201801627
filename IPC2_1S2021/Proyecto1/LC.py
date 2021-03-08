@@ -31,3 +31,6 @@ class Circular_list:
         print('Nombre: ', aux.name, ' Fila: ', aux.row, ' Columna: ', aux.col)
         aux.datos.view()
         aux.datos.binaria()
+
+
+

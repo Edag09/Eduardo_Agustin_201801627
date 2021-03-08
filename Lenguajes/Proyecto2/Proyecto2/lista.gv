@@ -1,0 +1,17 @@
+digraph lista {
+	label="'>>>Personas<<<'" rankdir=LR size=10
+	node [shape=circle]
+	"'Luis'" [fillcolor=Blueviolet style=filled]
+	"'Luis'" -> "'Persona'1" [label=" "]
+	"'Persona'1" -> "'Luis'" [label=" "]
+	"'Persona'1" -> "'Persona'2" [label=" "]
+	"'Persona'2" -> "'Persona'1" [label=" "]
+	"'Persona'2" -> "'Disponible'" [label=" "]
+	"'Disponible'" -> "'Persona'2" [label=" "]
+	"'Disponible'" -> "'Manuel'" [label=" "]
+	"'Manuel'" -> "'Disponible'" [label=" "]
+	"'Persona'1" [fillcolor=forestgreen style=filled]
+	"'Persona'2" [fillcolor=forestgreen style=filled]
+	"'Disponible'" [fillcolor=White style=filled]
+	"'Manuel'" [fillcolor=tomato style=filled]
+}
