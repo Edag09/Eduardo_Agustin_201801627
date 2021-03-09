@@ -1,5 +1,0 @@
-digraph MatrizReducida {
-	rankdir=same size=10
-	node [shape=circle style=filled]
-	5 -> 5 [label=" "]
-}

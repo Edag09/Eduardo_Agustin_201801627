@@ -24,13 +24,21 @@ class Simple_list:
             print(' Posicion X: ', str(aux.x) + ' Posicion Y: ', str(aux.y) + ' Valor: ', str(aux.value))
             aux = aux.next
         print('\n')
+        Simple_list.Graphviz(self)
 
-    def Graphviz(self, value, x):
-        f = Digraph(format='PDF', name='MatrizReducida')
-        f.attr(rankdir='same', size='10')
-        f.attr('node', style='filled', shape='circle')
-        f.edge(value, x, label=' ')
-        f.view()
+    def Graphviz(self):
+        aux = self.root
+        cont = 0
+        while aux is not None:
+            if aux.next is None:
+                break
+            else:
+                if int(aux.x) <= int(self.tam) and int(aux.y) <= int(self.tam):
+                    print(aux.x, aux.y)
+                cont += 1
+            aux = aux.next
+        print('\n')
+
 
     def binaria(self):
         aux = self.root
@@ -60,5 +68,4 @@ class Simple_list:
         while cont <= (int(row) - 1):
             print(b[cont] + ' ---> ' + a[cont])
             cont += 1
-
 
