@@ -4,6 +4,7 @@ from NodosMatriz import NodeHeader, NodeMatrix
 class list_header:
     def __init__(self):
         self.root = None
+        self.tam = 0
 
     def set_header(self, nuevo):
         if self.root is None:
@@ -25,6 +26,7 @@ class list_header:
             if aux.siguiente is None:
                 aux.siguiente = nuevo
                 nuevo.anterior = aux
+        self.tam += 1
 
     def get_header(self, id):
         aux = self.root
