@@ -32,6 +32,8 @@ def get_dataImage(image, col, name, fila):
     # data.Trans()
     # data.graft_Trans()
     data.rot_Vert(name, int(col), int(fila))
+    # data.rot_Hor(name, int(col), int(fila))
+
 
 def doc(row, col, value):
     print('Fila : ', row, 'Columna : ', col, 'Valor : ', value)

@@ -241,7 +241,6 @@ class matrix:
         column_temp = int(column_f)
         column_ = 1
         if int(column_f) % 2 == 0:
-            print(fil_)
             tam = int(column_f) * int(row_f)
             middle = int(column_f) / 2
             i = 0
@@ -278,7 +277,7 @@ class matrix:
                     fil_ += 1
                 i += 1
         else:
-            middle = int(column_f) / 2 + 0.5  # 1 2 3  ------- 1 2 3 4
+            middle = int(column_f) / 2 + 0.5
             tam = int(column_f) * int(row_f)
             i = 0
             while i < tam:
@@ -309,4 +308,81 @@ class matrix:
                     column_ = 1
                     column_temp = int(column_f)
                     fil_ += 1
+                i += 1
+
+    def rot_Hor(self, name_matrix, column_f, row_f):
+        text = ""
+        text_temp = ""
+        text_uni = ""
+        fil_ = 1
+        column_ = 1
+        fil_temp = int(row_f)
+        if int(row_f) % 2 == 0:
+            tam = int(column_f) * int(row_f)
+            middle = int(row_f) / 2
+            i = 0
+            while i < tam:
+                # columna_i <= column_ <= columna_f and fila_i <= fil_ <= fila_f
+                if int(fil_) < int(middle):
+                    print(f"{fil_},{column_}   {fil_temp},{column_}")
+
+                    d_aux = self.search_position(name_matrix, fil_, column_).valor
+                    d_aux2 = self.search_position(name_matrix, fil_temp, column_).valor
+
+                    text = f"{text}\t{d_aux2}"
+                    text_temp = f"{d_aux}\t{text_temp}  "
+
+                    fil_ += 1
+                    fil_temp -= 1
+                elif int(fil_) == int(middle):
+                    print(f"{fil_},{column_}   {fil_temp},{column_}")
+                    d_aux = self.search_position(name_matrix, fil_, column_).valor
+                    d_aux2 = self.search_position(name_matrix, fil_temp, column_).valor
+
+                    text = f"{text}\t{d_aux2}"
+                    text_temp = f"{d_aux}\t{text_temp}"
+                    text_uni = f"{text_uni}\n{text}\t{text_temp}"
+                    text = ""
+                    text_temp = ""
+
+                    if int(column_) == int(column_f):
+                        print(text_uni)
+                        break
+
+                    fil_ = 1
+                    fil_temp = int(row_f)
+                    column_ += 1
+                i += 1
+        else:
+            middle = int(row_f) / 2 + 0.5  # 1 2 3  ------- 1 2 3 4
+            tam = int(column_f) * int(row_f)
+            i = 0
+            while i < tam:
+
+                if int(fil_) < int(middle):
+                    # print(f"{fil_},{column_}   {fil_},{column_temp}")
+                    d_aux = self.search_position(name_matrix, fil_, column_).valor
+                    d_aux2 = self.search_position(name_matrix, fil_temp, column_).valor
+
+                    text = f"{text} {d_aux2}"
+                    text_temp = f"{d_aux} {text_temp}  "
+
+                    fil_ += 1
+                    fil_temp -= 1
+                elif int(fil_) == int(middle):
+                    # print(f"{fil_},{column_}   {fil_},{column_temp}")
+                    d_aux = self.search_position(name_matrix, fil_, column_).valor
+
+                    text_temp = f"{d_aux} {text_temp}"
+                    text_uni = f"{text_uni}\n{text} {text_temp}"
+                    text = ""
+                    text_temp = ""
+
+                    if int(column_) == int(column_f):
+                        print(text_uni)
+                        break
+
+                    fil_ = 1
+                    fil_temp = int(row_f)
+                    column_ += 1
                 i += 1
