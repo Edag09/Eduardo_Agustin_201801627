@@ -1,7 +1,7 @@
 from NodosMatriz import NodeHeader, NodeMatrix
 from Encabezado import list_header
 from graphviz import Digraph
-import VentanaP
+
 
 class matrix:
     def __init__(self):
@@ -66,58 +66,247 @@ class matrix:
         self.tamM += 1
 
     def recorrer(self):
-        e_Row = self.eFilas.root
-        print('--------------------------')
-        print('Nombre:', e_Row.access.nameM)
-        while e_Row is not None:
-            aux = e_Row.access
-            print('Fila: ', aux.row)
-            print('Columna    Valor')
-            while aux is not None:
-                print(aux.column, '--------->', aux.valor)
-                aux = aux.der
-            e_Row = e_Row.siguiente
-        print('---------------------------------')
-
-    def graft(self, name_p):
         text_temp = ""
         text_2 = ""
         text_view = ""
         V_Columns = self.eFilas.root
-        print('<-------------------------->')
+        print(self.eFilas.root.access.nameM)
         while V_Columns is not None:
             aux = V_Columns.access
-            print('Fila: ', aux.row)
-            if aux.nameM == name_p:
-                text_2 = f"<tr>\n<td>{aux.row}</td>"
-                while aux is not None:
-                    if aux.der is None:
-                        if V_Columns.siguiente is None:
-                            # print(aux.valor, '-> None')
-                            text_temp = f"{text_temp} {aux.valor}"
+            text_2 = f"<tr>\n<td>{aux.row}</td>"
+            while aux is not None:
+                if aux.der is None:
+                    if V_Columns.siguiente is None:
+                        # print(aux.valor, '-> None')
+                        text_temp = f"{text_temp} {aux.valor}"
 
-                            text_2 = f"{text_2}\n\t<td>{aux.valor}</td>\n</tr>"
-                            text_view = f"{text_view} {text_2}"
-                            text_2 = ""
-                            # text_temp = text_temp, " -> ", aux.valor
-                            print(text_temp)
-                        else:
-                            # print(aux.valor, '->', V_Columns.siguiente.access.valor)
-                            text_temp = f"{text_temp} {aux.valor}"
-
-                            text_2 = f"{text_2}\n\t<td>{aux.valor}</td>\n</tr>"
-                            text_view = f"{text_view} {text_2}"
-                            text_2 = ""
-                            print(text_temp)
-                            text_temp = ''
+                        text_2 = f"{text_2}\n\t<td>{aux.valor}</td>\n</tr>"
+                        text_view = f"{text_view} {text_2}"
+                        text_2 = ""
+                        # text_temp = text_temp, " -> ", aux.valor
+                        print(text_temp)
                     else:
-                        text_temp = f"{text_temp} {aux.valor} ->"
-                        text_2 = f"{text_2}\n\t<td>{aux.valor}</td>\n"
-                        # print(aux.valor, ' -> ', aux.der.valor)
-                    aux = aux.der
+                        # print(aux.valor, '->', V_Columns.siguiente.access.valor)
+                        text_temp = f"{text_temp} {aux.valor}"
+
+                        text_2 = f"{text_2}\n\t<td>{aux.valor}</td>\n</tr>"
+                        text_view = f"{text_view} {text_2}"
+                        text_2 = ""
+                        print(text_temp)
+                        text_temp = ''
+                else:
+                    text_temp = f"{text_temp} {aux.valor} "
+                    text_2 = f"{text_2}\n\t<td>{aux.valor}</td>\n"
+                    # print(aux.valor, ' -> ', aux.der.valor)
+                aux = aux.der
             V_Columns = V_Columns.siguiente
-        print('---------------------------------')
+
+    def graft(self):
+        text_temp = ""
+        text_2 = ""
+        text_view = ""
+        V_Columns = self.eFilas.root
+        while V_Columns is not None:
+            aux = V_Columns.access
+            # print('Fila: ', aux.row)
+            text_2 = f"<tr>\n<td>{aux.row}</td>"
+            while aux is not None:
+                if aux.der is None:
+                    if V_Columns.siguiente is None:
+                        # print(aux.valor, '-> None')
+                        text_temp = f"{text_temp} {aux.valor}"
+
+                        text_2 = f"{text_2}\n\t<td>{aux.valor}</td>\n</tr>"
+                        text_view = f"{text_view} {text_2}"
+                        text_2 = ""
+                        # text_temp = text_temp, " -> ", aux.valor
+                        # print(text_temp)
+                    else:
+                        # print(aux.valor, '->', V_Columns.siguiente.access.valor)
+                        text_temp = f"{text_temp} {aux.valor}"
+
+                        text_2 = f"{text_2}\n\t<td>{aux.valor}</td>\n</tr>"
+                        text_view = f"{text_view} {text_2}"
+                        text_2 = ""
+                        # print(text_temp)
+                        text_temp = ''
+                else:
+                    text_temp = f"{text_temp} {aux.valor} ->"
+                    text_2 = f"{text_2}\n\t<td>{aux.valor}</td>\n"
+                    # print(aux.valor, ' -> ', aux.der.valor)
+                aux = aux.der
+            V_Columns = V_Columns.siguiente
         # print(text_view)
-        s = Digraph('structs', format='png', filename=f'{self.eFilas.root.access.nameM}', node_attr={'shape': 'plaintext'})
+        s = Digraph('structs', format='png', filename=f'{self.eFilas.root.access.nameM}',
+                    node_attr={'shape': 'plaintext'})
         s.node('struct1', f'''<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> {text_view} </TABLE>>''')
         s.view()
+
+    def Trans(self):
+        text_temp_trans = ''
+        text_2_trans = ''
+        text_view_trans = ''
+        e_col = self.eColomunas.root
+        print(self.eFilas.root.access.nameM)
+        while e_col is not None:
+            aux = e_col.access
+            text_2_trans = f'<tr>\n<td>{aux.column}</td>'
+            while aux is not None:
+                if aux.down is None:
+                    if e_col.siguiente is None:
+                        text_temp_trans = f"{text_temp_trans} {aux.valor}"
+
+                        text_2_trans = f"{text_2_trans}\n\t<td>{aux.valor}</td>\n</tr>"
+                        text_view_trans = f"{text_view_trans} {text_2_trans}"
+                        text_2_trans = ""
+                        # text_temp_trans = text_temp_trans, " -> ", aux.valor
+                        print(text_temp_trans)
+                    else:
+                        # print(aux.valor, '->', V_Columns.siguiente.access.valor)
+                        text_temp_trans = f"{text_temp_trans} {aux.valor}"
+
+                        text_2_trans = f"{text_2_trans}\n\t<td>{aux.valor}</td>\n</tr>"
+                        text_view_trans = f"{text_view_trans} {text_2_trans}"
+                        text_2_trans = ""
+                        print(text_temp_trans)
+                        text_temp_trans = ''
+                else:
+                    text_temp_trans = f"{text_temp_trans} {aux.valor} ->"
+                    text_2_trans = f"{text_2_trans}\n\t<td>{aux.valor}</td>\n"
+                    # print(aux.valor, ' -> ', aux.der.valor)
+                aux = aux.down
+            e_col = e_col.siguiente
+
+    def graft_Trans(self):
+        text_temp_trans = ''
+        text_2_trans = ''
+        text_view_trans = ''
+        e_col = self.eColomunas.root
+        while e_col is not None:
+            aux = e_col.access
+            text_2_trans = f'<tr>\n<td>{aux.column}</td>'
+            while aux is not None:
+                if aux.down is None:
+                    if e_col.siguiente is None:
+                        text_temp_trans = f"{text_temp_trans} {aux.valor}"
+
+                        text_2_trans = f"{text_2_trans}\n\t<td>{aux.valor}</td>\n</tr>"
+                        text_view_trans = f"{text_view_trans} {text_2_trans}"
+                        text_2_trans = ""
+                        # text_temp_trans = text_temp_trans, " -> ", aux.valor
+                        # print(text_temp_trans)
+                    else:
+                        # print(aux.valor, '->', V_Columns.siguiente.access.valor)
+                        text_temp_trans = f"{text_temp_trans} {aux.valor}"
+
+                        text_2_trans = f"{text_2_trans}\n\t<td>{aux.valor}</td>\n</tr>"
+                        text_view_trans = f"{text_view_trans} {text_2_trans}"
+                        text_2_trans = ""
+                        # print(text_temp_trans)
+                        text_temp_trans = ''
+                else:
+                    text_temp_trans = f"{text_temp_trans} {aux.valor} ->"
+                    text_2_trans = f"{text_2_trans}\n\t<td>{aux.valor}</td>\n"
+                    # print(aux.valor, ' -> ', aux.der.valor)
+                aux = aux.down
+            e_col = e_col.siguiente
+        s = Digraph('structs', format='png', filename=f'Transpuesta {self.eFilas.root.access.nameM}',
+                    node_attr={'shape': 'plaintext'})
+        s.node('struct1', f'''<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> {text_view_trans} </TABLE>>''')
+        s.view()
+
+    def search_position(self, nombre_matriz, x, y):
+        V_Columns = self.eFilas.root
+        while V_Columns is not None:
+            aux = V_Columns.access
+            while aux is not None:
+                if aux.der is None:
+                    if V_Columns.siguiente is None:
+                        if aux.nameM == nombre_matriz and int(aux.row) == int(x) and int(aux.column) == int(y):
+                            return aux
+                    else:
+                        if aux.nameM == nombre_matriz and int(aux.row) == int(x) and int(aux.column) == int(y):
+                            return aux
+                else:
+                    if aux.nameM == nombre_matriz and int(aux.row) == int(x) and int(aux.column) == int(y):
+                        return aux
+                aux = aux.der
+            V_Columns = V_Columns.siguiente
+
+    def rot_Vert(self, name_matrix, column_f, row_f):
+        text = ""
+        text_temp = ""
+        text_uni = ""
+        fil_ = 1
+        column_temp = int(column_f)
+        column_ = 1
+        if int(column_f) % 2 == 0:
+            print(fil_)
+            tam = int(column_f) * int(row_f)
+            middle = int(column_f) / 2
+            i = 0
+            while i < tam:
+                # columna_i <= column_ <= columna_f and fila_i <= fil_ <= fila_f
+                if int(column_) < int(middle):
+                    # print(f"{fil_},{column_}   {fil_},{column_temp}")
+
+                    d_aux = self.search_position(name_matrix, fil_, column_).valor
+                    d_aux2 = self.search_position(name_matrix, fil_, column_temp).valor
+
+                    text = f"{text}\t{d_aux2}"
+                    text_temp = f"{d_aux}\t{text_temp}  "
+
+                    column_ += 1
+                    column_temp -= 1
+                elif int(column_) == int(middle):
+                    # print(f"{fil_},{column_}   {fil_},{column_temp}")
+                    d_aux = self.search_position(name_matrix, fil_, column_).valor
+                    d_aux2 = self.search_position(name_matrix, fil_, column_temp).valor
+
+                    text = f"{text}\t{d_aux2}"
+                    text_temp = f"{d_aux}\t{text_temp}"
+                    text_uni = f"{text_uni}\n{text}\t{text_temp}"
+                    text = ""
+                    text_temp = ""
+
+                    if int(fil_) == int(row_f):
+                        print(text_uni)
+                        break
+
+                    column_ = 1
+                    column_temp = int(column_f)
+                    fil_ += 1
+                i += 1
+        else:
+            middle = int(column_f) / 2 + 0.5  # 1 2 3  ------- 1 2 3 4
+            tam = int(column_f) * int(row_f)
+            i = 0
+            while i < tam:
+
+                if int(column_) < int(middle):
+                    # print(f"{fil_},{column_}   {fil_},{column_temp}")
+                    d_aux = self.search_position(name_matrix, fil_, column_).valor
+                    d_aux2 = self.search_position(name_matrix, fil_, column_temp).valor
+
+                    text = f"{text} {d_aux2}"
+                    text_temp = f"{d_aux} {text_temp}  "
+
+                    column_ += 1
+                    column_temp -= 1
+                elif int(column_) == int(middle):
+                    # print(f"{fil_},{column_}   {fil_},{column_temp}")
+                    d_aux = self.search_position(name_matrix, fil_, column_).valor
+
+                    text_temp = f"{d_aux} {text_temp}"
+                    text_uni = f"{text_uni}\n{text} {text_temp}"
+                    text = ""
+                    text_temp = ""
+
+                    if int(fil_) == int(row_f):
+                        print(text_uni)
+                        break
+
+                    column_ = 1
+                    column_temp = int(column_f)
+                    fil_ += 1
+                i += 1

@@ -1,11 +1,12 @@
 from tkinter import *
 from tkinter import filedialog
 from tkinter import messagebox
+import Datos
+from Matriz import matrix
 import tkinter as tk
 import xml.etree.ElementTree as ET
-from Datos import Data
 
-datos = Data()
+d = Datos
 
 
 def win_menu():
@@ -36,25 +37,26 @@ def win_menu():
     def openFile():
         global Name, row, column, image
 
-        try:
-            file = filedialog.askopenfile(title='abrir', initialdir='C://descargas',
-                                          filetypes=[('Archivo xml', '*.xml')])
-            file_xml = ET.parse(file)
-            root_xml = file_xml.getroot()
-            for element in root_xml:
-                for sub in element:
-                    if sub.tag == 'nombre':
-                        Name = sub.text
-                    if sub.tag == 'filas':
-                        row = sub.text
-                    if sub.tag == 'columnas':
-                        column = sub.text
-                    if sub.tag == 'imagen':
-                        image = sub.text
-                datos.get_data(Name, row, column, image)
-                datos.get_dataImage(image, column, Name)
-        except:
+        # try:
+        file = filedialog.askopenfile(title='abrir', initialdir='C://descargas',
+                                      filetypes=[('Archivo xml', '*.xml')])
+        file_xml = ET.parse(file)
+        root_xml = file_xml.getroot()
+        for element in root_xml:
+            for sub in element:
+                if sub.tag == 'nombre':
+                    Name = sub.text
+                if sub.tag == 'filas':
+                    row = sub.text
+                if sub.tag == 'columnas':
+                    column = sub.text
+                if sub.tag == 'imagen':
+                    image = sub.text
+            d.get_data(Name, row, column, image)
+            d.get_dataImage(image, column, Name, row)
+        '''except:
             messagebox.showwarning('Warning', 'Por favor seleccione un archivo correcto')
+'''
 
     def ven_operation():
         win_operation = tk.Toplevel()
@@ -75,8 +77,7 @@ def win_menu():
         add_vertical = tk.Button(win_operation, text='Agregar Vertical', font=('Modern Love Caps', 9), fg='dark green',
                                  padx=8, pady=8).place(x=15, y=240)
         add_rectangle = tk.Button(win_operation, text='Agregar Rectangulo', font=('Modern Love Caps', 9),
-                                  fg='dark green',
-                                  padx=8, pady=8).place(x=15, y=285)
+                                  fg='dark green', padx=8, pady=8).place(x=15, y=285)
         add_triangle = tk.Button(win_operation, text='Agregar Triangulo', font=('Modern Love Caps', 9), fg='dark green',
                                  padx=8, pady=8).place(x=15, y=330)
         goBack = tk.Button(win_operation, text='Regresar', font=('Modern Love Caps', 9), fg='dark green', padx=8,
@@ -84,14 +85,16 @@ def win_menu():
                            command=win_operation.destroy).place(x=15, y=430)
         view = tk.Button(win_operation, text='Ver Matriz', font=('Modern Love Caps', 9), fg='dark green', padx=8,
                          pady=8).place(x=15, y=380)
+        entry1 = tk.Entry(win_operation)
+        entry1.place(x=115, y=390)
 
         area1 = Text(win_operation)
-        area1.place(x=200, y=15)
+        area1.place(x=260, y=15)
         area1.config(width=55, height=28)
         area1.config(state='disabled')
 
         area2 = Text(win_operation)
-        area2.place(x=715, y=15)
+        area2.place(x=735, y=15)
         area2.config(width=55, height=28)
         area2.config(state='disabled')
 

@@ -10,6 +10,9 @@ class NodeMatrix:
         self.up = None
         self.down = None
 
+    def __str__(self):
+        return f"Nombre{self.nameM}- ({self.row},{self.column}) Dato: {self.valor}"
+
 
 class NodeHeader:
     def __init__(self, id, name):
