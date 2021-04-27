@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peticiones</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    background: #bdc5c5;
+}
+header{ /* Componente de como modificar el header */
+    width: 100%;
+    height: 190px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    position: fixed;
+}
+
+header nav{ /* colocar una barra de navegacion para colocar los elementos */
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    background-image: url(universo-galaxia_2560x1440_xtrafondos.com.jpg);
+}
+
+/* Manipular la imagen para que quede chidoris { */
+nav .logo{
+    height: 100%;
+    margin-left: 80px;
+}
+    
+nav .logo img{
+    object-fit: cover;
+    height: inherit;
+}
+/* } */
+
+.opciones{ /* Son los enlaces que estaran en la parte de la barra nav */
+    height: 100%;
+    width: 35%;
+    justify-content: space-around;
+    align-items: center;
+    float: right;
+    line-height: 60px;
+    
+}
+
+.opciones a{ /* Son los enlaces que estaran en la parte de la barra nav */
+    padding: 4px 0;
+    transition: 0.7s ease-out;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.opciones ul{
+    display: flex;
+    list-style: none;
+}
+
+.opciones a{
+    display: block;
+    padding: 0px 40px;
+    text-decoration: none;
+    color: white;
+    transition: all 500ms ease;
+}
+
+.opciones a:hover{
+    background: #005C98;
+    border-radius: 15px;
+    color:#bdc5c5;
+}
+
+.opciones .submenu{
+    box-shadow: 3px 10px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.opciones .submenu li a{
+    line-height: 40px;
+}
+
+.opciones ul li a:hover + ul, .opciones .submenu:hover{
+    display: block;
+}
+
+.modal-container{
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal{
+    width: 30%;
+    height: 30%;
+    background: white;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    transition: transform 1s;
+    transform: translateY(0%);
+    border-radius: 10px;
+}
+
+.modal-close{
+    transform: translateY(-200%);
+}
+
+.modal img{
+    width: 30%;
+}
+
+.close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: #c44a4a;
+    color: #fff;
+    line-height: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#consulta{
+    height: 800px;
+    justify-content: space-evenly;
+    padding: 0 40px;
+    border: 1px solid #bdc5c5;
+}
+
+#fecha-usuario{
+    height: 800px;
+    justify-content: space-evenly;
+    padding: 0 40px;
+    border: 1px solid black;
+}
+
+#fecha-codigo{
+    height: 800px;
+    justify-content: space-evenly;
+    padding: 0 40px;
+    border: 1px solid black;
+}
+
+section .Titulo-uno{
+    text-align: left;
+    color: #23544C;
+}
+
+section .Titulo-uno h1{
+    margin-top: 85px;
+    margin-left: -2.5%;
+    width: 17%;
+    padding: 10px;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+section .Titulo-dos{
+    text-align: left;
+    color: #23544C;
+}
+
+section .Titulo-dos h1{
+    margin-top: 25px;
+    margin-left: -2.5%;
+    width:  40%;
+    padding: 10px;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+section .Titulo-tres{
+    text-align: left;
+    color: #23544C;
+}
+
+section .Titulo-tres h1{
+    margin-top: 25px;
+    margin-left: -2.5%;
+    width: 40%;
+    padding: 10px;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+nav{
+    animation-duration: 2s;
+    animation-name: nav;
+}
+
+@keyframes nav{
+    from{
+        transform: translate3d(0,-100%,0);
+        opacity: 0;
+    }
+    to{
+        transform: translate3d(0,0,0);
+        opacity: 1;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="Imagenes/usac.png" alt="">
+            </div>
+            <div class="opciones">
+                <ul>
+                    <li>
+                        <a href="/" class="active">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="#">Peticiones <img src="Imagenes/down-arrow (2).png" alt=""></a>
+                        <ul class="submenu">
+                            <li><a href="#consulta">Consultar datos</a></li>
+                            <li><a href="#fecha-usuario">Filtrar por Fecha/Usuario</a></li>
+                            <li><a href="#fecha-codigo">Filtrar por Fecha/Codigo</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Ayuda <img src="Imagenes/down-arrow (2).png" alt=""></a>
+                        <ul class="submenu">
+                            <li><a href="#" class="cta" >Datos del Estudiante</a></li>
+                            <li><a href="#">Documentacion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="modal-container">
+        <div class="modal modal-close">
+            <p class="close">X</p>
+            <img src="Imagenes/programador.png" alt="">
+            <div class="modal-Texto">
+                <h2>Eduardo René Agustin Mendoza -- 201801627</h2>
+                <p>Introducción a la Programación y Computación 2</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="consulta">
+        <div class="Titulo-uno">
+            <h1>Consultas</h1>
+        </div>
+    </section>
+
+    <section id="fecha-usuario">
+        <div class="Titulo-dos">
+            <h1>Filtrar por Fecha/Usuario</h1>
+        </div>
+    </section>
+
+    <section id="fecha-codigo">
+        <div class="Titulo-tres">
+            <h1>Filtrar por Fecha/Codigo</h1>
+        </div>
+    </section>
+
+    <script src="Estilo/main.js"></script><script>
+        let cerrar = document.querySelectorAll('.close')[0];
+        let abrir = document.querySelectorAll('.cta')[0];
+        let modal = document.querySelectorAll('.modal')[0];
+        let modalC = document.querySelectorAll('.modal-container')[0];
+
+        abrir.addEventListener("click", function(e){
+            e.preventDefault();
+            modalC.style.opacity = "1";
+            modalC.style.visibility = "visible"
+            modal.classList.toggle("modal-close");
+        });
+
+        cerrar.addEventListener("click", function(){
+            modal.classList.toggle("modal-close");
+            setTimeout(function(){
+                modalC.style.opacity = "0";
+                modalC.style.visibility = "hidden"
+            },850)
+        })
+
+        window.addEventListener('click', function(e){
+            if(e.target == modalC){
+                modal.classList.toggle("modal-close");
+                setTimeout(function(){
+                    modalC.style.opacity = "0";
+                    modalC.style.visibility = "hidden"
+                },850)
+            }
+        })
+    </script>dy>
+</html>
