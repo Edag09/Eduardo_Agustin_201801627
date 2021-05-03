@@ -1,14 +1,44 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response, redirect
 from flask_cors import CORS
 
+import xml.etree.ElementTree as ET 
+import xmltodict
+import base64
+
+salida = None
 app = Flask(__name__)
 app.config['DEBUG'] = True
+cors = CORS(app, resourse={r"/*":{"origin*":"*"}})
 
 CORS(app)
 
+
+
 @app.route('/')
 def home():
-    return 'SERVER IS WORKING!!!'
+    return redirect('SERVER IS WORKING!!!')
+
+
+@app.route('/abrirArchivo', methods=['POST'])
+def abrirArchivo():
+    global salida
+    salida =''
+    datos = request.get_json()
+    if datos['data'] == '':
+        return {"msg": 'Error en contenido'}
+    contenido = base64.b64decode(datos['data']).decode('utf-8')
+    salida = contenido
+    print(salida)
+    return salida
+
+@app.route('/abrirArchivo', methods=['GET'])
+def get_events():
+    global salida
+    data = salida
+    return Response(response=data, 
+                    mimetype='text/plain', 
+                    content_type='text/plain')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

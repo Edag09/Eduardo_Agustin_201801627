@@ -7,22 +7,22 @@
     <title>Peticiones</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/Estilo/Style-pet.css">
-    <link rel="stylesheet" href="/static/Estilo/Animate.css">
+    <link rel="stylesheet" href="Estilo/Style-pet.css">
+    <link rel="stylesheet" href="Estilo/Animate.css">
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
-                <img src="/static/Imagenes/usac.png" alt="">
+                <img src="Imagenes/usac.png" alt="">
             </div>
             <div class="opciones">
                 <ul>
                     <li>
-                        <a href="/" class="active">Inicio</a>
+                        <a href="index.html" class="active">Inicio</a>
                     </li>
                     <li>
-                        <a href="#">Peticiones <img src="/static/Imagenes/down-arrow (2).png" alt=""></a>
+                        <a href="#">Peticiones <img src="Imagenes/down-arrow (2).png" alt=""></a>
                         <ul class="submenu">
                             <li><a href="#consulta">Consultar datos</a></li>
                             <li><a href="#fecha-usuario">Filtrar por Fecha/Usuario</a></li>
@@ -30,7 +30,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Ayuda <img src="/static/Imagenes/down-arrow (2).png" alt=""></a>
+                        <a href="#">Ayuda <img src="Imagenes/down-arrow (2).png" alt=""></a>
                         <ul class="submenu">
                             <li><a href="#" class="cta" >Datos del Estudiante</a></li>
                             <li><a href="#">Documentacion</a></li>
@@ -44,7 +44,7 @@
     <div class="modal-container">
         <div class="modal modal-close">
             <p class="close">X</p>
-            <img src="/static/Imagenes/programador.png" alt="">
+            <img src="Imagenes/programador.png" alt="">
             <div class="modal-Texto">
                 <h2>Eduardo René Agustin Mendoza -- 201801627</h2>
                 <p>Introducción a la Programación y Computación 2</p>
@@ -55,10 +55,9 @@
     <section id="consulta">
         <div class="Titulo-uno">
             <h1>Consultas</h1>
-            <button id="get_consulta">Consultar</button>
-        </div>
-
-        <div class="mostrar-consulta">
+            <form action="">
+                <input type="submit" value="Consultar" class="btn">
+            </form>      
         </div>
     </section>
 
@@ -68,30 +67,19 @@
             <form action="">
                 <div class="grupo">
                     <input type="text" id="ffu">
-                    <label for="">Busqueda Fecha/Usuario</label>
+                    <label for="">Busqueda</label>
                 </div>
-                <input type="submit" value="Buscar Usuario" class="btn_busUser">
+                <button type="submit">Buscar</button>
             </form>
-        </div>
-        <div class="mostrar-ffu">
         </div>
     </section>
 
     <section id="fecha-codigo">
         <div class="Titulo-tres">
             <h1>Filtrar por Fecha/Codigo</h1>
-            <form action="">
-                <div class="grupo-dos">
-                    <input type="text" id="ffc">
-                    <label for="">Busqueda Fecha/Codigo</label>
-                    <input type="submit" value="Buscar Código" class="btn_busCod">
-                </div>
-            </form>
-        </div>
-        <div class="mostrar-ffc">
         </div>
     </section>
 
-    <script src="/static/Estilo/main.js"></script>
+    <script src="Estilo/main.js"></script>
 </body>
 </html>

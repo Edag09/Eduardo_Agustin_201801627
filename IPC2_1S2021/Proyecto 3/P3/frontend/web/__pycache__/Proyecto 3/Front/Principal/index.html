@@ -7,30 +7,30 @@
     <title>Pagina Principal</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/Estilo/Style.css">
-    <link rel="stylesheet" href="/static/Estilo/Animate.css">
+    <link rel="stylesheet" href="Estilo/Style.css">
+    <link rel="stylesheet" href="Estilo/Animate.css">
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
-                <img src="/static/Imagenes/usac.png" alt="">
+                <img src="Imagenes/usac.png" alt="">
             </div>
             <div class="opciones">
                 <ul>
                     <li>
-                        <a href="/" class="active">Inicio</a>
+                        <a href="index.html" class="active">Inicio</a>
                     </li>
                     <li>
-                        <a href="#">Peticiones <img src="/static/Imagenes/down-arrow (2).png" alt=""></a>
+                        <a href="#">Peticiones <img src="Imagenes/down-arrow (2).png" alt=""></a>
                         <ul class="submenu">
-                            <li><a href="peticiones">Consultar datos</a></li>
-                            <li><a href="peticiones#fecha-usuario">Filtrar por Fecha/Usuario</a></li>
-                            <li><a href="peticiones#fecha-codigo">Filtrar por Fecha/Codigo</a></li>
+                            <li><a href="peticiones.html">Consultar datos</a></li>
+                            <li><a href="peticiones.html#fecha-usuario">Filtrar por Fecha/Usuario</a></li>
+                            <li><a href="peticiones.html#fecha-codigo">Filtrar por Fecha/Codigo</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Ayuda <img src="/static/Imagenes/down-arrow (2).png" alt=""></a>
+                        <a href="#">Ayuda <img src="Imagenes/down-arrow (2).png" alt=""></a>
                         <ul class="submenu">
                             <li><a href="#" class="cta" >Datos del Estudiante</a></li>
                             <li><a href="#">Documentacion</a></li>
@@ -46,26 +46,24 @@
 
     <section>
         <div class="cont-one">
-            <textarea id="mostrartxt" cols="30" rows="10"></textarea>
         </div> 
         <div class="cont-two">
-            <textarea  id="mostrarReset" cols="30" rows="10"></textarea>
         </div> 
         <div class="contenedor-texto">
-            <form action="" id="upload_file">
+            <form action="">
                 <div class="text-container">
-                    <input type="file" id="fileChooser">
-                        <button class="btn_cargar" onclick="abrirArchivo(fileChooser)">Cargar</button>
+                    <p id="Up">Cargar Archivo</p>
+                    <input type="file" id="cargar">
                 </div>
             </form>
             <div class="send">
                 <p id="Up">
-                    <button id="btn_enviar">Enviar</button>
+                    <a href="#" class="btn_enviar">Enviar</a>
                 </p>
             </div>
             <div class="reset">
                 <p id="Up">
-                    <button class="btn_reset">Reset</button>
+                    <a href="#" class="btn_reset">Reset</a>
                 </p>
             </div>
         </div>     
@@ -74,7 +72,7 @@
     <div class="modal-container">
         <div class="modal modal-close">
             <p class="close">X</p>
-            <img src="/static/Imagenes/programador.png" alt="">
+            <img src="Imagenes/programador.png" alt="">
             <div class="modal-Texto">
                 <h2>Eduardo René Agustin Mendoza -- 201801627</h2>
                 <p>Introducción a la Programación y Computación 2</p>
@@ -82,7 +80,6 @@
         </div>
     </div>
 
-    <script src="/static/Estilo/main.js"></script>
-    <script src="/static/Estilo/funcion.js"></script>
+    <script src="Estilo/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    background: #bdc5c5;
+}
+header{ /* Componente de como modificar el header */
+    width: 100%;
+    height: 190px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+header nav{ /* colocar una barra de navegacion para colocar los elementos */
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    background-image: url(universo-galaxia_2560x1440_xtrafondos.com.jpg);
+}
+
+/* Manipular la imagen para que quede chidoris { */
+nav .logo{
+    height: 100%;
+    margin-left: 80px;
+}
+    
+nav .logo img{
+    object-fit: cover;
+    height: inherit;
+}
+/* } */
+
+.opciones{ /* Son los enlaces que estaran en la parte de la barra nav */
+    height: 100%;
+    width: 35%;
+    justify-content: space-around;
+    align-items: center;
+    float: right;
+    line-height: 60px;
+    
+}
+
+.opciones a{ /* Son los enlaces que estaran en la parte de la barra nav */
+    padding: 4px 0;
+    transition: 0.7s ease-out;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.opciones ul{
+    display: flex;
+    list-style: none;
+}
+
+.opciones a{
+    display: block;
+    padding: 0px 40px;
+    text-decoration: none;
+    color: white;
+    transition: all 500ms ease;
+}
+
+.opciones a:hover{
+    background: #005C98;
+    border-radius: 15px;
+    color:#bdc5c5;
+}
+
+.opciones .submenu{
+    box-shadow: 3px 10px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.opciones .submenu li a{
+    line-height: 40px;
+}
+
+.opciones ul li a:hover + ul, .opciones .submenu:hover{
+    display: block;
+}
+
+.modal-container{
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal{
+    width: 30%;
+    height: 30%;
+    background: white;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    transition: transform 1s;
+    transform: translateY(0%);
+    border-radius: 10px;
+}
+
+.modal-close{
+    transform: translateY(-200%);
+}
+
+.modal img{
+    width: 30%;
+}
+
+.close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: #c44a4a;
+    color: #fff;
+    line-height: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#consulta{
+    height: 800px;
+    justify-content: space-evenly;
+    padding: 0 40px;
+    border: 1px solid #bdc5c5;
+}
+
+#fecha-usuario{
+    height: 800px;
+    justify-content: space-evenly;
+    padding: 0 40px;
+    border: 1px solid black;
+}
+
+#fecha-codigo{
+    height: 800px;
+    justify-content: space-evenly;
+    padding: 0 40px;
+    border: 1px solid black;
+}
+
+section .Titulo-uno{
+    text-align: left;
+    color: #23544C;
+}
+
+section .Titulo-uno h1{
+    margin-left: -2.5%;
+    width: 17%;
+    padding: 10px;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+section .Titulo-dos{
+    text-align: left;
+    color: #23544C;
+}
+
+section .Titulo-dos h1{
+    margin-top: 25px;
+    margin-left: -2.5%;
+    width:  40%;
+    padding: 10px;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+section .Titulo-tres{
+    text-align: left;
+    color: #23544C;
+}
+
+section .Titulo-tres h1{
+    margin-top: 25px;
+    margin-left: -2.5%;
+    width: 40%;
+    padding: 10px;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+.btn{
+    background: #333;
+    margin-top: 20px;
+    height: 50px;
+    width: 100px;
+    border: 1px solid #333;
+    color: whitesmoke;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+form{
+    width: 100%;
+    margin: auto;
+}
+
+form .grupo{
+    position: relative;
+    margin: 45px;
+}
+
+input{
+    background: none;
+    color: black;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 50%;
+    border: none;
+    border-bottom: 1px solid var(--colorTexto);
+}
+

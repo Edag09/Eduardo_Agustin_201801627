@@ -1,0 +1,245 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    background: #bdc5c5;
+}
+header{ /* Componente de como modificar el header */
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+header nav{ /* colocar una barra de navegacion para colocar los elementos */
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    background-image: url(universo-galaxia_2560x1440_xtrafondos.com.jpg);
+}
+
+/* Manipular la imagen para que quede chidoris { */
+nav .logo{
+    height: 100%;
+    margin-left: 80px;
+}
+    
+nav .logo img{
+    object-fit: cover;
+    height: inherit;
+}
+/* } */
+
+.opciones{ /* Son los enlaces que estaran en la parte de la barra nav */
+    height: 100%;
+    width: 35%;
+    justify-content: space-around;
+    align-items: center;
+    float: right;
+    line-height: 60px;
+    
+}
+
+.opciones a{ /* Son los enlaces que estaran en la parte de la barra nav */
+    padding: 4px 0;
+    transition: 0.7s ease-out;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.opciones ul{
+    display: flex;
+    list-style: none;
+}
+
+.opciones a{
+    display: block;
+    padding: 0px 40px;
+    text-decoration: none;
+    color: white;
+    transition: all 500ms ease;
+}
+
+.opciones a:hover{
+    background: #005C98;
+    border-radius: 15px;
+    color:#bdc5c5;
+}
+
+.opciones .submenu{
+    box-shadow: 3px 10px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.opciones .submenu li a{
+    line-height: 40px;
+}
+
+.opciones ul li a:hover + ul, .opciones .submenu:hover{
+    display: block;
+}
+
+header .texto{
+    text-align: center;
+    color: black;
+}
+
+header .texto h1{
+    font-size: 85px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+section{
+    height: 700px;
+    justify-content: space-evenly;
+    padding: 0 40px;
+    background: #bdc5c5;
+}
+
+.modal-container{
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal{
+    width: 30%;
+    height: 30%;
+    background: white;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    transition: transform 1s;
+    transform: translateY(0%);
+    border-radius: 10px;
+}
+
+.modal-close{
+    transform: translateY(-200%);
+}
+
+.modal img{
+    width: 30%;
+}
+
+.close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: #c44a4a;
+    color: #fff;
+    line-height: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.text-container{
+    position: relative;
+    margin: 20px;
+    padding: 10px;
+    width: 150px;
+    background-color: #333;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+
+#Up{
+    text-align: center;
+    color: whitesmoke;
+}
+
+#cargar{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.send{
+    position: relative;
+    margin: 20px;
+    padding: 10px;
+    width: 150px;
+    background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    border-radius: 15px;
+    transition: all 500ms ease;
+}
+
+
+.send:hover{
+    background: coral;
+    border-radius: 15px;
+    color:#bdc5c5;
+}
+
+.reset{
+    position: relative;
+    margin: 20px;
+    padding: 10px;
+    width: 150px;
+    background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    border-radius: 15px;
+    transition: all 500ms ease;
+}
+
+.reset:hover{
+    background: coral;
+    border-radius: 15px;
+    color:#bdc5c5;
+}
+
+.btn_enviar{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.btn_reset{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.cont-one{
+    position: absolute;
+    margin: 20px;
+    left: 20%;
+    width: 35%;
+    height: 85%;
+    border: 1px solid black;
+    background: white;
+}
+
+.cont-two{
+    position: absolute;
+    margin: 20px;
+    left: 60%;
+    width: 35%;
+    height: 85%;
+    border: 1px solid black;
+    background: white;
+}

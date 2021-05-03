@@ -1,0 +1,309 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    background: #bdc5c5;
+}
+header{ /* Componente de como modificar el header */
+    width: 100%;
+    height: 190px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+header nav{ /* colocar una barra de navegacion para colocar los elementos */
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    background-image: url(/static/Imagenes/universo-galaxia_2560x1440_xtrafondos.com.jpg);
+}
+
+/* Manipular la imagen para que quede chidoris { */
+nav .logo{
+    height: 100%;
+    margin-left: 80px;
+}
+    
+nav .logo img{
+    object-fit: cover;
+    height: inherit;
+}
+/* } */
+
+.opciones{ /* Son los enlaces que estaran en la parte de la barra nav */
+    height: 100%;
+    width: 35%;
+    justify-content: space-around;
+    align-items: center;
+    float: right;
+    line-height: 60px;
+    
+}
+
+.opciones a{ /* Son los enlaces que estaran en la parte de la barra nav */
+    padding: 4px 0;
+    transition: 0.7s ease-out;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.opciones ul{
+    display: flex;
+    list-style: none;
+}
+
+.opciones a{
+    display: block;
+    padding: 0px 40px;
+    text-decoration: none;
+    color: white;
+    transition: all 500ms ease;
+}
+
+.opciones a:hover{
+    background: #005C98;
+    border-radius: 15px;
+    color:#bdc5c5;
+}
+
+.opciones .submenu{
+    box-shadow: 3px 10px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.opciones .submenu li a{
+    line-height: 40px;
+}
+
+.opciones ul li a:hover + ul, .opciones .submenu:hover{
+    display: block;
+}
+
+.modal-container{
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal{
+    width: 30%;
+    height: 30%;
+    background: white;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    transition: transform 1s;
+    transform: translateY(0%);
+    border-radius: 10px;
+}
+
+.modal-close{
+    transform: translateY(-200%);
+}
+
+.modal img{
+    width: 30%;
+}
+
+.close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: #c44a4a;
+    color: #fff;
+    line-height: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#consulta{
+    height: 800px;
+    justify-content: space-evenly;
+    padding: 0 40px;
+    border: 1px solid #bdc5c5;
+}
+
+#fecha-usuario{
+    height: 800px;
+    justify-content: space-evenly;
+    padding: 0 40px;
+    border: 1px solid black;
+}
+
+#fecha-codigo{
+    height: 800px;
+    justify-content: space-evenly;
+    padding: 0 40px;
+    border: 1px solid black;
+}
+
+section .Titulo-uno{
+    text-align: left;
+    color: #23544C;
+}
+
+section .Titulo-uno h1{
+    margin-left: -2.5%;
+    width: 17%;
+    padding: 10px;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+section .Titulo-dos{
+    text-align: left;
+    color: #23544C;
+}
+
+section .Titulo-dos h1{
+    margin-top: 25px;
+    margin-left: -2.5%;
+    width:  40%;
+    padding: 10px;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+section .Titulo-tres{
+    text-align: left;
+    color: #23544C;
+}
+
+section .Titulo-tres h1{
+    margin-top: 25px;
+    margin-left: -2.5%;
+    width: 40%;
+    padding: 10px;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+#get_consulta{
+    border-radius: 15px;
+    width: 10%;
+    padding: 10px;
+    background: #3C4042;
+    color: white;
+    cursor: pointer;
+    transition: 500ms ease-in-out all;
+}
+
+#get_consulta:hover{
+    color: black;
+    background: #EAECCA;
+}
+
+.btn_busUser{
+   background: #333;
+   margin-top: 20px;
+    height: 50px;
+    width: 150px;
+    color: whitesmoke;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    cursor: pointer;
+}
+
+.btn_busCod{
+    background: #333;
+    margin-top: 20px;
+     height: 50px;
+     width: 150px;
+     color: whitesmoke;
+     border-radius: 10px;
+     font-size: 18px;
+     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     cursor: pointer;
+ }
+
+form{
+    width: 100%;
+    margin: auto;
+}
+
+form .grupo{
+    position: relative;
+    margin: 25px;
+}
+
+form .grupo-dos{
+    position: relative;
+    margin: 25px;
+}
+
+input{
+    background: none;
+    color: black;
+    font-size: 16px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 20%;
+    border: none;
+    border-bottom: 1px solid;
+}
+
+input:focus{
+    color: #5e5d5d;
+}
+
+label{
+    color: #333;
+    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    top: 10px;
+    transition: 0.5s ease-in-out all;
+    pointer-events: none;
+}
+
+input:focus~label, input:valid~label{
+    top: -14px;
+    font-size: 12px;
+    color: black;
+}
+
+
+.mostrar-consulta{
+    border: 1px solid black;
+    margin-left: 25%;
+    width: 65%;
+    height: 75%;
+    background: whitesmoke;
+}
+
+.mostrar-ffu{
+    border: 1px solid black;
+    margin-left: 25%;
+    width: 45%;
+    height: 64%;
+    background: whitesmoke;
+}
+
+.mostrar-ffc{
+    border: 1px solid black;
+    margin-left: 25%;
+    width: 45%;
+    height: 64%;
+    background: whitesmoke;
+}
