@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, Response, redirect
 from flask_cors import CORS
+from Procesar import procesarData
 
 import xml.etree.ElementTree as ET 
 import xmltodict
@@ -27,12 +28,15 @@ def abrirArchivo():
     if datos['data'] == '':
         return {"msg": 'Error en contenido'}
     contenido = base64.b64decode(datos['data']).decode('utf-8')
+    procesarData(contenido)
     salida = contenido
-    print(salida)
-    return salida
+    return Response(salida)
+
+
+
 
 @app.route('/abrirArchivo', methods=['GET'])
-def get_events():
+def mostrar():
     global salida
     data = salida
     return Response(response=data, 
