@@ -285,11 +285,9 @@ input:focus~label, input:valid~label{
 
 
 .mostrar-consulta{
-    border: 1px solid black;
-    margin-left: 25%;
-    width: 65%;
-    height: 75%;
-    background: whitesmoke;
+    margin: 20px;
+    left: 60%;
+    width: 35%;
 }
 
 .mostrar-ffu{

@@ -186,6 +186,12 @@ section{
     border-radius: 15px;
 }
 
+.consultar{
+    margin: 20px;
+    width: 150px;
+    border-radius: 15px;
+}
+
 #btn_enviar{
     padding: 10px;
     width: 150px;
@@ -201,7 +207,7 @@ section{
     color: #333;
 }
 
-.btn_reset{
+#btn_reset{
     padding: 10px;
     width: 150px;
     background: #749730;
@@ -211,7 +217,22 @@ section{
     transition: 500ms ease-in-out all;
 }
 
-.btn_reset:hover{
+#btn_reset:hover{
+    background: #D3EBCE;
+    color: #333;
+}
+
+#btn_consulta{
+    padding: 10px;
+    width: 150px;
+    background: #749730;
+    border-radius: 15px;
+    cursor: pointer;
+    color: white;
+    transition: 500ms ease-in-out all;
+}
+
+#btn_consulta:hover{
     background: #D3EBCE;
     color: #333;
 }
@@ -242,6 +263,14 @@ section{
 }
 
 #mostrartxt{
+    position: absolute;
+    margin: 20px;
+    left: 20%;
+    width: 75%;
+    height: 800px;
+}
+
+#mostrarxml{
     position: absolute;
     margin: 20px;
     left: 20%;

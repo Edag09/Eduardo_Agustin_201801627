@@ -1,29 +1,34 @@
 import re
+import XMLSalida
 
-listaFechas = []
-listaUsuarios = []
-listaAfectados = []
-listaCodErrores = []
+
+class List:
+    def __init__(self, User, Date, Report, Error):
+        self.User = User
+        self.Date = Date
+        self.Report = Report
+        self.Error = Error
+
+
 entry = ''
-expresiones = False  # flagxml
+expresiones = False  
 comillas = False
-Final = ''  # Archivo de salida
+Final = '' 
 i = 0
-state = 0  # estados
-
-
-def cargarArchivo():
-    Entry = input('Ingresa la ruta del archivo: ')
-    archivo = open(Entry, encoding='UTF-8')
-    leer = archivo.read()
-    archivo_final = procesoDatos(leer)
-    print(archivo_final)
-
+state = 0 
+List_data = []
+usuario =[]
+fecha = []
+reportado = []
+error = []
+Lists = None
 
 def procesoDatos(datos):
-    global entrada_datos
-    entrada_datos = datos.split('\n')
-    progreso = Primero(entrada_datos)
+    global List_data
+    entry = datos.split('\n')
+    progreso = Primero(entry)
+    XMLSalida.Data(List_data)
+    XMLSalida.Output_file()
     return progreso
 
 
@@ -40,7 +45,7 @@ def Primero(datos):
 
 
 def analizadorG(datos):
-    global Final, state, expresiones, listaUsuarios, listaFechas, listaCodErrores, listaAfectados
+    global Final, state, expresiones, List_data ,Lists
     if state == 0:
         if re.match(r'[\t]*<EVENTO>', datos):
             Final = Final + datos + '\n'
@@ -58,7 +63,7 @@ def analizadorG(datos):
                 if (character != '>') & (character != '<') & (ord(character) != 32) & (character != ',') & (
                         character != '\t'):
                     text = text + character
-        listaFechas.append(text)
+        Lists = List('', text, '', '')
         state = 2
     elif state == 2:
         if re.match(r'[\t]*Reportado por:', datos):
@@ -77,7 +82,7 @@ def analizadorG(datos):
                 elif user:
                     cad_user = DatosUsuario(character)
                     text = text + cad_user
-        listaUsuarios.append(text)
+        Lists.User = text
         state = 3
     elif state == 3:
         if re.match(r'[\t]*Usuarios afectados:', datos):
@@ -96,7 +101,7 @@ def analizadorG(datos):
                 elif afectado:
                     user_afectado = DatosUsuario(character)
                     text = text + user_afectado
-            listaAfectados.append(text.split(','))
+            Lists.Report = text.split(',')
             state = 4
     elif state == 4:
         if re.match(r'[\t]*Error:', datos):
@@ -110,11 +115,13 @@ def analizadorG(datos):
                         a = 1
                     elif ((ord(character) == 32) | (ord(character) == 95) | (ord(character) == 45)) & (a == 1):
                         break
-            listaCodErrores.append(text)
+            Lists.Error = text
             state = 5
     elif state == 5:
         if re.match(r'[\t]*</EVENTO>', datos):
             Final = Final + datos + '\n'
+            List_data.append(Lists)
+            Lists = None
             state = 0
         else:
             Final = Final + datos + '\n'
@@ -138,6 +145,3 @@ def DatosUsuario(character):
         return ""
     else:
         return ""
-
-
-cargarArchivo()
