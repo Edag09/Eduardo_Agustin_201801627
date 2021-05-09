@@ -77,11 +77,11 @@ def reseterar():
     return Response('Reset Complet', mimetype='text/plain')
 
 
-@app.route('/prueba', methods=['POST'])
+'''@app.route('/prueba', methods=['POST'])
 def prueba():
     fecha = request.data.decode('UTF-8')
     print(fecha)
-    return Response(fecha, mimetype='text/plain')
+    return Response(fecha, mimetype='text/plain')'''
 
 # Iniciar el servidor
 if __name__ == '__main__':

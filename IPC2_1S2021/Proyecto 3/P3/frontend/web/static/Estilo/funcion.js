@@ -99,7 +99,7 @@ input.click();
   });
 
 
-  /*enviar la fecha*/
+  /*enviar la fecha
   var graficaUser = document.getElementById('btn_busUser');
   graficaUser.addEventListener('click', (e)=>{
     var user_date = document.getElementById('ffu');
@@ -115,4 +115,4 @@ input.click();
           console.log="Enviado"
         }
       });
-  });
+  });*/
