@@ -85,7 +85,7 @@ def prueba():
 
 
 #F por U
-@app.route('/User', methods=['POST', 'GET'])
+@app.route('/User', methods=['POST'])
 def usuario():
     fecha = request.data.decode('utf-8')
     lista = XMLSalida.userDate(fecha)
@@ -103,7 +103,7 @@ def usuario():
     return jsonify(Usuarios)
 
 #F por E
-@app.route('/Error', methods=['POST', 'GET'])
+@app.route('/Error', methods=['POST'])
 def error():
     fecha = request.data.decode('utf-8')
     lista = XMLSalida.errorDate(fecha)
