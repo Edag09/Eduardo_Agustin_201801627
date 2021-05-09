@@ -24,16 +24,15 @@
                     <li>
                         <a href="#">Peticiones <img src="/static/Imagenes/down-arrow (2).png" alt=""></a>
                         <ul class="submenu">
-                            <li><a href="peticiones">Consultar datos</a></li>
-                            <li><a href="peticiones#fecha-usuario">Filtrar por Fecha/Usuario</a></li>
-                            <li><a href="peticiones#fecha-codigo">Filtrar por Fecha/Codigo</a></li>
+                            <li><a href="/#fecha-usuario">Filtrar por Fecha/Usuario</a></li>
+                            <li><a href="/#fecha-codigo">Filtrar por Fecha/Codigo</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#">Ayuda <img src="/static/Imagenes/down-arrow (2).png" alt=""></a>
                         <ul class="submenu">
                             <li><a href="#" class="cta" >Datos del Estudiante</a></li>
-                            <li><a href="#">Documentacion</a></li>
+                            <li><a href="/static/[IPC2]P3_201801627_EduardoAgustin.pdf">Documentacion</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -44,7 +43,7 @@
         </div>
     </header>
 
-    <section>
+    <section id="principal">
         <div class="cont-one">
             <textarea id="mostrartxt" cols="30" rows="10"></textarea>
         </div> 
@@ -74,6 +73,44 @@
                 </p>
             </div>
         </div>     
+    </section>
+
+    <section id="fecha-usuario">
+        <div class="Titulo-dos">
+            <h1>Filtrar por Fecha/Usuario</h1>
+            <form action="">
+                <div class="grupo">
+                    <input type="datetime" id="ffu" placeholder="dd/mm/aaaa">
+                    <label for="">Busqueda Fecha/Usuario</label>
+                </div>
+            </form>
+            <div class="filtrar-usuario">
+                <p id="Up">
+                    <button id="btn_busUser">Filtrar Usuarios</button>
+                </p>
+            </div>
+        </div>
+        <div class="mostrar-ffu">
+        </div>
+    </section>
+
+    <section id="fecha-codigo">
+        <div class="Titulo-tres">
+            <h1>Filtrar por Fecha/Codigo</h1>
+            <form action="">
+                <div class="grupo-dos">
+                    <input type="datetime" id="ffc">
+                    <label for="">Busqueda Fecha/Codigo</label>
+                </div>
+            </form>
+            <div class="filtrar-codigo">
+                <p id="Up">
+                    <button id="btn_busCod">Filtrar Códigos</button>
+                </p>
+            </div>
+        </div>
+        <div class="mostrar-ffc">
+        </div>
     </section>
 
     <div class="modal-container">

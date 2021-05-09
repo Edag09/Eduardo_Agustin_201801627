@@ -270,18 +270,167 @@ section{
     height: 800px;
 }
 
+#mostrartxt{
+    position: absolute;
+    margin: 20px;
+    left: 20%;
+    width: 75%;
+    height: 600px;
+    border-radius: 15px;
+}
+
 #mostrarxml{
     position: absolute;
     margin: 20px;
     left: 20%;
     width: 75%;
-    height: 800px;
+    height: 600px;
+    border-radius: 15px;
 }
 
-#mostrarReset{
-    position: absolute;
-    margin: 20px;
-    left: 20%;
+
+/*Esta es el area en donde iran las areas de texto*/
+.mostrar-ffu{
+    border: 1px solid black;
+    margin-left: 25%;
     width: 75%;
-    height: 800px;
+    height: 65%;
+    border-radius: 25px;
+}
+
+.mostrar-ffc{
+    border: 1px solid black;
+    margin-left: 25%;
+    width: 75%;
+    height: 65%;
+    border-radius: 25px;
+}
+
+
+/*Titulos de las secciones*/
+ section .Titulo-dos{
+    text-align: left;
+    color: #23544C;
+}
+
+section .Titulo-dos h1{
+    margin-top: 25px;
+    margin-left: -2.5%;
+    width:  40%;
+    padding: 10px;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+section .Titulo-tres{
+    text-align: left;
+    color: #23544C;
+}
+
+section .Titulo-tres h1{
+    margin-top: 25px;
+    margin-left: -2.5%;
+    width: 40%;
+    padding: 10px;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+
+/*Boton de filtrar por Usuario*/
+.filtrar-usuario{
+    margin: 20px;
+    width: 150px;
+    border-radius: 15px;
+}
+
+#btn_busUser{
+    margin-top: 20px;
+    height: 50px;
+    width: 150px;
+    background: #749730;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    transition: 500ms ease-in-out all;
+}
+
+#btn_busUser:hover{
+    background: #D3EBCE;
+    color: #333;
+}
+
+
+/*Boton de filtrar por codigo*/
+.filtrar-codigo{
+    margin: 20px;
+    width: 150px;
+    border-radius: 15px;
+}
+
+#btn_busCod{
+    margin-top: 20px;
+    height: 50px;
+    width: 150px;
+    background: #749730;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    transition: 500ms ease-in-out all;
+}
+
+#btn_busCod:hover{
+    background: #D3EBCE;
+    color: #333;
+}
+
+form{
+    width: 100%;
+    margin: auto;
+}
+
+form .grupo{
+    position: relative;
+    margin: 25px;
+}
+
+form .grupo-dos{
+    position: relative;
+    margin: 25px;
+}
+
+input{
+    background: none;
+    color: black;
+    font-size: 16px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 20%;
+    border: none;
+    border-bottom: 1px solid;
+}
+
+input:focus{
+    color: #5e5d5d;
+}
+
+label{
+    color: #333;
+    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    top: 10px;
+    transition: 0.5s ease-in-out all;
+    pointer-events: none;
+}
+
+input:focus~label, input:valid~label{
+    top: -14px;
+    font-size: 12px;
+    color: black;
 }

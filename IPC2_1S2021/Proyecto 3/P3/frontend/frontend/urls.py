@@ -20,8 +20,8 @@ from web import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('peticiones', views.peticiones),
-    path('peticiones#consulta', views.peticiones),
-    path('peticiones#fecha-usuario', views.peticiones),
-    path('peticiones#fecha-codigo', views.peticiones)
+    #path('peticiones', views.peticiones),
+    #path('peticiones#consulta', views.peticiones),
+    #path('peticiones#fecha-usuario', views.peticiones),
+    #path('peticiones#fecha-codigo', views.peticiones)
 ]

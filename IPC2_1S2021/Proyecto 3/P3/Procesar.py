@@ -17,10 +17,6 @@ Final = ''
 i = 0
 state = 0 
 List_data = []
-usuario =[]
-fecha = []
-reportado = []
-error = []
 Lists = None
 
 def procesoDatos(datos):
