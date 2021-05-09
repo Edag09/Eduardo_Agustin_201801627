@@ -57,7 +57,7 @@ def analizadorG(datos):
         for character in datos:
             if re.match(r'\d|\W', character):
                 if (character != '>') & (character != '<') & (ord(character) != 32) & (character != ',') & (
-                        character != '\t'):
+                        character != '\t') & (character!='\r'):
                     text = text + character
         Lists = List('', text, '', '')
         state = 2
@@ -106,7 +106,7 @@ def analizadorG(datos):
             a = 0
             for character in datos:
                 if re.match(r'\d', character):
-                    if (ord(character) != 32) & (character != '-'):
+                    if (ord(character) != 32) & (character != '-') & (character!='\r'):
                         text = text + character
                         a = 1
                     elif ((ord(character) == 32) | (ord(character) == 95) | (ord(character) == 45)) & (a == 1):
@@ -123,11 +123,10 @@ def analizadorG(datos):
             Final = Final + datos + '\n'
             state = 5
 
-
 def DatosUsuario(character):
     global comillas, i
     if (ord(character) != 8221) & (ord(character) != 34) & (comillas == False) & (character != "<") & (
-            character != ">") & (ord(character) != 32):
+            character != ">") & (ord(character) != 32) & (character!='\r'):
         return character
     elif ((ord(character) == 8221) & (i == 0)) | ((ord(character) == 34) & (i == 0)):
         comillas = True

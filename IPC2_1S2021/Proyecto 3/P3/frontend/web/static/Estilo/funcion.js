@@ -97,22 +97,3 @@ input.click();
       mostrarxml.innerText='';
     });
   });
-
-
-  /*enviar la fecha
-  var graficaUser = document.getElementById('btn_busUser');
-  graficaUser.addEventListener('click', (e)=>{
-    var user_date = document.getElementById('ffu');
-    e.preventDefault();
-      fetch("http://localhost:5000/prueba", {
-        method = 'POST',
-        headers:{
-          'Content-Type': 'text/plain',
-        },
-        body: user_date.value,
-      }).then((res)=>{
-        if(res.ok){
-          console.log="Enviado"
-        }
-      });
-  });*/

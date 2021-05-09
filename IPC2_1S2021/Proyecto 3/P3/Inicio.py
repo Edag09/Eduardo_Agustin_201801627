@@ -77,11 +77,50 @@ def reseterar():
     return Response('Reset Complet', mimetype='text/plain')
 
 
-'''@app.route('/prueba', methods=['POST'])
+@app.route('/fechas', methods=['POST', 'GET'])
 def prueba():
     fecha = request.data.decode('UTF-8')
     print(fecha)
-    return Response(fecha, mimetype='text/plain')'''
+    return Response(fecha, mimetype='text/plain')
+
+
+#F por U
+@app.route('/User', methods=['POST', 'GET'])
+def usuario():
+    fecha = request.data.decode('utf-8')
+    lista = XMLSalida.userDate(fecha)
+    usuario=[]
+    cont=[]
+    for list in lista:
+        usuario.append(list.user)
+        cont.append(list.cant)
+    Usuarios = {'usuario': usuario,
+               'contador': cont
+               }
+    print('Usuarios Afectados:')
+    print(usuario)
+    print(cont)
+    return jsonify(Usuarios)
+
+#F por E
+@app.route('/Error', methods=['POST', 'GET'])
+def error():
+    fecha = request.data.decode('utf-8')
+    lista = XMLSalida.errorDate(fecha)
+    user=[]
+    cont=[]
+    for list in lista:
+        user.append(list.user)
+        cont.append(list.cant)
+
+    retorno = {'usuario': user,
+               'contador': cont
+               }
+
+    print(user)
+    print(cont)
+
+    return jsonify(retorno)
 
 # Iniciar el servidor
 if __name__ == '__main__':

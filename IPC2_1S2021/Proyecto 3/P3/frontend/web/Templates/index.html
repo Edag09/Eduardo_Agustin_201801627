@@ -123,8 +123,46 @@
             </div>
         </div>
     </div>
-    
+
     <script src="/static/Estilo/main.js"></script>
     <script src="/static/Estilo/funcion.js"></script>
+    <script>
+        var fecha = document.getElementById('btn_busCod');
+
+        fecha.addEventListener('click', (e)=>{
+            var u = document.getElementById('ffc');
+            e.preventDefault();
+            fetch("http://localhost:5000/Error", {
+                method: 'POST',
+                headers:{
+                    "Content-Type": "text/plain",
+                },
+                body: u.value,
+            }).then((res)=>{
+                if(res.ok){
+                    console.log = 'Enviado'
+                }
+            });
+        });
+    </script>
+    <script>
+        var fecha = document.getElementById('btn_busUser');
+
+        fecha.addEventListener('click', (e)=>{
+            var u = document.getElementById('ffu');
+            e.preventDefault();
+            fetch("http://localhost:5000/User", {
+                method: 'POST',
+                headers:{
+                    "Content-Type": "text/plain",
+                },
+                body: u.value,
+            }).then((res)=>{
+                if(res.ok){
+                    console.log = 'Enviado'
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -22,6 +22,7 @@ list_fechas = []
 usuarios = []
 Afectados = []
 errores = []
+useDate=None
 
 
 def Data(informacion):
@@ -88,6 +89,27 @@ def Data(informacion):
         lista_aux_fecha_user = []
         usuarios = []
 
+def userDate(fecha):
+    global list_fechas, useDate
+    useDate=None
+    for Fecha in list_fechas:
+        if Fecha.fecha==fecha:
+            useDate=Fecha.usuarios
+    if useDate!=None:
+        return useDate
+    else:
+        return "Inexistente"
+
+def errorDate(fecha):
+    global list_fechas, useDate
+    useDate=[]
+    for Fecha in list_fechas:
+        if Fecha.fecha==fecha:
+            useDate=Fecha.errores
+    if useDate!=None:
+        return useDate
+    else:
+        return "Inexistente"
 
 def Output_file():
     global list_fechas
