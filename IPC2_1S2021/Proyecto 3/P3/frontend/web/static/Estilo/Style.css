@@ -362,6 +362,23 @@ section .Titulo-tres h1{
     color: #333;
 }
 
+#buscar-Usuario{
+    margin-top: 20px;
+    height: 50px;
+    width: 150px;
+    background: #749730;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    transition: 500ms ease-in-out all;
+}
+
+#buscar-Usuario:hover{
+    background: #D3EBCE;
+    color: #333;
+}
 
 /*Boton de filtrar por codigo*/
 .filtrar-codigo{
@@ -384,6 +401,24 @@ section .Titulo-tres h1{
 }
 
 #btn_busCod:hover{
+    background: #D3EBCE;
+    color: #333;
+}
+
+#buscar-codigo{
+    margin-top: 20px;
+    height: 50px;
+    width: 150px;
+    background: #749730;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    transition: 500ms ease-in-out all;
+}
+
+#buscar-codigo:hover{
     background: #D3EBCE;
     color: #333;
 }
