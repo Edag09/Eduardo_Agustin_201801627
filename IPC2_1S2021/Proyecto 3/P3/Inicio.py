@@ -4,6 +4,8 @@ from Procesar import procesoDatos
 import XMLSalida
 import Procesar
 import os
+from Grafica import GraficarUser
+from Grafica import GraficaError
 
 import xml.etree.ElementTree as ET 
 import xmltodict
@@ -11,6 +13,9 @@ import base64
 
 salida = None
 archivo = None
+usuario =  None
+cont = None
+user = None
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -53,19 +58,13 @@ def mostrarxml():
     return Response(archivo_salida, mimetype='text/xml')
 
 
-# Prueba de ver si se puede pasar a la siguiente pagina
-@app.route('/consultaXML', methods=['GET'])
-def consultaxml():
-    archivo_xml = open('Estadistica.xml', 'r')
-    archivo_salida = archivo_xml.read()
-    archivo_xml.close()
-    return Response(archivo_salida, mimetype='text/xml')
-
-
 #resetear el servidor
 @app.route('/reset', methods=['GET'])
 def reseterar():
+    global user, usuario, cont
     os.remove('Estadistica.xml')
+    os.remove('Grafica Usuario Fecha.png')
+    #os.remove('Grafica Error Fecha.png')
     Procesar.List_data = []
     XMLSalida.lista_aux_fecha=[]
     XMLSalida.lista_aux_fecha_user=[]
@@ -73,20 +72,17 @@ def reseterar():
     XMLSalida.usuarios=[]
     XMLSalida.Afectados=[]
     XMLSalida.errores=[]
+    usuario = []
+    user = []
+    cont = []
     print('Server Reset')
     return Response('Reset Complet', mimetype='text/plain')
 
 
-@app.route('/fechas', methods=['POST', 'GET'])
-def prueba():
-    fecha = request.data.decode('UTF-8')
-    print(fecha)
-    return Response(fecha, mimetype='text/plain')
-
-
 #F por U
 @app.route('/User', methods=['POST'])
-def usuario():
+def usuarios():
+    global usuario, cont
     fecha = request.data.decode('utf-8')
     lista = XMLSalida.userDate(fecha)
     usuario=[]
@@ -97,14 +93,17 @@ def usuario():
     Usuarios = {'usuario': usuario,
                'contador': cont
                }
+    GraficarUser(usuario, cont)
     print('Usuarios Afectados:')
     print(usuario)
     print(cont)
     return jsonify(Usuarios)
 
+
 #F por E
 @app.route('/Error', methods=['POST'])
 def error():
+    global user, cont
     fecha = request.data.decode('utf-8')
     lista = XMLSalida.errorDate(fecha)
     user=[]
@@ -116,7 +115,8 @@ def error():
     retorno = {'usuario': user,
                'contador': cont
                }
-
+    # GraficaError(user, cont)
+    print('Errores')
     print(user)
     print(cont)
 

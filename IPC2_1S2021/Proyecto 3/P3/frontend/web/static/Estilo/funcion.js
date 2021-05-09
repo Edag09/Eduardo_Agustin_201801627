@@ -5,6 +5,8 @@ var consultar = document.getElementById('btn_consulta');
 var resetear = document.getElementById('btn_reset');
 var mostrar = document.getElementById('mostrartxt');
 var mostrarxml = document.getElementById('mostrarxml');
+var ffu = document.getElementById('ffu');
+var ffc = document.getElementById('ffc');
 
 if (fileChooser)
 fileChooser.addEventListener("change", subirArchivo)
@@ -95,5 +97,7 @@ input.click();
     }).then((res_txt)=>{
       mostrar.innerText='';
       mostrarxml.innerText='';
+      ffu.innerText = '';
+      ffc.innerText='';
     });
   });
