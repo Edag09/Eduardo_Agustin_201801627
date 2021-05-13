@@ -20,13 +20,13 @@ lista_aux_fecha = []
 lista_aux_fecha_user = []
 list_fechas = []
 usuarios = []
-Afectados = []
+List_dangerus = []
 errores = []
-useDate=None
+useDate=''
 
 
 def Data(informacion):
-    global lista_aux_fecha, lista_aux_fecha_user, list_fechas, usuarios, Afectados, errores
+    global lista_aux_fecha, lista_aux_fecha_user, list_fechas, usuarios, List_dangerus, errores
     for fe in informacion:
         if fe.Date not in lista_aux_fecha:
             lista_aux_fecha.append(fe.Date)
@@ -36,11 +36,11 @@ def Data(informacion):
             if l.Date == f:
                 cont += 1
                 usuarios.append(l.User)
-                Afectados = Afectados + l.Report
+                List_dangerus = List_dangerus + l.Report
                 errores.append(l.Error)
-        list_fechas.append(Lists(f, cont, usuarios, Afectados, errores))
+        list_fechas.append(Lists(f, cont, usuarios, List_dangerus, errores))
         usuarios = []
-        Afectados = []
+        List_dangerus = []
         errores = []
     lista_aux_fecha = []
 
@@ -91,7 +91,7 @@ def Data(informacion):
 
 def userDate(fecha):
     global list_fechas, useDate
-    useDate=None
+    useDate=''
     for Fecha in list_fechas:
         if Fecha.fecha==fecha:
             useDate=Fecha.usuarios

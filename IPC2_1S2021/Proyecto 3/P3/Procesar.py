@@ -1,5 +1,6 @@
 import re
 import XMLSalida
+import matplotlib.pyplot as plt
 
 
 class List:
@@ -11,13 +12,13 @@ class List:
 
 
 entry = ''
-expresiones = False  
-comillas = False
 Final = '' 
 i = 0
 state = 0 
 List_data = []
-Lists = None
+Lists = ''
+expresiones = 0  
+comillas = 0
 
 def procesoDatos(datos):
     global List_data
@@ -36,7 +37,7 @@ def Primero(datos):
         elif re.match(r'<EVENTOS>', data):
             Final = data + '\n'
             state = 0
-            expresiones = True
+            expresiones = 1
     return Final
 
 
@@ -48,7 +49,7 @@ def analizadorG(datos):
             state = 1
         elif re.match(r'</EVENTOS>', datos):
             Final = Final + datos + '\n'
-            expresiones = False
+            expresiones = 0
         else:
             state = 0
     elif state == 1:
@@ -117,7 +118,7 @@ def analizadorG(datos):
         if re.match(r'[\t]*</EVENTO>', datos):
             Final = Final + datos + '\n'
             List_data.append(Lists)
-            Lists = None
+            Lists = ''
             state = 0
         else:
             Final = Final + datos + '\n'
@@ -125,18 +126,19 @@ def analizadorG(datos):
 
 def DatosUsuario(character):
     global comillas, i
-    if (ord(character) != 8221) & (ord(character) != 34) & (comillas == False) & (character != "<") & (
+    if (ord(character) != 8221) & (ord(character) != 34) & (comillas == 0) & (character != "<") & (
             character != ">") & (ord(character) != 32) & (character!='\r'):
         return character
     elif ((ord(character) == 8221) & (i == 0)) | ((ord(character) == 34) & (i == 0)):
-        comillas = True
+        comillas = 1
         i = 1
         return ""
     elif ((ord(character) == 8221) & (i == 1)) | ((ord(character) == 34) & (i == 1)):
-        comillas = False
+        comillas = 0
         i = 0
         return ""
     elif (character == "<") | (character == ">") | (ord(character) == 32):
         return ""
     else:
         return ""
+

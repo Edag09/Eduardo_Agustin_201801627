@@ -5,7 +5,6 @@ import XMLSalida
 import Procesar
 import os
 from Grafica import GraficarUser
-from Grafica import GraficaError
 
 import xml.etree.ElementTree as ET 
 import xmltodict
@@ -36,6 +35,7 @@ def abrirArchivo():
     if datos['data'] == '':
         return {"msg": 'Error en contenido'}
     contenido = base64.b64decode(datos['data']).decode('utf-8')
+    print(contenido)
     archivo = procesoDatos(contenido)
     return Response(contenido)
 
@@ -85,19 +85,21 @@ def usuarios():
     global usuario, cont
     fecha = request.data.decode('utf-8')
     lista = XMLSalida.userDate(fecha)
-    usuario=[]
+    user=[]
     cont=[]
     for list in lista:
-        usuario.append(list.user)
+        user.append(list.user)
         cont.append(list.cant)
-    Usuarios = {'usuario': usuario,
+
+    retorno = {'usuario': user,
                'contador': cont
                }
-    GraficarUser(usuario, cont)
-    print('Usuarios Afectados:')
-    print(usuario)
+    # GraficaError(user, cont)
+    print('Cliente')
+    print(user)
     print(cont)
-    return jsonify(Usuarios)
+
+    return jsonify(retorno)
 
 
 #F por E
