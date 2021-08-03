@@ -1,0 +1,3 @@
+C:/Users/renea/OneDrive/Documentos/Eduardo/Compi Lab/Fase 1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/renea/OneDrive/Documentos/Eduardo/Compi Lab/Fase 1/cmake-build-debug/CMakeFiles/Fase_1.dir
+C:/Users/renea/OneDrive/Documentos/Eduardo/Compi Lab/Fase 1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
