@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/Analisis.h">
+			<Option target="Fase_1"/>
+		</Unit>
 		<Unit filename="C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/Lista.cpp">
 			<Option target="Fase_1"/>
 		</Unit>

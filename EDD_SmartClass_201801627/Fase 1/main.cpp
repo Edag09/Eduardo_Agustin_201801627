@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <locale.h>
+#include "Analizador.h"
 
 using namespace std;
 
@@ -15,6 +16,7 @@ class Menus{
 };
 
 void Menus :: UpdateData(){
+
     setlocale(LC_ALL, "Spanish");
     ifstream file;
     string text, dir;
@@ -31,8 +33,9 @@ void Menus :: UpdateData(){
 
     while (!file.eof()){
         getline(file, text);
-        cout<<text<<'\n';
+        (new Analyzer())->print(text);
     }
+
 
     file.close();
 }

@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/Analizador.h
+string
+-
+
 C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/main.cpp
 iostream
 -
@@ -15,4 +19,6 @@ string
 -
 locale.h
 -
+Analizador.h
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/Analizador.h
 

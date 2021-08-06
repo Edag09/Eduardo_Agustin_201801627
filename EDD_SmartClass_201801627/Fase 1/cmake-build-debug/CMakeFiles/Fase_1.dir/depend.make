@@ -4,4 +4,5 @@
 CMakeFiles/Fase_1.dir/Lista.cpp.obj: \
  ../Lista.cpp
 CMakeFiles/Fase_1.dir/main.cpp.obj: \
+ ../Analizador.h \
  ../main.cpp
