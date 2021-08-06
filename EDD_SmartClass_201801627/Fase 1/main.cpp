@@ -1,7 +1,43 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <locale.h>
+
 using namespace std;
 
-void Homework(){
+class Menus{
+    public:
+    void UpdateData();
+    void Homework();
+    void Student();
+    void MenuManualEntry();
+    void menu();
+};
+
+void Menus :: UpdateData(){
+    setlocale(LC_ALL, "Spanish");
+    ifstream file;
+    string text, dir;
+
+    cout << "Ingresa la ruta:\t\n";
+    cin>>dir;
+
+    file.open(dir.c_str(), ios::in);
+
+    if (file.fail()){
+        cout<<"Archivo incorrecto";
+        exit(1);
+    }
+
+    while (!file.eof()){
+        getline(file, text);
+        cout<<text<<'\n';
+    }
+
+    file.close();
+}
+
+void Menus :: Homework(){
     int opc;
     bool status = true;
     do {
@@ -35,7 +71,7 @@ void Homework(){
     }   while   (status);
 }
 
-void Student(){
+void Menus :: Student(){
     int opc;
     bool status = true;
     do {
@@ -69,7 +105,7 @@ void Student(){
     } while (status);
 }
 
-void MenuManualEntry(){
+void Menus :: MenuManualEntry(){
     int opc;
     bool status = true;
     do {
@@ -101,7 +137,7 @@ void MenuManualEntry(){
     } while (status);
 }
 
-void menu(){
+void Menus :: menu(){
     int opc;
     bool status = true;
     do {
@@ -117,7 +153,7 @@ void menu(){
 
         switch (opc) {
             case 1:
-                cout << "\n";
+                UpdateData();
                 break;
             case 2:
                 cout << "\n";
@@ -140,7 +176,8 @@ void menu(){
 }
 
 int main() {
-    menu();
+    Menus menu;
+    menu.menu();
     return 0;
 }
 

@@ -6,7 +6,13 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/renea/OneDrive/Documentos/Eduardo/Compi Lab/Fase 1/main.cpp
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/main.cpp
 iostream
+-
+fstream
+-
+string
+-
+locale.h
 -
 
