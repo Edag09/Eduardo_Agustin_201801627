@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <locale.h>
+#include <windows.h>
 #include "Analizador.h"
 
 using namespace std;
@@ -16,8 +17,9 @@ class Menus{
 };
 
 void Menus :: UpdateData(){
+    //SetConsoleOutputCP(CP_UTF8); //Funciona el Estudiantes.csv
+    setlocale(LC_ALL, "Spanish");  //Funciona el Prueba.csv
 
-    setlocale(LC_ALL, "Spanish");
     ifstream file;
     string text, dir;
 
@@ -27,17 +29,22 @@ void Menus :: UpdateData(){
     file.open(dir.c_str(), ios::in);
 
     if (file.fail()){
-        cout<<"Archivo incorrecto";
-        exit(1);
+        cout<<"Archivo incorrecto\n";
+        UpdateData();
     }
 
     while (!file.eof()){
         getline(file, text);
-        (new Analyzer())->print(text);
+        (new Analyzer())->process(text);
     }
 
-
     file.close();
+
+    /*string text;
+
+    cout<< "Ingresa un nombre"<<'\n';
+    cin>>text;
+    (new Analyzer())->process(text);*/
 }
 
 void Menus :: Homework(){
