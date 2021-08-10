@@ -9,6 +9,7 @@ using namespace std;
 
 class Menus{
     public:
+    void UpdateHomework();
     void UpdateData();
     void Homework();
     void Student();
@@ -16,12 +17,38 @@ class Menus{
     void menu();
 };
 
+void Menus ::UpdateHomework() {
+    setlocale(LC_ALL, "Spanish");  //Funciona el Prueba.csv
+
+    ifstream file;
+    string text, dir, cad;
+
+    cout << "Ingresa la ruta:\t\n";
+    cin>>dir;
+
+    file.open(dir.c_str(), ios::in);
+
+    if (file.fail()){
+        cout<<"Archivo incorrecto\n";
+        UpdateHomework();
+    }
+
+    while (!file.eof()){
+        getline(file, text);
+        cad = cad + text + '\n';
+    }
+
+    (new Analyzer())->Homework(cad);
+
+    file.close();
+}
+
 void Menus :: UpdateData(){
     //SetConsoleOutputCP(CP_UTF8); //Funciona el Estudiantes.csv
     setlocale(LC_ALL, "Spanish");  //Funciona el Prueba.csv
 
     ifstream file;
-    string text, dir;
+    string text, dir, cad;
 
     cout << "Ingresa la ruta:\t\n";
     cin>>dir;
@@ -35,16 +62,13 @@ void Menus :: UpdateData(){
 
     while (!file.eof()){
         getline(file, text);
-        (new Analyzer())->process(text);
+        cad = cad + text + '\n';
     }
+
+    (new Analyzer())->Students(cad);
 
     file.close();
 
-    /*string text;
-
-    cout<< "Ingresa un nombre"<<'\n';
-    cin>>text;
-    (new Analyzer())->process(text);*/
 }
 
 void Menus :: Homework(){
@@ -166,7 +190,7 @@ void Menus :: menu(){
                 UpdateData();
                 break;
             case 2:
-                cout << "\n";
+                UpdateHomework();
                 break;
             case 3:
                 MenuManualEntry();
