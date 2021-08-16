@@ -4,7 +4,6 @@
 #include <locale.h>
 #include <windows.h>
 #include "Analizador.h"
-
 using namespace std;
 
 class Menus{
@@ -17,7 +16,7 @@ class Menus{
     void menu();
 };
 
-void Menus ::UpdateHomework() {
+void Menus :: UpdateHomework() {
     setlocale(LC_ALL, "Spanish");  //Funciona el Prueba.csv
 
     ifstream file;
@@ -196,7 +195,7 @@ void Menus :: menu(){
                 MenuManualEntry();
                 break;
             case 4:
-                cout << "\n";
+                estudiante.Show();
                 break;
             case 5:
                 cout << "Gus bai";

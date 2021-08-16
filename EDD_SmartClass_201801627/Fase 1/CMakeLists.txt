@@ -3,4 +3,4 @@ project(Fase_1)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(Fase_1 main.cpp Lista.cpp Analisis.h)
+add_executable(Fase_1 main.cpp Lista.cpp Analisis.h NodoCD.cpp NodoCD.h ListStudentCD.cpp ListStudentCD.h)

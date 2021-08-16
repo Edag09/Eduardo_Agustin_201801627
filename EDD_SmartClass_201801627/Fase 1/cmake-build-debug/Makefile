@@ -128,6 +128,30 @@ Fase_1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/build
 .PHONY : Fase_1/fast
 
+ListStudentCD.obj: ListStudentCD.cpp.obj
+.PHONY : ListStudentCD.obj
+
+# target to build an object file
+ListStudentCD.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/ListStudentCD.cpp.obj
+.PHONY : ListStudentCD.cpp.obj
+
+ListStudentCD.i: ListStudentCD.cpp.i
+.PHONY : ListStudentCD.i
+
+# target to preprocess a source file
+ListStudentCD.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/ListStudentCD.cpp.i
+.PHONY : ListStudentCD.cpp.i
+
+ListStudentCD.s: ListStudentCD.cpp.s
+.PHONY : ListStudentCD.s
+
+# target to generate assembly for a file
+ListStudentCD.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/ListStudentCD.cpp.s
+.PHONY : ListStudentCD.cpp.s
+
 Lista.obj: Lista.cpp.obj
 .PHONY : Lista.obj
 
@@ -151,6 +175,30 @@ Lista.s: Lista.cpp.s
 Lista.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/Lista.cpp.s
 .PHONY : Lista.cpp.s
+
+NodoCD.obj: NodoCD.cpp.obj
+.PHONY : NodoCD.obj
+
+# target to build an object file
+NodoCD.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/NodoCD.cpp.obj
+.PHONY : NodoCD.cpp.obj
+
+NodoCD.i: NodoCD.cpp.i
+.PHONY : NodoCD.i
+
+# target to preprocess a source file
+NodoCD.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/NodoCD.cpp.i
+.PHONY : NodoCD.cpp.i
+
+NodoCD.s: NodoCD.cpp.s
+.PHONY : NodoCD.s
+
+# target to generate assembly for a file
+NodoCD.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/NodoCD.cpp.s
+.PHONY : NodoCD.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -185,9 +233,15 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Fase_1
+	@echo ... ListStudentCD.obj
+	@echo ... ListStudentCD.i
+	@echo ... ListStudentCD.s
 	@echo ... Lista.obj
 	@echo ... Lista.i
 	@echo ... Lista.s
+	@echo ... NodoCD.obj
+	@echo ... NodoCD.i
+	@echo ... NodoCD.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
