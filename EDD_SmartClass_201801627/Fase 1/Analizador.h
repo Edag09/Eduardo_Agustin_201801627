@@ -6,6 +6,7 @@
 #define FASE_1_ANALIZADOR_H
 
 #include "ListStudentCD.h"
+#include "ListHomework.h"
 #include <string>
 
 using namespace std;
@@ -15,6 +16,8 @@ private:
     int status ;
     int cont ;
     int character;
+    int contD;
+    int sizeTarea;
     string end_text;
     string Student[8];
     string Homeworks[9];
@@ -24,9 +27,12 @@ public:
     int Mes(string);
     int Dia(string);
     int Hora(string);
+    string Date(char);
 };
 
 ListDoubleStudent estudiante;
+ListDoubleHomework tarea;
+
 
 void  Analyzer :: Students(string cad) {
     status = 0;
@@ -177,11 +183,13 @@ void  Analyzer :: Students(string cad) {
             }
         }
     }
+
 }
 
 void Analyzer :: Homework(string cad) {
     status = 0;
     cont = 0;
+    sizeTarea = 0;
     end_text = "";
 
     for (int i = 0; i < cad.size(); i++) {
@@ -283,7 +291,8 @@ void Analyzer :: Homework(string cad) {
             }
         }else if (status == 8){ //Fecha
             if ((character >= 48 && character <=57) || (character == 47)){
-                end_text = end_text + cad[i];
+                end_text = Date(cad[i]);
+                //end_text = end_text + cad[i];
             }else if (character == 44){
                 Homeworks[7] = end_text;
                 status = 9;
@@ -299,9 +308,11 @@ void Analyzer :: Homework(string cad) {
                 end_text = end_text + cad[i];
             }else if (character == 10){
                 Homeworks[8] = end_text;
+                sizeTarea ++;
                 status = 1;
                 cont = 0;
                 end_text = "";
+                cout << "ID: "<< sizeTarea << '\n';
                 cout << "Mes: " << Homeworks[0] << '\n';
                 cout << "Dia: "<< Homeworks[1] << '\n';
                 cout << "Hora: "<< Homeworks[2] << '\n';
@@ -311,9 +322,10 @@ void Analyzer :: Homework(string cad) {
                 cout << "Materia: " << Homeworks[6] << '\n';
                 cout << "Fecha: "<< Homeworks[7] << '\n';
                 cout << "Estado: "<< Homeworks[8] << '\n';
-                Mes(Homeworks[0]);
-                Dia(Homeworks[1]);
-                Hora(Homeworks[2]);
+                //tarea.InsertList(Homeworks[0], Homeworks[1], Homeworks[2], Homeworks[3], Homeworks[4], Homeworks[5], Homeworks[6], Homeworks[7], Homeworks[8]);
+                //Mes(Homeworks[0]);
+                //Dia(Homeworks[1]);
+                //Hora(Homeworks[2]);
             }else{
                 status = 0;
                 end_text = "";
@@ -321,10 +333,10 @@ void Analyzer :: Homework(string cad) {
             }
         }
     }
+
 }
 
 int Analyzer :: Mes(string cad) {
-    cout << cad << '\n';
     switch (atoi(cad.c_str())) {
         case 7:
             return 0;
@@ -342,6 +354,7 @@ int Analyzer :: Mes(string cad) {
             return 4;
             break;
         default:
+            cout << "Bueno, sos pendejo verdad ingresaste algo mal :)";
             return -1;
             break;
     }
@@ -441,6 +454,7 @@ int Analyzer :: Dia(string cad) {
             return 29;
             break;
         default:
+            cout << "Bueno, sos pendejo verdad ingresaste algo mal :)";
             return -1;
             break;
     }
@@ -477,9 +491,31 @@ int Analyzer :: Hora(string cad) {
             return 8;
             break;
         default:
+            cout << "Bueno, sos pendejo verdad ingresaste algo mal :)";
             return -1;
             break;
     }
+}
+
+string Analyzer :: Date(char cad) {
+    if ((cad >= 48 && cad <=57) || (cad == 47)){
+        end_text = end_text + cad;
+        cont ++;
+        if (cont == 4 && cad == 47){
+            end_text =  end_text + cad;
+            cont = 0;
+        }else if(cont == 2 && cad == 47 && contD == 0){
+            end_text = end_text + cad;
+            cont = 0;
+            contD ++;
+        }else if (cont == 2 && cad == 47 && contD == 1){
+            end_text = end_text + cad;
+            cont = 0;
+        }else{
+            return "Sa mierda esta mala";
+        }
+    }
+    return end_text;
 }
 
 #endif //FASE_1_ANALIZADOR_H

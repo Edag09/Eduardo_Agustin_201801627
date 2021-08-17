@@ -56,3 +56,7 @@ void ListDoubleStudent ::Show() {
     }
 }
 
+void ListDoubleStudent :: ShowGraphzis() {
+
+}
+

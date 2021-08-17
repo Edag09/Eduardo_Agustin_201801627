@@ -83,6 +83,12 @@
 		<Unit filename="C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/Analisis.h">
 			<Option target="Fase_1"/>
 		</Unit>
+		<Unit filename="C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/ListHomework.cpp">
+			<Option target="Fase_1"/>
+		</Unit>
+		<Unit filename="C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/ListHomework.h">
+			<Option target="Fase_1"/>
+		</Unit>
 		<Unit filename="C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/ListStudentCD.cpp">
 			<Option target="Fase_1"/>
 		</Unit>
@@ -96,6 +102,12 @@
 			<Option target="Fase_1"/>
 		</Unit>
 		<Unit filename="C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/NodoCD.h">
+			<Option target="Fase_1"/>
+		</Unit>
+		<Unit filename="C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/NodoDE.cpp">
+			<Option target="Fase_1"/>
+		</Unit>
+		<Unit filename="C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/NodoDE.h">
 			<Option target="Fase_1"/>
 		</Unit>
 		<Unit filename="C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/main.cpp">

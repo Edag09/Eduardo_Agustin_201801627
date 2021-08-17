@@ -21,6 +21,7 @@ public:
     void InsertList(string& carnet, string& DPI, string& nombre, string& carrera, string& contrasenia, string& creditos, string& edad, string& correo);
     void Modify(string& DPI);
     void Show();
+    void ShowGraphzis();
     void DeleteNode(string&);
     void Search(string& carnet);
 };

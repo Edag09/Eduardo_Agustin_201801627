@@ -9,8 +9,18 @@
 C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/Analizador.h
 ListStudentCD.h
 C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/ListStudentCD.h
+ListHomework.h
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/ListHomework.h
 string
 -
+
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/ListHomework.h
+iostream
+-
+string
+-
+NodoDE.h
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/NodoDE.h
 
 C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/ListStudentCD.h
 iostream
@@ -21,6 +31,12 @@ NodoCD.h
 C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/NodoCD.h
 
 C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/NodoCD.h
+iostream
+-
+string
+-
+
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1/NodoDE.h
 iostream
 -
 string

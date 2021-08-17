@@ -128,6 +128,30 @@ Fase_1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/build
 .PHONY : Fase_1/fast
 
+ListHomework.obj: ListHomework.cpp.obj
+.PHONY : ListHomework.obj
+
+# target to build an object file
+ListHomework.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/ListHomework.cpp.obj
+.PHONY : ListHomework.cpp.obj
+
+ListHomework.i: ListHomework.cpp.i
+.PHONY : ListHomework.i
+
+# target to preprocess a source file
+ListHomework.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/ListHomework.cpp.i
+.PHONY : ListHomework.cpp.i
+
+ListHomework.s: ListHomework.cpp.s
+.PHONY : ListHomework.s
+
+# target to generate assembly for a file
+ListHomework.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/ListHomework.cpp.s
+.PHONY : ListHomework.cpp.s
+
 ListStudentCD.obj: ListStudentCD.cpp.obj
 .PHONY : ListStudentCD.obj
 
@@ -200,6 +224,30 @@ NodoCD.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/NodoCD.cpp.s
 .PHONY : NodoCD.cpp.s
 
+NodoDE.obj: NodoDE.cpp.obj
+.PHONY : NodoDE.obj
+
+# target to build an object file
+NodoDE.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/NodoDE.cpp.obj
+.PHONY : NodoDE.cpp.obj
+
+NodoDE.i: NodoDE.cpp.i
+.PHONY : NodoDE.i
+
+# target to preprocess a source file
+NodoDE.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/NodoDE.cpp.i
+.PHONY : NodoDE.cpp.i
+
+NodoDE.s: NodoDE.cpp.s
+.PHONY : NodoDE.s
+
+# target to generate assembly for a file
+NodoDE.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fase_1.dir\build.make CMakeFiles/Fase_1.dir/NodoDE.cpp.s
+.PHONY : NodoDE.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -233,6 +281,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Fase_1
+	@echo ... ListHomework.obj
+	@echo ... ListHomework.i
+	@echo ... ListHomework.s
 	@echo ... ListStudentCD.obj
 	@echo ... ListStudentCD.i
 	@echo ... ListStudentCD.s
@@ -242,6 +293,9 @@ help:
 	@echo ... NodoCD.obj
 	@echo ... NodoCD.i
 	@echo ... NodoCD.s
+	@echo ... NodoDE.obj
+	@echo ... NodoDE.i
+	@echo ... NodoDE.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
