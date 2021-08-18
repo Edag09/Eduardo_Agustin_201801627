@@ -14,7 +14,38 @@ class Menus{
     void Student();
     void MenuManualEntry();
     void menu();
+    void insertNewStudent();
 };
+
+void Menus :: insertNewStudent(){
+    string carne, dpi, nombre, carrera, contrasenia, creditos, edad, correo;
+    //Carne
+    cout << "Ingresa el Carne: \n";
+    cin >> carne;
+    //DPI
+    cout << "Ingresa el DPI: \n";
+    cin >> dpi;
+    //Nombre
+    cout << "Ingrese el Nombre: \n";
+    cin >> nombre;
+    //Carrera
+    cout << "Ingresa la Carrera: \n";
+    cin >> carrera;
+    //Contrasenia
+    cout << "Ingresa la Contrasenia: \n";
+    cin >> contrasenia;
+    //Creditos
+    cout << "Ingresa los Creditos: \n";
+    cin >> creditos;
+    //Edad
+    cout << "Ingresa la Edad: \n";
+    cin >> edad;
+    //Correro
+    cout << "Ingresa el Correro: \n";
+    cin >> correo;
+
+    estudiante.InsertList(carne, dpi, nombre, carrera, contrasenia, creditos, edad, correo);
+}
 
 void Menus :: UpdateHomework() {
     setlocale(LC_ALL, "Spanish");  //Funciona el Prueba.csv
@@ -107,6 +138,7 @@ void Menus :: Homework(){
 void Menus :: Student(){
     int opc;
     bool status = true;
+    string DPI;
     do {
         cout << "\n\t\t\tMenu Estudiantes Smart Class\n";
         cout << "\t\t\t--------------------------\n";
@@ -120,12 +152,19 @@ void Menus :: Student(){
         switch (opc) {
             case 1:
                 cout << "Ingresar Estudiante\n";
+                insertNewStudent();
                 break;
             case 2:
                 cout << "Modificar Estudiante\n";
+                cout  << "Ingrese el DPI a modificar \n";
+                cin >> DPI;
+                estudiante.Modify(DPI);
                 break;
             case 3:
                 cout << "Eliminar Estudiante\n";
+                cout  << "Ingrese el DPI a Eliminar \n";
+                cin >> DPI;
+                estudiante.DeleteNode(DPI);
                 break;
             case 4:
                 status = false;

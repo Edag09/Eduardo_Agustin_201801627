@@ -33,7 +33,7 @@ void ListDoubleStudent :: InsertList(string& carnet, string& DPI, string& nombre
         end = nuevoStudent;
         first->setAnt(end);
     }
-
+    cout << "Insertado\n";
 }
 
 void ListDoubleStudent ::Show() {
@@ -60,3 +60,95 @@ void ListDoubleStudent :: ShowGraphzis() {
 
 }
 
+
+void ListDoubleStudent :: Modify(string& DPI) {
+    DoubleNodeStudents* aux = new DoubleNodeStudents();
+    aux = first;
+    find = false;
+    string carne, nombre, carrera, contra, creditos, edad, correo;
+
+    if (first != NULL){
+        do {
+            if (aux->getDPI() == DPI){
+                cout << "Modificara los datos del estudiante con los siguientes datos: \n";
+                cout << "Nombre: " << aux->getNombre() << " Carne: " << aux->getCarnet() << " Carrera: " << aux->getCarrera() << '\n';
+
+                //Carne
+                cout << "Carne: \n";
+                cin >> carne;
+                aux->setCarnet(carne);
+                //Nombre
+                cout << "Nombre: \n";
+                cin >> nombre;
+                aux->setNombre(nombre);
+                //Carrera
+                cout << "Carrera: \n";
+                cin >> carrera;
+                aux->setCarrera(carrera);
+                //Contrasenia
+                cout << "Contrasenia \n";
+                cin >> contra;
+                aux->setContrasenia(contra);
+                //Creditos
+                cout << "Creditos: \n";
+                cin >> creditos;
+                aux->setCreditos(creditos);
+                //Edad
+                cout << "Edad: \n";
+                cin >> edad;
+                aux->setEdad(edad);
+                //Correo
+                cout << "Correro: \n";
+                cin >> correo;
+                aux->setCorreo(correo);
+
+                cout << "Los datos del estudiante " << aux->getNombre() << " con carne " << aux->getCarnet() << " han sido modificados\n";
+                find = true;
+            }
+            aux = aux->getSig();
+        } while (aux != first && !find);
+        if (!find){
+            cout << "Datos no encontrados";
+        }
+    }else{
+        cout << "No se ha encontrado datos ingresados";
+    }
+}
+
+void ListDoubleStudent :: DeleteNode(string& DPI) {
+    DoubleNodeStudents* aux = new DoubleNodeStudents();
+    DoubleNodeStudents* aux2 = new DoubleNodeStudents();
+    aux = first;
+    aux2 = NULL;
+    find = false;
+
+    if (first != NULL){
+        do {
+            if (aux->getDPI() == DPI){
+                cout << "El estudiante con DPI " << aux->getDPI() << " sera eliminado\n";
+                if (aux == first){
+                    first = first->getSig();
+                    first->setAnt(end);
+                    end->setSig(first);
+                }else if(aux == end){
+                    end = aux2;
+                    end->setSig(first);
+                    first->setAnt(end);
+                }else{
+                    aux2->setSig(aux->getSig());
+                    aux->getSig()->setAnt(aux2);
+                }
+                cout << "Eliminado\n";
+                find = true;
+            }
+            aux2 = aux;
+            aux = aux->getSig();
+        }while (aux != first && !find);
+        if (!find){
+            cout << "Aulumno no encontrado\n";
+        }
+    }else{
+        cout << "Datos aun no registrados";
+    }
+
+}
