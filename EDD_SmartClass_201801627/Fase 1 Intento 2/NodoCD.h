@@ -1,9 +1,9 @@
 //
-// Created by renea on 13/08/2021.
+// Created by renea on 18/08/2021.
 //
 
-#ifndef FASE_1_NODOCD_H
-#define FASE_1_NODOCD_H
+#ifndef FASE_1_INTENTO_2_NODOCD_H
+#define FASE_1_INTENTO_2_NODOCD_H
 
 #include <iostream>
 #include <string>
@@ -49,5 +49,4 @@ public:
     void setAnt(DoubleNodeStudents *Ant);
 
 };
-
-#endif //FASE_1_NODOCD_H
+#endif //FASE_1_INTENTO_2_NODOCD_H

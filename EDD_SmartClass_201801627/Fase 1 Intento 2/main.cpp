@@ -7,7 +7,7 @@
 using namespace std;
 
 class Menus{
-    public:
+public:
     void UpdateHomework();
     void UpdateData();
     void Homework();
@@ -20,30 +20,29 @@ class Menus{
 void Menus :: insertNewStudent(){
     string carne, dpi, nombre, carrera, contrasenia, creditos, edad, correo;
     //Carne
-    cout << "Ingresa el Carne: \n";
-    cin >> carne;
+    cout << "Ingresa el Carne 0: \n";
+    getline(cin, carne);
     //DPI
     cout << "Ingresa el DPI: \n";
-    cin >> dpi;
+    getline(cin, dpi);
     //Nombre
     cout << "Ingrese el Nombre: \n";
-    cin >> nombre;
+    getline(cin, dpi);
     //Carrera
     cout << "Ingresa la Carrera: \n";
-    cin >> carrera;
+    getline(cin, nombre);
     //Contrasenia
     cout << "Ingresa la Contrasenia: \n";
-    cin >> contrasenia;
+    getline(cin, carrera);
     //Creditos
     cout << "Ingresa los Creditos: \n";
-    cin >> creditos;
+    getline(cin, creditos);
     //Edad
     cout << "Ingresa la Edad: \n";
-    cin >> edad;
+    getline(cin, edad);
     //Correro
     cout << "Ingresa el Correro: \n";
-    cin >> correo;
-
+    getline(cin, correo);
     estudiante.InsertList(carne, dpi, nombre, carrera, contrasenia, creditos, edad, correo);
 }
 
@@ -163,7 +162,7 @@ void Menus :: Student(){
             case 3:
                 cout << "Eliminar Estudiante\n";
                 cout  << "Ingrese el DPI a Eliminar \n";
-                cin >> DPI;
+                getline(cin, DPI);
                 estudiante.DeleteNode(DPI);
                 break;
             case 4:
@@ -194,17 +193,17 @@ void Menus :: MenuManualEntry(){
                 cout << "Ingresar Estudiante\n";
                 Student();
                 break;
-            case 2:
-                cout << "Ingresar Tareas\n";
-                Homework();
-                break;
-            case 3:
-                cout << "Regresar\n";
-                status = false;
-                break;
-            default:
-                cout << "Tu opcion es incorrecta animal :)\n";
-                break;
+                case 2:
+                    cout << "Ingresar Tareas\n";
+                    Homework();
+                    break;
+                    case 3:
+                        cout << "Regresar\n";
+                        status = false;
+                        break;
+                        default:
+                            cout << "Tu opcion es incorrecta animal :)\n";
+                            break;
         }
     } while (status);
 }
@@ -253,4 +252,3 @@ int main() {
     menu.menu();
     return 0;
 }
-

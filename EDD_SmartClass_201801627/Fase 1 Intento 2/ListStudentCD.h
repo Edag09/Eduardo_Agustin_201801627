@@ -1,9 +1,10 @@
 //
-// Created by renea on 14/08/2021.
+// Created by renea on 18/08/2021.
 //
 
-#ifndef FASE_1_LISTSTUDENTCD_H
-#define FASE_1_LISTSTUDENTCD_H
+#ifndef FASE_1_INTENTO_2_LISTSTUDENTCD_H
+#define FASE_1_INTENTO_2_LISTSTUDENTCD_H
+
 #include <iostream>
 #include <string>
 #include "NodoCD.h"
@@ -26,6 +27,4 @@ public:
     void Search(string&);
 };
 
-
-
-#endif //FASE_1_LISTSTUDENTCD_H
+#endif //FASE_1_INTENTO_2_LISTSTUDENTCD_H

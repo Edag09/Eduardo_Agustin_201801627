@@ -1,7 +1,9 @@
 //
-// Created by renea on 14/08/2021.
+// Created by renea on 18/08/2021.
 //
+
 #include "ListStudentCD.h"
+
 #include <iostream>
 #include <fstream>
 #include <string.h>
@@ -63,22 +65,44 @@ void ListDoubleStudent ::ShowGraphvizDC() {
     DoubleNodeStudents* aux = new DoubleNodeStudents();
     aux = first;
     string data = "";
-    int counter = 0;
+    string pointer = "";
+    int counter = 1;
     string graph = "digraph List {\nrankdir=LR;\nnode [shape = circle, color=black , style=filled, fillcolor=gray93];\n";
     while (aux->getSig() != first){
-        cout << aux->getNombre() << " " << aux->getCarnet()<< '\n';
         data += "Node" + to_string(counter) + "[label=\"" + aux->getNombre() +"\"];\n";
-        if (aux->getAnt() != first){
-
+        if (aux != first){
+            pointer += "Node" + to_string(counter-1) + "->Node" + to_string(counter) + ";\n";
+            pointer += "Node" + to_string(counter) + "->Node" + to_string(counter-1) + ";\n";
         }
         counter ++;
         aux = aux->getSig();
     }
-    graph = graph+data;
-    graph = graph + "\n}";
+    pointer += "Node" + to_string(counter-1) + "->Node1" + ";\n";
+    pointer += "Node1->Node" + to_string(counter-1) + ";\n";
+    graph += data;
+    graph += pointer;
+    graph += "\n}";
 
+    try {
+        string path = "Student";
+
+        ofstream file;
+        file.open(path + "Graph.dot",std::ios::out);
+
+        if(file.fail()){
+            exit(1);
+        }
+
+        file<<graph;
+        file.close();
+        string command = "dot -Tpng " + path + "Graph.dot -o  " + path + "Graph.png";
+        system(command.c_str());
+    }catch (exception e){
+        cout << "Nel no se pudo :)";
+    }
+
+    delete aux;
 }
-
 
 void ListDoubleStudent :: Modify(string& DPI) {
     DoubleNodeStudents* aux = new DoubleNodeStudents();

@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListStudentCD.cpp
+ListStudentCD.h
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListStudentCD.h
+iostream
+-
+fstream
+-
+string.h
+-
+
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListStudentCD.h
+iostream
+-
+string
+-
+NodoCD.h
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/NodoCD.h
+
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/NodoCD.h
+iostream
+-
+string
+-
+
