@@ -114,35 +114,35 @@ void ListDoubleStudent :: Modify(string& DPI) {
         do {
             if (aux->getDPI() == DPI){
                 cout << "Modificara los datos del estudiante con los siguientes datos: \n";
-                cout << "Nombre: " << aux->getNombre() << " Carne: " << aux->getCarnet() << " Carrera: " << aux->getCarrera() << '\n';
+                cout <<"DPI: " << aux->getDPI() <<"Nombre: " << aux->getNombre() << " Carne: " << aux->getCarnet() << " Carrera: " << aux->getCarrera() << '\n';
 
                 //Carne
                 cout << "Carne: \n";
-                cin >> carne;
+                getline(cin>>ws, carne);
                 aux->setCarnet(carne);
                 //Nombre
                 cout << "Nombre: \n";
-                cin >> nombre;
+                getline(cin>>ws, nombre);
                 aux->setNombre(nombre);
                 //Carrera
                 cout << "Carrera: \n";
-                cin >> carrera;
+                getline(cin>>ws, carrera);
                 aux->setCarrera(carrera);
                 //Contrasenia
                 cout << "Contrasenia \n";
-                cin >> contra;
+                getline(cin>>ws, contra);
                 aux->setContrasenia(contra);
                 //Creditos
                 cout << "Creditos: \n";
-                cin >> creditos;
+                getline(cin>>ws, creditos);
                 aux->setCreditos(creditos);
                 //Edad
                 cout << "Edad: \n";
-                cin >> edad;
+                getline(cin>>ws, edad);
                 aux->setEdad(edad);
                 //Correo
                 cout << "Correro: \n";
-                cin >> correo;
+                getline(cin>>ws, correo);
                 aux->setCorreo(correo);
 
                 cout << "Los datos del estudiante " << aux->getNombre() << " con carne " << aux->getCarnet() << " han sido modificados\n";

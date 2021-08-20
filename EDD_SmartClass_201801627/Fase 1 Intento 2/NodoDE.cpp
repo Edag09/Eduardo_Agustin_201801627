@@ -11,6 +11,7 @@ using namespace std;
 DoubleNodeHomework ::DoubleNodeHomework() {
     this->sig = NULL;
     this->ant = NULL;
+    this->IdHomework = 0;
 }
 
 // Getters
@@ -50,6 +51,11 @@ string DoubleNodeHomework :: getFecha(){
 string DoubleNodeHomework :: getEstado(){
     return this->estado;
 }
+
+int DoubleNodeHomework ::getId() {
+    return this->IdHomework;
+}
+
 
 DoubleNodeHomework *DoubleNodeHomework :: getSig(){
     return this->sig;
@@ -95,6 +101,10 @@ void DoubleNodeHomework :: setFecha(string Fecha){
 
 void DoubleNodeHomework :: setEstado(string Estado){
     this->estado = Estado;
+}
+
+void DoubleNodeHomework ::setId(int Id) {
+    this->IdHomework = Id;
 }
 
 void DoubleNodeHomework :: setSig(DoubleNodeHomework *Sig){

@@ -21,6 +21,9 @@ private:
     string end_text;
     string Student[8];
     string Homeworks[9];
+    int counter;
+public:
+    DoubleNodeHomework* Matrix[5][30][9];
 public:
     void Students(string);
     void Homework(string);
@@ -28,6 +31,8 @@ public:
     int Dia(string);
     int Hora(string);
     string Date(char);
+    void DataMatrix(int, int, int);
+    void ColMajor();
 };
 
 ListDoubleStudent estudiante;
@@ -322,6 +327,8 @@ void Analyzer :: Homework(string cad) {
                 cout << "Materia: " << Homeworks[6] << '\n';
                 cout << "Fecha: "<< Homeworks[7] << '\n';
                 cout << "Estado: "<< Homeworks[8] << '\n';
+                cout << '\n';
+                DataMatrix(Mes(Homeworks[0]), Dia(Homeworks[1]), Hora(Homeworks[2]));
                 //tarea.InsertList(Homeworks[0], Homeworks[1], Homeworks[2], Homeworks[3], Homeworks[4], Homeworks[5], Homeworks[6], Homeworks[7], Homeworks[8]);
                 //Mes(Homeworks[0]);
                 //Dia(Homeworks[1]);
@@ -498,9 +505,6 @@ int Analyzer :: Hora(string cad) {
 }
 
 string Analyzer :: Date(char cad) {
-    if ((cad >= 48 && cad <=57) || (cad == 47)){
-        end_text = end_text + cad;
-        cont ++;
         if (cont == 4 && cad == 47){
             end_text =  end_text + cad;
             cont = 0;
@@ -511,11 +515,36 @@ string Analyzer :: Date(char cad) {
         }else if (cont == 2 && cad == 47 && contD == 1){
             end_text = end_text + cad;
             cont = 0;
+        }else if((cad >= 48 && cad <=57) || (cad == 47)){
+            end_text = end_text + cad;
+            cont ++;
         }else{
-            return "Sa mierda esta mala";
+            return "-1";
+        }
+    return end_text;
+}
+
+void Analyzer :: DataMatrix(int m, int d, int h){
+    DoubleNodeHomework* data = new DoubleNodeHomework();
+    data->setId(counter++);
+    data->setCarne(Homeworks[3]);
+    data->setNombre(Homeworks[4]);
+    data->setDescripcion(Homeworks[5]);
+    data->setMateria(Homeworks[6]);
+    data->setFecha(Homeworks[7]);
+    data->setEstado(Homeworks[8]);
+    Matrix[m][d-1][h] = data;
+    delete data;
+}
+
+void Analyzer :: ColMajor() {
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 30; ++j) {
+            for (int k = 0; k < 9; ++k) {
+                cout << i << Matrix[i][j][k]->getNombre() << '\n';
+            }
         }
     }
-    return end_text;
 }
 
 #endif //FASE_1_INTENTO_2_ANALIZADOR_H

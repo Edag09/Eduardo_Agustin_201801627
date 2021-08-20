@@ -22,6 +22,7 @@ private:
     string materia;
     string fecha;
     string estado;
+    int IdHomework;
     DoubleNodeHomework* sig;
     DoubleNodeHomework* ant;
 
@@ -38,6 +39,7 @@ public:
     string getMateria();
     string getFecha();
     string getEstado();
+    int getId();
     DoubleNodeHomework *getSig();
     DoubleNodeHomework *getAnt();
 
@@ -52,6 +54,7 @@ public:
     void setMateria(string Materia);
     void setFecha(string Fecha);
     void setEstado(string Estado);
+    void setId(int Id);
     void setSig(DoubleNodeHomework *Sig);
     void setAnt(DoubleNodeHomework *Ant);
 

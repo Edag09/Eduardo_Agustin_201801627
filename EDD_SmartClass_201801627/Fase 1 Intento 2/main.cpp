@@ -20,29 +20,29 @@ public:
 void Menus :: insertNewStudent(){
     string carne, dpi, nombre, carrera, contrasenia, creditos, edad, correo;
     //Carne
-    cout << "Ingresa el Carne 0: \n";
-    getline(cin, carne);
+    cout << "Ingresa el Carne: \n";
+    getline(cin>>ws, carne);
     //DPI
     cout << "Ingresa el DPI: \n";
-    getline(cin, dpi);
+    getline(cin>>ws, dpi);
     //Nombre
     cout << "Ingrese el Nombre: \n";
-    getline(cin, dpi);
+    getline(cin>>ws, dpi);
     //Carrera
     cout << "Ingresa la Carrera: \n";
-    getline(cin, nombre);
+    getline(cin>>ws, nombre);
     //Contrasenia
     cout << "Ingresa la Contrasenia: \n";
-    getline(cin, carrera);
+    getline(cin>>ws, contrasenia);
     //Creditos
     cout << "Ingresa los Creditos: \n";
-    getline(cin, creditos);
+    getline(cin>>ws, creditos);
     //Edad
     cout << "Ingresa la Edad: \n";
-    getline(cin, edad);
+    getline(cin>>ws, edad);
     //Correro
     cout << "Ingresa el Correro: \n";
-    getline(cin, correo);
+    getline(cin>>ws, correo);
     estudiante.InsertList(carne, dpi, nombre, carrera, contrasenia, creditos, edad, correo);
 }
 
@@ -155,14 +155,14 @@ void Menus :: Student(){
                 break;
             case 2:
                 cout << "Modificar Estudiante\n";
-                cout  << "Ingrese el DPI a modificar \n";
-                cin >> DPI;
+                cout  << "Ingrese el DPI del estudiante a modificar \n";
+                getline(cin>>ws, DPI);
                 estudiante.Modify(DPI);
                 break;
             case 3:
                 cout << "Eliminar Estudiante\n";
-                cout  << "Ingrese el DPI a Eliminar \n";
-                getline(cin, DPI);
+                cout  << "Ingrese el DPI del estudiante a Eliminar \n";
+                getline(cin>>ws, DPI);
                 estudiante.DeleteNode(DPI);
                 break;
             case 4:
@@ -233,7 +233,8 @@ void Menus :: menu(){
                 MenuManualEntry();
                 break;
             case 4:
-                estudiante.Show();
+                (new Analyzer())->ColMajor();
+                //estudiante.Show();
                 //estudiante.ShowGraphvizDC();
                 break;
             case 5:
