@@ -9,11 +9,9 @@ ListDoubleHomework ::ListDoubleHomework() {
     this->end = NULL;
 }
 
-void ListDoubleHomework ::InsertList(string &mes, string &dia, string &hora, string &carne, string &nombre, string &descripcion, string &materia, string &fecha, string &estado) {
+void ListDoubleHomework :: InsertList(int id, string carne, string nombre, string descripcion, string materia, string fecha, string estado) {
     DoubleNodeHomework* Tarea = new DoubleNodeHomework;
-    Tarea->setMes(mes);
-    Tarea->setDia(dia);
-    Tarea->setHora(hora);
+    Tarea->setId(id);
     Tarea->setCarne(carne);
     Tarea->setNombre(nombre);
     Tarea->setDescripcion(descripcion);
@@ -31,5 +29,22 @@ void ListDoubleHomework ::InsertList(string &mes, string &dia, string &hora, str
         Tarea->setSig(NULL);
         Tarea->setAnt(end);
         end = Tarea;
+    }
+}
+
+void ListDoubleHomework :: Show() {
+    DoubleNodeHomework* aux = new DoubleNodeHomework();
+    aux = first;
+    if (first != NULL){
+        do {
+            cout << aux->getId() << '\n';
+            cout << aux->getCarne() << '\n';
+            cout << aux->getNombre() << '\n';
+            cout << aux->getFecha() << '\n';
+            cout << aux->getEstado() << '\n';
+            aux = aux->getSig();
+        } while (aux != NULL);
+    }else{
+        cout << "Error";
     }
 }

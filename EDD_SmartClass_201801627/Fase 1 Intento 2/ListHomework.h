@@ -19,7 +19,7 @@ private:
 public:
     ListDoubleHomework();
 
-    void InsertList(string& mes, string& dia, string& hora, string& carne, string& nombre, string& descripcion, string& materia, string& fecha, string& estado);
+    void InsertList(int id, string carne, string nombre, string descripcion, string materia, string fecha, string estado);
     void Modify();
     void Show();
     void DeleteNode();

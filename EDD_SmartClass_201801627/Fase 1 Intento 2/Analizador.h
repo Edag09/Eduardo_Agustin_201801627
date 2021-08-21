@@ -23,8 +23,6 @@ private:
     string Homeworks[9];
     int counter;
 public:
-    DoubleNodeHomework* Matrix[5][30][9];
-public:
     void Students(string);
     void Homework(string);
     int Mes(string);
@@ -33,11 +31,14 @@ public:
     string Date(char);
     void DataMatrix(int, int, int);
     void ColMajor();
+    void Llenado();
 };
 
+// VARIABLES QUE SE VAN A USAR PARA PASAR LA INFORMACION
 ListDoubleStudent estudiante;
 ListDoubleHomework tarea;
-
+DoubleNodeHomework* Matrix[5][30][9];
+//------------------------------------------------------
 
 void  Analyzer :: Students(string cad) {
     status = 0;
@@ -317,7 +318,7 @@ void Analyzer :: Homework(string cad) {
                 status = 1;
                 cont = 0;
                 end_text = "";
-                cout << "ID: "<< sizeTarea << '\n';
+                /*cout << "ID: "<< sizeTarea << '\n';
                 cout << "Mes: " << Homeworks[0] << '\n';
                 cout << "Dia: "<< Homeworks[1] << '\n';
                 cout << "Hora: "<< Homeworks[2] << '\n';
@@ -327,9 +328,9 @@ void Analyzer :: Homework(string cad) {
                 cout << "Materia: " << Homeworks[6] << '\n';
                 cout << "Fecha: "<< Homeworks[7] << '\n';
                 cout << "Estado: "<< Homeworks[8] << '\n';
-                cout << '\n';
+                cout << '\n';*/
                 DataMatrix(Mes(Homeworks[0]), Dia(Homeworks[1]), Hora(Homeworks[2]));
-                //tarea.InsertList(Homeworks[0], Homeworks[1], Homeworks[2], Homeworks[3], Homeworks[4], Homeworks[5], Homeworks[6], Homeworks[7], Homeworks[8]);
+                Llenado();
                 //Mes(Homeworks[0]);
                 //Dia(Homeworks[1]);
                 //Hora(Homeworks[2]);
@@ -361,9 +362,8 @@ int Analyzer :: Mes(string cad) {
             return 4;
             break;
         default:
-            cout << "Bueno, sos pendejo verdad ingresaste algo mal :)";
+            cout << "Error\n";
             return -1;
-            break;
     }
 }
 
@@ -461,9 +461,8 @@ int Analyzer :: Dia(string cad) {
             return 30;
             break;
         default:
-            cout << "Bueno, sos pendejo verdad ingresaste algo mal :)";
+            cout << "Error\n";
             return -1;
-            break;
     }
 }
 
@@ -498,9 +497,8 @@ int Analyzer :: Hora(string cad) {
             return 8;
             break;
         default:
-            cout << "Bueno, sos pendejo verdad ingresaste algo mal :)";
+            cout << "Error\n";
             return -1;
-            break;
     }
 }
 
@@ -533,18 +531,40 @@ void Analyzer :: DataMatrix(int m, int d, int h){
     data->setMateria(Homeworks[6]);
     data->setFecha(Homeworks[7]);
     data->setEstado(Homeworks[8]);
-    Matrix[m][d-1][h] = data;
-    delete data;
+    if ((m == -1) || (d == -1) || (h == -1)){
+        //ListError
+        cout << "Error";
+    }else{
+        Matrix[m][d-1][h] = data;
+    }
 }
 
-void Analyzer :: ColMajor() {
+void Analyzer :: Llenado() {
+    DoubleNodeHomework* aux = new DoubleNodeHomework();
+    aux->setCarne(to_string(-1));
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 30; ++j) {
             for (int k = 0; k < 9; ++k) {
-                cout << i << Matrix[i][j][k]->getNombre() << '\n';
+                if (Matrix[i][j][k] == NULL){
+                    Matrix[i][j][k] = aux;
+                }
             }
         }
     }
 }
+
+void Analyzer :: ColMajor() {
+    int IDT;
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 30; ++j) {
+            for (int k = 0; k < 9; ++k) {
+                IDT = i+5*(j+30*k);
+                tarea.InsertList(IDT, Matrix[i][j][k]->getCarne(), Matrix[i][j][k]->getNombre(), Matrix[i][j][k]->getDescripcion(), Matrix[i][j][k]->getMateria(), Matrix[i][j][k]->getFecha(), Matrix[i][j][k]->getEstado());
+            }
+        }
+    }
+tarea.Show();
+}
+
 
 #endif //FASE_1_INTENTO_2_ANALIZADOR_H

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-DoubleNodeHomework ::DoubleNodeHomework() {
+DoubleNodeHomework :: DoubleNodeHomework() {
     this->sig = NULL;
     this->ant = NULL;
     this->IdHomework = 0;
