@@ -578,7 +578,7 @@ void Analyzer :: ColMajor() {
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 30; ++j) {
             for (int k = 0; k < 9; ++k) {
-                IDT = i+5*(j+30*k);
+                IDT = j+30*(k+9*i);
                 tarea.InsertList(IDT, Matrix[i][j][k]->getCarne(), Matrix[i][j][k]->getNombre(), Matrix[i][j][k]->getDescripcion(), Matrix[i][j][k]->getMateria(), Matrix[i][j][k]->getFecha(), Matrix[i][j][k]->getEstado());
             }
         }

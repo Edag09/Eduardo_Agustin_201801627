@@ -141,7 +141,7 @@ void ListDoubleHomework :: DeleteNode(int id) {
 void ListDoubleHomework :: Insert(int mes, int dia, int hora, string carne, string nombre, string descripcion, string materia, string fecha, string estado) {
     DoubleNodeHomework* aux = new DoubleNodeHomework();
     int IDCol;
-    IDCol = Mes(mes)+5*((Dia(dia)-1)+30*Hora(hora));
+    IDCol = (Dia(dia)-1)+30*(Hora(hora)+9*Mes(mes));
     find = false;
     aux = first;
     if (first != NULL){
@@ -322,8 +322,7 @@ int ListDoubleHomework :: Hora(int h) {
 void ListDoubleHomework :: SearchNode(int mes, int dia, int hora) {
     DoubleNodeHomework* aux = new DoubleNodeHomework();
     int IDCol;
-    IDCol = Mes(mes)+5*((Dia(dia)-1
-            )+30*Hora(hora));
+    IDCol = (Dia(dia)-1)+30*(Hora(hora)+9*Mes(mes));
     find = false;
     aux = first;
     if (first != NULL){
