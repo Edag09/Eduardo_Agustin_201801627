@@ -19,7 +19,7 @@ public:
 public:
     ListDoubleStudent();
 
-    void InsertList(string& carnet, string& DPI, string& nombre, string& carrera, string& contrasenia, string& creditos, string& edad, string& correo);
+    void InsertList(string carnet, string DPI, string nombre, string carrera, string contrasenia, string creditos, string edad, string correo);
     void Modify(string&);
     void Show();
     void ShowGraphvizDC();

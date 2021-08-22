@@ -15,7 +15,7 @@ ListDoubleStudent :: ListDoubleStudent() {
     this->end = NULL;
 }
 
-void ListDoubleStudent :: InsertList(string& carnet, string& DPI, string& nombre, string& carrera, string& contrasenia, string& creditos, string& edad, string& correo) {
+void ListDoubleStudent :: InsertList(string carnet, string DPI, string nombre, string carrera, string contrasenia, string creditos, string edad, string correo) {
     DoubleNodeStudents* nuevoStudent = new DoubleNodeStudents();
     nuevoStudent->setCarnet(carnet);
     nuevoStudent->setDPI(DPI);
@@ -38,7 +38,6 @@ void ListDoubleStudent :: InsertList(string& carnet, string& DPI, string& nombre
         end = nuevoStudent;
         first->setAnt(end);
     }
-    cout << "Insertado\n";
 }
 
 void ListDoubleStudent ::Show() {
@@ -68,7 +67,7 @@ void ListDoubleStudent ::ShowGraphvizDC() {
     string pointer = "";
     int counter = 1;
     string graph = "digraph List {\nrankdir=LR;\nnode [shape = circle, color=black , style=filled, fillcolor=gray93];\n";
-    while (aux->getSig() != first){
+    do{
         data += "Node" + to_string(counter) + "[label=\"" + aux->getNombre() +"\"];\n";
         if (aux != first){
             pointer += "Node" + to_string(counter-1) + "->Node" + to_string(counter) + ";\n";
@@ -76,9 +75,10 @@ void ListDoubleStudent ::ShowGraphvizDC() {
         }
         counter ++;
         aux = aux->getSig();
-    }
+    }while(aux != first);
     pointer += "Node" + to_string(counter-1) + "->Node1" + ";\n";
     pointer += "Node1->Node" + to_string(counter-1) + ";\n";
+
     graph += data;
     graph += pointer;
     graph += "\n}";
@@ -100,8 +100,6 @@ void ListDoubleStudent ::ShowGraphvizDC() {
     }catch (exception e){
         cout << "Nel no se pudo :)";
     }
-
-    delete aux;
 }
 
 void ListDoubleStudent :: Modify(string& DPI) {
@@ -195,3 +193,4 @@ void ListDoubleStudent :: DeleteNode(string& DPI) {
     }
 
 }
+

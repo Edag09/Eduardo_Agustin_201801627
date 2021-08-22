@@ -15,15 +15,21 @@ class ListDoubleHomework{
 private:
     DoubleNodeHomework *first;
     DoubleNodeHomework *end;
+public:
+    bool find;
 
 public:
     ListDoubleHomework();
 
     void InsertList(int id, string carne, string nombre, string descripcion, string materia, string fecha, string estado);
-    void Modify();
+    void Modify(int);
     void Show();
-    void DeleteNode();
-    void Search(string& carne);
+    void DeleteNode(int);
+    void Insert(int mes, int dia, int hora, string carne, string nombre, string descripcion, string materia, string fecha, string estado);
+    int Mes(int);
+    int Dia(int);
+    int Hora(int);
+    void SearchNode(int mes, int dia, int hora);
 };
 
 #endif //FASE_1_INTENTO_2_LISTHOMEWORK_H

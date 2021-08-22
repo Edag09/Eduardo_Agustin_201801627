@@ -6,25 +6,15 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/Analizador.h
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListStudentCD.cpp
 ListStudentCD.h
 C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListStudentCD.h
-ListHomework.h
-C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListHomework.h
-string
--
-
-C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListHomework.cpp
-ListHomework.h
-C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListHomework.h
-
-C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListHomework.h
 iostream
 -
-string
+fstream
 -
-NodoDE.h
-C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/NodoDE.h
+string.h
+-
 
 C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListStudentCD.h
 iostream
@@ -39,24 +29,4 @@ iostream
 -
 string
 -
-
-C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/NodoDE.h
-iostream
--
-string
--
-
-C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/main.cpp
-iostream
--
-fstream
--
-string
--
-locale.h
--
-windows.h
--
-Analizador.h
-C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/Analizador.h
 

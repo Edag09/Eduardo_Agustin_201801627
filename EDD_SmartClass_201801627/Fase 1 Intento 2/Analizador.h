@@ -341,7 +341,7 @@ void Analyzer :: Homework(string cad) {
             }
         }
     }
-
+    ColMajor();
 }
 
 int Analyzer :: Mes(string cad) {
@@ -368,7 +368,6 @@ int Analyzer :: Mes(string cad) {
 }
 
 int Analyzer :: Dia(string cad) {
-    cout << cad << '\n';
     switch (atoi(cad.c_str())) {
         case 1:
             return 1;
@@ -467,7 +466,6 @@ int Analyzer :: Dia(string cad) {
 }
 
 int Analyzer :: Hora(string cad) {
-    cout << cad << '\n';
     switch (atoi(cad.c_str())) {
         case 8:
             return 0;
@@ -563,7 +561,7 @@ void Analyzer :: ColMajor() {
             }
         }
     }
-tarea.Show();
+    tarea.Show();
 }
 
 

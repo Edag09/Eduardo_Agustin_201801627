@@ -15,34 +15,140 @@ public:
     void MenuManualEntry();
     void menu();
     void insertNewStudent();
+    void SubMenuRepo();
+    void InsertNewHomework();
+    void subsubRepo();
 };
+
+void Menus :: subsubRepo() {
+    int opc, mes, dia, hora;
+    bool status = true;
+    do {
+        cout << "\n\t\t\tMenu Reportes Smart Class\n";
+        cout << "\t\t\t--------------------------\n";
+        cout << "1- Grafica\n";
+        cout << "2- ID Tarea\n";
+        cout << "3- Salir\n";
+        cout << "Ingresa una opcion:\t";
+        cin >> opc;
+
+        switch (opc) {
+            case 1:
+                cout << "Ver en Grafica\n";
+                break;
+            case 2:
+                cout << "Buscar ID de la tarea\n";
+                cout << "Mes: \n";
+                cin >> mes;
+                cout << "Dia: \n";
+                cin >> dia;
+                cout << "Hora: \n";
+                cin >> hora;
+                tarea.SearchNode(mes, dia, hora);
+                break;
+            case 3:
+                cout << "Regresar\n";
+                status = false;
+                break;
+            default:
+                cout << "Tu opcion es incorrecta :)\n";
+                break;
+        }
+    } while (status);
+}
+
+void Menus :: InsertNewHomework() {
+    int mes, dia, hora;
+    string carne, nombre, descripcion, materia, fecha, estado;
+    //Para insertar con la formula
+    cout << "Mes: \n";
+    cin >> mes;
+    cout << "Dia: \n";
+    cin>> dia;
+    cout << "Hora: \n";
+    cin >> hora;
+
+    //Datos a ingresar
+    cout << "Carne: \n";
+    getline(cin>>ws, carne);
+
+    cout << "Nombre: \n";
+    getline(cin>>ws, nombre);
+
+    cout << "Descripcion: \n";
+    getline(cin>>ws, descripcion);
+
+    cout << "Materia: \n";
+    getline(cin>>ws, materia);
+
+    cout << "Fecha: \n";
+    getline(cin>>ws, fecha);
+
+    cout << "Estados: \n";
+    getline(cin>>ws, estado);
+
+    tarea.Insert(mes, dia, hora, carne, nombre, descripcion, materia, fecha, estado);
+}
+
+void Menus :: SubMenuRepo() {
+    int opc;
+    bool status = true;
+    do {
+        cout << "\n\t\t\tMenu Reportes Smart Class\n";
+        cout << "\t\t\t--------------------------\n";
+        cout << "1- Estudiantes\n";
+        cout << "2- Tareas\n";
+        cout << "3- Salir\n";
+        cout << "Ingresa una opcion:\t";
+        cin >> opc;
+
+        switch (opc) {
+            case 1:
+                cout << "Reporte Estudiante\n";
+                //estudiante.Show();
+                estudiante.ShowGraphvizDC();
+                break;
+            case 2:
+                cout << "Reporte Tareas\n";
+                subsubRepo();
+                break;
+            case 3:
+                cout << "Regresar\n";
+                status = false;
+                break;
+            default:
+                cout << "Tu opcion es incorrecta :)\n";
+                break;
+        }
+    } while (status);
+}
 
 void Menus :: insertNewStudent(){
     string carne, dpi, nombre, carrera, contrasenia, creditos, edad, correo;
     //Carne
     cout << "Ingresa el Carne: \n";
-    getline(cin>>ws, carne);
+    cin>>carne;
     //DPI
     cout << "Ingresa el DPI: \n";
-    getline(cin>>ws, dpi);
+    cin>>dpi;
     //Nombre
     cout << "Ingrese el Nombre: \n";
-    getline(cin>>ws, dpi);
+    getline(cin>>ws, nombre);
     //Carrera
     cout << "Ingresa la Carrera: \n";
-    getline(cin>>ws, nombre);
+    getline(cin>>ws, carrera);
     //Contrasenia
     cout << "Ingresa la Contrasenia: \n";
     getline(cin>>ws, contrasenia);
     //Creditos
     cout << "Ingresa los Creditos: \n";
-    getline(cin>>ws, creditos);
+    cin>>creditos;
     //Edad
     cout << "Ingresa la Edad: \n";
-    getline(cin>>ws, edad);
+    cin>>edad;
     //Correro
     cout << "Ingresa el Correro: \n";
-    getline(cin>>ws, correo);
+    cin>>correo;
     estudiante.InsertList(carne, dpi, nombre, carrera, contrasenia, creditos, edad, correo);
 }
 
@@ -102,6 +208,7 @@ void Menus :: UpdateData(){
 
 void Menus :: Homework(){
     int opc;
+    int car;
     bool status = true;
     do {
         cout << "\n\t\t\tMenu Tareas Smart Class\n";
@@ -115,13 +222,20 @@ void Menus :: Homework(){
 
         switch (opc) {
             case 1:
-                cout << "Ingresar Estudiante\n";
+                cout << "Ingresar Tarea\n";
+                InsertNewHomework();
                 break;
             case 2:
-                cout << "Modificar Estudiante\n";
+                cout << "Modificar Tarea\n";
+                cout << "Ingresar el ID de la tarea a Modificar\n";
+                cin>>car;
+                tarea.Modify(car);
                 break;
             case 3:
-                cout << "Eliminar Estudiante\n";
+                cout << "Eliminar Tarea\n";
+                cout << "Ingresar el ID de la tarea a Eliminar\n";
+                cin>>car;
+                tarea.DeleteNode(car);
                 break;
             case 4:
                 status = false;
@@ -202,7 +316,7 @@ void Menus :: MenuManualEntry(){
                         status = false;
                         break;
                         default:
-                            cout << "Tu opcion es incorrecta animal :)\n";
+                            cout << "Tu opcion es incorrecta :)\n";
                             break;
         }
     } while (status);
@@ -233,9 +347,8 @@ void Menus :: menu(){
                 MenuManualEntry();
                 break;
             case 4:
-                (new Analyzer())->ColMajor();
-                //estudiante.Show();
-                //estudiante.ShowGraphvizDC();
+                estudiante.ShowGraphvizDC();
+                //SubMenuRepo();
                 break;
             case 5:
                 cout << "Gus bai";
