@@ -24,7 +24,7 @@ public:
     void Show();
     void ShowGraphvizDC();
     void DeleteNode(string&);
-    void Search(string&);
+    void Search(string);
 };
 
 #endif //FASE_1_INTENTO_2_LISTSTUDENTCD_H

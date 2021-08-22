@@ -346,3 +346,48 @@ void ListDoubleHomework :: SearchNode(int mes, int dia, int hora) {
         cout << "No se han encontrado datos ingresados";
     }
 }
+
+void ListDoubleHomework :: InsertError(string er, string des) {
+    int id = 0;
+    DoubleNodeHomework* auxErr = new DoubleNodeHomework();
+    auxErr->setError(er);
+    auxErr->setErrorDesc(des);
+
+    if (IsEmpty()){
+        first = auxErr;
+        first->setSig(NULL);
+        first->setAnt(NULL);
+        end = first;
+        auxErr->setIdError(id);
+        id ++;
+    }else{
+        end->setSig(auxErr);
+        auxErr->setSig(NULL);
+        auxErr->setAnt(end);
+        end = auxErr;
+        auxErr->setIdError(id);
+        id ++;
+    }
+}
+
+bool ListDoubleHomework :: IsEmpty() {
+    if (first == NULL){
+        return true;
+    }
+    return false;
+}
+
+void ListDoubleHomework :: ShowError() {
+    DoubleNodeHomework* aux = new DoubleNodeHomework();
+    aux = first;
+    if (first != NULL){
+        do {
+            cout << "ID: " << aux->getIdError() << '\n';
+            cout <<"Tipo: " << aux->getError() << '\n';
+            cout << "Descripcion: " << aux->getErrorDesc() << '\n';
+            aux = aux->getSig();
+        } while (aux != NULL);
+    }else{
+        cout << "Error";
+    }
+}

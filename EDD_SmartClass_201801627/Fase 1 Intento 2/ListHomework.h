@@ -30,6 +30,9 @@ public:
     int Dia(int);
     int Hora(int);
     void SearchNode(int mes, int dia, int hora);
+    void InsertError(string Tipo, string DescripcionError);
+    bool IsEmpty();
+    void ShowError();
 };
 
 #endif //FASE_1_INTENTO_2_LISTHOMEWORK_H

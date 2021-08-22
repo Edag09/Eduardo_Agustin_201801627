@@ -56,6 +56,17 @@ int DoubleNodeHomework ::getId() {
     return this->IdHomework;
 }
 
+int DoubleNodeHomework ::getIdError() {
+    return this->IdError;
+}
+
+string  DoubleNodeHomework ::getError() {
+    return this->error;
+}
+
+string  DoubleNodeHomework ::getErrorDesc() {
+    return this->errorDesc;
+}
 
 DoubleNodeHomework *DoubleNodeHomework :: getSig(){
     return this->sig;
@@ -105,6 +116,18 @@ void DoubleNodeHomework :: setEstado(string Estado){
 
 void DoubleNodeHomework ::setId(int Id) {
     this->IdHomework = Id;
+}
+
+void DoubleNodeHomework ::setIdError(int IdError) {
+    this->IdError = IdError;
+}
+
+void DoubleNodeHomework ::setError(string Error) {
+    this->error = Error;
+}
+
+void DoubleNodeHomework ::setErrorDesc(string ErrorDesc) {
+    this->errorDesc = ErrorDesc;
 }
 
 void DoubleNodeHomework :: setSig(DoubleNodeHomework *Sig){

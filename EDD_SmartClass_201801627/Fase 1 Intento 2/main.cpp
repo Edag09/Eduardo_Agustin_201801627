@@ -98,7 +98,8 @@ void Menus :: SubMenuRepo() {
         cout << "\t\t\t--------------------------\n";
         cout << "1- Estudiantes\n";
         cout << "2- Tareas\n";
-        cout << "3- Salir\n";
+        cout << "3- Errores\n";
+        cout << "4- Salir\n";
         cout << "Ingresa una opcion:\t";
         cin >> opc;
 
@@ -113,6 +114,9 @@ void Menus :: SubMenuRepo() {
                 subsubRepo();
                 break;
             case 3:
+                cout << "Reporte Errores\n";
+                tarea.ShowError();
+            case 4:
                 cout << "Regresar\n";
                 status = false;
                 break;
@@ -347,8 +351,7 @@ void Menus :: menu(){
                 MenuManualEntry();
                 break;
             case 4:
-                estudiante.ShowGraphvizDC();
-                //SubMenuRepo();
+                SubMenuRepo();
                 break;
             case 5:
                 cout << "Gus bai";

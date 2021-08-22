@@ -13,6 +13,7 @@ using  namespace std;
 
 class DoubleNodeHomework{
 private:
+    // Tareas
     string dia;
     string hora;
     string mes;
@@ -23,6 +24,10 @@ private:
     string fecha;
     string estado;
     int IdHomework;
+    // Errores
+    int IdError;
+    string error;
+    string errorDesc;
     DoubleNodeHomework* sig;
     DoubleNodeHomework* ant;
 
@@ -40,6 +45,9 @@ public:
     string getFecha();
     string getEstado();
     int getId();
+    int getIdError();
+    string getError();
+    string getErrorDesc();
     DoubleNodeHomework *getSig();
     DoubleNodeHomework *getAnt();
 
@@ -55,6 +63,9 @@ public:
     void setFecha(string Fecha);
     void setEstado(string Estado);
     void setId(int Id);
+    void setIdError(int IdError);
+    void setError(string Error);
+    void setErrorDesc(string ErrorDesc);
     void setSig(DoubleNodeHomework *Sig);
     void setAnt(DoubleNodeHomework *Ant);
 

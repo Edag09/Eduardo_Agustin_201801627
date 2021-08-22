@@ -44,27 +44,31 @@ void  Analyzer :: Students(string cad) {
     status = 0;
     cont = 0;
     end_text = "";
+    string Type = "Estudiante";
+    string Desc;
 
     for (int i = 0; i < cad.size(); ++i) {
         character = cad[i];
         if (status == 0 && character == 10){
             status = 1;
         }else if (status == 1){
-            if (character >= 48 && character <=57){ //Digit ID
+            if (character >= 48 && character <=57){ // Ingreso de Carnet
                 cont ++;
                 if (cont<=9){
                     end_text = end_text += cad[i];
                 }else{
+                    //Error
+                    Desc = "Carnet no valido " + end_text;
+                    tarea.InsertError(Type, Desc);
                     status = 0;
                     end_text = "";
+                    cont = 0;
                 }
             }else if(character == 44){ //Coma
                 cont = 0;
                 Student[0] = end_text;
-                //cout << end_text << '\n';
                 status = 2;
                 end_text = "";
-
             }
         }else if (status == 2){ //Digit DPI
             if (character >= 48 && character <=57){
@@ -72,13 +76,15 @@ void  Analyzer :: Students(string cad) {
                 if (cont <=13){
                     end_text = end_text += cad[i];
                 }else{
+                    //Error
+                    Desc = "DPI invalido";
+                    tarea.InsertError(Type, Desc);
                     status = 0;
                     end_text = "";
                     cont = 0;
                 }
             }else if (character == 44){
                 Student[1] = end_text;
-                //cout << end_text << '\n';
                 cont = 0;
                 status = 3;
                 end_text = "";
@@ -88,88 +94,94 @@ void  Analyzer :: Students(string cad) {
                 status = 0;
             }
         }else if (status == 3){
-            if ((character>=97 && character<=122) || (character>=65 && character<=90) || (character==32)){ //text name
+            if ((character>=97 && character<=122) || (character>=65 && character<=90) || (character==32)){ // Nombre
                 end_text = end_text += cad[i];
             }else if(character == 44){
                 Student[2] = end_text;
-                //cout << end_text << '\n';
                 end_text = "";
                 cont =0;
                 status = 4;
             }else{
+                Desc = "Nombre no aceptado";
+                tarea.InsertError(Type, Desc);
                 end_text = "";
                 cont = 0;
                 status = 0;
             }
         }else if(status == 4){
-            if ((character>=97 && character<=122) || (character>=65 && character<=90) || (character==32)){ //text
+            if ((character>=97 && character<=122) || (character>=65 && character<=90) || (character==32)){ // Carrera
                 end_text = end_text += cad[i];
             }else if(character == 44){
                 Student[3] = end_text;
-                //cout << end_text << '\n';
                 end_text = "";
                 cont =0;
                 status = 5;
             }else{
+                Desc = "Tu verdadera vocacion es ser Industrial compa :')";
+                tarea.InsertError(Type, Desc);
                 end_text = "";
                 cont = 0;
                 status = 0;
             }
         }else if(status == 5){
-            if((character>=97 && character<=122) || (character>=65 && character<=90) || (character >= 48 && character <=57) || (character == 45) || (character == 46) || (character == 95) || (character == 32)){
+            if((character>=97 && character<=122) || (character>=65 && character<=90) || (character >= 48 && character <=57) || (character == 45) || (character == 46) || (character == 95) || (character == 32)){  //Contrasenia
                 end_text = end_text += cad[i];
             }else if(character == 44){
                 Student[4] = end_text;
-                //cout << end_text << '\n';
                 end_text = "";
                 cont = 0;
                 status = 6;
             }else{
+                Desc = "Contrasenia invalida";
+                tarea.InsertError(Type, Desc);
                 end_text = "";
                 cont = 0;
                 status = 0;
             }
         }else if (status == 6){
-            if (character >= 48 && character <=57){//digit
+            if (character >= 48 && character <=57){//Creditos
                 end_text = end_text += cad[i];
             }else if (character == 44){
                 Student[5] = end_text;
-                //cout << end_text << '\n';
                 end_text = "";
                 cont = 0;
                 status = 7;
             }else{
+                Desc = "Te crees un cerebrito o khe?";
+                tarea.InsertError(Type, Desc);
                 end_text = "";
                 cont = 0;
                 status = 0;
             }
-        }else if (status == 7){
+        }else if (status == 7){ //Edad
             if (character >= 48 && character<=57){
                 cont ++;
                 if (cont <= 2){
                     end_text = end_text += cad[i];
                 }else{
+                    Desc = "Edad invalida";
+                    tarea.InsertError(Type, Desc);
                     end_text="";
                     cont = 0;
                     status = 0;
                 }
-            } else if(character == 44){
+            } else if(character == 44 && cont == 2){
                 Student[6] = end_text;
-                //cout << end_text << '\n';
                 end_text = "";
                 cont =0;
                 status = 8;
             }else{
+                Desc = "Error de archivo";
+                tarea.InsertError(Type, Desc);
                 end_text = "";
                 cont = 0;
                 status = 0;
             }
-        }else if (status == 8){
+        }else if (status == 8){ // Correo
             if((character>=97 && character<=122) || (character>=65 && character<=90) || (character >= 48 && character <=57) || (character == 45) || (character == 46) || (character == 95) || (character == 64)){
                 end_text = end_text += cad[i];
             }else if(character == 10){
                 Student[7] = end_text;
-                //cout << end_text << '\n';
                 end_text = "";
                 cont =0;
                 status = 1;
@@ -183,6 +195,8 @@ void  Analyzer :: Students(string cad) {
                 cout << Student[7] << '\n';
                 estudiante.InsertList(Student[0], Student[1], Student[2], Student[3], Student[4], Student[5], Student[6], Student[7]);
             }else{
+                Desc = "Correo invalido";
+                tarea.InsertError(Type, Desc);
                 status = 0;
                 end_text = "";
                 cont=0;
@@ -197,6 +211,8 @@ void Analyzer :: Homework(string cad) {
     cont = 0;
     sizeTarea = 0;
     end_text = "";
+    string Type = "Tareas";
+    string Desc;
 
     for (int i = 0; i < cad.size(); i++) {
         character = cad[i];
@@ -247,6 +263,8 @@ void Analyzer :: Homework(string cad) {
                 if (cont<=9){
                     end_text = end_text += cad[i];
                 }else{
+                    Desc = "Carne Invalido";
+                    tarea.InsertError(Type, Desc);
                     status = 0;
                     end_text = "";
                 }
@@ -254,6 +272,11 @@ void Analyzer :: Homework(string cad) {
                 Homeworks[3] = end_text;
                 cont = 0;
                 status = 5;
+                end_text = "";
+            }else{
+                Desc = "Error de arcihvo";
+                tarea.InsertError(Type, Desc);
+                status = 0;
                 end_text = "";
             }
         }else if (status == 5){ // Nombre
@@ -265,6 +288,8 @@ void Analyzer :: Homework(string cad) {
                 cont = 0;
                 end_text = "";
             }else{
+                Desc = "Nombre Incorrecto";
+                tarea.InsertError(Type, Desc);
                 status = 0;
                 end_text = "";
                 cont = 0;
@@ -278,6 +303,8 @@ void Analyzer :: Homework(string cad) {
                 cont = 0;
                 end_text = "";
             }else{
+                Desc = "Ni describir podes tu tarea :)";
+                tarea.InsertError(Type, Desc);
                 status = 0;
                 end_text = "";
                 cont = 0;
@@ -291,6 +318,8 @@ void Analyzer :: Homework(string cad) {
                 cont = 0;
                 end_text = "";
             }else{
+                Desc = "Compa en que momento saco esa clase";
+                tarea.InsertError(Type, Desc);
                 status = 0;
                 end_text = "";
                 cont = 0;
@@ -298,7 +327,6 @@ void Analyzer :: Homework(string cad) {
         }else if (status == 8){ //Fecha
             if ((character >= 48 && character <=57) || (character == 47)){
                 end_text = Date(cad[i]);
-                //end_text = end_text + cad[i];
             }else if (character == 44){
                 Homeworks[7] = end_text;
                 status = 9;
@@ -318,23 +346,11 @@ void Analyzer :: Homework(string cad) {
                 status = 1;
                 cont = 0;
                 end_text = "";
-                /*cout << "ID: "<< sizeTarea << '\n';
-                cout << "Mes: " << Homeworks[0] << '\n';
-                cout << "Dia: "<< Homeworks[1] << '\n';
-                cout << "Hora: "<< Homeworks[2] << '\n';
-                cout << "Carne: "<< Homeworks[3] << '\n';
-                cout << "Nombre: "<< Homeworks[4] << '\n';
-                cout << "Descripcion: " << Homeworks[5] << '\n';
-                cout << "Materia: " << Homeworks[6] << '\n';
-                cout << "Fecha: "<< Homeworks[7] << '\n';
-                cout << "Estado: "<< Homeworks[8] << '\n';
-                cout << '\n';*/
                 DataMatrix(Mes(Homeworks[0]), Dia(Homeworks[1]), Hora(Homeworks[2]));
                 Llenado();
-                //Mes(Homeworks[0]);
-                //Dia(Homeworks[1]);
-                //Hora(Homeworks[2]);
             }else{
+                Desc = "Ya ni te esforces en entregarla mejor";
+                tarea.InsertError(Type, Desc);
                 status = 0;
                 end_text = "";
                 cont = 0;
@@ -501,6 +517,8 @@ int Analyzer :: Hora(string cad) {
 }
 
 string Analyzer :: Date(char cad) {
+    string Type = "Tareas";
+    string Desc;
         if (cont == 4 && cad == 47){
             end_text =  end_text + cad;
             cont = 0;
@@ -515,12 +533,16 @@ string Analyzer :: Date(char cad) {
             end_text = end_text + cad;
             cont ++;
         }else{
+            Desc = "Compa sea tantito Coherente porfa";
+            tarea.InsertError(Type, Desc);
             return "-1";
         }
     return end_text;
 }
 
 void Analyzer :: DataMatrix(int m, int d, int h){
+    string Type = "Tareas";
+    string Desc;
     DoubleNodeHomework* data = new DoubleNodeHomework();
     data->setId(counter++);
     data->setCarne(Homeworks[3]);
@@ -530,8 +552,8 @@ void Analyzer :: DataMatrix(int m, int d, int h){
     data->setFecha(Homeworks[7]);
     data->setEstado(Homeworks[8]);
     if ((m == -1) || (d == -1) || (h == -1)){
-        //ListError
-        cout << "Error";
+        Desc = "La tarea fue asignada en un tiempo fuera de lo permitido";
+        tarea.InsertError(Type, Desc);
     }else{
         Matrix[m][d-1][h] = data;
     }

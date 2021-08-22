@@ -194,3 +194,7 @@ void ListDoubleStudent :: DeleteNode(string& DPI) {
 
 }
 
+void ListDoubleStudent :: Search(string cad) {
+
+}
+
