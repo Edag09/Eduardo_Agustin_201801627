@@ -1,7 +1,8 @@
 //
 // Created by renea on 18/08/2021.
 //
-
+#include <iostream>
+#include <fstream>
 #include "ListHomework.h"
 
 ListDoubleHomework ::ListDoubleHomework() {
@@ -346,8 +347,9 @@ void ListDoubleHomework :: SearchNode(int mes, int dia, int hora) {
     }
 }
 
+int error = 0;
+
 void ListDoubleHomework :: InsertError(string er, string des) {
-    int id = 0;
     DoubleNodeHomework* auxErr = new DoubleNodeHomework();
     auxErr->setError(er);
     auxErr->setErrorDesc(des);
@@ -357,15 +359,15 @@ void ListDoubleHomework :: InsertError(string er, string des) {
         first->setSig(NULL);
         first->setAnt(NULL);
         end = first;
-        auxErr->setIdError(id);
-        id ++;
+        auxErr->setIdError(error);
+        error++;
     }else{
         end->setSig(auxErr);
         auxErr->setSig(NULL);
         auxErr->setAnt(end);
         end = auxErr;
-        auxErr->setIdError(id);
-        id ++;
+        auxErr->setIdError(error);
+        error++;
     }
 }
 
@@ -388,5 +390,100 @@ void ListDoubleHomework :: ShowError() {
         } while (aux != NULL);
     }else{
         cout << "Error";
+    }
+}
+
+void ListDoubleHomework :: ShowErrorGraphviz() {
+    DoubleNodeHomework* aux = new DoubleNodeHomework();
+    aux = first;
+    string data = "";
+    string pointer = "";
+    int counter = 1;
+    string graph = "digraph List {\nrankdir=LR;\nnode [shape = circle, color=black , style=filled, fillcolor=gray93];\n";
+    do {
+        if (aux->getError() == " " || aux->getErrorDesc() == " " || aux->getCarne() == "-1"){
+            aux->setError(to_string(-1));
+            aux->setErrorDesc(to_string(-1));
+            cout << "Error: " << aux->getError() << "\nDescripcion: " << aux->getErrorDesc() << '\n';
+        }else{
+            data += "Node"+ to_string(counter) + "[label=\"" + aux->getError() + "\n" + aux->getErrorDesc() + "\"];\n";
+            if (aux->getAnt() != NULL){
+                pointer += "Node" + to_string(counter-1) + "->Node" + to_string(counter) + ";\n";
+                pointer += "Node" + to_string(counter) + "->Node" + to_string(counter-1) + ";\n";
+            }
+            counter++;
+        }
+        aux = aux->getSig();
+    } while (aux != NULL);
+
+    graph += data;
+    graph += pointer;
+    graph += "\n}";
+
+
+    try {
+        string path = "Errores";
+
+        ofstream file;
+        file.open(path + "Graph.dot",std::ios::out);
+
+        if(file.fail()){
+            exit(1);
+        }
+
+        file<<graph;
+        file.close();
+        string command = "dot -Tpng " + path + "Graph.dot -o  " + path + "Graph.png";
+        system(command.c_str());
+    }catch (exception e){
+        cout << "Nel no se pudo :)";
+    }
+
+}
+
+void ListDoubleHomework :: ShowHomeworks() {
+    DoubleNodeHomework* aux = new DoubleNodeHomework();
+    aux = first;
+    string data = "";
+    string pointer = "";
+    int counter = 1;
+    string graph = "digraph List {\nrankdir=LR;\nnode [shape = circle, color=black , style=filled, fillcolor=gray93];\n";
+    do {
+        if (aux->getError() == " " || aux->getErrorDesc() == " " || aux->getCarne() == "-1"){
+            aux->setError(to_string(-1));
+            aux->setErrorDesc(to_string(-1));
+            cout << "Carne : " << aux->getCarne() << "\nNombre : " << aux->getNombre() << '\n';
+        }else{
+            data += "Node"+ to_string(counter) + "[label=\"" + aux->getCarne() + "\n" + aux->getNombre() + "\"];\n";
+            if (aux->getAnt() != NULL){
+                pointer += "Node" + to_string(counter-1) + "->Node" + to_string(counter) + ";\n";
+                pointer += "Node" + to_string(counter) + "->Node" + to_string(counter-1) + ";\n";
+            }
+            counter++;
+        }
+        aux = aux->getSig();
+    } while (aux != NULL);
+
+    graph += data;
+    graph += pointer;
+    graph += "\n}";
+
+
+    try {
+        string path = "Tareas";
+
+        ofstream file;
+        file.open(path + "Graph.dot",std::ios::out);
+
+        if(file.fail()){
+            exit(1);
+        }
+
+        file<<graph;
+        file.close();
+        string command = "dot -Tpng " + path + "Graph.dot -o  " + path + "Graph.png";
+        system(command.c_str());
+    }catch (exception e){
+        cout << "Nel no se pudo :)";
     }
 }

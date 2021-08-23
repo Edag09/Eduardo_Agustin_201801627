@@ -40,7 +40,7 @@ ListDoubleHomework tarea;
 DoubleNodeHomework* Matrix[5][30][9];
 //------------------------------------------------------
 
-void  Analyzer :: Students(string cad) {
+void Analyzer :: Students(string cad) {
     status = 0;
     cont = 0;
     end_text = "";
@@ -64,7 +64,7 @@ void  Analyzer :: Students(string cad) {
                     end_text = "";
                     cont = 0;
                 }
-            }else if(character == 44){ //Coma
+            }else if(character == 44 || character == 10){ //Coma
                 cont = 0;
                 Student[0] = end_text;
                 status = 2;
@@ -77,7 +77,7 @@ void  Analyzer :: Students(string cad) {
                     end_text = end_text += cad[i];
                 }else{
                     //Error
-                    Desc = "DPI invalido";
+                    Desc = "DPI invalido " + end_text;
                     tarea.InsertError(Type, Desc);
                     status = 0;
                     end_text = "";
@@ -88,10 +88,6 @@ void  Analyzer :: Students(string cad) {
                 cont = 0;
                 status = 3;
                 end_text = "";
-            }else{
-                end_text = "";
-                cont = 0;
-                status = 0;
             }
         }else if (status == 3){
             if ((character>=97 && character<=122) || (character>=65 && character<=90) || (character==32)){ // Nombre
@@ -102,7 +98,7 @@ void  Analyzer :: Students(string cad) {
                 cont =0;
                 status = 4;
             }else{
-                Desc = "Nombre no aceptado";
+                Desc = "Nombre no aceptado " + end_text;
                 tarea.InsertError(Type, Desc);
                 end_text = "";
                 cont = 0;
@@ -117,7 +113,7 @@ void  Analyzer :: Students(string cad) {
                 cont =0;
                 status = 5;
             }else{
-                Desc = "Tu verdadera vocacion es ser Industrial compa :')";
+                Desc = "Tu verdadera vocacion es ser Industrial compa :') " + end_text;
                 tarea.InsertError(Type, Desc);
                 end_text = "";
                 cont = 0;
@@ -132,7 +128,7 @@ void  Analyzer :: Students(string cad) {
                 cont = 0;
                 status = 6;
             }else{
-                Desc = "Contrasenia invalida";
+                Desc = "Contrasenia invalida " + end_text;
                 tarea.InsertError(Type, Desc);
                 end_text = "";
                 cont = 0;
@@ -147,7 +143,7 @@ void  Analyzer :: Students(string cad) {
                 cont = 0;
                 status = 7;
             }else{
-                Desc = "Te crees un cerebrito o khe?";
+                Desc = "Te crees un cerebrito o khe? " + end_text;
                 tarea.InsertError(Type, Desc);
                 end_text = "";
                 cont = 0;
@@ -159,7 +155,7 @@ void  Analyzer :: Students(string cad) {
                 if (cont <= 2){
                     end_text = end_text += cad[i];
                 }else{
-                    Desc = "Edad invalida";
+                    Desc = "Edad invalida " + end_text;
                     tarea.InsertError(Type, Desc);
                     end_text="";
                     cont = 0;
@@ -171,8 +167,6 @@ void  Analyzer :: Students(string cad) {
                 cont =0;
                 status = 8;
             }else{
-                Desc = "Error de archivo";
-                tarea.InsertError(Type, Desc);
                 end_text = "";
                 cont = 0;
                 status = 0;
@@ -195,7 +189,7 @@ void  Analyzer :: Students(string cad) {
                 cout << Student[7] << '\n';
                 estudiante.InsertList(Student[0], Student[1], Student[2], Student[3], Student[4], Student[5], Student[6], Student[7]);
             }else{
-                Desc = "Correo invalido";
+                Desc = "Correo invalido " +end_text;
                 tarea.InsertError(Type, Desc);
                 status = 0;
                 end_text = "";
@@ -273,11 +267,6 @@ void Analyzer :: Homework(string cad) {
                 cont = 0;
                 status = 5;
                 end_text = "";
-            }else{
-                Desc = "Error de arcihvo";
-                tarea.InsertError(Type, Desc);
-                status = 0;
-                end_text = "";
             }
         }else if (status == 5){ // Nombre
             if ((character>=97 && character<=122) || (character>=65 && character<=90) || (character==32) || (character >= 48 && character <=57) || (character == 43) || (character == 35)){
@@ -346,8 +335,6 @@ void Analyzer :: Homework(string cad) {
                 status = 1;
                 cont = 0;
                 end_text = "";
-                DataMatrix(Mes(Homeworks[0]), Dia(Homeworks[1]), Hora(Homeworks[2]));
-                Llenado();
             }else{
                 Desc = "Ya ni te esforces en entregarla mejor";
                 tarea.InsertError(Type, Desc);
@@ -355,6 +342,8 @@ void Analyzer :: Homework(string cad) {
                 end_text = "";
                 cont = 0;
             }
+            DataMatrix(Mes(Homeworks[0]), Dia(Homeworks[1]), Hora(Homeworks[2]));
+            Llenado();
         }
     }
     ColMajor();
@@ -378,7 +367,6 @@ int Analyzer :: Mes(string cad) {
             return 4;
             break;
         default:
-            cout << "Error\n";
             return -1;
     }
 }
@@ -476,7 +464,6 @@ int Analyzer :: Dia(string cad) {
             return 30;
             break;
         default:
-            cout << "Error\n";
             return -1;
     }
 }
@@ -511,7 +498,6 @@ int Analyzer :: Hora(string cad) {
             return 8;
             break;
         default:
-            cout << "Error\n";
             return -1;
     }
 }
@@ -541,8 +527,6 @@ string Analyzer :: Date(char cad) {
 }
 
 void Analyzer :: DataMatrix(int m, int d, int h){
-    string Type = "Tareas";
-    string Desc;
     DoubleNodeHomework* data = new DoubleNodeHomework();
     data->setId(counter++);
     data->setCarne(Homeworks[3]);
@@ -552,8 +536,7 @@ void Analyzer :: DataMatrix(int m, int d, int h){
     data->setFecha(Homeworks[7]);
     data->setEstado(Homeworks[8]);
     if ((m == -1) || (d == -1) || (h == -1)){
-        Desc = "La tarea fue asignada en un tiempo fuera de lo permitido";
-        tarea.InsertError(Type, Desc);
+        cout << "Error";
     }else{
         Matrix[m][d-1][h] = data;
     }
