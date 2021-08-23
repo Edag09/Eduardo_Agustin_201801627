@@ -35,6 +35,7 @@ void Menus :: subsubRepo() {
         switch (opc) {
             case 1:
                 cout << "Ver en Grafica\n";
+                tarea.ShowHomeworks();
                 break;
             case 2:
                 cout << "Buscar ID de la tarea\n";
@@ -115,7 +116,7 @@ void Menus :: SubMenuRepo() {
                 break;
             case 3:
                 cout << "Reporte Errores\n";
-                tarea.ShowError();
+                tarea.ShowErrorGraphviz();
             case 4:
                 cout << "Regresar\n";
                 status = false;

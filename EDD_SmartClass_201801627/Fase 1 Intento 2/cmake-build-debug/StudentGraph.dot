@@ -1,19 +1,15 @@
 digraph List {
 rankdir=LR;
 node [shape = circle, color=black , style=filled, fillcolor=gray93];
-Node1[label="Risas"];
-Node2[label="Emilia Miramontes"];
-Node3[label="Juan Curiel"];
-Node4[label="Eloisa Rincon"];
-Node5[label="Bernardo Hinojosa"];
-Node6[label="Manuel Manzanares"];
-Node7[label="Julia Corona"];
-Node8[label="Berta Carrasco"];
-Node9[label="Lola Delapaz"];
-Node10[label="Sonia Arteaga"];
-Node11[label="Benjamin Asencio"];
-Node12[label="Paola"];
-Node13[label="Saber"];
+Node1[label="Juan Curiel"];
+Node2[label="Eloisa Rincon"];
+Node3[label="Bernardo Hinojosa"];
+Node4[label="Manuel Manzanares"];
+Node5[label="Julia Corona"];
+Node6[label="Berta Carrasco"];
+Node7[label="Lola Delapaz"];
+Node8[label="Sonia Arteaga"];
+Node9[label="Benjamin Asencio"];
 Node1->Node2;
 Node2->Node1;
 Node2->Node3;
@@ -30,15 +26,7 @@ Node7->Node8;
 Node8->Node7;
 Node8->Node9;
 Node9->Node8;
-Node9->Node10;
-Node10->Node9;
-Node10->Node11;
-Node11->Node10;
-Node11->Node12;
-Node12->Node11;
-Node12->Node13;
-Node13->Node12;
-Node13->Node1;
-Node1->Node13;
+Node9->Node1;
+Node1->Node9;
 
 }

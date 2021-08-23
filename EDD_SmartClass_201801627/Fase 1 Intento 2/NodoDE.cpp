@@ -12,6 +12,7 @@ DoubleNodeHomework :: DoubleNodeHomework() {
     this->sig = NULL;
     this->ant = NULL;
     this->IdHomework = 0;
+    this->IdError = 0;
 }
 
 // Getters

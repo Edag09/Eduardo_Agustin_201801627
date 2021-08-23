@@ -33,6 +33,8 @@ public:
     void InsertError(string Tipo, string DescripcionError);
     bool IsEmpty();
     void ShowError();
+    void ShowErrorGraphviz();
+    void ShowHomeworks();
 };
 
 #endif //FASE_1_INTENTO_2_LISTHOMEWORK_H
