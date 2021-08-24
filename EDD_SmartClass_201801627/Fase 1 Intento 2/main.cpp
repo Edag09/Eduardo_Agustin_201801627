@@ -20,7 +20,7 @@ public:
     void subsubRepo();
 };
 
-void Menus :: subsubRepo() {
+void Menus :: subsubRepo() { // Sub menu de los reportes de errores
     int opc, mes, dia, hora;
     bool status = true;
     do {
@@ -91,7 +91,7 @@ void Menus :: InsertNewHomework() {
     tarea.Insert(mes, dia, hora, carne, nombre, descripcion, materia, fecha, estado);
 }
 
-void Menus :: SubMenuRepo() {
+void Menus :: SubMenuRepo() { // Reportes
     int opc;
     bool status = true;
     do {
@@ -211,7 +211,7 @@ void Menus :: UpdateData(){
 
 }
 
-void Menus :: Homework(){
+void Menus :: Homework(){ // Modificar, Eliminar e Insertar en las tareas
     int opc;
     int car;
     bool status = true;
@@ -253,7 +253,7 @@ void Menus :: Homework(){
     }   while   (status);
 }
 
-void Menus :: Student(){
+void Menus :: Student(){ //Modificar, Eliminar e Insertar en las tareas
     int opc;
     bool status = true;
     string DPI;
@@ -295,7 +295,7 @@ void Menus :: Student(){
     } while (status);
 }
 
-void Menus :: MenuManualEntry(){
+void Menus :: MenuManualEntry(){ //Ingreso Manual
     int opc;
     bool status = true;
     do {
@@ -327,7 +327,7 @@ void Menus :: MenuManualEntry(){
     } while (status);
 }
 
-void Menus :: menu(){
+void Menus :: menu(){ // Principal
     int opc;
     bool status = true;
     do {

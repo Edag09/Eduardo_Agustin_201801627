@@ -14,14 +14,6 @@ C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListHomewor
 string
 -
 
-C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListHomework.cpp
-iostream
--
-fstream
--
-ListHomework.h
-C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListHomework.h
-
 C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListHomework.h
 iostream
 -
@@ -37,12 +29,16 @@ string
 -
 NodoCD.h
 C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/NodoCD.h
+ListHomework.h
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListHomework.h
 
 C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/NodoCD.h
 iostream
 -
 string
 -
+ListHomework.h
+C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/ListHomework.h
 
 C:/Users/renea/OneDrive/Documentos/Eduardo/EDD  Lab/Fase 1 Intento 2/NodoDE.h
 iostream

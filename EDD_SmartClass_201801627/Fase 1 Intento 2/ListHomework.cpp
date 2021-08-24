@@ -47,7 +47,7 @@ void ListDoubleHomework :: Show() {
             aux = aux->getSig();
         } while (aux != NULL);
     }else{
-        cout << "Error";
+        cout << "Error\n";
     }
 }
 
@@ -454,7 +454,7 @@ void ListDoubleHomework :: ShowHomeworks() {
             aux->setErrorDesc(to_string(-1));
             cout << "Carne : " << aux->getCarne() << "\nNombre : " << aux->getNombre() << '\n';
         }else{
-            data += "Node"+ to_string(counter) + "[label=\"" + aux->getCarne() + "\n" + aux->getNombre() + "\"];\n";
+            data += "Node"+ to_string(counter) + "[label=\"" + "Carne: " + aux->getCarne() + "\nNombre: " + aux->getNombre() + "\nDescripcion: " + aux->getDescripcion() + "\nMateria: " + aux->getMateria() + "\nFecha: " + aux->getFecha() + "\nEstado" + aux->getEstado() + "\"];\n";
             if (aux->getAnt() != NULL){
                 pointer += "Node" + to_string(counter-1) + "->Node" + to_string(counter) + ";\n";
                 pointer += "Node" + to_string(counter) + "->Node" + to_string(counter-1) + ";\n";

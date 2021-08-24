@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include "ListHomework.h"
 
 using namespace std;
 
@@ -22,6 +23,8 @@ private:
     string edad;
     DoubleNodeStudents* sig;
     DoubleNodeStudents* ant;
+public:
+    ListDoubleHomework *Ltareas = new ListDoubleHomework();
 public:
     DoubleNodeStudents();
     //gets

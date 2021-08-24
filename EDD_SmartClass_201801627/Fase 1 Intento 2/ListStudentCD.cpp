@@ -68,7 +68,7 @@ void ListDoubleStudent ::ShowGraphvizDC() {
     int counter = 1;
     string graph = "digraph List {\nrankdir=LR;\nnode [shape = circle, color=black , style=filled, fillcolor=gray93];\n";
     do{
-        data += "Node" + to_string(counter) + "[label=\"" + aux->getNombre() +"\"];\n";
+        data += "Node" + to_string(counter) + "[label=\"" + "Nombre: " + aux->getNombre() + "\nCarne: " + aux->getCarnet() + "\nDPI: " + aux->getDPI() + "\nCarrera: " + aux->getCarrera() + "\nCreditos: " + aux->getCreditos() + "\nEdad: " + aux->getEdad() + "\nCorreo: " + aux->getCorreo() +"\"];\n";
         if (aux != first){
             pointer += "Node" + to_string(counter-1) + "->Node" + to_string(counter) + ";\n";
             pointer += "Node" + to_string(counter) + "->Node" + to_string(counter-1) + ";\n";
@@ -198,3 +198,36 @@ void ListDoubleStudent :: Search(string cad) {
 
 }
 
+void ListDoubleStudent :: StudentHomework(int id, string carne, DoubleNodeHomework *data) {
+    DoubleNodeStudents* aux = new DoubleNodeStudents();
+    aux = first;
+    find = false;
+    if (first != NULL){
+        do {
+            if (aux->getCarnet() == carne){
+                aux->Ltareas->InsertList(id, carne, data->getNombre(), data->getDescripcion(), data->getMateria(), data->getFecha(), data->getEstado());
+            }
+            aux = aux->getSig();
+        }while(aux != first && !find);
+        if (!find){
+            cout<<"No tiene asignada alguna tareas\n";
+        }
+    } else{
+        cout << "Lista vacia";
+    }
+}
+
+void ListDoubleStudent :: ShowStudentH() {
+    DoubleNodeStudents* aux = new DoubleNodeStudents();
+    aux = first;
+    if (first != NULL){
+        do {
+            cout << "El estudiante " << aux->getNombre() << "con carne "<< aux->getCarnet() << " y edad "<< aux->getEdad() << " y DPI " << aux->getDPI() << " esta en la carrera de " << aux->getCarrera() << " con la cantidad de creditos de " << aux->getCreditos() << "\n";
+            cout << "Tiene como tarea/s: -> \n";
+            aux->Ltareas->Show();
+            aux = aux->getSig();
+        } while (aux != first);
+    }else{
+        cout << "Lista vacia";
+    }
+}

@@ -5,6 +5,7 @@
 #include "NodoCD.h"
 
 #include <iostream>
+#include "ListHomework.h"
 #include <string>
 
 using namespace std;
@@ -12,6 +13,8 @@ using namespace std;
 DoubleNodeStudents :: DoubleNodeStudents() {
     this->sig = NULL;
     this->ant  = NULL;
+    ListDoubleHomework *tarea = Ltareas;
+
 }
 
 // Getters
