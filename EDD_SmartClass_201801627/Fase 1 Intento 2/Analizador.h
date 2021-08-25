@@ -58,7 +58,7 @@ void Analyzer :: Students(string cad) {
                     end_text = end_text += cad[i];
                 }else{
                     //Error
-                    Desc = "Carnet no valido " + end_text;
+                    Desc = "Carnet no valido " + end_text + cad[i];
                     tarea.InsertError(Type, Desc);
                     status = 0;
                     end_text = "";
@@ -77,7 +77,7 @@ void Analyzer :: Students(string cad) {
                     end_text = end_text += cad[i];
                 }else{
                     //Error
-                    Desc = "DPI invalido " + end_text;
+                    Desc = "DPI invalido " + end_text + cad[i];
                     tarea.InsertError(Type, Desc);
                     status = 0;
                     end_text = "";
@@ -179,14 +179,6 @@ void Analyzer :: Students(string cad) {
                 end_text = "";
                 cont =0;
                 status = 1;
-                cout << Student[0] << '\n';
-                cout << Student[1] << '\n';
-                cout << Student[2] << '\n';
-                cout << Student[3] << '\n';
-                cout << Student[4] << '\n';
-                cout << Student[5] << '\n';
-                cout << Student[6] << '\n';
-                cout << Student[7] << '\n';
                 estudiante.InsertList(Student[0], Student[1], Student[2], Student[3], Student[4], Student[5], Student[6], Student[7]);
             }else{
                 Desc = "Correo invalido " +end_text;
@@ -257,7 +249,7 @@ void Analyzer :: Homework(string cad) {
                 if (cont<=9){
                     end_text = end_text += cad[i];
                 }else{
-                    Desc = "Carne Invalido";
+                    Desc = "Carne Invalido " + end_text + cad[i];
                     tarea.InsertError(Type, Desc);
                     status = 0;
                     end_text = "";
@@ -277,7 +269,7 @@ void Analyzer :: Homework(string cad) {
                 cont = 0;
                 end_text = "";
             }else{
-                Desc = "Nombre Incorrecto";
+                Desc = "Nombre Incorrecto " + end_text + cad[i];
                 tarea.InsertError(Type, Desc);
                 status = 0;
                 end_text = "";
@@ -292,7 +284,7 @@ void Analyzer :: Homework(string cad) {
                 cont = 0;
                 end_text = "";
             }else{
-                Desc = "Ni describir podes tu tarea :)";
+                Desc = "Ni describir podes tu tarea :) " + end_text;
                 tarea.InsertError(Type, Desc);
                 status = 0;
                 end_text = "";
@@ -307,7 +299,7 @@ void Analyzer :: Homework(string cad) {
                 cont = 0;
                 end_text = "";
             }else{
-                Desc = "Compa en que momento saco esa clase";
+                Desc = "Compa en que momento saco esa clase " + end_text;
                 tarea.InsertError(Type, Desc);
                 status = 0;
                 end_text = "";
@@ -336,7 +328,7 @@ void Analyzer :: Homework(string cad) {
                 cont = 0;
                 end_text = "";
             }else{
-                Desc = "Ya ni te esforces en entregarla mejor";
+                Desc = "Ya ni te esforces en entregarla mejor " + end_text;
                 tarea.InsertError(Type, Desc);
                 status = 0;
                 end_text = "";
@@ -519,7 +511,7 @@ string Analyzer :: Date(char cad) {
             end_text = end_text + cad;
             cont ++;
         }else{
-            Desc = "Compa sea tantito Coherente porfa";
+            Desc = "Compa sea tantito Coherente porfa " + end_text;
             tarea.InsertError(Type, Desc);
             return "-1";
         }
@@ -566,7 +558,6 @@ void Analyzer :: ColMajor() {
             }
         }
     }
-    tarea.Show();
 }
 
 

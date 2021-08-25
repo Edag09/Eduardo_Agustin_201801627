@@ -1,15 +1,606 @@
 digraph List {
 rankdir=LR;
 node [shape = circle, color=black , style=filled, fillcolor=gray93];
-Node1[label="Juan Curiel"];
-Node2[label="Eloisa Rincon"];
-Node3[label="Bernardo Hinojosa"];
-Node4[label="Manuel Manzanares"];
-Node5[label="Julia Corona"];
-Node6[label="Berta Carrasco"];
-Node7[label="Lola Delapaz"];
-Node8[label="Sonia Arteaga"];
-Node9[label="Benjamin Asencio"];
+Node1[label="Nombre: Alvin Huckett
+Carne: 201183728
+DPI: 2050740201006
+Carrera: Ingenieria Quimica
+Creditos: 222
+Edad: 20
+Correo: AlvinHuckett_60@outlook.org
+Calificaicon"];
+Node2[label="Nombre: Nertie Laurenzi
+Carne: 2010244
+DPI: 5970926381748
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 139
+Edad: 19
+Correo: NertieLaurenzi.75@hotmail.es
+Calificaicon"];
+Node3[label="Nombre: Lamont Barthrup
+Carne: 201210811
+DPI: 879575888
+Carrera: Ingenieria Mecanica
+Creditos: 53
+Edad: 25
+Correo: LamontBarthrup_34@outlook.org
+Calificaicon"];
+Node4[label="Nombre: Bernadette Pescud
+Carne: 201315898
+DPI: 5531711621404
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 190
+Edad: 28
+Correo: BernadettePescud.10outlook.com
+Calificaicon"];
+Node5[label="Nombre: Bobina Delacroux
+Carne: 201582352
+DPI: 4172564417242
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 113
+Edad: 23
+Correo: BobinaDelacroux_46@hotmail.com
+Calificaicon"];
+Node6[label="Nombre: Pebrook Gircke
+Carne: 201115140
+DPI: 8429519350118
+Carrera: Ingenieria Mecanica
+Creditos: 172
+Edad: 19
+Correo: PebrookGircke93@undefined.org
+Calificaicon"];
+Node7[label="Nombre: Laurie Tumilty
+Carne: 201350393
+DPI: 9029374304090
+Carrera: Ingenieria en Ciencias y Sistemas
+Creditos: 124
+Edad: 20
+Correo: LaurieTumilty58@undefined.com
+Calificaicon"];
+Node8[label="Nombre: Barn Killingbeck
+Carne: 201698163
+DPI: 8010354636352
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 130
+Edad: 20
+Correo: BarnKillingbeck33@gmail.org
+Calificaicon"];
+Node9[label="Nombre: Joscelin Fewings
+Carne: 201402462
+DPI: 3594915493584
+Carrera: Ingenieria Mecanica
+Creditos: 202
+Edad: 25
+Correo: JoscelinFewings_56@outlook.es
+Calificaicon"];
+Node10[label="Nombre: Llywellyn Woodnutt
+Carne: 201643353
+DPI: 9692561360208
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 44
+Edad: 27
+Correo: LlywellynWoodnutt_83@gmail.es
+Calificaicon"];
+Node11[label="Nombre: Ardene Benediktovich
+Carne: 201043689
+DPI: 0714796787404
+Carrera: Ingenieria Mecanica
+Creditos: 13
+Edad: 23
+Correo: ArdeneBenediktovich72@outlook.org
+Calificaicon"];
+Node12[label="Nombre: Judye Rossborough
+Carne: 201489697
+DPI: 3310894947855
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 3
+Edad: 26
+Correo: JudyeRossborough_49@yahoo.com
+Calificaicon"];
+Node13[label="Nombre: Wilbur Alberts
+Carne: 201818908
+DPI: 2689202578134
+Carrera: Ingenieria en Ciencias y Sistemas
+Creditos: 64
+Edad: 18
+Correo: WilburAlberts45@hotmail.org
+Calificaicon"];
+Node14[label="Nombre: Emili Palleske
+Carne: 201816850
+DPI: 0154497044345
+Carrera: Ingenieria Mecanica
+Creditos: 28
+Edad: 21
+Correo: EmiliPalleske.89@gmail.com
+Calificaicon"];
+Node15[label="Nombre: Vivian Currer
+Carne: 201232485
+DPI: 3762365704505
+Carrera: Ingenieria Quimica
+Creditos: 218
+Edad: 28
+Correo: VivianCurrer_25@outlook.org
+Calificaicon"];
+Node16[label="Nombre: Eloise Trevarthen
+Carne: 201131811
+DPI: 3347258005328
+Carrera: Ingenieria Mecanica
+Creditos: 201
+Edad: 22
+Correo: EloiseTrevarthen91@hotmail.es
+Calificaicon"];
+Node17[label="Nombre: Kim Westphal
+Carne: 201476680
+DPI: 4293824642888
+Carrera: Ingenieria Quimica
+Creditos: 159
+Edad: 19
+Correo: KimWestphal38@yahoo.com
+Calificaicon"];
+Node18[label="Nombre: Aylmar Raubenheimer
+Carne: 201511649
+DPI: 5648266954532
+Carrera: Ingenieria Mecanica
+Creditos: 163
+Edad: 23
+Correo: AylmarRaubenheimer.27@hotmail.es
+Calificaicon"];
+Node19[label="Nombre: Alvin Huckett
+Carne: 201255643
+DPI: 7672150791181
+Carrera: Ingenieria Industrial
+Creditos: 65
+Edad: 29
+Correo: AlvinHuckett_63@undefined.org
+Calificaicon"];
+Node20[label="Nombre: Camila Dibbert
+Carne: 201947729
+DPI: 1430797138430
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 188
+Edad: 21
+Correo: CamilaDibbert.81@gmail.com
+Calificaicon"];
+Node21[label="Nombre: Alvin Huckett
+Carne: 201173540
+DPI: 3235002226847
+Carrera: Ingenieria Industrial
+Creditos: 104
+Edad: 22
+Correo: AlvinHuckett_65@outlook.org
+Calificaicon"];
+Node22[label="Nombre: Tim Goldspink
+Carne: 201704168
+DPI: 3379162068993
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 137
+Edad: 19
+Correo: TimGoldspink.71@aol.com
+Calificaicon"];
+Node23[label="Nombre: Harvey Darbyshire
+Carne: 201661519
+DPI: 9302712249273
+Carrera: Ingenieria Mecanica
+Creditos: 55
+Edad: 26
+Correo: HarveyDarbyshire_63@gmail.com
+Calificaicon"];
+Node24[label="Nombre: Grayce Poltone
+Carne: 201309890
+DPI: 6364119505269
+Carrera: Ingenieria Industrial
+Creditos: 133
+Edad: 18
+Correo: GraycePoltone_20@hotmail.es
+Calificaicon"];
+Node25[label="Nombre: Llywellyn Woodnutt
+Carne: 201740604
+DPI: 2625352358554
+Carrera: Ingenieria en Ciencias y Sistemas
+Creditos: 3
+Edad: 19
+Correo: LlywellynWoodnutt.46@gmail.org
+Calificaicon"];
+Node26[label="Nombre: Aylmar Raubenheimer
+Carne: 201646518
+DPI: 8696013129504
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 192
+Edad: 22
+Correo: AylmarRaubenheimer31@aol.com
+Calificaicon"];
+Node27[label="Nombre: Franky Viney
+Carne: 201766242
+DPI: 3780452896411
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 164
+Edad: 20
+Correo: FrankyViney72@aol.com
+Calificaicon"];
+Node28[label="Nombre: Aylmar Raubenheimer
+Carne: 201537627
+DPI: 6000394094296
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 3
+Edad: 24
+Correo: AylmarRaubenheimer82@undefined.com
+Calificaicon"];
+Node29[label="Nombre: Lamont Barthrup
+Carne: 201327675
+DPI: 5005953751371
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 171
+Edad: 20
+Correo: LamontBarthrup.75@hotmail.org
+Calificaicon"];
+Node30[label="Nombre: Michelle Glanister
+Carne: 201897987
+DPI: 2193345266141
+Carrera: Ingenieria Quimica
+Creditos: 226
+Edad: 25
+Correo: MichelleGlanister.13@aol.org
+Calificaicon"];
+Node31[label="Nombre: Claybourne Nelmes
+Carne: 201500866
+DPI: 7040168688236
+Carrera: Ingenieria en Ciencias y Sistemas
+Creditos: 121
+Edad: 19
+Correo: ClaybourneNelmes_2@aol.com
+Calificaicon"];
+Node32[label="Nombre: Olly Brunelleschi
+Carne: 201359507
+DPI: 6474775706799
+Carrera: Ingenieria Quimica
+Creditos: 52
+Edad: 22
+Correo: OllyBrunelleschi_86@aol.com
+Calificaicon"];
+Node33[label="Nombre: Eloise Trevarthen
+Carne: 201954202
+DPI: 2496399691941
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 196
+Edad: 29
+Correo: EloiseTrevarthen.4@undefined.org
+Calificaicon"];
+Node34[label="Nombre: Eba Keitley
+Carne: 201412244
+DPI: 3239472177167
+Carrera: Ingenieria Industrial
+Creditos: 238
+Edad: 22
+Correo: EbaKeitley73@undefined.com
+Calificaicon"];
+Node35[label="Nombre: Wilbur Alberts
+Carne: 201234795
+DPI: 9082300809939
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 80
+Edad: 29
+Correo: WilburAlberts_86@yahoo.com
+Calificaicon"];
+Node36[label="Nombre: Ardene Benediktovich
+Carne: 201594265
+DPI: 2831630574772
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 242
+Edad: 26
+Correo: ArdeneBenediktovich_57@hotmail.org
+Calificaicon"];
+Node37[label="Nombre: Claybourne Nelmes
+Carne: 201790782
+DPI: 3168522176927
+Carrera: Ingenieria en Ciencias y Sistemas
+Creditos: 0
+Edad: 22
+Correo: ClaybourneNelmes_82@aol.com
+Calificaicon"];
+Node38[label="Nombre: Lionel Messi
+Carne: 201374369
+DPI: 8311431297185
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 93
+Edad: 20
+Correo: LionelMessi.17@aol.es
+Calificaicon"];
+Node39[label="Nombre: Dillon Blandamere
+Carne: 201709702
+DPI: 4245428187625
+Carrera: Ingenieria Industrial
+Creditos: 84
+Edad: 20
+Correo: DillonBlandamere_33@undefined.com
+Calificaicon"];
+Node40[label="Nombre: Boycie Langlais
+Carne: 201635991
+DPI: 2702608963916
+Carrera: Ingenieria Industrial
+Creditos: 113
+Edad: 29
+Correo: BoycieLanglais24@aol.es
+Calificaicon"];
+Node41[label="Nombre: Darn Studdal
+Carne: 201389879
+DPI: 1332692632257
+Carrera: Ingenieria Industrial
+Creditos: 244
+Edad: 23
+Correo: DarnStuddal88@gmail.com
+Calificaicon"];
+Node42[label="Nombre: Tim Goldspink
+Carne: 201375524
+DPI: 3164173770900
+Carrera: Ingenieria Quimica
+Creditos: 1
+Edad: 20
+Correo: TimGoldspink_27@yahoo.es
+Calificaicon"];
+Node43[label="Nombre: Llywellyn Woodnutt
+Carne: 201428558
+DPI: 8783633019549
+Carrera: Ingenieria Mecanica
+Creditos: 5
+Edad: 24
+Correo: LlywellynWoodnutt.12@gmail.es
+Calificaicon"];
+Node44[label="Nombre: Bobina Delacroux
+Carne: 201933753
+DPI: 6467642780621
+Carrera: Ingenieria en Ciencias y Sistemas
+Creditos: 147
+Edad: 25
+Correo: BobinaDelacroux_64@gmail.com
+Calificaicon"];
+Node45[label="Nombre: Llywellyn Woodnutt
+Carne: 201774497
+DPI: 6327689577005
+Carrera: Ingenieria en Ciencias y Sistemas
+Creditos: 90
+Edad: 26
+Correo: LlywellynWoodnutt_44@aol.org
+Calificaicon"];
+Node46[label="Nombre: Harvey Darbyshire
+Carne: 201145786
+DPI: 4820546644233
+Carrera: Ingenieria Mecanica
+Creditos: 88
+Edad: 22
+Correo: HarveyDarbyshire.56@outlook.com
+Calificaicon"];
+Node47[label="Nombre: Tim Goldspink
+Carne: 201509061
+DPI: 3761268073554
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 108
+Edad: 23
+Correo: TimGoldspink.36@aol.com
+Calificaicon"];
+Node48[label="Nombre: Tim Goldspink
+Carne: 201068965
+DPI: 7207003476187
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 112
+Edad: 26
+Correo: TimGoldspink.1@yahoo.org
+Calificaicon"];
+Node49[label="Nombre: Olly Brunelleschi
+Carne: 201991578
+DPI: 7437219208336
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 102
+Edad: 29
+Correo: OllyBrunelleschi.78@yahoo.org
+Calificaicon"];
+Node50[label="Nombre: Emili Palleske
+Carne: 201803912
+DPI: 3995410773680
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 205
+Edad: 26
+Correo: EmiliPalleske.68@gmail.com
+Calificaicon"];
+Node51[label="Nombre: Consolata Reskelly
+Carne: 201921767
+DPI: 5042024988582
+Carrera: Ingenieria Mecanica
+Creditos: 200
+Edad: 27
+Correo: ConsolataReskelly.30@undefined.com
+Calificaicon"];
+Node52[label="Nombre: Alonzo Seagrove
+Carne: 201157605
+DPI: 2503385887437
+Carrera: Ingenieria Industrial
+Creditos: 226
+Edad: 22
+Correo: AlonzoSeagrove_35@undefined.org
+Calificaicon"];
+Node53[label="Nombre: Alonzo Seagrove
+Carne: 201761573
+DPI: 5372214388411
+Carrera: Ingenieria Quimica
+Creditos: 51
+Edad: 22
+Correo: AlonzoSeagrove_54@hotmail.es
+Calificaicon"];
+Node54[label="Nombre: Phillis Syrie
+Carne: 201825364
+DPI: 6772854332066
+Carrera: Ingenieria Quimica
+Creditos: 111
+Edad: 28
+Correo: PhillisSyrie_17@hotmail.es
+Calificaicon"];
+Node55[label="Nombre: Wash Sedgemore
+Carne: 201022466
+DPI: 0579054127201
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 130
+Edad: 29
+Correo: WashSedgemore_70@outlook.com
+Calificaicon"];
+Node56[label="Nombre: Roderigo Gomme
+Carne: 201006295
+DPI: 6483009710551
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 23
+Edad: 24
+Correo: RoderigoGomme_92@yahoo.org
+Calificaicon"];
+Node57[label="Nombre: Franky Viney
+Carne: 201116100
+DPI: 7247421869888
+Carrera: Ingenieria Quimica
+Creditos: 42
+Edad: 26
+Correo: FrankyViney_42@hotmail.es
+Calificaicon"];
+Node58[label="Nombre: Krystal Crellin
+Carne: 201773473
+DPI: 1563507262381
+Carrera: Ingenieria Mecanica
+Creditos: 88
+Edad: 26
+Correo: KrystalCrellin.48@outlook.org
+Calificaicon"];
+Node59[label="Nombre: Michelle Glanister
+Carne: 201119966
+DPI: 9030770152211
+Carrera: Ingenieria Industrial
+Creditos: 225
+Edad: 23
+Correo: MichelleGlanister87@outlook.com
+Calificaicon"];
+Node60[label="Nombre: Tim Goldspink
+Carne: 201669286
+DPI: 3126321523297
+Carrera: Ingenieria Mecanica
+Creditos: 187
+Edad: 21
+Correo: TimGoldspink_45@gmail.es
+Calificaicon"];
+Node61[label="Nombre: Ellerey Sherwyn
+Carne: 201147451
+DPI: 9093933675701
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 80
+Edad: 23
+Correo: EllereySherwyn.51@gmail.es
+Calificaicon"];
+Node62[label="Nombre: Claybourne Nelmes
+Carne: 201864201
+DPI: 8208413026556
+Carrera: Ingenieria en Ciencias y Sistemas
+Creditos: 25
+Edad: 25
+Correo: ClaybourneNelmes.78@hotmail.com
+Calificaicon"];
+Node63[label="Nombre: Adriaens Timms
+Carne: 201667272
+DPI: 9443025623424
+Carrera: Ingenieria en Ciencias y Sistemas
+Creditos: 237
+Edad: 21
+Correo: AdriaensTimms43@aol.org
+Calificaicon"];
+Node64[label="Nombre: Harvey Darbyshire
+Carne: 201668149
+DPI: 6435886693765
+Carrera: Ingenieria Mecanica
+Creditos: 31
+Edad: 27
+Correo: HarveyDarbyshire_31@gmail.org
+Calificaicon"];
+Node65[label="Nombre: Harvey Darbyshire
+Carne: 201764124
+DPI: 6773833243077
+Carrera: Ingenieria Industrial
+Creditos: 219
+Edad: 21
+Correo: HarveyDarbyshire.59@gmail.es
+Calificaicon"];
+Node66[label="Nombre: Aylmar Raubenheimer
+Carne: 201516603
+DPI: 4062043125856
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 168
+Edad: 19
+Correo: AylmarRaubenheimer.85@aol.com
+Calificaicon"];
+Node67[label="Nombre: Franky Viney
+Carne: 201327079
+DPI: 8292286385716
+Carrera: Ingenieria Industrial
+Creditos: 179
+Edad: 21
+Correo: FrankyViney.59@aol.es
+Calificaicon"];
+Node68[label="Nombre: Franky Viney
+Carne: 201906670
+DPI: 2245119831085
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 198
+Edad: 23
+Correo: FrankyViney_49@yahoo.es
+Calificaicon"];
+Node69[label="Nombre: Roderigo Gomme
+Carne: 201461415
+DPI: 8579079230016
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 113
+Edad: 20
+Correo: RoderigoGomme_55@aol.org
+Calificaicon"];
+Node70[label="Nombre: Afton Hounson
+Carne: 201009015
+DPI: 1962623323417
+Carrera: Ingenieria Mecanica
+Creditos: 12
+Edad: 23
+Correo: AftonHounson.43@aol.com
+Calificaicon"];
+Node71[label="Nombre: Eba Keitley
+Carne: 201137248
+DPI: 4264540703955
+Carrera: Ingenieria Mecanica
+Creditos: 35
+Edad: 22
+Correo: EbaKeitley83@outlook.org
+Calificaicon"];
+Node72[label="Nombre: Drusilla Louca
+Carne: 201339503
+DPI: 1169570189320
+Carrera: Ingenieria Mecanica Industrial
+Creditos: 41
+Edad: 29
+Correo: DrusillaLouca1@outlook.com
+Calificaicon"];
+Node73[label="Nombre: Aylmar Raubenheimer
+Carne: 201110247
+DPI: 7882408800987
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 171
+Edad: 19
+Correo: AylmarRaubenheimer_82@yahoo.org
+Calificaicon"];
+Node74[label="Nombre: Boycie Langlais
+Carne: 201125580
+DPI: 1846903502498
+Carrera: Ingenieria en Ciencias y Sistemas
+Creditos: 190
+Edad: 21
+Correo: BoycieLanglais.61@hotmail.com
+Calificaicon"];
+Node75[label="Nombre: Joscelin Fewings
+Carne: 201315288
+DPI: 7044319749868
+Carrera: Ingenieria Mecanica Electrica
+Creditos: 89
+Edad: 27
+Correo: JoscelinFewings.27@yahoo.es
+Calificaicon"];
 Node1->Node2;
 Node2->Node1;
 Node2->Node3;
@@ -26,7 +617,139 @@ Node7->Node8;
 Node8->Node7;
 Node8->Node9;
 Node9->Node8;
-Node9->Node1;
-Node1->Node9;
+Node9->Node10;
+Node10->Node9;
+Node10->Node11;
+Node11->Node10;
+Node11->Node12;
+Node12->Node11;
+Node12->Node13;
+Node13->Node12;
+Node13->Node14;
+Node14->Node13;
+Node14->Node15;
+Node15->Node14;
+Node15->Node16;
+Node16->Node15;
+Node16->Node17;
+Node17->Node16;
+Node17->Node18;
+Node18->Node17;
+Node18->Node19;
+Node19->Node18;
+Node19->Node20;
+Node20->Node19;
+Node20->Node21;
+Node21->Node20;
+Node21->Node22;
+Node22->Node21;
+Node22->Node23;
+Node23->Node22;
+Node23->Node24;
+Node24->Node23;
+Node24->Node25;
+Node25->Node24;
+Node25->Node26;
+Node26->Node25;
+Node26->Node27;
+Node27->Node26;
+Node27->Node28;
+Node28->Node27;
+Node28->Node29;
+Node29->Node28;
+Node29->Node30;
+Node30->Node29;
+Node30->Node31;
+Node31->Node30;
+Node31->Node32;
+Node32->Node31;
+Node32->Node33;
+Node33->Node32;
+Node33->Node34;
+Node34->Node33;
+Node34->Node35;
+Node35->Node34;
+Node35->Node36;
+Node36->Node35;
+Node36->Node37;
+Node37->Node36;
+Node37->Node38;
+Node38->Node37;
+Node38->Node39;
+Node39->Node38;
+Node39->Node40;
+Node40->Node39;
+Node40->Node41;
+Node41->Node40;
+Node41->Node42;
+Node42->Node41;
+Node42->Node43;
+Node43->Node42;
+Node43->Node44;
+Node44->Node43;
+Node44->Node45;
+Node45->Node44;
+Node45->Node46;
+Node46->Node45;
+Node46->Node47;
+Node47->Node46;
+Node47->Node48;
+Node48->Node47;
+Node48->Node49;
+Node49->Node48;
+Node49->Node50;
+Node50->Node49;
+Node50->Node51;
+Node51->Node50;
+Node51->Node52;
+Node52->Node51;
+Node52->Node53;
+Node53->Node52;
+Node53->Node54;
+Node54->Node53;
+Node54->Node55;
+Node55->Node54;
+Node55->Node56;
+Node56->Node55;
+Node56->Node57;
+Node57->Node56;
+Node57->Node58;
+Node58->Node57;
+Node58->Node59;
+Node59->Node58;
+Node59->Node60;
+Node60->Node59;
+Node60->Node61;
+Node61->Node60;
+Node61->Node62;
+Node62->Node61;
+Node62->Node63;
+Node63->Node62;
+Node63->Node64;
+Node64->Node63;
+Node64->Node65;
+Node65->Node64;
+Node65->Node66;
+Node66->Node65;
+Node66->Node67;
+Node67->Node66;
+Node67->Node68;
+Node68->Node67;
+Node68->Node69;
+Node69->Node68;
+Node69->Node70;
+Node70->Node69;
+Node70->Node71;
+Node71->Node70;
+Node71->Node72;
+Node72->Node71;
+Node72->Node73;
+Node73->Node72;
+Node73->Node74;
+Node74->Node73;
+Node74->Node75;
+Node75->Node74;
+Node75->Node1;
+Node1->Node75;
 
 }

@@ -68,7 +68,7 @@ void ListDoubleStudent ::ShowGraphvizDC() {
     int counter = 1;
     string graph = "digraph List {\nrankdir=LR;\nnode [shape = circle, color=black , style=filled, fillcolor=gray93];\n";
     do{
-        data += "Node" + to_string(counter) + "[label=\"" + "Nombre: " + aux->getNombre() + "\nCarne: " + aux->getCarnet() + "\nDPI: " + aux->getDPI() + "\nCarrera: " + aux->getCarrera() + "\nCreditos: " + aux->getCreditos() + "\nEdad: " + aux->getEdad() + "\nCorreo: " + aux->getCorreo() +"\"];\n";
+        data += "Node" + to_string(counter) + "[label=\"" + "Nombre: " + aux->getNombre() + "\nCarne: " + aux->getCarnet() + "\nDPI: " + aux->getDPI() + "\nCarrera: " + aux->getCarrera() + "\nCreditos: " + aux->getCreditos() + "\nEdad: " + aux->getEdad() + "\nCorreo: " + aux->getCorreo() + "\nCalificaicon" +"\"];\n";
         if (aux != first){
             pointer += "Node" + to_string(counter-1) + "->Node" + to_string(counter) + ";\n";
             pointer += "Node" + to_string(counter) + "->Node" + to_string(counter-1) + ";\n";
@@ -95,7 +95,7 @@ void ListDoubleStudent ::ShowGraphvizDC() {
 
         file<<graph;
         file.close();
-        string command = "dot -Tpng " + path + "Graph.dot -o  " + path + "Graph.png";
+        string command = "dot -Tpdf " + path + "Graph.dot -o  " + path + "Graph.pdf";
         system(command.c_str());
     }catch (exception e){
         cout << "Nel no se pudo :)";
