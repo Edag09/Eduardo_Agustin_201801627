@@ -1,0 +1,73 @@
+package Analizador;
+import java_cup.runtime.*;
+
+parser code 
+{:
+    public String Resulto = "";
+    
+    
+:} 
+
+terminal String E_DG, E_GENREPEST, E_STR, E_DOUBLE;
+terminal String E_GRABAR,E_TITLE, E_EJEX;
+terminal String E_VALORES, E_TITLEX, E_TITLEY, E_GRAPIE;
+terminal String E_GRALINE,E_ARCHIVO;
+terminal String E_PYC, E_DOSP, E_COMA;
+terminal String E_CORIZQ, E_CORDER, E_KEYIZQ, E_KEYDER;
+terminal String E_EQUALS;
+terminal String IDENTIFICADOR, E_CADENA, DECI;
+
+
+non terminal ini, contenidogeneral ,cuerpo, graficas, titulos, ejesx, contenidox, valoresbarras, contenidov, titulosx, tituloy, Arch;
+
+precedence left E_DG,E_GRABAR,E_GRAPIE,E_GRALINE;
+precedence left E_GENREPEST;
+
+start with ini;
+
+ini::=E_GENREPEST E_KEYIZQ contenidogeneral E_KEYDER {};
+
+contenidogeneral::=E_DG E_KEYIZQ cuerpo E_KEYDER graficas {};
+
+cuerpo::=E_STR IDENTIFICADOR E_EQUALS E_CADENA E_PYC {}
+        |E_DOUBLE IDENTIFICADOR E_EQUALS DECI E_PYC {}
+        |cuerpo {}
+;
+
+graficas::=E_GRABAR E_KEYIZQ titulos ejesx valoresbarras titulosx tituloy E_KEYDER {}
+            |E_GRAPIE E_KEYIZQ titulos ejesx valoresbarras E_KEYDER {}
+            |E_GRALINE E_KEYIZQ titulos Arch E_KEYDER {}
+            |graficas {}
+;
+
+titulos::=E_TITLE E_DOSP IDENTIFICADOR E_PYC {}
+                |E_TITLE E_DOSP E_CADENA E_PYC {}
+;
+
+ejesx::=E_EJEX E_DOSP E_CORIZQ contenidox E_CORDER {};
+
+contenidox::=E_CADENA {}
+            |E_COMA {}
+            |IDENTIFICADOR {}
+            |contenidox {}
+;
+
+valoresbarras::=E_VALORES E_DOSP E_CORIZQ contenidov E_CORDER {};
+
+contenidov::=DECI {}
+            |E_COMA {}
+            |IDENTIFICADOR {}
+            |contenidov {}
+;
+
+titulosx::=E_TITLEX E_DOSP IDENTIFICADOR E_PYC {}
+         |E_TITLEY E_DOSP E_CADENA E_PYC {}
+;
+
+tituloy::=E_TITLEY E_DOSP IDENTIFICADOR E_PYC {}
+         |E_TITLEY E_DOSP E_CADENA E_PYC {}
+;
+
+Arch::=E_ARCHIVO E_DOSP IDENTIFICADOR E_PYC {}
+      |E_ARCHIVO E_DOSP E_CADENA E_PYC {}
+;

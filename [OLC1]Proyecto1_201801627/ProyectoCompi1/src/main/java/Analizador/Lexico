@@ -1,0 +1,76 @@
+package Analizador;
+import java_cup.runtime.Symbol;
+
+%% 
+%class Lexico
+%public 
+%cupsym sym
+%line 
+%char 
+%cup 
+%unicode
+%ignorecase
+
+%init{ 
+    yyline = 1; 
+    yychar = 1;
+%init} 
+
+RETORNOS = [ \r\t\n]+
+LINECOMMENT = ("//".*\n)|("//".*\r\n)|("//".*\r)
+MULTILINECOMMENT = "<!""!"*([^!>]|[^!]">"|"!"[^>])*"!"*"!>"
+ENTERO=[0-9]+
+DECI=[0-9]+("."[0-9]+)?
+LETRA = [a-zA-Z]
+IDENTIFICADOR = {LETRA}({LETRA}|"_"|{ENTERO})*
+E_CADENA = "\""[^"\""]*"\""
+
+
+%%
+
+{RETORNOS} {} 
+{LINECOMMENT} {}
+{MULTILINECOMMENT} {}
+
+
+"DefinirGlobales" {return new Symbol(sym.E_DG,yyline,yychar,yytext());}
+"GenerarReporteEstadistico" {return new Symbol(sym.E_GENREPEST,yyline,yychar,yytext());}
+"string" {return new Symbol(sym.E_STR,yyline,yychar,yytext());}
+"double" {return new Symbol(sym.E_DOUBLE,yyline,yychar,yytext());}
+"GraficaBarras" {return new Symbol(sym.E_GRABAR,yyline,yychar,yytext());}
+"Titulo" {return new Symbol(sym.E_TITLE,yyline,yychar,yytext());}
+"Ejex" {return new Symbol(sym.E_EJEX,yyline,yychar,yytext());}
+"Valores" {return new Symbol(sym.E_VALORES,yyline,yychar,yytext());}
+"TituloX" {return new Symbol(sym.E_TITLEX,yyline,yychar,yytext());}
+"TituloY" {return new Symbol(sym.E_TITLEY,yyline,yychar,yytext());}
+"GraficaPie" {return new Symbol(sym.E_GRAPIE,yyline,yychar,yytext());}
+"GraficaLineas" {return new Symbol(sym.E_GRALINE,yyline,yychar,yytext());}
+"Archivo" {return new Symbol(sym.E_ARCHIVO,yyline,yychar,yytext());}
+";" {return new Symbol(sym.E_PYC,yyline,yychar, yytext());}
+":" {return new Symbol(sym.E_DOSP,yyline,yychar, yytext());}
+"," {return new Symbol(sym.E_COMA,yyline,yychar, yytext());} 
+"{" {return new Symbol(sym.E_KEYIZQ,yyline,yychar, yytext());} 
+"}" {return new Symbol(sym.E_KEYDER,yyline,yychar, yytext());} 
+"[" {return new Symbol(sym.E_CORIZQ,yyline,yychar, yytext());} 
+"]" {return new Symbol(sym.E_CORDER,yyline,yychar, yytext());} 
+">" {return new Symbol(sym.E_MAYOR,yyline,yychar, yytext());}
+"<" {return new Symbol(sym.E_MENOR,yyline,yychar, yytext());}
+"?" {return new Symbol(sym.E_SIGNOINTE,yyline,yychar, yytext());}
+"%" {return new Symbol(sym.E_PORCENTAJE,yyline,yychar, yytext());}
+"=" {return new Symbol(sym.E_EQUALS,yyline,yychar, yytext());}
+
+ 
+\n {yychar=1;}
+\n {yyline=1;}
+
+
+
+{DECI} {return new Symbol(sym.DECI,yyline,yychar, yytext());}
+{IDENTIFICADOR} {return new Symbol(sym.IDENTIFICADOR,yyline,yychar, yytext());}
+{E_CADENA} {return new Symbol(sym.E_CADENA,yyline,yychar, yytext());}
+
+
+ 
+. {
+    System.out.println("Este es un error lexico: " + yytext()+ ", en la linea: "+yyline+", en la columna: "+yychar);
+}
