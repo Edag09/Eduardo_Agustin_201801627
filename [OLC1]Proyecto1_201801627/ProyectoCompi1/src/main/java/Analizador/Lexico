@@ -23,8 +23,7 @@ ENTERO=[0-9]+
 DECI=[0-9]+("."[0-9]+)?
 LETRA = [a-zA-Z]
 IDENTIFICADOR = {LETRA}({LETRA}|"_"|{ENTERO})*
-E_CADENA = "\""[^"\""]*"\""
-
+E_CADENA = "\""[^\"\n]*"\""
 
 %%
 
@@ -53,10 +52,6 @@ E_CADENA = "\""[^"\""]*"\""
 "}" {return new Symbol(sym.E_KEYDER,yyline,yychar, yytext());} 
 "[" {return new Symbol(sym.E_CORIZQ,yyline,yychar, yytext());} 
 "]" {return new Symbol(sym.E_CORDER,yyline,yychar, yytext());} 
-">" {return new Symbol(sym.E_MAYOR,yyline,yychar, yytext());}
-"<" {return new Symbol(sym.E_MENOR,yyline,yychar, yytext());}
-"?" {return new Symbol(sym.E_SIGNOINTE,yyline,yychar, yytext());}
-"%" {return new Symbol(sym.E_PORCENTAJE,yyline,yychar, yytext());}
 "=" {return new Symbol(sym.E_EQUALS,yyline,yychar, yytext());}
 
  
@@ -72,5 +67,5 @@ E_CADENA = "\""[^"\""]*"\""
 
  
 . {
-    System.out.println("Este es un error lexico: " + yytext()+ ", en la linea: "+yyline+", en la columna: "+yychar);
+    System.out.println("Este es un error lexico: " + yytext()+ " , en la linea: "+yyline+", en la columna: "+yychar);
 }

@@ -4,6 +4,7 @@ public class Principal {
 
 
     public static void main(String args[]) {
-        // TODO code application logic here
+        VentanaPrincipal v1 = new VentanaPrincipal();
+        v1.setVisible(true);
     }
 }

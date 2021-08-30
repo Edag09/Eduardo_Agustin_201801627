@@ -13,7 +13,7 @@ terminal String E_GRABAR,E_TITLE, E_EJEX;
 terminal String E_VALORES, E_TITLEX, E_TITLEY, E_GRAPIE;
 terminal String E_GRALINE,E_ARCHIVO;
 terminal String E_PYC, E_DOSP, E_COMA;
-terminal String E_CORIZQ, E_CORDER, E_KEYIZQ, E_KEYDER;
+terminal String E_KEYIZQ, E_KEYDER, E_CORIZQ, E_CORDER;
 terminal String E_EQUALS;
 terminal String IDENTIFICADOR, E_CADENA, DECI;
 
@@ -25,49 +25,56 @@ precedence left E_GENREPEST;
 
 start with ini;
 
-ini::=E_GENREPEST E_KEYIZQ contenidogeneral E_KEYDER {};
+ini::=E_GENREPEST E_KEYIZQ contenidogeneral E_KEYDER {::};
 
-contenidogeneral::=E_DG E_KEYIZQ cuerpo E_KEYDER graficas {};
+contenidogeneral::=E_DG E_KEYIZQ cuerpo E_KEYDER graficas{::};
 
-cuerpo::=E_STR IDENTIFICADOR E_EQUALS E_CADENA E_PYC {}
-        |E_DOUBLE IDENTIFICADOR E_EQUALS DECI E_PYC {}
-        |cuerpo {}
+cuerpo::=E_STR IDENTIFICADOR E_EQUALS E_CADENA E_PYC{::}
+        |E_DOUBLE IDENTIFICADOR E_EQUALS DECI E_PYC {::}
+        |cuerpo E_STR IDENTIFICADOR E_EQUALS E_CADENA E_PYC {::}
+        |cuerpo E_DOUBLE IDENTIFICADOR E_EQUALS DECI E_PYC {::}
 ;
 
-graficas::=E_GRABAR E_KEYIZQ titulos ejesx valoresbarras titulosx tituloy E_KEYDER {}
-            |E_GRAPIE E_KEYIZQ titulos ejesx valoresbarras E_KEYDER {}
-            |E_GRALINE E_KEYIZQ titulos Arch E_KEYDER {}
-            |graficas {}
+graficas::=E_GRABAR E_KEYIZQ titulos ejesx valoresbarras titulosx tituloy E_KEYDER {::}
+            |E_GRAPIE E_KEYIZQ titulos ejesx valoresbarras E_KEYDER {::}
+            |E_GRALINE E_KEYIZQ titulos Arch E_KEYDER {::}
+            |graficas E_GRABAR E_KEYIZQ titulos ejesx valoresbarras titulosx tituloy E_KEYDER {::}
+            |graficas E_GRAPIE E_KEYIZQ titulos ejesx valoresbarras E_KEYDER {::}
+            |graficas E_GRALINE E_KEYIZQ titulos Arch E_KEYDER {::}
 ;
 
-titulos::=E_TITLE E_DOSP IDENTIFICADOR E_PYC {}
-                |E_TITLE E_DOSP E_CADENA E_PYC {}
+titulos::=E_TITLE E_DOSP IDENTIFICADOR E_PYC {::}
+          |E_TITLE E_DOSP E_CADENA E_PYC {::}
 ;
 
-ejesx::=E_EJEX E_DOSP E_CORIZQ contenidox E_CORDER {};
+ejesx::=E_EJEX E_DOSP E_CORIZQ contenidox E_CORDER E_PYC {::};
 
-contenidox::=E_CADENA {}
-            |E_COMA {}
-            |IDENTIFICADOR {}
-            |contenidox {}
+contenidox::=E_CADENA {::}
+            |IDENTIFICADOR {::}
+            |contenidox E_COMA {::}
+            |contenidox E_CADENA {::}
+            |contenidox IDENTIFICADOR {::}
 ;
 
-valoresbarras::=E_VALORES E_DOSP E_CORIZQ contenidov E_CORDER {};
+valoresbarras::=E_VALORES E_DOSP E_CORIZQ contenidov E_CORDER E_PYC {::};
 
-contenidov::=DECI {}
-            |E_COMA {}
-            |IDENTIFICADOR {}
-            |contenidov {}
+contenidov::=DECI {::}
+            |IDENTIFICADOR {::}
+            |E_CADENA {::}
+            |contenidov E_COMA {::}
+            |contenidov DECI {::}
+            |contenidov E_CADENA {::}
+            |contenidov IDENTIFICADOR {::}
 ;
 
-titulosx::=E_TITLEX E_DOSP IDENTIFICADOR E_PYC {}
-         |E_TITLEY E_DOSP E_CADENA E_PYC {}
+titulosx::=E_TITLEX E_DOSP IDENTIFICADOR E_PYC {::}
+         |E_TITLEY E_DOSP E_CADENA E_PYC {::}
 ;
 
-tituloy::=E_TITLEY E_DOSP IDENTIFICADOR E_PYC {}
-         |E_TITLEY E_DOSP E_CADENA E_PYC {}
+tituloy::=E_TITLEY E_DOSP IDENTIFICADOR E_PYC {::}
+         |E_TITLEY E_DOSP E_CADENA E_PYC {::}
 ;
 
-Arch::=E_ARCHIVO E_DOSP IDENTIFICADOR E_PYC {}
-      |E_ARCHIVO E_DOSP E_CADENA E_PYC {}
+Arch::=E_ARCHIVO E_DOSP IDENTIFICADOR E_PYC {::}
+      |E_ARCHIVO E_DOSP E_CADENA E_PYC {::}
 ;
