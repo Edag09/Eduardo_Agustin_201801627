@@ -24,6 +24,7 @@ DECI=[0-9]+("."[0-9]+)?
 LETRA = [a-zA-Z]
 IDENTIFICADOR = {LETRA}({LETRA}|"_"|{ENTERO})*
 E_CADENA = "\""[^\"\n]*"\""
+E_CADENAUC = "\'"[^\'\n]*"\'"
 ESPECIALES = [\\]("n"|"'"|"\"")+
 
 %%
@@ -62,22 +63,22 @@ ESPECIALES = [\\]("n"|"'"|"\"")+
 "*" {return new Symbol(sym.E_POR,yyline,yychar, yytext());} 
 "**" {return new Symbol(sym.E_POTENCIA,yyline,yychar, yytext());} 
 "/" {return new Symbol(sym.E_DIVIDIR,yyline,yychar, yytext());}
-">" {return new Symbol(sym.E_MAYOR,yyline,yychar, yytext());}
-"<" {return new Symbol(sym.E_MENOR,yyline,yychar, yytext());}
-"?" {return new Symbol(sym.E_PREGUNTA,yyline,yychar, yytext());}
 "%" {return new Symbol(sym.E_MODULO,yyline,yychar, yytext());}
+"=" {return new Symbol(sym.E_EQUALS,yyline,yychar, yytext());}
+"++" {return new Symbol(sym.E_AUMENTO,yyline,yychar, yytext());
+"--" {return new Symbol(sym.E_DISMINUIR,yyline,yychar, yytext());}
+"==" {return new Symbol(sym.E_COMPARAR,yyline,yychar, yytext());}
+"!=" {return new Symbol(sym.E_NOEQUALS,yyline,yychar, yytext());}
+"<" {return new Symbol(sym.E_MENOR,yyline,yychar, yytext());}
+">" {return new Symbol(sym.E_MAYOR,yyline,yychar, yytext());}
+"<=" {return new Symbol(sym.E_MENORQUE,yyline,yychar, yytext());}
+">=" {return new Symbol(sym.E_MAYORQUE,yyline,yychar, yytext());}
+"?" {return new Symbol(sym.E_PREGUNTA,yyline,yychar, yytext());}
 "&&" {return new Symbol(sym.E_AND,yyline,yychar, yytext());}
 "||" {return new Symbol(sym.E_OOR,yyline,yychar, yytext());}
-"=" {return new Symbol(sym.E_EQUALS,yyline,yychar, yytext());}
-"==" {return new Symbol(sym.E_COMPARAR,yyline,yychar, yytext());}
-"!=" {return new Symbol(sym.E_NOTEQUALS,yyline,yychar, yytext());}
-">=" {return new Symbol(sym.E_MAYORQUE,yyline,yychar, yytext());}
-"<=" {return new Symbol(sym.E_MENORQUE,yyline,yychar, yytext());}
 "!" {return new Symbol(sym.E_NEGAR,yyline,yychar, yytext());}
 "true" {return new Symbol(sym.E_TRUE,yyline,yychar, yytext());}
 "false" {return new Symbol(sym.E_FALSE,yyline,yychar, yytext());}
-"++" {return new Symbol(sym.E_AUMENTO,yyline,yychar, yytext());
-"--" {return new Symbol(sym.E_DISMINUIR,yyline,yychar, yytext());}
 
 \n {yychar=1;}
 \n {yyline=1;}
