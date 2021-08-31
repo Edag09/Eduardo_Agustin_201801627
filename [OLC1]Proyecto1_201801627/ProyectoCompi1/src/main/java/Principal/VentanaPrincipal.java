@@ -185,7 +185,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 texto += linea+"\n";
             }
             MostrarTextoEditor.setText(texto);
-            JOptionPane.showMessageDialog(null, "Archivo Cargado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Se ha detectado un error");
         }
@@ -193,10 +192,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_AbrirArchivoMouseClicked
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        if (MostrarTextoEditor.getText().isEmpty()) {
+        if (MostrarTextoEditor.getText().isEmpty() && TextConsola.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "No se ha cargado algun archivo");
         }else{
             MostrarTextoEditor.setText(" ");
+            TextConsola.setText(" ");
         }
     }//GEN-LAST:event_LimpiarActionPerformed
 

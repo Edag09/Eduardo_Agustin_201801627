@@ -17,8 +17,8 @@ import java_cup.runtime.Symbol;
 %init} 
 
 RETORNOS = [ \r\t\n]+
-LINECOMMENT = ("//".*\n)|("//".*\r\n)|("//".*\r)
-MULTILINECOMMENT = "<!""!"*([^!>]|[^!]">"|"!"[^>])*"!"*"!>"
+LINECOMMENT = ^##[^\r\n]*[^\r\n]+
+MULTILINECOMMENT = "#"[^/]~"#"|"#""/"+"#"
 ENTERO=[0-9]+
 DECI=[0-9]+("."[0-9]+)?
 LETRA = [a-zA-Z]

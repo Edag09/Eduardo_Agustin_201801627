@@ -1,0 +1,92 @@
+package AnalizadorJS;
+import java_cup.runtime.Symbol;
+
+%% 
+%class Lexico
+%public 
+%cupsym sym
+%line 
+%char 
+%cup 
+%unicode
+%ignorecase
+
+%init{ 
+    yyline = 1; 
+    yychar = 1;
+%init} 
+
+RETORNOS = [ \r\t\n]+
+LINECOMMENT = ("//".*\n)|("//".*\r\n)|("//".*\r)
+MULTILINECOMMENT = "<!""!"*([^!>]|[^!]">"|"!"[^>])*"!"*"!>"
+ENTERO=[0-9]+
+DECI=[0-9]+("."[0-9]+)?
+LETRA = [a-zA-Z]
+IDENTIFICADOR = {LETRA}({LETRA}|"_"|{ENTERO})*
+E_CADENA = "\""[^\"\n]*"\""
+ESPECIALES = [\\]("n"|"'"|"\"")+
+
+%%
+
+{RETORNOS} {} 
+{LINECOMMENT} {}
+{MULTILINECOMMENT} {}
+{ESPECIALES} {return new Symbol(sym.ESPECIALES,yyline,yychar, yytext());}
+
+"class" {return new Symbol(sym.E_CLASS,yyline,yychar,yytect());}
+"var" {return new Symbol(sym.E_VAR,yyline,yychar,yytect());}
+"let" {return new Symbol(sym.E_LET,yyline,yychar,yytect());}
+"const" {return new Symbol(sym.E_CONST,yyline,yychar,yytect());}
+"if" {return new Symbol(sym.E_IF,yyline,yychar,yytect());}
+"else" {return new Symbol(sym.E_ELSE,yyline,yychar,yytect());}
+"for" {return new Symbol(sym.E_FOR,yyline,yychar,yytect());}
+"while" {return new Symbol(sym.E_WHILE,yyline,yychar,yytect());}
+"do" {return new Symbol(sym.E_DO,yyline,yychar,yytect());}
+"switch" {return new Symbol(sym.E_SWITCH,yyline,yychar,yytect());}
+"case" {return new Symbol(sym.E_CASE,yyline,yychar,yytect());}
+"console.log" {return new Symbol(sym.E_CONSOLE,yyline,yychar,yytect());}
+"require" {return new Symbol(sym.E_REQUIRE,yyline,yychar,yytect());}
+"break" {return new Symbol(sym.E_BREAK,yyline,yychar,yytect());}
+";" {return new Symbol(sym.E_PYC,yyline,yychar, yytext());}
+":" {return new Symbol(sym.E_DOSPUNTOS,yyline,yychar, yytext());} 
+"." {return new Symbol(sym.E_PUNTO,yyline,yychar, yytext());} 
+"(" {return new Symbol(sym.E_PARENTESISIZQ,yyline,yychar, yytext());} 
+")" {return new Symbol(sym.E_PARENTESISDER,yyline,yychar, yytext());} 
+"," {return new Symbol(sym.E_COMA,yyline,yychar, yytext());} 
+"{" {return new Symbol(sym.E_KEYIZQ,yyline,yychar, yytext());} 
+"}" {return new Symbol(sym.E_KEYDER,yyline,yychar, yytext());} 
+"[" {return new Symbol(sym.E_CORIZQ,yyline,yychar, yytext());} 
+"]" {return new Symbol(sym.E_CORDER,yyline,yychar, yytext());} 
+"+" {return new Symbol(sym.E_MAS,yyline,yychar, yytext());} 
+"-" {return new Symbol(sym.E_MENOS,yyline,yychar, yytext());} 
+"*" {return new Symbol(sym.E_POR,yyline,yychar, yytext());} 
+"**" {return new Symbol(sym.E_POTENCIA,yyline,yychar, yytext());} 
+"/" {return new Symbol(sym.E_DIVIDIR,yyline,yychar, yytext());}
+">" {return new Symbol(sym.E_MAYOR,yyline,yychar, yytext());}
+"<" {return new Symbol(sym.E_MENOR,yyline,yychar, yytext());}
+"?" {return new Symbol(sym.E_PREGUNTA,yyline,yychar, yytext());}
+"%" {return new Symbol(sym.E_MODULO,yyline,yychar, yytext());}
+"&&" {return new Symbol(sym.E_AND,yyline,yychar, yytext());}
+"||" {return new Symbol(sym.E_OOR,yyline,yychar, yytext());}
+"=" {return new Symbol(sym.E_EQUALS,yyline,yychar, yytext());}
+"==" {return new Symbol(sym.E_COMPARAR,yyline,yychar, yytext());}
+"!=" {return new Symbol(sym.E_NOTEQUALS,yyline,yychar, yytext());}
+">=" {return new Symbol(sym.E_MAYORQUE,yyline,yychar, yytext());}
+"<=" {return new Symbol(sym.E_MENORQUE,yyline,yychar, yytext());}
+"!" {return new Symbol(sym.E_NEGAR,yyline,yychar, yytext());}
+"true" {return new Symbol(sym.E_TRUE,yyline,yychar, yytext());}
+"false" {return new Symbol(sym.E_FALSE,yyline,yychar, yytext());}
+"++" {return new Symbol(sym.E_AUMENTO,yyline,yychar, yytext());
+"--" {return new Symbol(sym.E_DISMINUIR,yyline,yychar, yytext());}
+
+\n {yychar=1;}
+\n {yyline=1;}
+
+{ENTERO} {return new Symbol(sym.ENTERO,yyline,yychar, yytext());} 
+{DECI} {return new Symbol(sym.DECIMAL,yyline,yychar, yytext());}
+{IDENTIFICADOR} {return new Symbol(sym.IDENTIFICADOR,yyline,yychar, yytext());}
+{E_CADENA} {return new Symbol(sym.E_CADENA,yyline,yychar, yytext());}
+
+. {
+    System.out.println("Este es un error lexico: " + yytext()+ " , en la linea: "+yyline+", en la columna: "+yychar);
+}
