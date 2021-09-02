@@ -18,7 +18,7 @@ terminal String E_PREGUNTA;
 terminal String E_AND, E_OOR, E_NEGAR;
 terminal String E_TRUE, E_FALSE;
 
-non terminal ini, procesos, parametros, variable, impresion, numero, opmate, operador, concatenar, condicion, forvariable, condicionfor, aumento;
+non terminal ini, procesos, parametros, variable, impresion, numero, opmate, operador, concatenar, condicion, forvariable, condicionfor, foraumento;
 
 start with ini;
 
@@ -32,6 +32,7 @@ ini::=E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER {::}
 
 parametros::=IDENTIFICADOR {::}
           |parametros E_COMA IDENTIFICADOR {::}
+          |parametros opmate {::}
 ;
 
 variable::=E_CADENA E_PYC{::}
@@ -75,7 +76,7 @@ procesos::=procesos IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ proce
         |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::} //If
         |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER E_ELSE E_KEYIZQ procesos E_KEYDER{::} //If else
         |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER E_ELSE E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::} //if else if
-        |E_FOR E_PARENTESISIZQ forvariable condicionfor aumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::} //For
+        |E_FOR E_PARENTESISIZQ forvariable condicionfor foraumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::} //For
         |E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}  //While
         |E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER {::}  //Do-while
         |E_SWITCH E_PARENTESISIZQ ENTERO E_PARENTESISDER E_KEYIZQ casos E_KEYDER //Switch
@@ -101,15 +102,30 @@ concatenar::=concatenar E_MAS IDENTIFICADOR {::}
 
 forvariable::=E_VAR IDENTIFICADOR E_EQUALS variable {::}
              |E_LET IDENTIFICADOR E_EQUALS variable {::}
-             |E_CONST IDENTIFICADOR E_EQUALS variable {::}
+             |IDENTIFICADOR E_EQUALS DECI {::}
+             |IDENTIFICADOR opmate {::}
+             |IDENTIFICADOR {::}
+;
 
-condicionfor::=E_VAR IDENTIFICADOR E_EQUALS variable {::}
-             |E_LET IDENTIFICADOR E_EQUALS variable {::}
-             |E_CONST IDENTIFICADOR E_EQUALS variable {::}
+condicionfor::=IDENTIFICADOR E_MAYOR IDENTIDICADOR {::}
+             |IDENTIFICADOR E_MENOR IDENTIDICADOR {::}
+             |IDENTIFICADOR E_MAYORQUE IDENTIDICADOR {::}
+             |IDENTIFICADOR E_MENORQUE IDENTIDICADOR {::}
+             |IDENTIFICADOR E_MAYOR DECI {::}
+             |IDENTIFICADOR E_MENOR DECI {::}
+             |IDENTIFICADOR E_MAYORQUE DECI {::}
+             |IDENTIFICADOR E_MENORQUE DECI {::}
+             |IDENTIFICADOR E_MAYOR opmate {::}
+             |IDENTIFICADOR E_MENOR opmate {::}
+             |IDENTIFICADOR E_MAYORQUE opmate {::}
+             |IDENTIFICADOR E_MENORQUE opmate {::}
+;
 
-aumento::=E_VAR IDENTIFICADOR E_EQUALS variable {::}
-        |E_LET IDENTIFICADOR E_EQUALS variable {::}
-        |E_CONST IDENTIFICADOR E_EQUALS variable {::}
+foraumento::=IDENTIFICADOR E_AUMENTO {::}
+         |IDENTIFICADOR E_DISMINUIR {::}
+         |IDENTIFICADOR E_EQUALS E_MAS DECI {::}
+         |IDENTIFICADOR E_EQUALS E_MENOR DECI {::}
+;
 
 condicion::=E_CADENA E_COMPARAR E_CADENA {::}
           |DECI E_COMPARAR DECI {::}
@@ -190,15 +206,16 @@ numero::=DECI {::}
        |opmate {::}
 ;
 
-opmate::=E_DECI E_POTENICA E_DECI {::}
+opmate::=E_PARENTESISIZQ opmate E_PARENTESISDER {::}
+        |E_DECI E_POTENICA E_DECI {::}
         |E_DECI E_DIVIDIR E_DECI {::}
         |E_DECI E_MODULO E_DECI {::}
         |E_DECI E_POR E_DECI {::}
         |E_DECI E_MAS E_DECI {::}
         |E_DECI E_MENOS E_DECI {::}
-        |E_PARENTESISIZQ opmate E_PARENTESISDER {::}
         |opmate E_MAS{::}
         |opmate E_MENOS{::}
         |opmate E_POR{::}
         |opmate E_DIVIDIR{::}
+        |opmate E_POTENCIA {::}
 ;
