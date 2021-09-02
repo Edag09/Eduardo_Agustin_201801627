@@ -292,6 +292,8 @@ impresion::=impresion E_MAS opmate {::}
            |DECI {::}
            |E_MENOS DECI {::}
            |E_MENOS E_PARENTESISIZQ opmate E_PARENTESISDER {::}
+           |E_MENOS E_PARENTESISIZQ DECI E_PARENTESISDER {::}
+           |E_MENOS E_PARENTESISIZQ IDENTIFICADOR E_PARENTESISDER {::}
            |E_PARENTESISIZQ opmate E_PARENTESISDER {::}
            |IDENTIFICADOR E_AUMENTO {::}
            |IDENTIFICADOR E_DISMINUIR {::}
