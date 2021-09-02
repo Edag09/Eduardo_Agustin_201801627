@@ -168,7 +168,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void AbrirArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AbrirArchivoMouseClicked
         JFileChooser windows = new JFileChooser();
-        FileNameExtensionFilter extencion = new FileNameExtensionFilter("Documentos tipo FCA", "fca");
+        FileNameExtensionFilter extencion = new FileNameExtensionFilter("Documentos tipo FCA y JS", "fca", "js");
         windows.setFileFilter(extencion);
         
         windows.showOpenDialog(null);
@@ -201,17 +201,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_LimpiarActionPerformed
 
     private void EjecutarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EjecutarMouseClicked
-        String parseo = MostrarTextoEditor.getText();
-        TextConsola.setText("Procesando\n");
-        Sintactico sintaxCorrect = new Sintactico(new Lexico(new StringReader(parseo)));
-        
-        try {
-            sintaxCorrect.parse();
-            System.out.println(TextConsola.getText()+"Si jala\n");
-        } catch (Exception e) {
-            TextConsola.setText(TextConsola.getText()+"Error Sintactico\n");
-        }
-        TextConsola.setText(TextConsola.getText()+"Finalizado");
+        parseoJS();
     }//GEN-LAST:event_EjecutarMouseClicked
 
 
@@ -232,4 +222,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
+
+public void parseoFCA(){
+        String parseo = MostrarTextoEditor.getText();
+        TextConsola.setText("Procesando\n");
+        Sintactico sintaxCorrect = new Sintactico(new Lexico(new StringReader(parseo)));
+        
+        try {
+            sintaxCorrect.parse();
+            System.out.println(TextConsola.getText()+"Si jala\n");
+        } catch (Exception e) {
+            TextConsola.setText(TextConsola.getText()+"Error Sintactico\n");
+        }
+        TextConsola.setText(TextConsola.getText()+"Finalizado");
 }
+
+public void parseoJS(){
+    String parseo = MostrarTextoEditor.getText();
+    TextConsola.setText("Procesando\n");
+    AnalizadorJS.Sintactico sintaxJS = new AnalizadorJS.Sintactico(new AnalizadorJS.Lexico(new StringReader(parseo)));
+    
+    try {
+        sintaxJS.parse();
+        System.out.println(TextConsola.getText()+" Si jalo\n");
+    } catch (Exception e) {
+        TextConsola.setText(TextConsola.getText()+"Error Sintactico\n");
+    }
+    TextConsola.setText(TextConsola.getText()+" Finalizado");
+}
+}
+
+

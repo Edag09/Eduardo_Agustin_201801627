@@ -65,7 +65,6 @@ E_CADENA = "\""[^\"\n]*"\""
 {E_CADENA} {return new Symbol(sym.E_CADENA,yyline,yychar, yytext());}
 
 
- 
 . {
     System.out.println("Este es un error lexico: " + yytext()+ " , en la linea: "+yyline+", en la columna: "+yychar);
 }
