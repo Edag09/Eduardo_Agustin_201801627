@@ -49,11 +49,8 @@ ini::=ini E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER {::}
 
 parametros::=IDENTIFICADOR {::}
           |parametros E_COMA IDENTIFICADOR {::}
-          |parametros E_MAS opmate {::}
-          |parametros E_MENOS opmate {::}
-          |parametros E_POR opmate {::}
-          |parametros E_DIVIDIR opmate {::}
-          |parametros E_POTENCIA opmate {::}
+          |parametros signos DECI {::}
+          |parametros signos E_PARENTESISIZQ variable E_PARENTESISDER {::}
 ;
 
 variable::=E_CADENA E_PYC{::}
@@ -62,6 +59,14 @@ variable::=E_CADENA E_PYC{::}
         |E_CADENAUC {::}
         |DECI E_PYC{::}
         |DECI {::}
+        |DECI signos DECI E_PYC{::}
+        |DECI signos DECI {::}
+        |DECI signos IDENTIFICADOR E_PYC{::}
+        |DECI signos IDENTIFICADOR {::}
+        |IDENTIFICADOR signos DECI E_PYC{::}
+        |IDENTIFICADOR signos DECI {::}
+        |IDENTIFICADOR signos IDENTIFICADOR E_PYC{::}
+        |IDENTIFICADOR signos IDENTIFICADOR{::}
         |E_TRUE E_PYC{::}
         |E_TRUE {::}
         |E_FALSE E_PYC {::}
@@ -244,10 +249,10 @@ concatenar::=concatenar E_MAS IDENTIFICADOR {::}
 
 forvariable::=E_VAR IDENTIFICADOR E_EQUALS variable {::}
              |E_LET IDENTIFICADOR E_EQUALS variable {::}
-             |IDENTIFICADOR E_EQUALS DECI E_PYC {::}
              |IDENTIFICADOR E_EQUALS IDENTIFICADOR E_PYC {::}
              |IDENTIFICADOR opmate E_PYC {::}
              |IDENTIFICADOR E_PYC {::}
+             |IDENTIFICADOR E_EQUALS variable {::}
 ;
 
 condicionfor::=IDENTIFICADOR E_MAYOR IDENTIFICADOR E_PYC {::}
@@ -392,5 +397,4 @@ opmate::=opmate E_PARENTESISIZQ opmate E_PARENTESISDER {::}
         |DECI E_POR IDENTIFICADOR {::}
         |DECI E_MAS IDENTIFICADOR {::}
         |DECI E_MENOS IDENTIFICADOR {::}
-        
 ;
