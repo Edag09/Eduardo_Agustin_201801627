@@ -17,7 +17,7 @@ terminal String E_COMPARAR, E_NOEQUALS, E_MENOR, E_MAYOR, E_MENORQUE, E_MAYORQUE
 terminal String E_AND, E_OOR, E_NEGAR;
 terminal String E_TRUE, E_FALSE;
 
-non terminal ini, procesos, parametros, variable, impresion, opmate, concatenar, condicion, forvariable, condicionfor, foraumento, casos, vector;
+non terminal ini, procesos, parametros, variable, impresion, opmate, concatenar, condicion, forvariable, condicionfor, foraumento, casos, vector, signos;
 
 start with ini;
 
@@ -101,6 +101,63 @@ variable::=E_CADENA E_PYC{::}
         |E_REQUIRE E_PARENTESISIZQ E_CADENA E_PARENTESISDER {::}
         |E_CORIZQ vector E_CORDER {::}
         |E_CORIZQ vector E_CORDER E_PYC {::}
+
+        |signos DECI signos IDENTIFICADOR signos DECI {::}
+        |signos DECI signos IDENTIFICADOR signos DECI E_PYC{::}
+        |signos DECI signos IDENTIFICADOR signos DECI signos variable {::}
+        |DECI signos IDENTIFICADOR signos DECI {::}
+        |DECI signos IDENTIFICADOR signos DECI E_PYC{::}
+        |DECI signos IDENTIFICADOR signos DECI signos variable {::}
+
+        |signos DECI signos IDENTIFICADOR signos IDENTIFICADOR {::}
+        |signos DECI signos IDENTIFICADOR signos IDENTIFICADOR E_PYC{::}
+        |signos DECI signos IDENTIFICADOR signos IDENTIFICADOR signos variable {::}
+        |DECI signos IDENTIFICADOR signos IDENTIFICADOR {::}
+        |DECI signos IDENTIFICADOR signos IDENTIFICADOR E_PYC {::}
+        |DECI signos IDENTIFICADOR signos IDENTIFICADOR signos variable {::}
+
+        |signos IDENTIFICADOR signos DECI signos DECI {::}
+        |signos IDENTIFICADOR signos DECI signos DECI E_PYC{::}
+        |signos IDENTIFICADOR signos DECI signos DECI signos variable {::}
+        |IDENTIFICADOR signos DECI signos DECI {::}
+        |IDENTIFICADOR signos DECI signos DECI E_PYC{::}
+        |IDENTIFICADOR signos DECI signos DECI signos variable {::}
+
+        |signos IDENTIFICADOR signos IDENTIFICADOR signos DECI {::}
+        |signos IDENTIFICADOR signos IDENTIFICADOR signos DECI E_PYC{::}
+        |signos IDENTIFICADOR signos IDENTIFICADOR signos DECI signos variable {::}
+        |IDENTIFICADOR signos IDENTIFICADOR signos DECI {::}
+        |IDENTIFICADOR signos IDENTIFICADOR signos DECI E_PYC{::}
+        |IDENTIFICADOR signos IDENTIFICADOR signos DECI signos variable {::}
+
+        |signos IDENTIFICADOR signos DECI signos IDENTIFICADOR {::}
+        |signos IDENTIFICADOR signos DECI signos IDENTIFICADOR E_PYC{::}
+        |signos IDENTIFICADOR signos DECI signos IDENTIFICADOR signos variable {::}
+        |IDENTIFICADOR signos DECI signos IDENTIFICADOR {::}
+        |IDENTIFICADOR signos DECI signos IDENTIFICADOR E_PYC{::}
+        |IDENTIFICADOR signos DECI signos IDENTIFICADOR signos variable {::}
+
+        |signos DECI signos DECI signos IDENTIFICADOR {::}
+        |signos DECI signos DECI signos IDENTIFICADOR E_PYC{::}
+        |signos DECI signos DECI signos IDENTIFICADOR signos variable {::}
+        |DECI signos DECI signos IDENTIFICADOR {::}
+        |DECI signos DECI signos IDENTIFICADOR E_PYC {::}
+        |DECI signos DECI signos IDENTIFICADOR signos variable {::}
+
+        |signos IDENTIFICADOR signos IDENTIFICADOR signos IDENTIFICADOR {::}
+        |signos IDENTIFICADOR signos IDENTIFICADOR signos IDENTIFICADOR E_PYC {::}
+        |signos IDENTIFICADOR signos IDENTIFICADOR signos IDENTIFICADOR signos variable {::}
+        |IDENTIFICADOR signos IDENTIFICADOR signos IDENTIFICADOR {::}
+        |IDENTIFICADOR signos IDENTIFICADOR signos IDENTIFICADOR E_PYC {::}
+        |IDENTIFICADOR signos IDENTIFICADOR signos IDENTIFICADOR signos variable {::} 
+;
+
+signos::=E_MAS {::}
+       |E_MENOS {::}
+       |E_POR {::}
+       |E_DIVIDIR {::}
+       |E_POTENCIA {::}
+       |E_MODULO {::}
 ;
 
 vector::=vector E_COMA E_CADENA {::}
@@ -188,6 +245,7 @@ concatenar::=concatenar E_MAS IDENTIFICADOR {::}
 forvariable::=E_VAR IDENTIFICADOR E_EQUALS variable {::}
              |E_LET IDENTIFICADOR E_EQUALS variable {::}
              |IDENTIFICADOR E_EQUALS DECI E_PYC {::}
+             |IDENTIFICADOR E_EQUALS IDENTIFICADOR E_PYC {::}
              |IDENTIFICADOR opmate E_PYC {::}
              |IDENTIFICADOR E_PYC {::}
 ;
@@ -208,8 +266,8 @@ condicionfor::=IDENTIFICADOR E_MAYOR IDENTIFICADOR E_PYC {::}
 
 foraumento::=IDENTIFICADOR E_AUMENTO {::}
          |IDENTIFICADOR E_DISMINUIR {::}
-         |IDENTIFICADOR E_EQUALS E_MAS DECI {::}
-         |IDENTIFICADOR E_EQUALS E_MENOR DECI {::}
+         |IDENTIFICADOR E_MAS E_EQUALS DECI {::}
+         |IDENTIFICADOR E_MENOR E_EQUALS DECI {::}
 ;
 
 condicion::=condicion E_CADENA E_COMPARAR E_CADENA {::}
@@ -240,9 +298,9 @@ condicion::=condicion E_CADENA E_COMPARAR E_CADENA {::}
           |condicion IDENTIFICADOR E_NOEQUALS IDENTIFICADOR {::}
           |condicion E_NEGAR IDENTIFICADOR {::}
           |condicion E_PARENTESISIZQ condicion E_PARENTESISDER {::}
-          |condicion E_PARENTESISIZQ condicion E_OOR condicion E_PARENTESISDER {::}
-          |condicion E_PARENTESISIZQ condicion E_AND condicion E_PARENTESISDER
           |condicion IDENTIFICADOR {::}
+          |condicion E_OOR {::}
+          |condicion E_AND {::}
 
           |E_CADENA E_COMPARAR E_CADENA {::}
           |DECI E_COMPARAR DECI {::}
@@ -276,8 +334,6 @@ condicion::=condicion E_CADENA E_COMPARAR E_CADENA {::}
           |E_NEGAR IDENTIFICADOR {::}
 
           |E_PARENTESISIZQ condicion E_PARENTESISDER {::}
-          |E_PARENTESISIZQ condicion E_OOR condicion E_PARENTESISDER {::}
-          |E_PARENTESISIZQ condicion E_AND condicion E_PARENTESISDER {::}
 ;
 
 
@@ -316,6 +372,13 @@ opmate::=opmate E_PARENTESISIZQ opmate E_PARENTESISDER {::}
         |opmate DECI E_POR DECI {::}
         |opmate DECI E_MAS DECI {::}
         |opmate DECI E_MENOS DECI {::}
+        |opmate DECI E_POTENCIA IDENTIFICADOR {::}
+        |opmate DECI E_DIVIDIR IDENTIFICADOR {::}
+        |opmate DECI E_MODULO IDENTIFICADOR {::}
+        |opmate DECI E_POR IDENTIFICADOR {::}
+        |opmate DECI E_MAS IDENTIFICADOR {::}
+        |opmate DECI E_MENOS IDENTIFICADOR {::}
+
         |E_PARENTESISIZQ opmate E_PARENTESISDER {::}
         |DECI E_POTENCIA DECI {::}
         |DECI E_DIVIDIR DECI {::}
@@ -323,4 +386,11 @@ opmate::=opmate E_PARENTESISIZQ opmate E_PARENTESISDER {::}
         |DECI E_POR DECI {::}
         |DECI E_MAS DECI {::}
         |DECI E_MENOS DECI {::}
+        |DECI E_POTENCIA IDENTIFICADOR {::}
+        |DECI E_DIVIDIR IDENTIFICADOR {::}
+        |DECI E_MODULO IDENTIFICADOR {::}
+        |DECI E_POR IDENTIFICADOR {::}
+        |DECI E_MAS IDENTIFICADOR {::}
+        |DECI E_MENOS IDENTIFICADOR {::}
+        
 ;
