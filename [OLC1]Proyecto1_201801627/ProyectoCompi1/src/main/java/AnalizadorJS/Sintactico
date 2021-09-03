@@ -68,6 +68,33 @@ variable::=E_CADENA E_PYC{::}
         |E_FALSE {::}
         |E_PARENTESISIZQ opmate E_PARENTESISDER opmate E_PYC {::}
         |E_PARENTESISIZQ opmate E_PARENTESISDER opmate {::}
+
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_MENOS DECI E_PYC {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_MENOS DECI {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_MAS DECI E_PYC {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_MAS DECI {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_POR DECI E_PYC {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_POR DECI {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_DIVIDIR DECI E_PYC {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_DIVIDIR DECI {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_POTENCIA DECI E_PYC {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_POTENCIA DECI {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_MODULO DECI E_PYC {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_MODULO DECI {::}
+
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_MENOS opmate E_PYC {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_MENOS opmate {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_MAS opmate E_PYC {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_MAS opmate {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_POR opmate E_PYC {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_POR opmate {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_DIVIDIR opmate E_PYC {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_DIVIDIR opmate {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_POTENCIA opmate E_PYC {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_POTENCIA opmate {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_MODULO opmate E_PYC {::}
+        |E_PARENTESISIZQ opmate E_PARENTESISDER E_MODULO opmate {::}
+
         |E_PARENTESISIZQ opmate E_PARENTESISDER E_PYC{::}
         |E_PARENTESISIZQ opmate E_PARENTESISDER {::}
         |E_REQUIRE E_PARENTESISIZQ E_CADENA E_PARENTESISDER E_PYC {::}
@@ -101,6 +128,7 @@ procesos::=procesos IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ proce
         |procesos E_FOR E_PARENTESISIZQ forvariable condicionfor foraumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |procesos E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |procesos E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER {::}
+        |procesos E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_PYC {::}
         |procesos E_SWITCH E_PARENTESISIZQ IDENTIFICADOR E_PARENTESISDER E_KEYIZQ casos E_KEYDER
         |procesos E_CONSOLE E_PARENTESISIZQ impresion E_PARENTESISDER E_PYC {::}
         |procesos E_CONSOLE E_PARENTESISIZQ impresion E_PARENTESISDER {::}
@@ -112,6 +140,7 @@ procesos::=procesos IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ proce
         |procesos IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC{::}         
         |procesos IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {::}
         |procesos IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER {::}
+
         |IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::} 
         |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |E_VAR IDENTIFICADOR E_EQUALS variable {::}
@@ -129,6 +158,7 @@ procesos::=procesos IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ proce
         |E_FOR E_PARENTESISIZQ forvariable condicionfor foraumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER {::}
+        |E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_PYC {::}
         |E_SWITCH E_PARENTESISIZQ IDENTIFICADOR E_PARENTESISDER E_KEYIZQ casos E_KEYDER {::}
         |E_CONSOLE E_PARENTESISIZQ impresion E_PARENTESISDER E_PYC {::}
         |E_CONSOLE E_PARENTESISIZQ impresion E_PARENTESISDER {::}
@@ -183,64 +213,36 @@ foraumento::=IDENTIFICADOR E_AUMENTO {::}
 ;
 
 condicion::=condicion E_CADENA E_COMPARAR E_CADENA {::}
-
           |condicion DECI E_COMPARAR DECI {::}
-
           |condicion DECI E_MAYOR DECI {::}
-
           |condicion DECI E_MENOR DECI {::}
-
           |condicion DECI E_MAYORQUE DECI {::}
-
           |condicion DECI E_MENORQUE DECI {::}
-
           |condicion IDENTIFICADOR E_COMPARAR DECI {::}
-
           |condicion IDENTIFICADOR E_COMPARAR E_TRUE {::}
-
           |condicion IDENTIFICADOR E_COMPARAR E_FALSE {::}
-
           |condicion IDENTIFICADOR E_COMPARAR E_CADENA {::}
-
           |condicion IDENTIFICADOR E_MAYOR DECI {::}
-
           |condicion IDENTIFICADOR E_MENOR DECI {::}
-
           |condicion IDENTIFICADOR E_MAYORQUE DECI {::}
-
           |condicion IDENTIFICADOR E_MENORQUE DECI {::}
-
           |condicion IDENTIFICADOR E_MAYOR IDENTIFICADOR {::}
-
           |condicion IDENTIFICADOR E_MENOR IDENTIFICADOR {::}
-
           |condicion IDENTIFICADOR E_MAYORQUE IDENTIFICADOR {::}
-
           |condicion IDENTIFICADOR E_MENORQUE IDENTIFICADOR {::}
-
           |condicion IDENTIFICADOR E_COMPARAR IDENTIFICADOR {::}
-
           |condicion DECI E_NOEQUALS DECI {::}
-
           |condicion E_CADENA E_NOEQUALS E_CADENA {::}
-
           |condicion IDENTIFICADOR E_NOEQUALS DECI {::}
-
           |condicion IDENTIFICADOR E_NOEQUALS E_TRUE {::}
-
           |condicion IDENTIFICADOR E_NOEQUALS E_FALSE {::}
-
           |condicion IDENTIFICADOR E_NOEQUALS E_CADENA {::}
-
           |condicion IDENTIFICADOR E_NOEQUALS IDENTIFICADOR {::}
-
           |condicion E_NEGAR IDENTIFICADOR {::}
-
           |condicion E_PARENTESISIZQ condicion E_PARENTESISDER {::}
-
           |condicion E_PARENTESISIZQ condicion E_OOR condicion E_PARENTESISDER {::}
-
-          |condicion E_PARENTESISIZQ condicion E_AND condicion E_PARENTESISDER {::}
+          |condicion E_PARENTESISIZQ condicion E_AND condicion E_PARENTESISDER
+          |condicion IDENTIFICADOR {::}
 
           |E_CADENA E_COMPARAR E_CADENA {::}
           |DECI E_COMPARAR DECI {::}
@@ -248,6 +250,8 @@ condicion::=condicion E_CADENA E_COMPARAR E_CADENA {::}
           |DECI E_MENOR DECI {::}
           |DECI E_MAYORQUE DECI {::}
           |DECI E_MENORQUE DECI {::}
+
+          |IDENTIFICADOR {::}
           |IDENTIFICADOR E_COMPARAR DECI {::}
           |IDENTIFICADOR E_COMPARAR E_TRUE {::}
           |IDENTIFICADOR E_COMPARAR E_FALSE {::}
@@ -261,6 +265,7 @@ condicion::=condicion E_CADENA E_COMPARAR E_CADENA {::}
           |IDENTIFICADOR E_MAYORQUE IDENTIFICADOR {::}
           |IDENTIFICADOR E_MENORQUE IDENTIFICADOR {::}
           |IDENTIFICADOR E_COMPARAR IDENTIFICADOR {::}
+
           |DECI E_NOEQUALS DECI {::}
           |E_CADENA E_NOEQUALS E_CADENA {::}
           |IDENTIFICADOR E_NOEQUALS DECI {::}
@@ -269,6 +274,7 @@ condicion::=condicion E_CADENA E_COMPARAR E_CADENA {::}
           |IDENTIFICADOR E_NOEQUALS E_CADENA {::}
           |IDENTIFICADOR E_NOEQUALS IDENTIFICADOR {::}
           |E_NEGAR IDENTIFICADOR {::}
+
           |E_PARENTESISIZQ condicion E_PARENTESISDER {::}
           |E_PARENTESISIZQ condicion E_OOR condicion E_PARENTESISDER {::}
           |E_PARENTESISIZQ condicion E_AND condicion E_PARENTESISDER {::}
@@ -285,8 +291,11 @@ casos::=casos E_CASE DECI E_DOSPUNTOS procesos E_BREAK E_PYC {::}
        |E_CASE E_CADENA E_DOSPUNTOS procesos E_BREAK E_PYC {::}
 ;
 
-impresion::=impresion E_MAS opmate {::}
-           |impresion E_MAS {::}
+impresion::=impresion E_MAS DECI {::}
+           |impresion E_MAS E_CADENA {::}
+           |impresion E_MAS E_NEGAR IDENTIFICADOR {::}
+           |impresion E_MAS IDENTIFICADOR {::}
+           |impresion E_MAS E_PARENTESISIZQ opmate E_PARENTESISDER
            |E_CADENA {::}
            |IDENTIFICADOR {::}
            |DECI {::}
