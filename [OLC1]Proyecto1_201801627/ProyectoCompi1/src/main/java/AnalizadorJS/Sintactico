@@ -16,14 +16,23 @@ terminal String E_MAS, E_MENOS, E_POR, E_DIVIDIR, E_POTENCIA, E_MODULO, E_EQUALS
 terminal String E_COMPARAR, E_NOEQUALS, E_MENOR, E_MAYOR, E_MENORQUE, E_MAYORQUE;
 terminal String E_AND, E_OOR, E_NEGAR;
 terminal String E_TRUE, E_FALSE;
+terminal String LINECOMMENT, MULTILINECOMMENT;
 
-non terminal ini, procesos, parametros, variable, impresion, opmate, concatenar, condicion, forvariable, condicionfor, foraumento, casos, vector, signos;
+non terminal ini, procesos, parametros, variable, impresion, opmate, concatenar, condicion, forvariable, condicionfor, foraumento, casos, vector, signos, comentario;
 
 start with ini;
 
-ini::=ini E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER {::}
+ini::=ini comentario E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER {::}
+    |ini E_CLASS IDENTIFICADOR E_KEYIZQ comentario procesos E_KEYDER {::}
+    |ini E_CLASS IDENTIFICADOR E_KEYIZQ procesos comentario E_KEYDER {::}
+    |ini E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER{::}
+
     |ini IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
     |ini IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
+    |ini IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC{::}
+    |ini IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {::}
+    |ini IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER{::}
+    |ini IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER{::}
     |ini E_VAR IDENTIFICADOR E_EQUALS variable {::}
     |ini E_LET IDENTIFICADOR E_EQUALS variable {::}
     |ini E_CONST IDENTIFICADOR E_EQUALS variable {::}
@@ -35,6 +44,10 @@ ini::=ini E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER {::}
     |ini E_CONST IDENTIFICADOR E_PYC {::}
     |E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER {::}
     |IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
+    |IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC{::}
+    |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {::}
+    |IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER{::}
+    |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER{::}
     |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
     |E_VAR IDENTIFICADOR E_EQUALS variable {::}
     |E_LET IDENTIFICADOR E_EQUALS variable {::}
@@ -45,6 +58,12 @@ ini::=ini E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER {::}
     |E_VAR IDENTIFICADOR E_PYC {::}
     |E_LET IDENTIFICADOR E_PYC {::}
     |E_CONST IDENTIFICADOR E_PYC {::}
+;
+
+comentario::=comentario LINECOMMENT {::}
+           |comentario MULTILINECOMMENT {::}
+           |LINECOMMENT{::}
+           |MULTILINECOMMENT{::}
 ;
 
 parametros::=IDENTIFICADOR {::}
@@ -215,7 +234,7 @@ procesos::=procesos IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ proce
         |E_LET IDENTIFICADOR E_PYC {::}
         |E_CONST IDENTIFICADOR E_PYC {::}
         |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-        |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER E_ELSE E_KEYIZQ procesos E_KEYDER{::}
+        |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER E_ELSE E_KEYIZQ procesos E_KEYDER {::}
         |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER E_ELSE E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |E_FOR E_PARENTESISIZQ forvariable condicionfor foraumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}

@@ -12,6 +12,7 @@ public class sym {
   public static final int E_VAR = 9;
   public static final int E_FALSE = 50;
   public static final int E_PYC = 21;
+  public static final int LINECOMMENT = 51;
   public static final int E_TRUE = 49;
   public static final int E_MAS = 31;
   public static final int E_MAYORQUE = 45;
@@ -43,6 +44,7 @@ public class sym {
   public static final int E_CORIZQ = 27;
   public static final int E_DEFAULT = 20;
   public static final int E_KEYDER = 26;
+  public static final int MULTILINECOMMENT = 52;
   public static final int E_MENOS = 32;
   public static final int E_CASE = 18;
   public static final int E_MENOR = 42;
@@ -110,7 +112,9 @@ public class sym {
   "E_OOR",
   "E_NEGAR",
   "E_TRUE",
-  "E_FALSE"
+  "E_FALSE",
+  "LINECOMMENT",
+  "MULTILINECOMMENT"
   };
 }
 
