@@ -10,31 +10,32 @@ public class sym {
   /* terminals */
   public static final int E_GRABAR = 11;
   public static final int E_EJEX = 13;
-  public static final int E_EQUALS = 15;
+  public static final int E_EQUALS = 16;
   public static final int E_ARCHIVO = 10;
   public static final int E_DG = 5;
-  public static final int E_KEYIZQ = 20;
+  public static final int E_KEYIZQ = 21;
   public static final int E_STR = 7;
-  public static final int E_KEYDER = 21;
+  public static final int E_KEYDER = 22;
   public static final int DECI = 4;
   public static final int EOF = 0;
-  public static final int E_CORIZQ = 22;
+  public static final int E_CORIZQ = 23;
+  public static final int E_VALORES = 17;
   public static final int E_GENREPEST = 6;
-  public static final int E_VALORES = 16;
-  public static final int E_CORDER = 23;
-  public static final int E_TITLEY = 18;
-  public static final int E_TITLEX = 17;
+  public static final int E_CORDER = 24;
+  public static final int E_TITLEY = 19;
+  public static final int E_TITLEX = 18;
   public static final int E_TITLE = 12;
   public static final int error = 1;
-  public static final int E_GRAPIE = 19;
+  public static final int E_GRAPIE = 20;
   public static final int IDENTIFICADOR = 2;
   public static final int E_DOUBLE = 8;
-  public static final int E_DOSP = 25;
-  public static final int E_PYC = 24;
+  public static final int E_DOSP = 26;
+  public static final int E_PYC = 25;
   public static final int E_GRALINE = 9;
   public static final int LINECOMMENT = 14;
   public static final int E_CADENA = 3;
-  public static final int E_COMA = 26;
+  public static final int E_COMA = 27;
+  public static final int MULTILINECOMMENT = 15;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -51,6 +52,7 @@ public class sym {
   "E_TITLE",
   "E_EJEX",
   "LINECOMMENT",
+  "MULTILINECOMMENT",
   "E_EQUALS",
   "E_VALORES",
   "E_TITLEX",

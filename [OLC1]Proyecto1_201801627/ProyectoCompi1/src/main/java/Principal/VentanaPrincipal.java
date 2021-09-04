@@ -201,7 +201,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_LimpiarActionPerformed
 
     private void EjecutarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EjecutarMouseClicked
-        parseoJS();
+        parseoFCA();
     }//GEN-LAST:event_EjecutarMouseClicked
 
 

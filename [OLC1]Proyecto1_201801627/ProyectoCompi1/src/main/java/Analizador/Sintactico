@@ -10,7 +10,7 @@ terminal String IDENTIFICADOR, E_CADENA, DECI;
 terminal String E_DG, E_GENREPEST, E_STR, E_DOUBLE;
 terminal String E_GRALINE,E_ARCHIVO;
 terminal String E_GRABAR,E_TITLE, E_EJEX;
-terminal String LINECOMMENT;
+terminal String LINECOMMENT, MULTILINECOMMENT;
 terminal String E_EQUALS;
 terminal String E_VALORES, E_TITLEX, E_TITLEY, E_GRAPIE;
 terminal String E_KEYIZQ, E_KEYDER, E_CORIZQ, E_CORDER;
@@ -21,10 +21,18 @@ non terminal ini, contenidogeneral ,cuerpo, graficas, datosgraficabarra, datosgr
 
 start with ini;
 
-ini::=E_GENREPEST E_KEYIZQ contenidogeneral E_KEYDER {::};
+ini::=comentario E_GENREPEST E_KEYIZQ contenidogeneral E_KEYDER {::}
+      |E_GENREPEST E_KEYIZQ comentario contenidogeneral E_KEYDER {::}
+      |E_GENREPEST E_KEYIZQ contenidogeneral comentario E_KEYDER {::}
+      |E_GENREPEST E_KEYIZQ contenidogeneral E_KEYDER {::}
+      |E_GENREPEST E_KEYIZQ contenidogeneral E_KEYDER comentario {::}
+;
 
 contenidogeneral::=E_DG E_KEYIZQ cuerpo E_KEYDER{::}
-                   |E_DG E_KEYIZQ cuerpo E_KEYDER graficas{::};
+                  |E_DG E_KEYIZQ comentario cuerpo E_KEYDER{::}
+                  |E_DG E_KEYIZQ cuerpo comentario E_KEYDER{::}
+                  |E_DG E_KEYIZQ cuerpo E_KEYDER graficas{::}
+;
 
 cuerpo::=cuerpo E_STR IDENTIFICADOR E_EQUALS E_CADENA E_PYC {::}
         |cuerpo E_DOUBLE IDENTIFICADOR E_EQUALS DECI E_PYC {::}
@@ -102,4 +110,9 @@ archivo::=E_ARCHIVO E_DOSP IDENTIFICADOR E_PYC {::}
       |E_ARCHIVO E_DOSP E_CADENA E_PYC {::}
 ;
 
-comentario::=LINECOMMENT {::};
+
+comentario::=comentario LINECOMMENT {::}
+           |comentario MULTILINECOMMENT {::}
+           |LINECOMMENT{::}
+           |MULTILINECOMMENT{::}
+;
