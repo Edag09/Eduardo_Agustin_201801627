@@ -18,11 +18,11 @@ terminal String E_AND, E_OOR, E_NEGAR;
 terminal String E_TRUE, E_FALSE;
 terminal String LINECOMMENT, MULTILINECOMMENT;
 
-non terminal ini, procesos, parametros, variable, impresion, opmate, concatenar, condicion, forvariable, condicionfor, foraumento, casos, vector, signos, comentario;
+non terminal ini, procesos, parametros, variable, impresion, opmate, concatenar, condicion, forvariable, condicionfor, foraumento, casos, vector, signos, comentario, siguiente;
 
 start with ini;
 
-ini::=ini comentario E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER {::}
+ini::=ini comentario E_CLASS IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
     |ini E_CLASS IDENTIFICADOR E_KEYIZQ comentario procesos E_KEYDER {::}
     |ini E_CLASS IDENTIFICADOR E_KEYIZQ procesos comentario E_KEYDER {::}
     |ini E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER{::}
@@ -42,7 +42,7 @@ ini::=ini comentario E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER {::}
     |ini E_VAR IDENTIFICADOR E_PYC {::}
     |ini E_LET IDENTIFICADOR E_PYC {::}
     |ini E_CONST IDENTIFICADOR E_PYC {::}
-    |E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER {::}
+    |E_CLASS IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
     |IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
     |IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC{::}
     |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {::}
@@ -203,9 +203,8 @@ procesos::=procesos IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ proce
         |procesos E_VAR IDENTIFICADOR E_PYC {::}
         |procesos E_LET IDENTIFICADOR E_PYC {::}
         |procesos E_CONST IDENTIFICADOR E_PYC {::}
+        |procesos E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER siguiente {::}
         |procesos E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-        |procesos E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER E_ELSE E_KEYIZQ procesos E_KEYDER{::}
-        |procesos E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER E_ELSE E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |procesos E_FOR E_PARENTESISIZQ forvariable condicionfor foraumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |procesos E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |procesos E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER {::}
@@ -233,9 +232,8 @@ procesos::=procesos IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ proce
         |E_VAR IDENTIFICADOR E_PYC {::}
         |E_LET IDENTIFICADOR E_PYC {::}
         |E_CONST IDENTIFICADOR E_PYC {::}
+        |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER siguiente {::}
         |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-        |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER E_ELSE E_KEYIZQ procesos E_KEYDER {::}
-        |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER E_ELSE E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |E_FOR E_PARENTESISIZQ forvariable condicionfor foraumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
         |E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER {::}
@@ -251,6 +249,12 @@ procesos::=procesos IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ proce
         |IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC{::}
         |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {::}
         |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER {::}
+;
+
+siguiente::=siguiente E_ELSE E_KEYIZQ procesos E_KEYDER {::}
+          |siguiente E_ELSE E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
+          |E_ELSE E_KEYIZQ procesos E_KEYDER {::}
+          |E_ELSE E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
 ;
 
 concatenar::=concatenar E_MAS IDENTIFICADOR {::}
@@ -300,14 +304,47 @@ condicion::=condicion E_CADENA E_COMPARAR E_CADENA {::}
           |condicion DECI E_MENOR DECI {::}
           |condicion DECI E_MAYORQUE DECI {::}
           |condicion DECI E_MENORQUE DECI {::}
+          
+          |condicion opmate E_COMPARAR DECI {::}
+          |condicion opmate E_MAYOR DECI {::}
+          |condicion opmate E_MENOR DECI {::}
+          |condicion opmate E_MAYORQUE DECI {::}
+          |condicion opmate E_MENORQUE DECI {::}
+          |condicion opmate E_COMPARAR IDENTIFICADOR {::}
+          |condicion opmate E_MAYOR IDENTIFICADOR {::}
+          |condicion opmate E_MENOR IDENTIFICADOR {::}
+          |condicion opmate E_MAYORQUE IDENTIFICADOR {::}
+          |condicion opmate E_MENORQUE IDENTIFICADOR {::}
+
           |condicion IDENTIFICADOR E_COMPARAR DECI {::}
+          |condicion IDENTIFICADOR E_MAYOR DECI signos DECI{::}
+          |condicion IDENTIFICADOR E_MAYOR IDENTIFICADOR signos DECI{::}
+          |condicion IDENTIFICADOR E_MAYOR DECI signos IDENTIFICADOR{::}
+          |condicion IDENTIFICADOR E_MAYOR E_PARENTESISIZQ opmate E_PARENTESISDER{::}
+
           |condicion IDENTIFICADOR E_COMPARAR E_TRUE {::}
           |condicion IDENTIFICADOR E_COMPARAR E_FALSE {::}
           |condicion IDENTIFICADOR E_COMPARAR E_CADENA {::}
           |condicion IDENTIFICADOR E_MAYOR DECI {::}
+
           |condicion IDENTIFICADOR E_MENOR DECI {::}
+          |condicion IDENTIFICADOR E_MENOR DECI signos DECI{::}
+          |condicion IDENTIFICADOR E_MENOR IDENTIFICADOR signos DECI{::}
+          |condicion IDENTIFICADOR E_MENOR DECI signos IDENTIFICADOR{::}
+          |condicion IDENTIFICADOR E_MENOR E_PARENTESISIZQ opmate E_PARENTESISDER{::}
+
           |condicion IDENTIFICADOR E_MAYORQUE DECI {::}
+          |condicion IDENTIFICADOR E_MAYORQUE DECI signos DECI{::}
+          |condicion IDENTIFICADOR E_MAYORQUE IDENTIFICADOR signos DECI{::}
+          |condicion IDENTIFICADOR E_MAYORQUE DECI signos IDENTIFICADOR{::}
+          |condicion IDENTIFICADOR E_MAYORQUE E_PARENTESISIZQ opmate E_PARENTESISDER{::}
+
           |condicion IDENTIFICADOR E_MENORQUE DECI {::}
+          |condicion IDENTIFICADOR E_MENORQUE DECI signos DECI{::}
+          |condicion IDENTIFICADOR E_MENORQUE IDENTIFICADOR signos DECI{::}
+          |condicion IDENTIFICADOR E_MENORQUE DECI signos IDENTIFICADOR{::}
+          |condicion IDENTIFICADOR E_MENORQUE E_PARENTESISIZQ opmate E_PARENTESISDER{::}
+
           |condicion IDENTIFICADOR E_MAYOR IDENTIFICADOR {::}
           |condicion IDENTIFICADOR E_MENOR IDENTIFICADOR {::}
           |condicion IDENTIFICADOR E_MAYORQUE IDENTIFICADOR {::}
@@ -333,21 +370,62 @@ condicion::=condicion E_CADENA E_COMPARAR E_CADENA {::}
           |DECI E_MAYORQUE DECI {::}
           |DECI E_MENORQUE DECI {::}
 
+          |opmate E_COMPARAR DECI {::}
+          |opmate E_MAYOR DECI {::}
+          |opmate E_MENOR DECI {::}
+          |opmate E_MAYORQUE DECI {::}
+          |opmate E_MENORQUE DECI {::}
+          |opmate E_NOEQUALS DECI {::}
+          
+          |opmate E_COMPARAR IDENTIFICADOR {::}
+          |opmate E_MAYOR IDENTIFICADOR {::}
+          |opmate E_MENOR IDENTIFICADOR {::}
+          |opmate E_MAYORQUE IDENTIFICADOR {::}
+          |opmate E_MENORQUE IDENTIFICADOR {::}
+          |opmate E_NOEQUALS IDENTIFICADOR {::}
+          
           |IDENTIFICADOR {::}
+
           |IDENTIFICADOR E_COMPARAR DECI {::}
+          |IDENTIFICADOR E_COMPARAR DECI signos DECI{::}
+          |IDENTIFICADOR E_COMPARAR IDENTIFICADOR signos DECI{::}
+          |IDENTIFICADOR E_COMPARAR DECI signos IDENTIFICADOR{::}
+          |IDENTIFICADOR E_COMPARAR E_PARENTESISIZQ opmate E_PARENTESISDER{::}
+
           |IDENTIFICADOR E_COMPARAR E_TRUE {::}
           |IDENTIFICADOR E_COMPARAR E_FALSE {::}
           |IDENTIFICADOR E_COMPARAR E_CADENA {::}
+
           |IDENTIFICADOR E_MAYOR DECI {::}
+          |IDENTIFICADOR E_MAYOR DECI signos DECI{::}
+          |IDENTIFICADOR E_MAYOR IDENTIFICADOR signos DECI{::}
+          |IDENTIFICADOR E_MAYOR DECI signos IDENTIFICADOR{::}
+          |IDENTIFICADOR E_MAYOR E_PARENTESISIZQ opmate E_PARENTESISDER{::}
+
           |IDENTIFICADOR E_MENOR DECI {::}
+          |IDENTIFICADOR E_MENOR DECI signos DECI{::}
+          |IDENTIFICADOR E_MENOR IDENTIFICADOR signos DECI{::}
+          |IDENTIFICADOR E_MENOR DECI signos IDENTIFICADOR{::}
+          |IDENTIFICADOR E_MENOR E_PARENTESISIZQ opmate E_PARENTESISDER{::}
+
           |IDENTIFICADOR E_MAYORQUE DECI {::}
+          |IDENTIFICADOR E_MAYORQUE DECI signos DECI{::}
+          |IDENTIFICADOR E_MAYORQUE IDENTIFICADOR signos DECI{::}
+          |IDENTIFICADOR E_MAYORQUE DECI signos IDENTIFICADOR{::}
+          |IDENTIFICADOR E_MAYORQUE E_PARENTESISIZQ opmate E_PARENTESISDER{::}
+
           |IDENTIFICADOR E_MENORQUE DECI {::}
+          |IDENTIFICADOR E_MENORQUE DECI signos DECI{::}
+          |IDENTIFICADOR E_MENORQUE IDENTIFICADOR signos DECI{::}
+          |IDENTIFICADOR E_MENORQUE DECI signos IDENTIFICADOR{::}
+          |IDENTIFICADOR E_MENORQUE E_PARENTESISIZQ opmate E_PARENTESISDER{::}
+
           |IDENTIFICADOR E_MAYOR IDENTIFICADOR {::}
           |IDENTIFICADOR E_MENOR IDENTIFICADOR {::}
           |IDENTIFICADOR E_MAYORQUE IDENTIFICADOR {::}
           |IDENTIFICADOR E_MENORQUE IDENTIFICADOR {::}
-          |IDENTIFICADOR E_COMPARAR IDENTIFICADOR {::}
 
+          |IDENTIFICADOR E_COMPARAR IDENTIFICADOR {::}
           |DECI E_NOEQUALS DECI {::}
           |E_CADENA E_NOEQUALS E_CADENA {::}
           |IDENTIFICADOR E_NOEQUALS DECI {::}
