@@ -48,10 +48,16 @@
         <Menu class="javax.swing.JMenu" name="Reportes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reportes"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Default Cursor"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Consolas" size="14" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ReportesMouseClicked"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>

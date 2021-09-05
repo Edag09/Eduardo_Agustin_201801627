@@ -24,6 +24,7 @@ DECI=[0-9]+("."[0-9]+)?
 LETRA = [a-zA-Z]
 IDENTIFICADOR = {LETRA}({LETRA}|"_"|{ENTERO})*
 E_CADENA = "\""[^\"\n]*"\""
+E_COMILLASIMPLE = "'""[^'"\n]*"'""
 
 %%
 
@@ -33,6 +34,7 @@ E_CADENA = "\""[^\"\n]*"\""
 
 
 "DefinirGlobales" {return new Symbol(sym.E_DG,yyline,yychar,yytext());}
+"Compare" {return new Symbol(sym.E_COMPARE,yyline,yychar,yytext());}
 "GenerarReporteEstadistico" {return new Symbol(sym.E_GENREPEST,yyline,yychar,yytext());}
 "string" {return new Symbol(sym.E_STR,yyline,yychar,yytext());}
 "double" {return new Symbol(sym.E_DOUBLE,yyline,yychar,yytext());}
@@ -53,6 +55,8 @@ E_CADENA = "\""[^\"\n]*"\""
 "[" {return new Symbol(sym.E_CORIZQ,yyline,yychar, yytext());} 
 "]" {return new Symbol(sym.E_CORDER,yyline,yychar, yytext());} 
 "=" {return new Symbol(sym.E_EQUALS,yyline,yychar, yytext());}
+"(" {return new Symbol(sym.E_PARENTESISIZQ,yyline,yychar, yytext());} 
+")" {return new Symbol(sym.E_PARENTESISDER,yyline,yychar, yytext());}
 
  
 \n {yychar=1;}

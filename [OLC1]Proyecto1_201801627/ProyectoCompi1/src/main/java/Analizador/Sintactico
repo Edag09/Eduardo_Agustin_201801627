@@ -1,118 +1,148 @@
 package Analizador;
 import java_cup.runtime.*;
+import Informacion.*;
+import java.util.ArrayList;
 
-parser code 
+parser code
 {:
-    public String Resulto = "";   
+    public NodeGraph Barras = new NodeGraph();
+    public NodeGraph Pie = new NodeGraph();
+    public NodeGraph Linea = new NodeGraph();
+    public ArrayList<NodeGraph> Graphs = new ArrayList();
+    public ArrayList<ValueNode> Data = new ArrayList();
+    public ArrayList<String> Values = new ArrayList();
+    public ArrayList<String> Token = new ArrayList();
+    public ArrayList<String> Ejes = new ArrayList();
+    public ArrayList<String> Path = new ArrayList();
+    public String Resulta = "";   
 :} 
 
-terminal String IDENTIFICADOR, E_CADENA, DECI;
+terminal String IDENTIFICADOR, E_CADENA, DECI, E_COMPARE, E_COMILLASIMPLE;
 terminal String E_DG, E_GENREPEST, E_STR, E_DOUBLE;
 terminal String E_GRALINE,E_ARCHIVO;
 terminal String E_GRABAR,E_TITLE, E_EJEX;
 terminal String LINECOMMENT, MULTILINECOMMENT;
 terminal String E_EQUALS;
 terminal String E_VALORES, E_TITLEX, E_TITLEY, E_GRAPIE;
-terminal String E_KEYIZQ, E_KEYDER, E_CORIZQ, E_CORDER;
+terminal String E_KEYIZQ, E_KEYDER, E_CORIZQ, E_CORDER, E_PARENTESISIZQ, E_PARENTESISDER;
 terminal String E_PYC, E_DOSP, E_COMA;
 
 
-non terminal ini, contenidogeneral ,cuerpo, graficas, datosgraficabarra, datosgraficapie, datosgraficalinea, titulos, ejesx, contenidox, valoresbarras, contenidov, titulox, tituloy, archivo, comentario;
+non terminal ini, contenidogeneral, graphbarra, graphpie, graphline, titulos, titulox, tituloy, archivo, comentario;
+non terminal ArrayList<NodeGraph> graficas;
+non terminal ArrayList<ValueNode> cuerpo;
+non terminal ArrayList<String> contenidox, contenidob, ejesx, valoresgeneral, comparar;
 
 start with ini;
 
-ini::=comentario E_GENREPEST E_KEYIZQ contenidogeneral E_KEYDER {::}
-      |E_GENREPEST E_KEYIZQ comentario contenidogeneral E_KEYDER {::}
-      |E_GENREPEST E_KEYIZQ contenidogeneral comentario E_KEYDER {::}
-      |E_GENREPEST E_KEYIZQ contenidogeneral E_KEYDER {::}
-      |E_GENREPEST E_KEYIZQ contenidogeneral E_KEYDER comentario {::}
+ini::=comentario E_GENREPEST:t1 E_KEYIZQ:t2 comparar contenidogeneral E_KEYDER:t3 {:Token.add(t1); Token.add(t2); Token.add(t3);:}
+      |E_GENREPEST:t1 E_KEYIZQ:t2 comparar comentario contenidogeneral E_KEYDER:t3 {:Token.add(t1); Token.add(t2); Token.add(t3);:}
+      |E_GENREPEST:t1 E_KEYIZQ:t2 contenidogeneral comentario comparar E_KEYDER:t3 {:Token.add(t1); Token.add(t2); Token.add(t3);:}
+      |E_GENREPEST:t1 E_KEYIZQ:t2 comparar contenidogeneral E_KEYDER:t3 {:Token.add(t1); Token.add(t2); Token.add(t3);:}
+      |E_GENREPEST:t1 E_KEYIZQ:t2 comparar contenidogeneral E_KEYDER:t3 comentario {:Token.add(t1); Token.add(t2); Token.add(t3);:}
+      |E_GENREPEST:t1 E_KEYIZQ:t2 contenidogeneral E_KEYDER:t3 {:Token.add(t1); Token.add(t2); Token.add(t3);:}
 ;
 
-contenidogeneral::=E_DG E_KEYIZQ cuerpo E_KEYDER{::}
-                  |E_DG E_KEYIZQ comentario cuerpo E_KEYDER{::}
-                  |E_DG E_KEYIZQ cuerpo comentario E_KEYDER{::}
-                  |E_DG E_KEYIZQ cuerpo E_KEYDER graficas{::}
+contenidogeneral::=E_DG:t1 E_KEYIZQ:t2 cuerpo E_KEYDER:t3 {:Token.add(t1); Token.add(t2); Token.add(t3);:}
+                  |E_DG:t1 E_KEYIZQ:t2 comentario cuerpo E_KEYDER:t3 {:Token.add(t1); Token.add(t2); Token.add(t3);:}
+                  |E_DG:t1 E_KEYIZQ:t2 cuerpo comentario E_KEYDER:t3 {:Token.add(t1); Token.add(t2); Token.add(t3);:}
+                  |E_DG:t1 E_KEYIZQ:t2 cuerpo E_KEYDER:t3 graficas{:Token.add(t1); Token.add(t2); Token.add(t3);:}
 ;
 
-cuerpo::=cuerpo E_STR IDENTIFICADOR E_EQUALS E_CADENA E_PYC {::}
-        |cuerpo E_DOUBLE IDENTIFICADOR E_EQUALS DECI E_PYC {::}
-        |E_STR IDENTIFICADOR E_EQUALS E_CADENA E_PYC {::}
-        |E_DOUBLE IDENTIFICADOR E_EQUALS DECI E_PYC {::}
+cuerpo::=cuerpo E_STR:t1 IDENTIFICADOR:id E_EQUALS:t2 E_CADENA:lex E_PYC:t3 {:Data.add(new ValueNode(id, lex)); Token.add(t1); Token.add(t2); Token.add(t3);:}
+        |cuerpo E_DOUBLE:t1 IDENTIFICADOR:id E_EQUALS:t2 DECI:lex E_PYC:t3 {:Data.add(new ValueNode(id, lex)); Token.add(t1); Token.add(t2); Token.add(t3);:}
+        |E_STR:t1 IDENTIFICADOR:id E_EQUALS:t2 E_CADENA:lex E_PYC:t3 {:Data.add(new ValueNode(id, lex)); Token.add(t1); Token.add(t2); Token.add(t3);:}
+        |E_DOUBLE:t1 IDENTIFICADOR:id E_EQUALS:t2 DECI:lex E_PYC:t3 {:Data.add(new ValueNode(id, lex)); Token.add(t1); Token.add(t2); Token.add(t3);:}
 ;
 
-graficas::=graficas E_GRABAR E_KEYIZQ datosgraficabarra E_KEYDER {::}
-            |graficas E_GRAPIE E_KEYIZQ datosgraficapie E_KEYDER {::}
-            |graficas E_GRALINE E_KEYIZQ datosgraficalinea E_KEYDER {::}
-            |E_GRAPIE E_KEYIZQ datosgraficapie E_KEYDER {::}
-            |E_GRALINE E_KEYIZQ datosgraficalinea E_KEYDER {::}
-            |E_GRABAR E_KEYIZQ datosgraficabarra E_KEYDER {::}
+graficas::=graficas comparar E_GRABAR:g E_KEYIZQ:t1 graphbarra E_KEYDER:t2 {:Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |graficas comparar E_GRAPIE:g E_KEYIZQ:t1 graphpie E_KEYDER:t2 {:Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |graficas comparar E_GRALINE:g E_KEYIZQ:t1 graphline E_KEYDER:t2 {:Linea.Type=g; Graphs.add(Linea); Token.add(g); Token.add(t1); Token.add(t2);:}
+
+            |graficas E_GRAPIE:g E_KEYIZQ:t1 graphpie E_KEYDER:t2 {:Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |graficas E_GRALINE:g E_KEYIZQ:t1 graphline E_KEYDER:t2 {:Linea.Type=g; Graphs.add(Linea); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |graficas E_GRABAR:g E_KEYIZQ:t1 graphbarra E_KEYDER:t2 {:Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2);:}
+
+            |E_GRAPIE:g E_KEYIZQ:t1 graphpie E_KEYDER:t2 {:Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |E_GRALINE:g E_KEYIZQ:t1 graphline E_KEYDER:t2 {:Linea.Type=g; Graphs.add(Linea); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |E_GRABAR:g E_KEYIZQ:t1 graphbarra E_KEYDER:t2 {:Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2);:}
+
+            |comparar E_GRAPIE:g E_KEYIZQ:t1 graphpie E_KEYDER:t2 {:Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |comparar E_GRALINE:g E_KEYIZQ:t1 graphline E_KEYDER:t2 {:Linea.Type=g; Graphs.add(Linea); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |comparar E_GRABAR:g E_KEYIZQ:t1 graphbarra E_KEYDER:t2 {:Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2);:}
 ;
 
-datosgraficabarra::=datosgraficabarra titulos{::}
-            |datosgraficabarra ejesx {::}
-            |datosgraficabarra valoresbarras {::}
-            |datosgraficabarra titulox {::}
-            |datosgraficabarra tituloy {::}
-            |titulos{::}
-            |ejesx{::}
-            |valoresbarras {::}
-            |titulox {::}
-            |tituloy {::}
+graphbarra::=graphbarra titulos:tit {:Barras.Title=(String)tit;:}
+            |graphbarra ejesx:ejes {:Barras.Eje=ejes;:}
+            |graphbarra valoresgeneral:value {:Barras.Value=value;:}
+            |graphbarra titulox:tx {:Barras.TX=(String)tx;:}
+            |graphbarra tituloy:ty {:Barras.TY=(String)ty;:}
+
+            |titulos:tit {:Barras.Title=(String)tit;:}
+            |ejesx:ejes {:Barras.Eje=ejes;:}
+            |valoresgeneral:value {:Barras.Value=value;:}
+            |titulox:tx {:Barras.TX=(String)tx;:}
+            |tituloy:ty {:Barras.TY=(String)ty;:}
 ;
 
-datosgraficapie::=datosgraficapie titulos{::}
-                |datosgraficapie ejesx{::}
-                |datosgraficapie valoresbarras{::}
-                |titulos{::}
-                |ejesx{::}
-                |valoresbarras{::}
+graphpie::=graphpie titulos:tit {:Pie.Title=(String)tit;:}
+         |graphpie ejesx:ejes {:Pie.Eje=ejes;:}
+         |graphpie valoresgeneral:value {:Pie.Value=value;:}
+
+         |titulos:tit {:Pie.Title=(String)tit;:}
+         |ejesx:ejes {:Pie.Eje=ejes;:}
+         |valoresgeneral:value {:Pie.Value=value;:}
 ;
 
-datosgraficalinea::=datosgraficalinea titulos {::}
-                  |datosgraficalinea archivo {::}
-                  |titulos {::}
-                  |archivo {::}
+graphline::=graphline titulos:tit {:Linea.Title=(String)tit;:}
+          |graphline archivo:value {:Linea.TX=(String)value;:}
+          |titulos:tit {:Linea.Title=(String)tit;:}
+          |archivo:value {:Linea.TX=(String)value;:}
 ;
 
-titulos::=E_TITLE E_DOSP IDENTIFICADOR E_PYC {::}
-          |E_TITLE E_DOSP E_CADENA E_PYC {::}
+titulos::=E_TITLE:t1 E_DOSP:t2 IDENTIFICADOR:resp E_PYC:t3 {:RESULT=resp; Token.add(t1); Token.add(t2); Token.add(t3);:}
+         |E_TITLE:t1 E_DOSP:t2 E_CADENA:resp E_PYC:t3 {:RESULT=resp; Token.add(t1); Token.add(t2); Token.add(t3);:}
 ;
 
-ejesx::=E_EJEX E_DOSP E_CORIZQ contenidox E_CORDER E_PYC {::};
+ejesx::=E_EJEX:t1 E_DOSP:t2 E_CORIZQ:t3 contenidox E_CORDER:t4 E_PYC:t5 {:RESULT=Ejes; Token.add(t1); Token.add(t2); Token.add(t3); Token.add(t4); Token.add(t5);:};
 
-contenidox::=E_CADENA {::}
-            |IDENTIFICADOR {::}
-            |contenidox E_COMA {::}
-            |contenidox E_CADENA {::}
-            |contenidox IDENTIFICADOR {::}
+contenidox::=E_CADENA:eje {:Ejes.add((String)eje);:}
+            |IDENTIFICADOR:eje {:Ejes.add((String)eje);:}
+            |contenidox E_COMA:t1 {:Ejes.add(t1);:}
+            |contenidox E_CADENA:eje {:Ejes.add((String)eje);:}
+            |contenidox IDENTIFICADOR:eje {:Ejes.add((String)eje);:}
 ;
 
-valoresbarras::=E_VALORES E_DOSP E_CORIZQ contenidov E_CORDER E_PYC {::};
+valoresgeneral::=E_VALORES:t1 E_DOSP:t2 E_CORIZQ:t3 contenidob E_CORDER:t4 E_PYC:t5 {:RESULT=Values; Token.add(t1); Token.add(t2); Token.add(t3); Token.add(t4); Token.add(t5);:};
 
-contenidov::=DECI {::}
-            |IDENTIFICADOR {::}
-            |E_CADENA {::}
-            |contenidov E_COMA {::}
-            |contenidov DECI {::}
-            |contenidov E_CADENA {::}
-            |contenidov IDENTIFICADOR {::}
+contenidob::=DECI:value {:Values.add((String)value);:}
+            |IDENTIFICADOR:value {:Values.add(value);:}
+            |E_CADENA:value {:Values.add(value);:}
+            |contenidob E_COMA:t1 {:Token.add(t1);:}
+            |contenidob DECI:value {:Values.add((String)value);:}
+            |contenidob E_CADENA:value {:Values.add(value);:}
+            |contenidob IDENTIFICADOR:value {:Values.add(value);:}
 ;
 
-titulox::=E_TITLEX E_DOSP IDENTIFICADOR E_PYC {::}
-         |E_TITLEX E_DOSP E_CADENA E_PYC {::}
+titulox::=E_TITLEX:t1 E_DOSP:t2 IDENTIFICADOR:resp E_PYC:t3 {:RESULT=resp; Token.add(t1); Token.add(t2); Token.add(t3);:}
+         |E_TITLEX:t1 E_DOSP:t2 E_CADENA:resp E_PYC:t3 {:RESULT=resp; Token.add(t1); Token.add(t2); Token.add(t3);:}
 ;
 
-tituloy::=E_TITLEY E_DOSP IDENTIFICADOR E_PYC {::}
-         |E_TITLEY E_DOSP E_CADENA E_PYC {::}
+tituloy::=E_TITLEY:t1 E_DOSP:t2 IDENTIFICADOR:resp E_PYC:t3 {:RESULT=resp; Token.add(t1); Token.add(t2); Token.add(t3);:}
+         |E_TITLEY:t1 E_DOSP:t2 E_CADENA:resp E_PYC:t3 {:RESULT=resp; Token.add(t1); Token.add(t2); Token.add(t3);:}
 ;
 
-archivo::=E_ARCHIVO E_DOSP IDENTIFICADOR E_PYC {::}
-      |E_ARCHIVO E_DOSP E_CADENA E_PYC {::}
+archivo::=E_ARCHIVO:t1 E_DOSP:t2 IDENTIFICADOR:resp E_PYC:t3 {:RESULT=resp; Token.add(t1); Token.add(t2); Token.add(t3);:}
+        |E_ARCHIVO:t1 E_DOSP:t2 E_CADENA:resp E_PYC:t3 {:RESULT=resp; Token.add(t1); Token.add(t2); Token.add(t3);:}
 ;
 
 
-comentario::=comentario LINECOMMENT {::}
-           |comentario MULTILINECOMMENT {::}
-           |LINECOMMENT{::}
-           |MULTILINECOMMENT{::}
+comentario::=comentario LINECOMMENT:t1 {:Token.add(t1);:}
+           |comentario MULTILINECOMMENT:t1 {:Token.add(t1);:}
+           |LINECOMMENT:t1 {:Token.add(t1);:}
+           |MULTILINECOMMENT:t1 {:Token.add(t1);:}
+;
+
+comparar::=E_COMPARE:t1 E_PARENTESISIZQ:t2 E_CADENA:path1 E_COMA:t3 E_CADENA:path2 E_PARENTESISDER:t4 E_PYC:t5 {:Path.add(path1); Path.add(path2); Token.add(t1); Token.add(t2); Token.add(t3); Token.add(t4); Token.add(t5);:}
+          |E_COMPARE:t1 E_PARENTESISIZQ:t2 E_COMILLASIMPLE:path1 E_COMA:t3 E_COMILLASIMPLE:path2 E_PARENTESISDER:t4 E_PYC:t5 {:Path.add(path1); Path.add(path2); Token.add(t1); Token.add(t2); Token.add(t3); Token.add(t4); Token.add(t5);:}
 ;

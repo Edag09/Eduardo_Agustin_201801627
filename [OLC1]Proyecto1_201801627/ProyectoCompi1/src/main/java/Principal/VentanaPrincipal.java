@@ -12,10 +12,24 @@ import java.io.Reader;
 import java.io.StringReader;
 import java_cup.runtime.Symbol;
 import java.nio.file.Files;
+import Informacion.*;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.xy.XYSeries;
 
 
 public class VentanaPrincipal extends javax.swing.JFrame {
+    String text = "";
+    Sintactico parsefca;
+    AnalizadorJS.Sintactico parseJs, parseJs1;
 
     public VentanaPrincipal() {
         initComponents();
@@ -120,7 +134,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(Ejecutar);
 
         Reportes.setText("Reportes");
+        Reportes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Reportes.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        Reportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ReportesMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(Reportes);
 
         setJMenuBar(jMenuBar1);
@@ -204,6 +224,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         parseoFCA();
     }//GEN-LAST:event_EjecutarMouseClicked
 
+    private void ReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportesMouseClicked
+        GraficarBarras();
+    }//GEN-LAST:event_ReportesMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AbrirArchivo;
@@ -226,29 +250,135 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 public void parseoFCA(){
         String parseo = MostrarTextoEditor.getText();
         TextConsola.setText("Procesando\n");
-        Sintactico sintaxCorrect = new Sintactico(new Lexico(new StringReader(parseo)));
+        parsefca = new Sintactico(new Lexico(new StringReader(parseo)));
         
         try {
-            sintaxCorrect.parse();
-            System.out.println(TextConsola.getText()+"Si jala\n");
+            parsefca.parse();
+            TextConsola.setText(TextConsola.getText() + "Hay "+Integer.toString(parsefca.Data.size()) + " Variables Globales\n");
+            for (int i = 0; i < parsefca.Data.size(); i++) {
+                System.out.println(parsefca.Data.get(i).ID+"\n");
+                System.out.println(parsefca.Data.get(i).Lexema+"\n");
+            }
+                System.out.println("\n");
+            TextConsola.setText(TextConsola.getText() + "Hay "+Integer.toString(parsefca.Graphs.size()) + " Graficas\n");
+            for (int i = 0; i < parsefca.Graphs.size(); i++) {
+                System.out.println(parsefca.Graphs.get(i).Type+"\n");
+                System.out.println(parsefca.Graphs.get(i).Title+"\n");
+                System.out.println(parsefca.Graphs.get(i).TX+"\n");
+                System.out.println(parsefca.Graphs.get(i).TY+"\n");
+                System.out.println(parsefca.Graphs.get(i).Eje+"\n");
+                System.out.println(parsefca.Graphs.get(i).Value+"\n");
+            }
+            System.out.println("\n");
+            TextConsola.setText(TextConsola.getText() + "Hay "+Integer.toString(parsefca.Token.size()) + " Tokens\n");
+            for (int i = 0; i < parsefca.Token.size(); i++) {
+                System.out.println(parsefca.Token.get(i)+"\n");
+            }
+            System.out.println("\n");
+            TextConsola.setText(TextConsola.getText() + "Se analizara "+Integer.toString(parsefca.Path.size()) + " Rutas\n");
+            TextConsola.setText(TextConsola.getText() + "Analizando Rutas\n");
+            for (int i = 0; i < parsefca.Path.size(); i++) {
+                TextConsola.setText(TextConsola.getText() + parsefca.Path.get(i) + "\n");
+            }
+            TextConsola.setText(TextConsola.getText() + "Rutas Analizadas\n");
         } catch (Exception e) {
             TextConsola.setText(TextConsola.getText()+"Error Sintactico\n");
         }
-        TextConsola.setText(TextConsola.getText()+"Finalizado");
+        TextConsola.setText(TextConsola.getText()+"Finalizado\n");
 }
 
 public void parseoJS(){
     String parseo = MostrarTextoEditor.getText();
     TextConsola.setText("Procesando\n");
-    AnalizadorJS.Sintactico sintaxJS = new AnalizadorJS.Sintactico(new AnalizadorJS.Lexico(new StringReader(parseo)));
-    
+    AnalizadorJS.Sintactico ParsesintaxJS = new AnalizadorJS.Sintactico(new AnalizadorJS.Lexico(new StringReader(parseo)));
     try {
-        sintaxJS.parse();
+        ParsesintaxJS.parse();
         System.out.println(TextConsola.getText()+" Si jalo\n");
     } catch (Exception e) {
         TextConsola.setText(TextConsola.getText()+"Error Sintactico\n");
     }
     TextConsola.setText(TextConsola.getText()+" Finalizado");
+}
+
+public void GraficarBarras(){
+    for (int i = 0; i < parsefca.Graphs.size(); i++) {
+        if (parsefca.Graphs.get(i).Type.equals("GraficaBarras")) {
+            TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Barras");
+            NodeGraph Barras = parsefca.Graphs.get(i);
+            
+            for (int j = 0; j < Barras.Value.size(); j++) {
+                for (int k = 0; k < parsefca.Data.size(); k++) {
+                    if (Barras.Value.get(j).equals(parsefca.Data.get(k).ID)) {
+                        Barras.Value.set(j, parsefca.Data.get(k).Lexema);
+                        System.out.println(Barras.Value);
+                    }
+                    if (Barras.Eje.get(j).equals(parsefca.Data.get(k).ID)) {
+                        Barras.Eje.set(j, parsefca.Data.get(k).Lexema);
+                        System.out.println(Barras.Value);
+                    }
+                }
+            }
+            for (int j = 0; j <=parsefca.Data.size(); j++) {
+                if (Barras.Title.equals(parsefca.Data.get(j).ID)){
+                    Barras.Title = parsefca.Data.get(j).Lexema;
+                }
+            }
+            
+            for (int j = 0; j <=parsefca.Data.size(); j++) {
+                if (Barras.TX.equals(parsefca.Data.get(j).ID)){
+                    Barras.TX = parsefca.Data.get(j).Lexema;
+                }
+            }
+            
+            for (int j = 0; j <=parsefca.Data.size(); j++) {
+                if (Barras.TY.equals(parsefca.Data.get(j).ID)){
+                    Barras.TY = parsefca.Data.get(j).Lexema;
+                }           
+            }
+            
+            DefaultCategoryDataset info = new DefaultCategoryDataset();
+            
+            for (int j = 0; j <=Barras.Eje.size(); j++) {
+                info.setValue(Double.parseDouble(Barras.Value.get(j)), "Restultado", Barras.Eje.get(j));
+            }
+            
+            JFreeChart GraphBarras = ChartFactory.createBarChart3D(Barras.Title, Barras.TX, Barras.TY, info, PlotOrientation.VERTICAL, false, false, false);
+            
+            ChartFrame barritas = new ChartFrame(Barras.Title, GraphBarras);
+            barritas.setLocationRelativeTo(null);
+            barritas.setVisible(true);
+        } 
+    }
+}
+
+public void GraficaPie(){
+    for (int i = 0; i < parsefca.Graphs.size(); i++) {
+        if (parsefca.Graphs.get(i).Type.equalsIgnoreCase("GraficaPie")) {
+            NodeGraph Pie = new NodeGraph();
+            Pie = parsefca.Graphs.get(i);
+            TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Pie");
+            for (int j = 0; j < Pie.Value.size(); j++) {
+                for (int k = 0; k < parsefca.Data.size(); k++) {
+                    if (Pie.Value.get(j).equals(parsefca.Data.get(k).ID)) {
+                        Pie.Value.set(j, parsefca.Data.get(k).Lexema);
+                    }
+                    if (Pie.Eje.get(j).equals(parsefca.Data.get(k).ID)) {
+                        Pie.Eje.set(j, parsefca.Data.get(k).Lexema);
+                    }
+                }
+            }
+            
+            for (int j = 0; j < parsefca.Data.size(); j++) {
+                if (Pie.Title.equals(parsefca.Data.get(j).ID)) {
+                    Pie.Title = parsefca.Data.get(j).Lexema;
+                }
+            }
+            
+            DefaultPieDataset info = new DefaultPieDataset();
+            for (int j = 0; j < Pie.Eje.size(); j++) {
+            }
+        }
+    }
 }
 }
 

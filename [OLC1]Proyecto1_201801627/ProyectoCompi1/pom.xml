@@ -18,6 +18,18 @@
             <version>11b</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>Common</groupId>
+            <artifactId>Common</artifactId>
+            <version>1.0.23</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>Freechart</groupId>
+            <artifactId>Freechart</artifactId>
+            <version>1.0.19</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

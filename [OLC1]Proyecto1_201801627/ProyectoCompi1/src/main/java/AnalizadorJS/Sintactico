@@ -3,7 +3,7 @@ import java_cup.runtime.*;
 
 parser code 
 {:
-    public String Resulto = "";   
+    public String Resulto = "";
 :} 
 
 terminal String IDENTIFICADOR, E_CADENA, E_CADENAUC, DECI;
@@ -42,6 +42,7 @@ ini::=ini comentario E_CLASS IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEY
     |ini E_VAR IDENTIFICADOR E_PYC {::}
     |ini E_LET IDENTIFICADOR E_PYC {::}
     |ini E_CONST IDENTIFICADOR E_PYC {::}
+
     |E_CLASS IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
     |IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
     |IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC{::}
