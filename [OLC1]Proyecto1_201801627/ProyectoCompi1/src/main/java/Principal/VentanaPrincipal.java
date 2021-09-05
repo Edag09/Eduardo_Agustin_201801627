@@ -13,6 +13,7 @@ import java.io.StringReader;
 import java_cup.runtime.Symbol;
 import java.nio.file.Files;
 import Informacion.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,7 +34,7 @@ import org.jfree.data.xy.XYSeries;
 public class VentanaPrincipal extends javax.swing.JFrame {
     String text = "";
     Sintactico parsefca;
-    AnalizadorJS.Sintactico parseJs, parseJs1;
+    AnalizadorJS.Sintactico parseA1Js, parseA2Js;
 
     public VentanaPrincipal() {
         initComponents();
@@ -258,34 +259,20 @@ public void parseoFCA(){
         
         try {
             parsefca.parse();
-            TextConsola.setText(TextConsola.getText() + "Hay "+Integer.toString(parsefca.Data.size()) + " Variables Globales\n");
-            /*for (int i = 0; i < parsefca.Data.size(); i++) {
-                System.out.println(parsefca.Data.get(i).ID+"\n");
-                System.out.println(parsefca.Data.get(i).Lexema+"\n");
-            }
-                System.out.println("\n");*/
+            /*TextConsola.setText(TextConsola.getText() + "Hay "+Integer.toString(parsefca.Data.size()) + " Variables Globales\n");
             TextConsola.setText(TextConsola.getText() + "Hay "+Integer.toString(parsefca.Graphs.size()) + " Graficas\n");
-            /*for (int i = 0; i < parsefca.Graphs.size(); i++) {
-                System.out.println(parsefca.Graphs.get(i).Type+"\n");
-                System.out.println(parsefca.Graphs.get(i).Title+"\n");
-                System.out.println(parsefca.Graphs.get(i).TX+"\n");
-                System.out.println(parsefca.Graphs.get(i).TY+"\n");
-                System.out.println(parsefca.Graphs.get(i).Eje+"\n");
-                System.out.println(parsefca.Graphs.get(i).Value+"\n");
-            }*/
             TextConsola.setText(TextConsola.getText() + "Hay "+Integer.toString(parsefca.Token.size()) + " Tokens\n");
-            /*for (int i = 0; i < parsefca.Token.size(); i++) {
-                System.out.println(parsefca.Token.get(i)+"\n");
-            }
-            System.out.println("\n");*/
             TextConsola.setText(TextConsola.getText() + "Se analizara "+Integer.toString(parsefca.Path.size()) + " Rutas\n");
-            TextConsola.setText(TextConsola.getText() + "Analizando Rutas\n");
+            TextConsola.setText(TextConsola.getText() + "Analizando Rutas\n");*/
+            buscarRuta(parsefca.Path);
             for (int i = 0; i < parsefca.Path.size(); i++) {
                 TextConsola.setText(TextConsola.getText() + parsefca.Path.get(i) + "\n");
             }
             TextConsola.setText(TextConsola.getText() + "Rutas Analizadas\n");
         } catch (Exception e) {
             TextConsola.setText(TextConsola.getText()+"Error Sintactico\n");
+            TextConsola.setText(TextConsola.getText()+"Aqui\n");
+            
         }
         TextConsola.setText(TextConsola.getText()+"Finalizado\n");
 }
@@ -307,7 +294,7 @@ public void GraficarBarras(){
     for (int i = 0; i < parsefca.Graphs.size(); i++) {
         if (parsefca.Graphs.get(i).Type.equals("GraficaBarras")) {
             try {
-                TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Barras");
+                TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Barras\n");
                 NodeGraph Barras = parsefca.Graphs.get(i);
                 System.out.println(Barras.Eje);
                 
@@ -349,8 +336,8 @@ public void GraficarBarras(){
                 
                 JFreeChart GraphBarras = ChartFactory.createBarChart(Barras.Title, Barras.TX, Barras.TY, info, PlotOrientation.VERTICAL, false, false, false);
                 
-                int width = 640;    /* Width of the image */
-                int height = 480;   /* Height of the image */
+                int width = 640;
+                int height = 480;
                 File ImagenBarra = new File( "GraficaBarras.jpeg" );
                 ChartUtilities.saveChartAsJPEG(ImagenBarra, GraphBarras, width, height);
                 System.out.println("Creado");
@@ -372,7 +359,7 @@ public void GraficaPie(){
                     System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
                 }
                 
-                TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Pie");
+                TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Pie\n");
                 for (int j = 0; j < Pie.ValuePie.size(); j++) {
                     for (int k = 0; k < parsefca.Data.size(); k++) {
                         if (Pie.ValuePie.get(j).equals(parsefca.Data.get(k).ID)) {
@@ -409,6 +396,48 @@ public void GraficaPie(){
         }
     }
 }
+
+
+public void buscarRuta(ArrayList<String> Path){
+    String P1 = Path.get(0);
+    String P2 = Path.get(1);
+    File r1 = new File(P1.substring(1, P1.length()-1));
+    File r2 = new File(P2.substring(1, P2.length()-1));
+    
+    String[]  file1 = r1.list();
+    String[]  file2 = r2.list();
+    
+    
+    TextConsola.setText(TextConsola.getText()+" Analizando posibles copias...\n");
+    for (int i = 0; i < file1.length; i++) {
+        for (int j = 0; j < file2.length; j++) {
+            if (file1[i].equals(file2[j])) {
+                File a1 = new File(P1.substring(1, P1.length()-1)+"\\"+file1[i]);
+                File a2 = new File(P2.substring(1, P2.length()-1)+"\\"+file2[i]);
+                try {
+                    String texto1 = new String(Files.readAllBytes(a1.toPath()));
+                    String texto2 = new String(Files.readAllBytes(a2.toPath()));
+                    System.out.println(texto1+'\n');
+                    System.out.println(texto2+'\n');
+                    parseA1Js = new AnalizadorJS.Sintactico(new AnalizadorJS.Lexico(new StringReader(texto1)));
+                    parseA2Js = new AnalizadorJS.Sintactico(new AnalizadorJS.Lexico(new StringReader(texto2)));
+                    try {
+                        parseA1Js.parse();
+                        parseA2Js.parse();
+                        TextConsola.setText(TextConsola.getText()+" Copias encontradas\n");
+                    } catch (Exception e) {
+                        System.out.println("Error en el analizador");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error en el analizador");
+                    System.out.println(e.getCause());
+                }
+            }
+            TextConsola.setText(TextConsola.getText() + "No se encontro copias\n");
+        }
+    }
+}
+
 }
 
 

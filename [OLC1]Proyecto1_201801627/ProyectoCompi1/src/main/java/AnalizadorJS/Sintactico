@@ -1,9 +1,12 @@
 package AnalizadorJS;
 import java_cup.runtime.*;
+import java.util.ArrayList;
+import Informacion.*;
 
 parser code 
 {:
     public String Resulto = "";
+    public ArrayList<JsNode> Info = new ArrayList();
 :} 
 
 terminal String IDENTIFICADOR, E_CADENA, E_CADENAUC, DECI;
@@ -22,54 +25,57 @@ non terminal ini, procesos, parametros, variable, impresion, opmate, concatenar,
 
 start with ini;
 
-ini::=ini comentario E_CLASS IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-    |ini E_CLASS IDENTIFICADOR E_KEYIZQ comentario procesos E_KEYDER {::}
-    |ini E_CLASS IDENTIFICADOR E_KEYIZQ procesos comentario E_KEYDER {::}
-    |ini E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER{::}
+ini::=ini comentario E_CLASS:id IDENTIFICADOR:cont E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {:Info.add(new JsNode(id, cont));:}
+    |ini E_CLASS:id IDENTIFICADOR:cont E_KEYIZQ comentario procesos E_KEYDER {:Info.add(new JsNode(id, cont));:}
+    |ini E_CLASS:id IDENTIFICADOR:cont E_KEYIZQ procesos comentario E_KEYDER {:Info.add(new JsNode(id, cont));:}
+    |ini E_CLASS:id IDENTIFICADOR:cont E_KEYIZQ procesos E_KEYDER{:Info.add(new JsNode(id, cont));:}
 
-    |ini IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-    |ini IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-    |ini IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC{::}
-    |ini IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {::}
-    |ini IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER{::}
-    |ini IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER{::}
-    |ini E_VAR IDENTIFICADOR E_EQUALS variable {::}
-    |ini E_LET IDENTIFICADOR E_EQUALS variable {::}
-    |ini E_CONST IDENTIFICADOR E_EQUALS variable {::}
-    |ini E_VAR IDENTIFICADOR {::}
-    |ini E_LET IDENTIFICADOR {::}
-    |ini E_CONST IDENTIFICADOR {::}
-    |ini E_VAR IDENTIFICADOR E_PYC {::}
-    |ini E_LET IDENTIFICADOR E_PYC {::}
-    |ini E_CONST IDENTIFICADOR E_PYC {::}
+    |ini IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER:llave {:Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));:}
+    |ini IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER:llave {:Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));:}
+    |ini IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER E_PYC{:Info.add(new JsNode("Interno", id));:}
+    |ini IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {:Info.add(new JsNode("Interno", id));:}
+    |ini IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER{:Info.add(new JsNode("Interno", id));:}
+    |ini IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER{:Info.add(new JsNode("Interno", id));:}
 
-    |E_CLASS IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-    |IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-    |IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC{::}
-    |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {::}
-    |IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER{::}
-    |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER{::}
-    |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-    |E_VAR IDENTIFICADOR E_EQUALS variable {::}
-    |E_LET IDENTIFICADOR E_EQUALS variable {::}
-    |E_CONST IDENTIFICADOR E_EQUALS variable {::}
-    |E_VAR IDENTIFICADOR {::}
-    |E_LET IDENTIFICADOR {::}
-    |E_CONST IDENTIFICADOR {::}
-    |E_VAR IDENTIFICADOR E_PYC {::}
-    |E_LET IDENTIFICADOR E_PYC {::}
-    |E_CONST IDENTIFICADOR E_PYC {::}
+    |ini E_VAR:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
+    |ini E_LET:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
+    |ini E_CONST:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
+    |ini E_VAR:idvar IDENTIFICADOR {:Info.add(new JsNode("Variable", idvar));:}
+    |ini E_LET:idvar IDENTIFICADOR {:Info.add(new JsNode("Variable", idvar));:}
+    |ini E_CONST:idvar IDENTIFICADOR {:Info.add(new JsNode("Variable", idvar));:}
+    |ini E_VAR:idvar IDENTIFICADOR E_PYC {:Info.add(new JsNode("Variable", idvar));:}
+    |ini E_LET:idvar IDENTIFICADOR E_PYC {:Info.add(new JsNode("Variable", idvar));:}
+    |ini E_CONST:idvar IDENTIFICADOR E_PYC {:Info.add(new JsNode("Variable", idvar));:}
+
+    |E_CLASS:id IDENTIFICADOR:cont E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {:Info.add(new JsNode(id, cont));:}
+
+    |IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER:llave {:Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));:}
+    |IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER E_PYC{:Info.add(new JsNode("Interno", id));:}
+    |IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {:Info.add(new JsNode("Interno", id));:}
+    |IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER{:Info.add(new JsNode("Interno", id));:}
+    |IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER{:Info.add(new JsNode("Interno", id));:}
+    |IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER:llave {:Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));:}
+
+    |E_VAR:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
+    |E_LET:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
+    |E_CONST:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
+    |E_VAR:idvar IDENTIFICADOR {:Info.add(new JsNode("Variable", idvar));:}
+    |E_LET:idvar IDENTIFICADOR {:Info.add(new JsNode("Variable", idvar));:}
+    |E_CONST:idvar IDENTIFICADOR {:Info.add(new JsNode("Variable", idvar));:}
+    |E_VAR:idvar IDENTIFICADOR E_PYC {:Info.add(new JsNode("Variable", idvar));:}
+    |E_LET:idvar IDENTIFICADOR E_PYC {:Info.add(new JsNode("Variable", idvar));:}
+    |E_CONST:idvar IDENTIFICADOR E_PYC {:Info.add(new JsNode("Variable", idvar));:}
 ;
 
-comentario::=comentario LINECOMMENT {::}
-           |comentario MULTILINECOMMENT {::}
-           |LINECOMMENT{::}
-           |MULTILINECOMMENT{::}
+comentario::=comentario LINECOMMENT:coment {:Info.add(new JsNode("Comentario", coment));:}
+           |comentario MULTILINECOMMENT:coment {:Info.add(new JsNode("Comentario", coment));:}
+           |LINECOMMENT:coment {:Info.add(new JsNode("Comentario", coment));:}
+           |MULTILINECOMMENT:coment {:Info.add(new JsNode("Comentario", coment));:}
 ;
 
-parametros::=IDENTIFICADOR {::}
-          |parametros E_COMA IDENTIFICADOR {::}
-          |parametros signos DECI {::}
+parametros::=IDENTIFICADOR:par {:Info.add(new JsNode("Parametros", par));:}
+          |parametros E_COMA IDENTIFICADOR:par {:Info.add(new JsNode("Parametros", par));:}
+          |parametros signos DECI:par {:Info.add(new JsNode("Parametros", par));:}
           |parametros signos E_PARENTESISIZQ variable E_PARENTESISDER {::}
 ;
 
@@ -193,69 +199,77 @@ vector::=vector E_COMA E_CADENA {::}
        |E_CORIZQ vector E_CORDER {::}
 ;
 
-procesos::=procesos IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-        |procesos IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-        |procesos E_VAR IDENTIFICADOR E_EQUALS variable {::}
-        |procesos E_LET IDENTIFICADOR E_EQUALS variable {::}
-        |procesos E_CONST IDENTIFICADOR E_EQUALS variable {::}
-        |procesos E_VAR IDENTIFICADOR {::}
-        |procesos E_LET IDENTIFICADOR {::}
-        |procesos E_CONST IDENTIFICADOR {::}
-        |procesos E_VAR IDENTIFICADOR E_PYC {::}
-        |procesos E_LET IDENTIFICADOR E_PYC {::}
-        |procesos E_CONST IDENTIFICADOR E_PYC {::}
-        |procesos E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER siguiente {::}
-        |procesos E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-        |procesos E_FOR E_PARENTESISIZQ forvariable condicionfor foraumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-        |procesos E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-        |procesos E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER {::}
-        |procesos E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_PYC {::}
-        |procesos E_SWITCH E_PARENTESISIZQ IDENTIFICADOR E_PARENTESISDER E_KEYIZQ casos E_KEYDER
-        |procesos E_CONSOLE E_PARENTESISIZQ impresion E_PARENTESISDER E_PYC {::}
-        |procesos E_CONSOLE E_PARENTESISIZQ impresion E_PARENTESISDER {::}
-        |procesos IDENTIFICADOR E_EQUALS IDENTIFICADOR {::}
-        |procesos IDENTIFICADOR E_EQUALS concatenar {::}
-        |procesos IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER {::}
-        |procesos IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER {::}
-        |procesos IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {::}
-        |procesos IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC{::}         
-        |procesos IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {::}
-        |procesos IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER {::}
+procesos::=procesos IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER:llave {:Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));:}
+        |procesos IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER:llave {:Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));:}
+        
+        |procesos E_VAR:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
+        |procesos E_LET:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
+        |procesos E_CONST:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
+        |procesos E_VAR:idvar IDENTIFICADOR {:Info.add(new JsNode("Variable", idvar));:}
+        |procesos E_LET:idvar IDENTIFICADOR {:Info.add(new JsNode("Variable", idvar));:}
+        |procesos E_CONST:idvar IDENTIFICADOR {:Info.add(new JsNode("Variable", idvar));:}
+        |procesos E_VAR:idvar IDENTIFICADOR E_PYC {:Info.add(new JsNode("Variable", idvar));:}
+        |procesos E_LET:idvar IDENTIFICADOR E_PYC {:Info.add(new JsNode("Variable", idvar));:}
+        |procesos E_CONST:idvar IDENTIFICADOR E_PYC {:Info.add(new JsNode("Variable", idvar));:}
 
-        |IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::} 
-        |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-        |E_VAR IDENTIFICADOR E_EQUALS variable {::}
-        |E_LET IDENTIFICADOR E_EQUALS variable {::}
-        |E_CONST IDENTIFICADOR E_EQUALS variable {::}
-        |E_VAR IDENTIFICADOR {::}
-        |E_LET IDENTIFICADOR {::}
-        |E_CONST IDENTIFICADOR {::}
-        |E_VAR IDENTIFICADOR E_PYC {::}
-        |E_LET IDENTIFICADOR E_PYC {::}
-        |E_CONST IDENTIFICADOR E_PYC {::}
-        |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER siguiente {::}
-        |E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-        |E_FOR E_PARENTESISIZQ forvariable condicionfor foraumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-        |E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-        |E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER {::}
-        |E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_PYC {::}
-        |E_SWITCH E_PARENTESISIZQ IDENTIFICADOR E_PARENTESISDER E_KEYIZQ casos E_KEYDER {::}
-        |E_CONSOLE E_PARENTESISIZQ impresion E_PARENTESISDER E_PYC {::}
-        |E_CONSOLE E_PARENTESISIZQ impresion E_PARENTESISDER {::}
-        |IDENTIFICADOR E_EQUALS IDENTIFICADOR {::}
-        |IDENTIFICADOR E_EQUALS concatenar {::}
-        |IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER {::}
-        |IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER {::} 
-        |IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {::}
-        |IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC{::}
-        |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {::}
-        |IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER {::}
+        |procesos E_IF:condicion E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER siguiente {:Info.add(new JsNode("Sentencia", condicion));:}
+        |procesos E_IF:condicion E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {:Info.add(new JsNode("Sentencia", condicion));:}
+        |procesos E_FOR:condicion E_PARENTESISIZQ forvariable condicionfor foraumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {:Info.add(new JsNode("Sentencia", condicion));:}
+        |procesos E_WHILE:condicion E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {:Info.add(new JsNode("Sentencia", condicion));:}
+        |procesos E_DO:condicion E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER {:Info.add(new JsNode("Sentencia", condicion));:}
+        |procesos E_DO:condicion E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_PYC {:Info.add(new JsNode("Sentencia", condicion));:}
+        |procesos E_SWITCH:condicion E_PARENTESISIZQ IDENTIFICADOR E_PARENTESISDER E_KEYIZQ casos E_KEYDER {:Info.add(new JsNode("Sentencia", condicion));:}
+
+        |procesos E_CONSOLE:consola E_PARENTESISIZQ impresion:interno E_PARENTESISDER E_PYC {:Info.add(new JsNode("Consola", consola)); Info.add(new JsNode("Contenido",(String)interno));:}
+        |procesos E_CONSOLE:consola E_PARENTESISIZQ impresion:interno E_PARENTESISDER {:Info.add(new JsNode("Consola", consola)); Info.add(new JsNode("Contenido",(String)interno));:}
+
+        |procesos IDENTIFICADOR:id E_EQUALS IDENTIFICADOR {:Info.add(new JsNode("Contenido", id));:}
+        |procesos IDENTIFICADOR:id E_EQUALS concatenar {:Info.add(new JsNode("Contenido", id));:}
+        |procesos IDENTIFICADOR:id E_PUNTO IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER {:Info.add(new JsNode("Contenido", id));:}
+        |procesos IDENTIFICADOR:id E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER {:Info.add(new JsNode("Contenido", id));:}
+        |procesos IDENTIFICADOR:id E_PUNTO IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {:Info.add(new JsNode("Contenido", id));:}
+        |procesos IDENTIFICADOR:id E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC{:Info.add(new JsNode("Contenido", id));:}         
+        |procesos IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {:Info.add(new JsNode("Contenido", id));:}
+        |procesos IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER {:Info.add(new JsNode("Contenido", id));:}
+
+        |IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER:llave {:Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));:} 
+        |IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER:llave {:Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));:}
+
+        |E_VAR:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
+        |E_LET:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
+        |E_CONST:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
+        |E_VAR:idvar IDENTIFICADOR {:Info.add(new JsNode("Variable", idvar));:}
+        |E_LET:idvar IDENTIFICADOR {:Info.add(new JsNode("Variable", idvar));:}
+        |E_CONST:idvar IDENTIFICADOR {:Info.add(new JsNode("Variable", idvar));:}
+        |E_VAR:idvar IDENTIFICADOR E_PYC {:Info.add(new JsNode("Variable", idvar));:}
+        |E_LET:idvar IDENTIFICADOR E_PYC {:Info.add(new JsNode("Variable", idvar));:}
+        |E_CONST:idvar IDENTIFICADOR E_PYC {:Info.add(new JsNode("Variable", idvar));:}
+
+        |E_IF:condicion E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER siguiente {:Info.add(new JsNode("Sentencia", condicion));:}
+        |E_IF:condicion E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {:Info.add(new JsNode("Sentencia", condicion));:}
+        |E_FOR:condicion E_PARENTESISIZQ forvariable condicionfor foraumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {:Info.add(new JsNode("Sentencia", condicion));:}
+        |E_WHILE:condicion E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {:Info.add(new JsNode("Sentencia", condicion));:}
+        |E_DO:condicion E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER {:Info.add(new JsNode("Sentencia", condicion));:}
+        |E_DO:condicion E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_PYC {:Info.add(new JsNode("Sentencia", condicion));:}
+        |E_SWITCH:condicion E_PARENTESISIZQ IDENTIFICADOR E_PARENTESISDER E_KEYIZQ casos E_KEYDER {:Info.add(new JsNode("Sentencia", condicion));:}
+
+        |E_CONSOLE:consola E_PARENTESISIZQ impresion:interno E_PARENTESISDER E_PYC {:Info.add(new JsNode("Consola", consola)); Info.add(new JsNode("Contenido", (String)interno));:}
+        |E_CONSOLE:consola E_PARENTESISIZQ impresion:interno E_PARENTESISDER {:Info.add(new JsNode("Consola", consola)); Info.add(new JsNode("Contenido", (String)interno));:}
+
+        |IDENTIFICADOR:id E_EQUALS IDENTIFICADOR {:Info.add(new JsNode("Contenido", id));:}
+        |IDENTIFICADOR:id E_EQUALS concatenar {:Info.add(new JsNode("Contenido", id));:}
+        |IDENTIFICADOR:id E_PUNTO IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER {:Info.add(new JsNode("Contenido", id));:}
+        |IDENTIFICADOR:id E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER {:Info.add(new JsNode("Contenido", id));:} 
+        |IDENTIFICADOR:id E_PUNTO IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {:Info.add(new JsNode("Contenido", id));:}
+        |IDENTIFICADOR:id E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC{:Info.add(new JsNode("Contenido", id));:}
+        |IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC {:Info.add(new JsNode("Contenido", id));:}
+        |IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER {:Info.add(new JsNode("Contenido", id));:}
 ;
 
-siguiente::=siguiente E_ELSE E_KEYIZQ procesos E_KEYDER {::}
-          |siguiente E_ELSE E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
-          |E_ELSE E_KEYIZQ procesos E_KEYDER {::}
-          |E_ELSE E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {::}
+siguiente::=siguiente E_ELSE:condicion E_KEYIZQ procesos E_KEYDER {:Info.add(new JsNode("Sentencia", condicion));:}
+          |siguiente E_ELSE:condicion E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {:Info.add(new JsNode("Sentencia", condicion));:}
+          |E_ELSE:condicion E_KEYIZQ procesos E_KEYDER {:Info.add(new JsNode("Sentencia", condicion));:}
+          |E_ELSE:condicion E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER {:Info.add(new JsNode("Sentencia", condicion));:}
 ;
 
 concatenar::=concatenar E_MAS IDENTIFICADOR {::}
@@ -440,14 +454,14 @@ condicion::=condicion E_CADENA E_COMPARAR E_CADENA {::}
 ;
 
 
-casos::=casos E_CASE DECI E_DOSPUNTOS procesos E_BREAK E_PYC {::}             
-       |casos E_DEFAULT E_DOSPUNTOS procesos E_BREAK E_PYC {::}
-       |casos E_DEFAULT E_DOSPUNTOS procesos {::}
-       |casos E_CASE E_CADENA E_DOSPUNTOS procesos E_BREAK E_PYC {::}
-       |E_CASE DECI E_DOSPUNTOS procesos E_BREAK E_PYC {::}
-       |E_DEFAULT E_DOSPUNTOS procesos E_BREAK E_PYC {::}
-       |E_DEFAULT E_DOSPUNTOS procesos {::}
-       |E_CASE E_CADENA E_DOSPUNTOS procesos E_BREAK E_PYC {::}
+casos::=casos E_CASE:condicion DECI E_DOSPUNTOS procesos E_BREAK E_PYC {:Info.add(new JsNode("Sentencia", condicion));:}             
+       |casos E_DEFAULT:condicion E_DOSPUNTOS procesos E_BREAK E_PYC {:Info.add(new JsNode("Sentencia", condicion));:}
+       |casos E_DEFAULT:condicion E_DOSPUNTOS procesos {:Info.add(new JsNode("Sentencia", condicion));:}
+       |casos E_CASE:condicion E_CADENA E_DOSPUNTOS procesos E_BREAK E_PYC {:Info.add(new JsNode("Sentencia", condicion));:}
+       |E_CASE:condicion DECI E_DOSPUNTOS procesos E_BREAK E_PYC {:Info.add(new JsNode("Sentencia", condicion));:}
+       |E_DEFAULT:condicion E_DOSPUNTOS procesos E_BREAK E_PYC {:Info.add(new JsNode("Sentencia", condicion));:}
+       |E_DEFAULT:condicion E_DOSPUNTOS procesos {:Info.add(new JsNode("Sentencia", condicion));:}
+       |E_CASE:condicion E_CADENA E_DOSPUNTOS procesos E_BREAK E_PYC {:Info.add(new JsNode("Sentencia", condicion));:}
 ;
 
 impresion::=impresion E_MAS DECI {::}

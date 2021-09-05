@@ -6,6 +6,8 @@
 package AnalizadorJS;
 
 import java_cup.runtime.*;
+import java.util.ArrayList;
+import Informacion.*;
 import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
@@ -1897,6 +1899,7 @@ public class Sintactico extends java_cup.runtime.lr_parser {
 
 
     public String Resulto = "";
+    public ArrayList<JsNode> Info = new ArrayList();
 
 
 /** Cup generated class to encapsulate user supplied action code.*/
@@ -1941,7 +1944,13 @@ class CUP$Sintactico$actions {
           case 1: // ini ::= ini comentario E_CLASS IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		int contleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int contright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String cont = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		Info.add(new JsNode(id, cont));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -1950,7 +1959,13 @@ class CUP$Sintactico$actions {
           case 2: // ini ::= ini E_CLASS IDENTIFICADOR E_KEYIZQ comentario procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		int contleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int contright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String cont = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		Info.add(new JsNode(id, cont));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -1959,7 +1974,13 @@ class CUP$Sintactico$actions {
           case 3: // ini ::= ini E_CLASS IDENTIFICADOR E_KEYIZQ procesos comentario E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		int contleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int contright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String cont = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		Info.add(new JsNode(id, cont));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -1968,7 +1989,13 @@ class CUP$Sintactico$actions {
           case 4: // ini ::= ini E_CLASS IDENTIFICADOR E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		int contleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int contright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String cont = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode(id, cont));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -1977,7 +2004,13 @@ class CUP$Sintactico$actions {
           case 5: // ini ::= ini IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		int llaveleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int llaveright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String llave = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -1986,7 +2019,13 @@ class CUP$Sintactico$actions {
           case 6: // ini ::= ini IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		int llaveleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int llaveright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String llave = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -1995,7 +2034,10 @@ class CUP$Sintactico$actions {
           case 7: // ini ::= ini IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Interno", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2004,7 +2046,10 @@ class CUP$Sintactico$actions {
           case 8: // ini ::= ini IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		Info.add(new JsNode("Interno", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2013,7 +2058,10 @@ class CUP$Sintactico$actions {
           case 9: // ini ::= ini IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Interno", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2022,7 +2070,10 @@ class CUP$Sintactico$actions {
           case 10: // ini ::= ini IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Interno", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2031,7 +2082,10 @@ class CUP$Sintactico$actions {
           case 11: // ini ::= ini E_VAR IDENTIFICADOR E_EQUALS variable 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2040,7 +2094,10 @@ class CUP$Sintactico$actions {
           case 12: // ini ::= ini E_LET IDENTIFICADOR E_EQUALS variable 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2049,7 +2106,10 @@ class CUP$Sintactico$actions {
           case 13: // ini ::= ini E_CONST IDENTIFICADOR E_EQUALS variable 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2058,7 +2118,10 @@ class CUP$Sintactico$actions {
           case 14: // ini ::= ini E_VAR IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2067,7 +2130,10 @@ class CUP$Sintactico$actions {
           case 15: // ini ::= ini E_LET IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2076,7 +2142,10 @@ class CUP$Sintactico$actions {
           case 16: // ini ::= ini E_CONST IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2085,7 +2154,10 @@ class CUP$Sintactico$actions {
           case 17: // ini ::= ini E_VAR IDENTIFICADOR E_PYC 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2094,7 +2166,10 @@ class CUP$Sintactico$actions {
           case 18: // ini ::= ini E_LET IDENTIFICADOR E_PYC 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2103,7 +2178,10 @@ class CUP$Sintactico$actions {
           case 19: // ini ::= ini E_CONST IDENTIFICADOR E_PYC 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2112,7 +2190,13 @@ class CUP$Sintactico$actions {
           case 20: // ini ::= E_CLASS IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		int contleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int contright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String cont = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		Info.add(new JsNode(id, cont));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2121,7 +2205,13 @@ class CUP$Sintactico$actions {
           case 21: // ini ::= IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		int llaveleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int llaveright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String llave = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2130,7 +2220,10 @@ class CUP$Sintactico$actions {
           case 22: // ini ::= IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Interno", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2139,7 +2232,10 @@ class CUP$Sintactico$actions {
           case 23: // ini ::= IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		Info.add(new JsNode("Interno", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2148,7 +2244,10 @@ class CUP$Sintactico$actions {
           case 24: // ini ::= IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Interno", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2157,7 +2256,10 @@ class CUP$Sintactico$actions {
           case 25: // ini ::= IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Interno", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2166,7 +2268,13 @@ class CUP$Sintactico$actions {
           case 26: // ini ::= IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		int llaveleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int llaveright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String llave = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2175,7 +2283,10 @@ class CUP$Sintactico$actions {
           case 27: // ini ::= E_VAR IDENTIFICADOR E_EQUALS variable 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2184,7 +2295,10 @@ class CUP$Sintactico$actions {
           case 28: // ini ::= E_LET IDENTIFICADOR E_EQUALS variable 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2193,7 +2307,10 @@ class CUP$Sintactico$actions {
           case 29: // ini ::= E_CONST IDENTIFICADOR E_EQUALS variable 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2202,7 +2319,10 @@ class CUP$Sintactico$actions {
           case 30: // ini ::= E_VAR IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2211,7 +2331,10 @@ class CUP$Sintactico$actions {
           case 31: // ini ::= E_LET IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2220,7 +2343,10 @@ class CUP$Sintactico$actions {
           case 32: // ini ::= E_CONST IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2229,7 +2355,10 @@ class CUP$Sintactico$actions {
           case 33: // ini ::= E_VAR IDENTIFICADOR E_PYC 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2238,7 +2367,10 @@ class CUP$Sintactico$actions {
           case 34: // ini ::= E_LET IDENTIFICADOR E_PYC 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2247,7 +2379,10 @@ class CUP$Sintactico$actions {
           case 35: // ini ::= E_CONST IDENTIFICADOR E_PYC 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2256,7 +2391,10 @@ class CUP$Sintactico$actions {
           case 36: // comentario ::= comentario LINECOMMENT 
             {
               Object RESULT =null;
-		
+		int comentleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int comentright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String coment = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Comentario", coment));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("comentario",14, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2265,7 +2403,10 @@ class CUP$Sintactico$actions {
           case 37: // comentario ::= comentario MULTILINECOMMENT 
             {
               Object RESULT =null;
-		
+		int comentleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int comentright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String coment = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Comentario", coment));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("comentario",14, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2274,7 +2415,10 @@ class CUP$Sintactico$actions {
           case 38: // comentario ::= LINECOMMENT 
             {
               Object RESULT =null;
-		
+		int comentleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int comentright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String coment = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Comentario", coment));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("comentario",14, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2283,7 +2427,10 @@ class CUP$Sintactico$actions {
           case 39: // comentario ::= MULTILINECOMMENT 
             {
               Object RESULT =null;
-		
+		int comentleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int comentright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String coment = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Comentario", coment));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("comentario",14, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2292,7 +2439,10 @@ class CUP$Sintactico$actions {
           case 40: // parametros ::= IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int parleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int parright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String par = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Parametros", par));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("parametros",2, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2301,7 +2451,10 @@ class CUP$Sintactico$actions {
           case 41: // parametros ::= parametros E_COMA IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int parleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int parright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String par = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Parametros", par));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("parametros",2, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -2310,7 +2463,10 @@ class CUP$Sintactico$actions {
           case 42: // parametros ::= parametros signos DECI 
             {
               Object RESULT =null;
-		
+		int parleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int parright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String par = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Parametros", par));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("parametros",2, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3264,7 +3420,13 @@ class CUP$Sintactico$actions {
           case 148: // procesos ::= procesos IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		int llaveleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int llaveright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String llave = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3273,7 +3435,13 @@ class CUP$Sintactico$actions {
           case 149: // procesos ::= procesos IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		int llaveleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int llaveright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String llave = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3282,7 +3450,10 @@ class CUP$Sintactico$actions {
           case 150: // procesos ::= procesos E_VAR IDENTIFICADOR E_EQUALS variable 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3291,7 +3462,10 @@ class CUP$Sintactico$actions {
           case 151: // procesos ::= procesos E_LET IDENTIFICADOR E_EQUALS variable 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3300,7 +3474,10 @@ class CUP$Sintactico$actions {
           case 152: // procesos ::= procesos E_CONST IDENTIFICADOR E_EQUALS variable 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3309,7 +3486,10 @@ class CUP$Sintactico$actions {
           case 153: // procesos ::= procesos E_VAR IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3318,7 +3498,10 @@ class CUP$Sintactico$actions {
           case 154: // procesos ::= procesos E_LET IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3327,7 +3510,10 @@ class CUP$Sintactico$actions {
           case 155: // procesos ::= procesos E_CONST IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3336,7 +3522,10 @@ class CUP$Sintactico$actions {
           case 156: // procesos ::= procesos E_VAR IDENTIFICADOR E_PYC 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3345,7 +3534,10 @@ class CUP$Sintactico$actions {
           case 157: // procesos ::= procesos E_LET IDENTIFICADOR E_PYC 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3354,7 +3546,10 @@ class CUP$Sintactico$actions {
           case 158: // procesos ::= procesos E_CONST IDENTIFICADOR E_PYC 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3363,7 +3558,10 @@ class CUP$Sintactico$actions {
           case 159: // procesos ::= procesos E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER siguiente 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3372,7 +3570,10 @@ class CUP$Sintactico$actions {
           case 160: // procesos ::= procesos E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3381,7 +3582,10 @@ class CUP$Sintactico$actions {
           case 161: // procesos ::= procesos E_FOR E_PARENTESISIZQ forvariable condicionfor foraumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-9)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3390,7 +3594,10 @@ class CUP$Sintactico$actions {
           case 162: // procesos ::= procesos E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3399,7 +3606,10 @@ class CUP$Sintactico$actions {
           case 163: // procesos ::= procesos E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3408,7 +3618,10 @@ class CUP$Sintactico$actions {
           case 164: // procesos ::= procesos E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-9)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3417,7 +3630,10 @@ class CUP$Sintactico$actions {
           case 165: // procesos ::= procesos E_SWITCH E_PARENTESISIZQ IDENTIFICADOR E_PARENTESISDER E_KEYIZQ casos E_KEYDER 
             {
               Object RESULT =null;
-
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3426,7 +3642,13 @@ class CUP$Sintactico$actions {
           case 166: // procesos ::= procesos E_CONSOLE E_PARENTESISIZQ impresion E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int consolaleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int consolaright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String consola = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		int internoleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int internoright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		Object interno = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Consola", consola)); Info.add(new JsNode("Contenido",(String)interno));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3435,7 +3657,13 @@ class CUP$Sintactico$actions {
           case 167: // procesos ::= procesos E_CONSOLE E_PARENTESISIZQ impresion E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int consolaleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int consolaright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String consola = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		int internoleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int internoright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		Object interno = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Consola", consola)); Info.add(new JsNode("Contenido",(String)interno));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3444,7 +3672,10 @@ class CUP$Sintactico$actions {
           case 168: // procesos ::= procesos IDENTIFICADOR E_EQUALS IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3453,7 +3684,10 @@ class CUP$Sintactico$actions {
           case 169: // procesos ::= procesos IDENTIFICADOR E_EQUALS concatenar 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3462,7 +3696,10 @@ class CUP$Sintactico$actions {
           case 170: // procesos ::= procesos IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3471,7 +3708,10 @@ class CUP$Sintactico$actions {
           case 171: // procesos ::= procesos IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3480,7 +3720,10 @@ class CUP$Sintactico$actions {
           case 172: // procesos ::= procesos IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3489,7 +3732,10 @@ class CUP$Sintactico$actions {
           case 173: // procesos ::= procesos IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3498,7 +3744,10 @@ class CUP$Sintactico$actions {
           case 174: // procesos ::= procesos IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3507,7 +3756,10 @@ class CUP$Sintactico$actions {
           case 175: // procesos ::= procesos IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3516,7 +3768,13 @@ class CUP$Sintactico$actions {
           case 176: // procesos ::= IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		int llaveleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int llaveright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String llave = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3525,7 +3783,13 @@ class CUP$Sintactico$actions {
           case 177: // procesos ::= IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		int llaveleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int llaveright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		String llave = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3534,7 +3798,10 @@ class CUP$Sintactico$actions {
           case 178: // procesos ::= E_VAR IDENTIFICADOR E_EQUALS variable 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3543,7 +3810,10 @@ class CUP$Sintactico$actions {
           case 179: // procesos ::= E_LET IDENTIFICADOR E_EQUALS variable 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3552,7 +3822,10 @@ class CUP$Sintactico$actions {
           case 180: // procesos ::= E_CONST IDENTIFICADOR E_EQUALS variable 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3561,7 +3834,10 @@ class CUP$Sintactico$actions {
           case 181: // procesos ::= E_VAR IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3570,7 +3846,10 @@ class CUP$Sintactico$actions {
           case 182: // procesos ::= E_LET IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3579,7 +3858,10 @@ class CUP$Sintactico$actions {
           case 183: // procesos ::= E_CONST IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3588,7 +3870,10 @@ class CUP$Sintactico$actions {
           case 184: // procesos ::= E_VAR IDENTIFICADOR E_PYC 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3597,7 +3882,10 @@ class CUP$Sintactico$actions {
           case 185: // procesos ::= E_LET IDENTIFICADOR E_PYC 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3606,7 +3894,10 @@ class CUP$Sintactico$actions {
           case 186: // procesos ::= E_CONST IDENTIFICADOR E_PYC 
             {
               Object RESULT =null;
-		
+		int idvarleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idvarright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String idvar = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Variable", idvar));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3615,7 +3906,10 @@ class CUP$Sintactico$actions {
           case 187: // procesos ::= E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER siguiente 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3624,7 +3918,10 @@ class CUP$Sintactico$actions {
           case 188: // procesos ::= E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3633,7 +3930,10 @@ class CUP$Sintactico$actions {
           case 189: // procesos ::= E_FOR E_PARENTESISIZQ forvariable condicionfor foraumento E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3642,7 +3942,10 @@ class CUP$Sintactico$actions {
           case 190: // procesos ::= E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3651,7 +3954,10 @@ class CUP$Sintactico$actions {
           case 191: // procesos ::= E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3660,7 +3966,10 @@ class CUP$Sintactico$actions {
           case 192: // procesos ::= E_DO E_KEYIZQ procesos E_KEYDER E_WHILE E_PARENTESISIZQ condicion E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3669,7 +3978,10 @@ class CUP$Sintactico$actions {
           case 193: // procesos ::= E_SWITCH E_PARENTESISIZQ IDENTIFICADOR E_PARENTESISDER E_KEYIZQ casos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3678,7 +3990,13 @@ class CUP$Sintactico$actions {
           case 194: // procesos ::= E_CONSOLE E_PARENTESISIZQ impresion E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int consolaleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int consolaright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String consola = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		int internoleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int internoright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		Object interno = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Consola", consola)); Info.add(new JsNode("Contenido", (String)interno));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3687,7 +4005,13 @@ class CUP$Sintactico$actions {
           case 195: // procesos ::= E_CONSOLE E_PARENTESISIZQ impresion E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int consolaleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int consolaright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String consola = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		int internoleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int internoright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		Object interno = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		Info.add(new JsNode("Consola", consola)); Info.add(new JsNode("Contenido", (String)interno));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3696,7 +4020,10 @@ class CUP$Sintactico$actions {
           case 196: // procesos ::= IDENTIFICADOR E_EQUALS IDENTIFICADOR 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3705,7 +4032,10 @@ class CUP$Sintactico$actions {
           case 197: // procesos ::= IDENTIFICADOR E_EQUALS concatenar 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3714,7 +4044,10 @@ class CUP$Sintactico$actions {
           case 198: // procesos ::= IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3723,7 +4056,10 @@ class CUP$Sintactico$actions {
           case 199: // procesos ::= IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3732,7 +4068,10 @@ class CUP$Sintactico$actions {
           case 200: // procesos ::= IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3741,7 +4080,10 @@ class CUP$Sintactico$actions {
           case 201: // procesos ::= IDENTIFICADOR E_PUNTO IDENTIFICADOR E_PARENTESISIZQ E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3750,7 +4092,10 @@ class CUP$Sintactico$actions {
           case 202: // procesos ::= IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER E_PYC 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3759,7 +4104,10 @@ class CUP$Sintactico$actions {
           case 203: // procesos ::= IDENTIFICADOR E_PARENTESISIZQ parametros E_PARENTESISDER 
             {
               Object RESULT =null;
-		
+		int idleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Contenido", id));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("procesos",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3768,7 +4116,10 @@ class CUP$Sintactico$actions {
           case 204: // siguiente ::= siguiente E_ELSE E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("siguiente",15, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3777,7 +4128,10 @@ class CUP$Sintactico$actions {
           case 205: // siguiente ::= siguiente E_ELSE E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("siguiente",15, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-8)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3786,7 +4140,10 @@ class CUP$Sintactico$actions {
           case 206: // siguiente ::= E_ELSE E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("siguiente",15, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -3795,7 +4152,10 @@ class CUP$Sintactico$actions {
           case 207: // siguiente ::= E_ELSE E_IF E_PARENTESISIZQ condicion E_PARENTESISDER E_KEYIZQ procesos E_KEYDER 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("siguiente",15, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -5184,7 +5544,10 @@ class CUP$Sintactico$actions {
           case 359: // casos ::= casos E_CASE DECI E_DOSPUNTOS procesos E_BREAK E_PYC 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",11, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -5193,7 +5556,10 @@ class CUP$Sintactico$actions {
           case 360: // casos ::= casos E_DEFAULT E_DOSPUNTOS procesos E_BREAK E_PYC 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",11, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -5202,7 +5568,10 @@ class CUP$Sintactico$actions {
           case 361: // casos ::= casos E_DEFAULT E_DOSPUNTOS procesos 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",11, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -5211,7 +5580,10 @@ class CUP$Sintactico$actions {
           case 362: // casos ::= casos E_CASE E_CADENA E_DOSPUNTOS procesos E_BREAK E_PYC 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",11, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -5220,7 +5592,10 @@ class CUP$Sintactico$actions {
           case 363: // casos ::= E_CASE DECI E_DOSPUNTOS procesos E_BREAK E_PYC 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",11, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -5229,7 +5604,10 @@ class CUP$Sintactico$actions {
           case 364: // casos ::= E_DEFAULT E_DOSPUNTOS procesos E_BREAK E_PYC 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",11, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -5238,7 +5616,10 @@ class CUP$Sintactico$actions {
           case 365: // casos ::= E_DEFAULT E_DOSPUNTOS procesos 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",11, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -5247,7 +5628,10 @@ class CUP$Sintactico$actions {
           case 366: // casos ::= E_CASE E_CADENA E_DOSPUNTOS procesos E_BREAK E_PYC 
             {
               Object RESULT =null;
-		
+		int condicionleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int condicionright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		String condicion = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		Info.add(new JsNode("Sentencia", condicion));
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",11, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
