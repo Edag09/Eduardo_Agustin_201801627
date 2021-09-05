@@ -11,8 +11,10 @@ parser code
     public ArrayList<NodeGraph> Graphs = new ArrayList();
     public ArrayList<ValueNode> Data = new ArrayList();
     public ArrayList<String> Values = new ArrayList();
+    public ArrayList<String> ValuesPie = new ArrayList();
     public ArrayList<String> Token = new ArrayList();
     public ArrayList<String> Ejes = new ArrayList();
+    public ArrayList<String> EjesPie = new ArrayList();
     public ArrayList<String> Path = new ArrayList();
     public String Resulta = "";   
 :} 
@@ -31,7 +33,7 @@ terminal String E_PYC, E_DOSP, E_COMA;
 non terminal ini, contenidogeneral, graphbarra, graphpie, graphline, titulos, titulox, tituloy, archivo, comentario;
 non terminal ArrayList<NodeGraph> graficas;
 non terminal ArrayList<ValueNode> cuerpo;
-non terminal ArrayList<String> contenidox, contenidob, ejesx, valoresgeneral, comparar;
+non terminal ArrayList<String> contenidox, contenidob, ejesx, valoresgeneral, comparar, ejepie, contenidopie, valorespie, contenidop;
 
 start with ini;
 
@@ -86,12 +88,12 @@ graphbarra::=graphbarra titulos:tit {:Barras.Title=(String)tit;:}
 ;
 
 graphpie::=graphpie titulos:tit {:Pie.Title=(String)tit;:}
-         |graphpie ejesx:ejes {:Pie.Eje=ejes;:}
-         |graphpie valoresgeneral:value {:Pie.Value=value;:}
+         |graphpie ejepie:ejes {:Pie.EjePie=ejes;:}
+         |graphpie valorespie:value {:Pie.ValuePie=value;:}
 
          |titulos:tit {:Pie.Title=(String)tit;:}
-         |ejesx:ejes {:Pie.Eje=ejes;:}
-         |valoresgeneral:value {:Pie.Value=value;:}
+         |ejepie:ejes {:Pie.EjePie=ejes;:}
+         |valorespie:value {:Pie.ValuePie=value;:}
 ;
 
 graphline::=graphline titulos:tit {:Linea.Title=(String)tit;:}
@@ -106,6 +108,8 @@ titulos::=E_TITLE:t1 E_DOSP:t2 IDENTIFICADOR:resp E_PYC:t3 {:RESULT=resp; Token.
 
 ejesx::=E_EJEX:t1 E_DOSP:t2 E_CORIZQ:t3 contenidox E_CORDER:t4 E_PYC:t5 {:RESULT=Ejes; Token.add(t1); Token.add(t2); Token.add(t3); Token.add(t4); Token.add(t5);:};
 
+ejepie::=E_EJEX:t1 E_DOSP:t2 E_CORIZQ:t3 contenidopie E_CORDER:t4 E_PYC:t5 {:RESULT=EjesPie; Token.add(t1); Token.add(t2); Token.add(t3); Token.add(t4); Token.add(t5);:};
+
 contenidox::=E_CADENA:eje {:Ejes.add((String)eje);:}
             |IDENTIFICADOR:eje {:Ejes.add((String)eje);:}
             |contenidox E_COMA:t1 {:Token.add(t1);:}
@@ -113,7 +117,16 @@ contenidox::=E_CADENA:eje {:Ejes.add((String)eje);:}
             |contenidox IDENTIFICADOR:eje {:Ejes.add((String)eje);:}
 ;
 
+contenidopie::=E_CADENA:eje {:EjesPie.add((String)eje);:}
+            |IDENTIFICADOR:eje {:EjesPie.add((String)eje);:}
+            |contenidopie E_COMA:t1 {:Token.add(t1);:}
+            |contenidopie E_CADENA:eje {:EjesPie.add((String)eje);:}
+            |contenidopie IDENTIFICADOR:eje {:EjesPie.add((String)eje);:}
+;
+
 valoresgeneral::=E_VALORES:t1 E_DOSP:t2 E_CORIZQ:t3 contenidob E_CORDER:t4 E_PYC:t5 {:RESULT=Values; Token.add(t1); Token.add(t2); Token.add(t3); Token.add(t4); Token.add(t5);:};
+
+valorespie::=E_VALORES:t1 E_DOSP:t2 E_CORIZQ:t3 contenidop E_CORDER:t4 E_PYC:t5 {:RESULT=ValuesPie; Token.add(t1); Token.add(t2); Token.add(t3); Token.add(t4); Token.add(t5);:};
 
 contenidob::=DECI:value {:Values.add((String)value);:}
             |IDENTIFICADOR:value {:Values.add(value);:}
@@ -123,6 +136,16 @@ contenidob::=DECI:value {:Values.add((String)value);:}
             |contenidob E_CADENA:value {:Values.add(value);:}
             |contenidob IDENTIFICADOR:value {:Values.add(value);:}
 ;
+
+contenidop::=DECI:value {:ValuesPie.add((String)value);:}
+            |IDENTIFICADOR:value {:ValuesPie.add(value);:}
+            |E_CADENA:value {:ValuesPie.add(value);:}
+            |contenidop E_COMA:t1 {:Token.add(t1);:}
+            |contenidop DECI:value {:ValuesPie.add((String)value);:}
+            |contenidop E_CADENA:value {:ValuesPie.add(value);:}
+            |contenidop IDENTIFICADOR:value {:ValuesPie.add(value);:}
+;
+
 
 titulox::=E_TITLEX:t1 E_DOSP:t2 IDENTIFICADOR:resp E_PYC:t3 {:RESULT=resp; Token.add(t1); Token.add(t2); Token.add(t3);:}
          |E_TITLEX:t1 E_DOSP:t2 E_CADENA:resp E_PYC:t3 {:RESULT=resp; Token.add(t1); Token.add(t2); Token.add(t3);:}

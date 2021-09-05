@@ -311,11 +311,11 @@ public void GraficarBarras(){
                 for (int k = 0; k < parsefca.Data.size(); k++) {
                     if (Barras.Value.get(j).equals(parsefca.Data.get(k).ID)) {
                         Barras.Value.set(j, parsefca.Data.get(k).Lexema);
-                        System.out.println(Barras.Value);
+                        System.out.println("Estos son los valores de barra "+Barras.Value);
                     }
                     if (Barras.Eje.get(j).equals(parsefca.Data.get(k).ID)) {
                         Barras.Eje.set(j, parsefca.Data.get(k).Lexema);
-                        System.out.println(Barras.Value);
+                        System.out.println("Estos son los valores de barra "+Barras.Value);
                     }
                 }
             }
@@ -350,22 +350,28 @@ public void GraficarBarras(){
             barritas.setVisible(true);
         } 
     }
-    
+   GraficaPie();
 }
 
 public void GraficaPie(){
     for (int i = 0; i < parsefca.Graphs.size(); i++) {
         if (parsefca.Graphs.get(i).Type.equalsIgnoreCase("GraficaPie")) {
-            NodeGraph Pie = new NodeGraph();
-            Pie = parsefca.Graphs.get(i);
+            NodeGraph Pie = parsefca.Graphs.get(i);
+            System.out.println("Estos son los Ejes de Pie "+Pie.EjePie);
+            for (int j = 0; j < Pie.ValuePie.size(); j++) {
+                System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
+            }
+            
             TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Pie");
-            for (int j = 0; j < Pie.Value.size(); j++) {
+            for (int j = 0; j < Pie.ValuePie.size(); j++) {
                 for (int k = 0; k < parsefca.Data.size(); k++) {
-                    if (Pie.Value.get(j).equals(parsefca.Data.get(k).ID)) {
-                        Pie.Value.set(j, parsefca.Data.get(k).Lexema);
+                    if (Pie.ValuePie.get(j).equals(parsefca.Data.get(k).ID)) {
+                        Pie.ValuePie.set(j, parsefca.Data.get(k).Lexema);
+                        System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
                     }
-                    if (Pie.Eje.get(j).equals(parsefca.Data.get(k).ID)) {
-                        Pie.Eje.set(j, parsefca.Data.get(k).Lexema);
+                    if (Pie.EjePie.get(j).equals(parsefca.Data.get(k).ID)) {
+                        Pie.EjePie.set(j, parsefca.Data.get(k).Lexema);
+                        System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
                     }
                 }
             }
@@ -377,8 +383,8 @@ public void GraficaPie(){
             }
             
             DefaultPieDataset info = new DefaultPieDataset();
-            for (int j = 0; j < Pie.Eje.size(); j++) {
-                info.setValue(Pie.Eje.get(j), Double.parseDouble(Pie.Value.get(j)));
+            for (int j = 0; j < Pie.EjePie.size(); j++) {
+                info.setValue(Pie.EjePie.get(j), Double.parseDouble(Pie.ValuePie.get(j)));
             }
             JFreeChart GraphPie = ChartFactory.createPieChart(Pie.Type, info);
             
