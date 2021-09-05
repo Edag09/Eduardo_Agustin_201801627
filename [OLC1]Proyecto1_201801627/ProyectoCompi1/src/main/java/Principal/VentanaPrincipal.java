@@ -16,8 +16,12 @@ import Informacion.*;
 import java.util.HashSet;
 import java.util.Set;
 
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
@@ -255,26 +259,25 @@ public void parseoFCA(){
         try {
             parsefca.parse();
             TextConsola.setText(TextConsola.getText() + "Hay "+Integer.toString(parsefca.Data.size()) + " Variables Globales\n");
-            for (int i = 0; i < parsefca.Data.size(); i++) {
+            /*for (int i = 0; i < parsefca.Data.size(); i++) {
                 System.out.println(parsefca.Data.get(i).ID+"\n");
                 System.out.println(parsefca.Data.get(i).Lexema+"\n");
             }
-                System.out.println("\n");
+                System.out.println("\n");*/
             TextConsola.setText(TextConsola.getText() + "Hay "+Integer.toString(parsefca.Graphs.size()) + " Graficas\n");
-            for (int i = 0; i < parsefca.Graphs.size(); i++) {
+            /*for (int i = 0; i < parsefca.Graphs.size(); i++) {
                 System.out.println(parsefca.Graphs.get(i).Type+"\n");
                 System.out.println(parsefca.Graphs.get(i).Title+"\n");
                 System.out.println(parsefca.Graphs.get(i).TX+"\n");
                 System.out.println(parsefca.Graphs.get(i).TY+"\n");
                 System.out.println(parsefca.Graphs.get(i).Eje+"\n");
                 System.out.println(parsefca.Graphs.get(i).Value+"\n");
-            }
-            System.out.println("\n");
+            }*/
             TextConsola.setText(TextConsola.getText() + "Hay "+Integer.toString(parsefca.Token.size()) + " Tokens\n");
-            for (int i = 0; i < parsefca.Token.size(); i++) {
+            /*for (int i = 0; i < parsefca.Token.size(); i++) {
                 System.out.println(parsefca.Token.get(i)+"\n");
             }
-            System.out.println("\n");
+            System.out.println("\n");*/
             TextConsola.setText(TextConsola.getText() + "Se analizara "+Integer.toString(parsefca.Path.size()) + " Rutas\n");
             TextConsola.setText(TextConsola.getText() + "Analizando Rutas\n");
             for (int i = 0; i < parsefca.Path.size(); i++) {
@@ -303,51 +306,57 @@ public void parseoJS(){
 public void GraficarBarras(){
     for (int i = 0; i < parsefca.Graphs.size(); i++) {
         if (parsefca.Graphs.get(i).Type.equals("GraficaBarras")) {
-            TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Barras");
-            NodeGraph Barras = parsefca.Graphs.get(i);
-            System.out.println(Barras.Eje);
-            
-            for (int j = 0; j < Barras.Value.size(); j++) {
-                for (int k = 0; k < parsefca.Data.size(); k++) {
-                    if (Barras.Value.get(j).equals(parsefca.Data.get(k).ID)) {
-                        Barras.Value.set(j, parsefca.Data.get(k).Lexema);
-                        System.out.println("Estos son los valores de barra "+Barras.Value);
+            try {
+                TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Barras");
+                NodeGraph Barras = parsefca.Graphs.get(i);
+                System.out.println(Barras.Eje);
+                
+                for (int j = 0; j < Barras.Value.size(); j++) {
+                    for (int k = 0; k < parsefca.Data.size(); k++) {
+                        if (Barras.Value.get(j).equals(parsefca.Data.get(k).ID)) {
+                            Barras.Value.set(j, parsefca.Data.get(k).Lexema);
+                            System.out.println("Estos son los valores de barra "+Barras.Value);
+                        }
+                        if (Barras.Eje.get(j).equals(parsefca.Data.get(k).ID)) {
+                            Barras.Eje.set(j, parsefca.Data.get(k).Lexema);
+                            System.out.println("Estos son los valores de barra "+Barras.Value);
+                        }
                     }
-                    if (Barras.Eje.get(j).equals(parsefca.Data.get(k).ID)) {
-                        Barras.Eje.set(j, parsefca.Data.get(k).Lexema);
-                        System.out.println("Estos son los valores de barra "+Barras.Value);
+                }
+                for (int j = 0; j < parsefca.Data.size(); j++) {
+                    if (Barras.Title.equals(parsefca.Data.get(j).ID)){
+                        Barras.Title = parsefca.Data.get(j).Lexema;
                     }
                 }
-            }
-            for (int j = 0; j < parsefca.Data.size(); j++) {
-                if (Barras.Title.equals(parsefca.Data.get(j).ID)){
-                    Barras.Title = parsefca.Data.get(j).Lexema;
+                
+                for (int j = 0; j < parsefca.Data.size(); j++) {
+                    if (Barras.TX.equals(parsefca.Data.get(j).ID)){
+                        Barras.TX = parsefca.Data.get(j).Lexema;
+                    }
                 }
-            }
-            
-            for (int j = 0; j < parsefca.Data.size(); j++) {
-                if (Barras.TX.equals(parsefca.Data.get(j).ID)){
-                    Barras.TX = parsefca.Data.get(j).Lexema;
+                
+                for (int j = 0; j < parsefca.Data.size(); j++) {
+                    if (Barras.TY.equals(parsefca.Data.get(j).ID)){
+                        Barras.TY = parsefca.Data.get(j).Lexema;
+                    }
                 }
+                
+                DefaultCategoryDataset info = new DefaultCategoryDataset();
+                
+                for (int j = 0; j < Barras.Eje.size(); j++) {
+                    info.setValue(Double.parseDouble(Barras.Value.get(j)), "Restultado", Barras.Eje.get(j));
+                }
+                
+                JFreeChart GraphBarras = ChartFactory.createBarChart(Barras.Title, Barras.TX, Barras.TY, info, PlotOrientation.VERTICAL, false, false, false);
+                
+                int width = 640;    /* Width of the image */
+                int height = 480;   /* Height of the image */
+                File ImagenBarra = new File( "GraficaBarras.jpeg" );
+                ChartUtilities.saveChartAsJPEG(ImagenBarra, GraphBarras, width, height);
+                System.out.println("Creado");
+            } catch (IOException ex) {
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            for (int j = 0; j < parsefca.Data.size(); j++) {
-                if (Barras.TY.equals(parsefca.Data.get(j).ID)){
-                    Barras.TY = parsefca.Data.get(j).Lexema;
-                }           
-            }
-            
-            DefaultCategoryDataset info = new DefaultCategoryDataset();
-            
-            for (int j = 0; j < Barras.Eje.size(); j++) {
-                info.setValue(Double.parseDouble(Barras.Value.get(j)), "Restultado", Barras.Eje.get(j));
-            }
-            
-            JFreeChart GraphBarras = ChartFactory.createBarChart3D(Barras.Title, Barras.TX, Barras.TY, info, PlotOrientation.VERTICAL, false, false, false);
-            
-            ChartFrame barritas = new ChartFrame(Barras.Title, GraphBarras);
-            barritas.setLocationRelativeTo(null);
-            barritas.setVisible(true);
         } 
     }
    GraficaPie();
@@ -356,41 +365,47 @@ public void GraficarBarras(){
 public void GraficaPie(){
     for (int i = 0; i < parsefca.Graphs.size(); i++) {
         if (parsefca.Graphs.get(i).Type.equalsIgnoreCase("GraficaPie")) {
-            NodeGraph Pie = parsefca.Graphs.get(i);
-            System.out.println("Estos son los Ejes de Pie "+Pie.EjePie);
-            for (int j = 0; j < Pie.ValuePie.size(); j++) {
-                System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
-            }
-            
-            TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Pie");
-            for (int j = 0; j < Pie.ValuePie.size(); j++) {
-                for (int k = 0; k < parsefca.Data.size(); k++) {
-                    if (Pie.ValuePie.get(j).equals(parsefca.Data.get(k).ID)) {
-                        Pie.ValuePie.set(j, parsefca.Data.get(k).Lexema);
-                        System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
-                    }
-                    if (Pie.EjePie.get(j).equals(parsefca.Data.get(k).ID)) {
-                        Pie.EjePie.set(j, parsefca.Data.get(k).Lexema);
-                        System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
+            try {
+                NodeGraph Pie = parsefca.Graphs.get(i);
+                System.out.println("Estos son los Ejes de Pie "+Pie.EjePie);
+                for (int j = 0; j < Pie.ValuePie.size(); j++) {
+                    System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
+                }
+                
+                TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Pie");
+                for (int j = 0; j < Pie.ValuePie.size(); j++) {
+                    for (int k = 0; k < parsefca.Data.size(); k++) {
+                        if (Pie.ValuePie.get(j).equals(parsefca.Data.get(k).ID)) {
+                            Pie.ValuePie.set(j, parsefca.Data.get(k).Lexema);
+                            System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
+                        }
+                        if (Pie.EjePie.get(j).equals(parsefca.Data.get(k).ID)) {
+                            Pie.EjePie.set(j, parsefca.Data.get(k).Lexema);
+                            System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
+                        }
                     }
                 }
-            }
-            
-            for (int j = 0; j < parsefca.Data.size(); j++) {
-                if (Pie.Title.equals(parsefca.Data.get(j).ID)) {
-                    Pie.Title = parsefca.Data.get(j).Lexema;
+                
+                for (int j = 0; j < parsefca.Data.size(); j++) {
+                    if (Pie.Title.equals(parsefca.Data.get(j).ID)) {
+                        Pie.Title = parsefca.Data.get(j).Lexema;
+                    }
                 }
+                
+                DefaultPieDataset info = new DefaultPieDataset();
+                for (int j = 0; j < Pie.EjePie.size(); j++) {
+                    info.setValue(Pie.EjePie.get(j), Double.parseDouble(Pie.ValuePie.get(j)));
+                }
+                JFreeChart GraphPie = ChartFactory.createPieChart(Pie.Type, info);
+                
+                int width = 640;    /* Width of the image */
+                int height = 480;   /* Height of the image */
+                File ImagenPie = new File( "GraficaPie.jpeg" );
+                ChartUtilities.saveChartAsJPEG(ImagenPie, GraphPie, width, height);
+                System.out.println("Listo");
+            } catch (IOException ex) {
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            DefaultPieDataset info = new DefaultPieDataset();
-            for (int j = 0; j < Pie.EjePie.size(); j++) {
-                info.setValue(Pie.EjePie.get(j), Double.parseDouble(Pie.ValuePie.get(j)));
-            }
-            JFreeChart GraphPie = ChartFactory.createPieChart(Pie.Type, info);
-            
-            ChartFrame circulito = new ChartFrame(Pie.Title, GraphPie);
-            circulito.setLocationRelativeTo(null);
-            circulito.setVisible(true);
         }
     }
 }
