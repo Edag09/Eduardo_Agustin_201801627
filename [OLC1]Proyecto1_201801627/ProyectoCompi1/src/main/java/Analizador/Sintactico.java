@@ -1217,7 +1217,7 @@ class CUP$Sintactico$actions {
 		int t1left = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int t1right = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		String t1 = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		Ejes.add(t1);
+		Token.add(t1);
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("contenidox",12, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;

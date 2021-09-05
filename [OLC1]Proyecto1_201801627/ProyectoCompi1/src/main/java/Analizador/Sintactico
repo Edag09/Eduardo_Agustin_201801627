@@ -108,7 +108,7 @@ ejesx::=E_EJEX:t1 E_DOSP:t2 E_CORIZQ:t3 contenidox E_CORDER:t4 E_PYC:t5 {:RESULT
 
 contenidox::=E_CADENA:eje {:Ejes.add((String)eje);:}
             |IDENTIFICADOR:eje {:Ejes.add((String)eje);:}
-            |contenidox E_COMA:t1 {:Ejes.add(t1);:}
+            |contenidox E_COMA:t1 {:Token.add(t1);:}
             |contenidox E_CADENA:eje {:Ejes.add((String)eje);:}
             |contenidox IDENTIFICADOR:eje {:Ejes.add((String)eje);:}
 ;

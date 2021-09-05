@@ -305,6 +305,7 @@ public void GraficarBarras(){
         if (parsefca.Graphs.get(i).Type.equals("GraficaBarras")) {
             TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Barras");
             NodeGraph Barras = parsefca.Graphs.get(i);
+            System.out.println(Barras.Eje);
             
             for (int j = 0; j < Barras.Value.size(); j++) {
                 for (int k = 0; k < parsefca.Data.size(); k++) {
@@ -318,19 +319,19 @@ public void GraficarBarras(){
                     }
                 }
             }
-            for (int j = 0; j <=parsefca.Data.size(); j++) {
+            for (int j = 0; j < parsefca.Data.size(); j++) {
                 if (Barras.Title.equals(parsefca.Data.get(j).ID)){
                     Barras.Title = parsefca.Data.get(j).Lexema;
                 }
             }
             
-            for (int j = 0; j <=parsefca.Data.size(); j++) {
+            for (int j = 0; j < parsefca.Data.size(); j++) {
                 if (Barras.TX.equals(parsefca.Data.get(j).ID)){
                     Barras.TX = parsefca.Data.get(j).Lexema;
                 }
             }
             
-            for (int j = 0; j <=parsefca.Data.size(); j++) {
+            for (int j = 0; j < parsefca.Data.size(); j++) {
                 if (Barras.TY.equals(parsefca.Data.get(j).ID)){
                     Barras.TY = parsefca.Data.get(j).Lexema;
                 }           
@@ -338,7 +339,7 @@ public void GraficarBarras(){
             
             DefaultCategoryDataset info = new DefaultCategoryDataset();
             
-            for (int j = 0; j <=Barras.Eje.size(); j++) {
+            for (int j = 0; j < Barras.Eje.size(); j++) {
                 info.setValue(Double.parseDouble(Barras.Value.get(j)), "Restultado", Barras.Eje.get(j));
             }
             
@@ -349,6 +350,7 @@ public void GraficarBarras(){
             barritas.setVisible(true);
         } 
     }
+    
 }
 
 public void GraficaPie(){
@@ -376,7 +378,13 @@ public void GraficaPie(){
             
             DefaultPieDataset info = new DefaultPieDataset();
             for (int j = 0; j < Pie.Eje.size(); j++) {
+                info.setValue(Pie.Eje.get(j), Double.parseDouble(Pie.Value.get(j)));
             }
+            JFreeChart GraphPie = ChartFactory.createPieChart(Pie.Type, info);
+            
+            ChartFrame circulito = new ChartFrame(Pie.Title, GraphPie);
+            circulito.setLocationRelativeTo(null);
+            circulito.setVisible(true);
         }
     }
 }
