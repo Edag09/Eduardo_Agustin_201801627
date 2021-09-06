@@ -18,6 +18,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jfree.chart.ChartFactory;
@@ -38,6 +40,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     ArrayList<JsInformacion> datos = new ArrayList();
     JsInformacion carpeta1 = new JsInformacion();
     JsInformacion carpeta2 = new JsInformacion();
+    ArrayList<String> guardarGraph = new ArrayList();
     
 
     public VentanaPrincipal() {
@@ -235,6 +238,47 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void ReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportesMouseClicked
         GraficarBarras();
+        LocalDate diaactual = LocalDate.now();
+        LocalTime horaactual = LocalTime.now();
+        File Report;
+        FileWriter w;
+        BufferedWriter wb;
+        PrintWriter wr;
+        
+        try {
+            String primera = "<!DOCTYPE html> \n";
+            primera = primera + "<html lang=\"en\"> \n";
+            primera = primera + "<head>\n" +
+                        "    <meta charset=\"UTF-8\">\n" +
+                        "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
+                        "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                        "    <title>Document</title>\n" +
+                        "    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We\" crossorigin=\"anonymous\">\n" +
+                        "</head> \n";
+            primera = primera + "<body> \n";
+            primera = primera + "<nav class=\"navbar navbar-dark bg-dark\">\n" +
+                        "        <a class=\"navbar-brand\" href=\"#\"><h1>Reporte Estadistico</h1><br><h4>Eduardo Rene Agustin Mendoza</h4><br><h4>Carnet: 201801627</h4></a>\n" +
+                        "      </nav>";
+            primera = primera +"<h3>\n" +"        <small class=\"text-muted\">"+diaactual+" a las "+horaactual+"</small>\n" +"      </h3>";
+            
+            for (int i = 0; i < guardarGraph.size(); i++) {
+                primera = primera + "      <div class=\"text-center\">";
+                primera = primera + "           <img src=\""+guardarGraph.get(i)+"\" class=\"rounded\" alt=\"...\">";
+                primera = primera + "</div>";
+            }
+            primera = primera + "</body>\n" +"</html>";
+            
+            Report  = new File("Reporte Estadistico.html");
+            w=new FileWriter(Report);
+            wb = new BufferedWriter(w);
+            wr = new PrintWriter(wb);
+            
+            wr.write(primera);
+            wr.close();
+            wb.close();
+        } catch (Exception e) {
+        }
+    
     }//GEN-LAST:event_ReportesMouseClicked
 
 
@@ -301,17 +345,14 @@ public void GraficarBarras(){
             try {
                 TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Barras\n");
                 NodeGraph Barras = parsefca.Graphs.get(i);
-                System.out.println(Barras.Eje);
                 
                 for (int j = 0; j < Barras.Value.size(); j++) {
                     for (int k = 0; k < parsefca.Data.size(); k++) {
                         if (Barras.Value.get(j).equals(parsefca.Data.get(k).ID)) {
                             Barras.Value.set(j, parsefca.Data.get(k).Lexema);
-                            System.out.println("Estos son los valores de barra "+Barras.Value);
                         }
                         if (Barras.Eje.get(j).equals(parsefca.Data.get(k).ID)) {
                             Barras.Eje.set(j, parsefca.Data.get(k).Lexema);
-                            System.out.println("Estos son los valores de barra "+Barras.Value);
                         }
                     }
                 }
@@ -343,9 +384,10 @@ public void GraficarBarras(){
                 
                 int width = 640;
                 int height = 480;
-                File ImagenBarra = new File( "GraficaBarras"+Integer.toString(cont++)+".jpeg" );
+                String nombreG = "GraficaBarras"+Integer.toString(cont++)+".jpeg";
+                guardarGraph.add(nombreG);
+                File ImagenBarra = new File(nombreG);
                 ChartUtilities.saveChartAsJPEG(ImagenBarra, GraphBarras, width, height);
-                System.out.println("Creado");
             } catch (IOException ex) {
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -360,21 +402,15 @@ public void GraficaPie(){
         if (parsefca.Graphs.get(i).Type.equalsIgnoreCase("GraficaPie")) {
             try {
                 NodeGraph Pie = parsefca.Graphs.get(i);
-                System.out.println("Estos son los Ejes de Pie "+Pie.EjePie);
-                for (int j = 0; j < Pie.ValuePie.size(); j++) {
-                    System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
-                }
                 
                 TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Pie\n");
                 for (int j = 0; j < Pie.ValuePie.size(); j++) {
                     for (int k = 0; k < parsefca.Data.size(); k++) {
                         if (Pie.ValuePie.get(j).equals(parsefca.Data.get(k).ID)) {
                             Pie.ValuePie.set(j, parsefca.Data.get(k).Lexema);
-                            System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
                         }
                         if (Pie.EjePie.get(j).equals(parsefca.Data.get(k).ID)) {
                             Pie.EjePie.set(j, parsefca.Data.get(k).Lexema);
-                            System.out.println("Estos son los valores de Pie "+Pie.ValuePie);
                         }
                     }
                 }
@@ -391,18 +427,19 @@ public void GraficaPie(){
                 }
                 JFreeChart GraphPie = ChartFactory.createPieChart(Pie.Type, info);
                 
-                int width = 640;    /* Width of the image */
-                int height = 480;   /* Height of the image */
-                File ImagenPie = new File( "GraficaPie"+Integer.toString(cont++)+".jpeg");
+                int width = 640;    
+                int height = 480;
+                String nombreGP = "GraficaPie"+Integer.toString(cont++)+".jpeg";
+                guardarGraph.add(nombreGP);
+                File ImagenPie = new File(nombreGP);
                 ChartUtilities.saveChartAsJPEG(ImagenPie, GraphPie, width, height);
-                System.out.println("Listo");
+                
             } catch (IOException ex) {
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
 }
-
 
 public void buscarRuta(ArrayList<String> Path){
     String P1 = Path.get(0);
@@ -477,6 +514,7 @@ public void buscarRuta(ArrayList<String> Path){
         }
     }
 }
+
 
 }
 
