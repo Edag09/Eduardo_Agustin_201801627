@@ -31,6 +31,7 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 
 public class VentanaPrincipal extends javax.swing.JFrame {
@@ -439,6 +440,7 @@ public void GraficaPie(){
             }
         }
     }
+    GraficaLineas();
 }
 
 public void buscarRuta(ArrayList<String> Path){
@@ -460,8 +462,6 @@ public void buscarRuta(ArrayList<String> Path){
                 try {
                     String texto1 = new String(Files.readAllBytes(a1.toPath()));
                     String texto2 = new String(Files.readAllBytes(a2.toPath()));
-                    System.out.println(texto1+'\n');
-                    System.out.println(texto2+'\n');
                     parseA1Js = new AnalizadorJS.Sintactico(new AnalizadorJS.Lexico(new StringReader(texto1)));
                     parseA2Js = new AnalizadorJS.Sintactico(new AnalizadorJS.Lexico(new StringReader(texto2)));
                     try {
@@ -473,7 +473,6 @@ public void buscarRuta(ArrayList<String> Path){
                     }
                     
                     for (int k = 0; k < parseA1Js.Info.size(); k++) {
-                        System.out.println(parseA1Js.Info.get(k).Type+" -> "+parseA1Js.Info.get(k).ID);
                     }
                     
                     carpeta1.Name = file1[i];
@@ -488,11 +487,15 @@ public void buscarRuta(ArrayList<String> Path){
                             carpeta1.ContComent++;
                         }
                     }
+                    System.out.println("Se encontraron " + carpeta1.ContClass + " clases en el archivo 1");
+                    System.out.println("Se encontraron " + carpeta1.ContVar + " Variables en el archivo 1");
+                    System.out.println("Se encontraron " + carpeta1.ContMet + " Metodos en el archivo 1");
+                    System.out.println("Se encontraron " + carpeta1.ContComent + " Comentarios en el archivo 1\n");
                     datos.add(carpeta1);
                     carpeta1 = new JsInformacion();
                     
                     carpeta2.Name = file2[i];
-                    for (int k = 0; k < parseA1Js.Info.size(); k++) {
+                    for (int k = 0; k < parseA2Js.Info.size(); k++) {
                         if (parseA2Js.Info.get(k).Type.equalsIgnoreCase("class")) {
                             carpeta2.ContClass++;
                         }else if(parseA2Js.Info.get(k).Type.equalsIgnoreCase("Variable")){
@@ -503,6 +506,10 @@ public void buscarRuta(ArrayList<String> Path){
                             carpeta2.ContComent++;
                         }
                     }
+                    System.out.println("Se encontraron " + carpeta2.ContClass + " clases en el archivo 2");
+                    System.out.println("Se encontraron " + carpeta2.ContVar + " Variables en el archivo 2");
+                    System.out.println("Se encontraron " + carpeta2.ContMet + " Metodos en el archivo 2");
+                    System.out.println("Se encontraron " + carpeta2.ContComent + " Comentarios en el archivo 2\n");
                     datos.add(carpeta2);
                     carpeta2 = new JsInformacion();
                 } catch (Exception e) {
@@ -515,7 +522,43 @@ public void buscarRuta(ArrayList<String> Path){
     }
 }
 
-
+public void GraficaLineas(){
+    int cont = 0;
+    for (int i = 0; i < parsefca.Graphs.size(); i++) {
+        if (parsefca.Graphs.get(i).Type.equalsIgnoreCase("GraficaLineas")) {
+            NodeGraph Linea = parsefca.Graphs.get(i);
+            
+            XYSeries gLinea = new XYSeries(parsefca.Graphs.get(i).Title);
+            TextConsola.setText(TextConsola.getText()+" Procesasndo Grafica de Lineas\n");
+            for (int j = 0; j < datos.size(); j++) {
+                try {
+                    String nombreLinea = parsefca.Graphs.get(i).TX.substring(1, parsefca.Graphs.get(i).TX.length()-1);
+                    if (nombreLinea.equalsIgnoreCase(datos.get(i).Name)) {
+                        System.out.println("Entra");
+                        gLinea.add(1, datos.get(i).ContClass);
+                        gLinea.add(2, datos.get(i).ContVar);
+                        gLinea.add(3, datos.get(i).ContMet);
+                        gLinea.add(4, datos.get(i).ContComent);
+                        
+                    }
+                    XYSeriesCollection plot = new XYSeriesCollection();
+                    plot.addSeries(gLinea);
+                    
+                    JFreeChart GraphLine = ChartFactory.createXYLineChart(datos.get(i).Name, "Informacion", "Cantidad", plot, PlotOrientation.VERTICAL, false, false, false);
+                    
+                    int width = 640;
+                    int height = 480;
+                    String nombreGL = "GraficaLinea"+Integer.toString(cont++)+".jpeg";
+                    guardarGraph.add(nombreGL);
+                    File ImagenLinea = new File(nombreGL);
+                    ChartUtilities.saveChartAsJPEG(ImagenLinea, GraphLine, width, height);
+                } catch (IOException ex) {
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+}
 }
 
 
