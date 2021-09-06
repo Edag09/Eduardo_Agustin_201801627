@@ -135,6 +135,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         EliminarPestania.setText("Eliminar Pestaña");
         EliminarPestania.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        EliminarPestania.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EliminarPestaniaMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(EliminarPestania);
 
         Ejecutar.setText("Ejecutar");
@@ -195,7 +200,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CrearPestaniaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearPestaniaMouseClicked
-        Ventanas nuevo = new Ventanas();
+       Ventanas nuevo = new Ventanas();
        PanelPestania.add("Nuevo", nuevo);
     }//GEN-LAST:event_CrearPestaniaMouseClicked
 
@@ -281,6 +286,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     
     }//GEN-LAST:event_ReportesMouseClicked
+
+    private void EliminarPestaniaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarPestaniaMouseClicked
+       PanelPestania.remove(this);
+    }//GEN-LAST:event_EliminarPestaniaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -440,7 +449,7 @@ public void GraficaPie(){
             }
         }
     }
-    GraficaLineas();
+    //GraficaLineas();
 }
 
 public void buscarRuta(ArrayList<String> Path){
@@ -533,12 +542,11 @@ public void GraficaLineas(){
             for (int j = 0; j < datos.size(); j++) {
                 try {
                     String nombreLinea = parsefca.Graphs.get(i).TX.substring(1, parsefca.Graphs.get(i).TX.length()-1);
-                    if (nombreLinea.equalsIgnoreCase(datos.get(i).Name)) {
-                        System.out.println("Entra");
-                        gLinea.add(1, datos.get(i).ContClass);
-                        gLinea.add(2, datos.get(i).ContVar);
-                        gLinea.add(3, datos.get(i).ContMet);
-                        gLinea.add(4, datos.get(i).ContComent);
+                    if (nombreLinea.equalsIgnoreCase(datos.get(j).Name)) {
+                        gLinea.add(1, datos.get(j).ContClass);
+                        gLinea.add(2, datos.get(j).ContVar);
+                        gLinea.add(3, datos.get(j).ContMet);
+                        gLinea.add(4, datos.get(j).ContComent);
                         
                     }
                     XYSeriesCollection plot = new XYSeriesCollection();
