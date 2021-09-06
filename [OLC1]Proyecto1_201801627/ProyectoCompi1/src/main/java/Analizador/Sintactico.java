@@ -380,7 +380,8 @@ public class Sintactico extends java_cup.runtime.lr_parser {
     public ArrayList<String> Ejes = new ArrayList();
     public ArrayList<String> EjesPie = new ArrayList();
     public ArrayList<String> Path = new ArrayList();
-    public String Resulta = "";   
+    public String Resulta = "";
+
 
 
 /** Cup generated class to encapsulate user supplied action code.*/
@@ -710,7 +711,7 @@ class CUP$Sintactico$actions {
 		int t2left = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int t2right = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		String t2 = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2);
+		Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2); Barras = new NodeGraph(); Values = new ArrayList(); Ejes = new ArrayList();
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("graficas",10, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -728,7 +729,7 @@ class CUP$Sintactico$actions {
 		int t2left = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int t2right = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		String t2 = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2);
+		Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2); Pie = new NodeGraph(); ValuesPie = new ArrayList(); EjesPie = new ArrayList();
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("graficas",10, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -764,7 +765,7 @@ class CUP$Sintactico$actions {
 		int t2left = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int t2right = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		String t2 = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2);
+		Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2); Pie = new NodeGraph(); ValuesPie = new ArrayList(); EjesPie = new ArrayList();
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("graficas",10, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -800,7 +801,7 @@ class CUP$Sintactico$actions {
 		int t2left = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int t2right = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		String t2 = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2);
+		Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2); Barras = new NodeGraph(); Values = new ArrayList(); Ejes = new ArrayList();
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("graficas",10, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -818,7 +819,7 @@ class CUP$Sintactico$actions {
 		int t2left = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int t2right = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		String t2 = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2);
+		Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2); Pie = new NodeGraph(); ValuesPie = new ArrayList(); EjesPie = new ArrayList();
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("graficas",10, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -854,7 +855,7 @@ class CUP$Sintactico$actions {
 		int t2left = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int t2right = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		String t2 = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2);
+		Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2); Barras = new NodeGraph(); Values = new ArrayList(); Ejes = new ArrayList();
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("graficas",10, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -872,7 +873,7 @@ class CUP$Sintactico$actions {
 		int t2left = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int t2right = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		String t2 = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2);
+		Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2); Pie = new NodeGraph(); ValuesPie = new ArrayList(); EjesPie = new ArrayList();
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("graficas",10, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -908,7 +909,7 @@ class CUP$Sintactico$actions {
 		int t2left = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int t2right = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		String t2 = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2);
+		Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2); Barras = new NodeGraph(); Values = new ArrayList(); Ejes = new ArrayList();
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("graficas",10, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;

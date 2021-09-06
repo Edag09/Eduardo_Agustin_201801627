@@ -16,7 +16,8 @@ parser code
     public ArrayList<String> Ejes = new ArrayList();
     public ArrayList<String> EjesPie = new ArrayList();
     public ArrayList<String> Path = new ArrayList();
-    public String Resulta = "";   
+    public String Resulta = "";
+
 :} 
 
 terminal String IDENTIFICADOR, E_CADENA, DECI, E_COMPARE, E_COMILLASIMPLE;
@@ -57,21 +58,21 @@ cuerpo::=cuerpo E_STR:t1 IDENTIFICADOR:id E_EQUALS:t2 E_CADENA:lex E_PYC:t3 {:Da
         |E_DOUBLE:t1 IDENTIFICADOR:id E_EQUALS:t2 DECI:lex E_PYC:t3 {:Data.add(new ValueNode(id, lex)); Token.add(t1); Token.add(t2); Token.add(t3);:}
 ;
 
-graficas::=graficas comparar E_GRABAR:g E_KEYIZQ:t1 graphbarra E_KEYDER:t2 {:Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2);:}
-            |graficas comparar E_GRAPIE:g E_KEYIZQ:t1 graphpie E_KEYDER:t2 {:Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2);:}
+graficas::=graficas comparar E_GRABAR:g E_KEYIZQ:t1 graphbarra E_KEYDER:t2 {:Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2); Barras = new NodeGraph(); Values = new ArrayList(); Ejes = new ArrayList();:}
+            |graficas comparar E_GRAPIE:g E_KEYIZQ:t1 graphpie E_KEYDER:t2 {:Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2); Pie = new NodeGraph(); ValuesPie = new ArrayList(); EjesPie = new ArrayList();:}
             |graficas comparar E_GRALINE:g E_KEYIZQ:t1 graphline E_KEYDER:t2 {:Linea.Type=g; Graphs.add(Linea); Token.add(g); Token.add(t1); Token.add(t2);:}
 
-            |graficas E_GRAPIE:g E_KEYIZQ:t1 graphpie E_KEYDER:t2 {:Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |graficas E_GRAPIE:g E_KEYIZQ:t1 graphpie E_KEYDER:t2 {:Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2); Pie = new NodeGraph(); ValuesPie = new ArrayList(); EjesPie = new ArrayList();:}
             |graficas E_GRALINE:g E_KEYIZQ:t1 graphline E_KEYDER:t2 {:Linea.Type=g; Graphs.add(Linea); Token.add(g); Token.add(t1); Token.add(t2);:}
-            |graficas E_GRABAR:g E_KEYIZQ:t1 graphbarra E_KEYDER:t2 {:Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |graficas E_GRABAR:g E_KEYIZQ:t1 graphbarra E_KEYDER:t2 {:Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2); Barras = new NodeGraph(); Values = new ArrayList(); Ejes = new ArrayList();:}
 
-            |E_GRAPIE:g E_KEYIZQ:t1 graphpie E_KEYDER:t2 {:Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |E_GRAPIE:g E_KEYIZQ:t1 graphpie E_KEYDER:t2 {:Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2); Pie = new NodeGraph(); ValuesPie = new ArrayList(); EjesPie = new ArrayList();:}
             |E_GRALINE:g E_KEYIZQ:t1 graphline E_KEYDER:t2 {:Linea.Type=g; Graphs.add(Linea); Token.add(g); Token.add(t1); Token.add(t2);:}
-            |E_GRABAR:g E_KEYIZQ:t1 graphbarra E_KEYDER:t2 {:Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |E_GRABAR:g E_KEYIZQ:t1 graphbarra E_KEYDER:t2 {:Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2); Barras = new NodeGraph(); Values = new ArrayList(); Ejes = new ArrayList();:}
 
-            |comparar E_GRAPIE:g E_KEYIZQ:t1 graphpie E_KEYDER:t2 {:Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |comparar E_GRAPIE:g E_KEYIZQ:t1 graphpie E_KEYDER:t2 {:Pie.Type=g; Graphs.add(Pie); Token.add(g); Token.add(t1); Token.add(t2); Pie = new NodeGraph(); ValuesPie = new ArrayList(); EjesPie = new ArrayList();:}
             |comparar E_GRALINE:g E_KEYIZQ:t1 graphline E_KEYDER:t2 {:Linea.Type=g; Graphs.add(Linea); Token.add(g); Token.add(t1); Token.add(t2);:}
-            |comparar E_GRABAR:g E_KEYIZQ:t1 graphbarra E_KEYDER:t2 {:Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2);:}
+            |comparar E_GRABAR:g E_KEYIZQ:t1 graphbarra E_KEYDER:t2 {:Barras.Type=g; Graphs.add(Barras); Token.add(g); Token.add(t1); Token.add(t2); Barras = new NodeGraph(); Values = new ArrayList(); Ejes = new ArrayList();:}
 ;
 
 graphbarra::=graphbarra titulos:tit {:Barras.Title=(String)tit;:}

@@ -35,6 +35,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     String text = "";
     Sintactico parsefca;
     AnalizadorJS.Sintactico parseA1Js, parseA2Js;
+    ArrayList<JsInformacion> datos = new ArrayList();
+    JsInformacion carpeta1 = new JsInformacion();
+    JsInformacion carpeta2 = new JsInformacion();
+    
 
     public VentanaPrincipal() {
         initComponents();
@@ -291,6 +295,7 @@ public void parseoJS(){
 }
 
 public void GraficarBarras(){
+    int cont = 0;
     for (int i = 0; i < parsefca.Graphs.size(); i++) {
         if (parsefca.Graphs.get(i).Type.equals("GraficaBarras")) {
             try {
@@ -338,7 +343,7 @@ public void GraficarBarras(){
                 
                 int width = 640;
                 int height = 480;
-                File ImagenBarra = new File( "GraficaBarras.jpeg" );
+                File ImagenBarra = new File( "GraficaBarras"+Integer.toString(cont++)+".jpeg" );
                 ChartUtilities.saveChartAsJPEG(ImagenBarra, GraphBarras, width, height);
                 System.out.println("Creado");
             } catch (IOException ex) {
@@ -350,6 +355,7 @@ public void GraficarBarras(){
 }
 
 public void GraficaPie(){
+    int cont = 0;
     for (int i = 0; i < parsefca.Graphs.size(); i++) {
         if (parsefca.Graphs.get(i).Type.equalsIgnoreCase("GraficaPie")) {
             try {
@@ -387,7 +393,7 @@ public void GraficaPie(){
                 
                 int width = 640;    /* Width of the image */
                 int height = 480;   /* Height of the image */
-                File ImagenPie = new File( "GraficaPie.jpeg" );
+                File ImagenPie = new File( "GraficaPie"+Integer.toString(cont++)+".jpeg");
                 ChartUtilities.saveChartAsJPEG(ImagenPie, GraphPie, width, height);
                 System.out.println("Listo");
             } catch (IOException ex) {
@@ -428,6 +434,40 @@ public void buscarRuta(ArrayList<String> Path){
                     } catch (Exception e) {
                         System.out.println("Error en el analizador");
                     }
+                    
+                    for (int k = 0; k < parseA1Js.Info.size(); k++) {
+                        System.out.println(parseA1Js.Info.get(k).Type+" -> "+parseA1Js.Info.get(k).ID);
+                    }
+                    
+                    carpeta1.Name = file1[i];
+                    for (int k = 0; k < parseA1Js.Info.size(); k++) {
+                        if (parseA1Js.Info.get(k).Type.equalsIgnoreCase("class")){
+                            carpeta1.ContClass++;
+                        }else if(parseA1Js.Info.get(k).Type.equalsIgnoreCase("Variable")){
+                            carpeta1.ContVar++;
+                        }else if(parseA1Js.Info.get(k).Type.equalsIgnoreCase("Metodo")){
+                            carpeta1.ContMet++;
+                        }else if (parseA1Js.Info.get(k).Type.equalsIgnoreCase("Comentario")){
+                            carpeta1.ContComent++;
+                        }
+                    }
+                    datos.add(carpeta1);
+                    carpeta1 = new JsInformacion();
+                    
+                    carpeta2.Name = file2[i];
+                    for (int k = 0; k < parseA1Js.Info.size(); k++) {
+                        if (parseA2Js.Info.get(k).Type.equalsIgnoreCase("class")) {
+                            carpeta2.ContClass++;
+                        }else if(parseA2Js.Info.get(k).Type.equalsIgnoreCase("Variable")){
+                            carpeta2.ContVar++;
+                        }else if(parseA2Js.Info.get(k).Type.equalsIgnoreCase("Metodo")){
+                            carpeta2.ContMet++;
+                        }else if (parseA2Js.Info.get(k).Type.equalsIgnoreCase("Comentario")){
+                            carpeta2.ContComent++;
+                        }
+                    }
+                    datos.add(carpeta2);
+                    carpeta2 = new JsInformacion();
                 } catch (Exception e) {
                     System.out.println("Error en el analizador");
                     System.out.println(e.getCause());
