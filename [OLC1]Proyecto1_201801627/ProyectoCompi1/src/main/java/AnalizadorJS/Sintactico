@@ -132,6 +132,8 @@ variable::=E_CADENA E_PYC{::}
         |E_REQUIRE E_PARENTESISIZQ E_CADENA E_PARENTESISDER {::}
         |E_CORIZQ vector E_CORDER {::}
         |E_CORIZQ vector E_CORDER E_PYC {::}
+        |E_CORIZQ E_CORDER {::}
+        |E_CORIZQ E_CORDER E_PYC {::}
 
         |signos DECI signos IDENTIFICADOR signos DECI {::}
         |signos DECI signos IDENTIFICADOR signos DECI E_PYC{::}
@@ -194,13 +196,17 @@ signos::=E_MAS {::}
 vector::=vector E_COMA E_CADENA {::}
        |vector E_COMA DECI {::}
        |vector E_COMA E_CORIZQ vector E_CORDER {::}
+       |vector IDENTIFICADOR{::}
        |E_CADENA{::}
        |DECI {::}
+       |IDENTIFICADOR{::}
        |E_CORIZQ vector E_CORDER {::}
 ;
 
 procesos::=procesos IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER:llave {:Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));:}
         |procesos IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER:llave {:Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));:}
+        |procesos IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER{:Info.add(new JsNode("Metodo", id));:}
+        |procesos IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER E_PYC{:Info.add(new JsNode("Metodo", id));:}
         
         |procesos E_VAR:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
         |procesos E_LET:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
@@ -234,6 +240,8 @@ procesos::=procesos IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ pr
 
         |IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER E_KEYIZQ procesos E_KEYDER:llave {:Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));:} 
         |IDENTIFICADOR:id E_PARENTESISIZQ parametros E_PARENTESISDER E_KEYIZQ procesos E_KEYDER:llave {:Info.add(new JsNode("Metodo", id)); Info.add(new JsNode("LlaveCierteMetodo", llave));:}
+        |IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER{:Info.add(new JsNode("Metodo", id));:}
+        |IDENTIFICADOR:id E_PARENTESISIZQ E_PARENTESISDER E_PYC{:Info.add(new JsNode("Metodo", id));:}
 
         |E_VAR:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
         |E_LET:idvar IDENTIFICADOR E_EQUALS variable {:Info.add(new JsNode("Variable", idvar));:}
