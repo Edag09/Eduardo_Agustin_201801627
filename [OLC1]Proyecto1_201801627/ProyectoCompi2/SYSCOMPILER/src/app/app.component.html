@@ -1,0 +1,89 @@
+<h1 class="title">SYSCOMPILER</h1>
+
+<br>
+
+<form class="form-inline">
+  <!--Boton para Cargar los archivos-->
+  <form class="form-inline">
+    <input accept=".sc" type="file" id="archivo" (change)="Cargar($event)">
+  </form>
+
+  <!--Boton para Guardar los archivos-->
+  <form class="form-inline">
+    <button mdbBtn (click)="GuardarArchivo()" color="success"  class="waves-light" mdbWavesEffect type="button">Guardar Archivo</button>
+  </form>
+
+  <form class="form-inline">
+    <button mdbBtn (click)="Ejecutar()" color="success"  class="waves-light" mdbWavesEffect type="button"><i class="fas fa-play"></i>Ejecutar</button>
+  </form>
+
+  <form class="form-inline">
+    <!--mdbBtn (click)="GenerarRTS('TablaSimbolo')"-->
+    <button color="success"  class="waves-light" mdbWavesEffect type="button">Tabla de Simbolos</button>
+  </form>
+
+  <form class="form-inline">
+    <!--mdbBtn (click)="GenerarAST('AST')"-->
+    <button color="success" outline="true" class="waves-light" mdbWavesEffect type="button">AST</button>
+  </form>
+
+  <form class="form-inline">
+    <!--mdbBtn (click)="Errores('TablaErrores')"-->
+    <button color="success" outline="true" class="waves-light" mdbWavesEffect type="button">Tabla de Errores</button>
+  </form>
+
+  <form class="form-inline">
+    <button color="success" outline="true" class="waves-light" mdbWavesEffect type="button">Crear Archivo</button>
+  </form>
+
+  <form class="form-inline">
+    <button color="success" outline="true" class="waves-light" mdbWavesEffect type="button">Crear Pestaña</button>
+  </form>
+
+  <form class="form-inline">
+    <button color="success" outline="true" class="waves-light" mdbWavesEffect type="button">Eliminar Pestaña</button>
+  </form>
+</form>
+
+<br>
+<br>
+
+<div class="row">
+    <div class="col-sm-6">
+      <h3 style="color: aqua;"><i class="fas fa-file-code"></i>Entrada</h3>
+      <ngx-codemirror
+      [(ngModel)]="Entrada"
+      [options]="{
+        lineNumbers: true,
+        theme: 'material',
+        mode: 'javascript'
+      }"></ngx-codemirror>
+    </div>
+
+    <div class="col-sm-6">
+      <h3 style="color: aqua;"><i class="fas fa-terminal"></i>Consola</h3>
+      <ngx-codemirror 
+      [(ngModel)]="Consola"
+      [options]="{
+        lineNumbers: true,
+        theme: 'material',
+        mode: 'markdown'
+      }"></ngx-codemirror>
+    </div>
+</div>
+
+  <div id="TablaSim" *ngIf= "MostrarTablaSimbolos" class="tabcontent", style="background-color: #212121;">
+    <table mdbTable id="tablasimbols" style="width:100%" border="true">
+    </table>
+  </div>
+
+  <div id="Ast" *ngIf= "MostrarTablaSimbolos" class="tabcontent", style="background-color: #212121;">
+    <div class="overflow-auto" id="graph" style="text-align: center;"></div>
+  </div>
+
+  <div id="TablaError" *ngIf= "MostrarTablaSimbolos" class="tabcontent", style="background-color: #212121;">
+    <table mdbTable id="tablasErrores" style="width:100%" border="true">
+    </table>
+  </div>
+
+  <script type="text/javascript"></script>
