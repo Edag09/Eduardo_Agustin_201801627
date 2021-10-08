@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { FormsModule } from '@angular/forms';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,14 +16,13 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     CodemirrorModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

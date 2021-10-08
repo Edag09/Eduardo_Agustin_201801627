@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": false
+    "analytics": "ed0f1282-14fe-41a7-9808-af1033455238"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -9,6 +9,9 @@
     "SYSCOMPILER": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
         "@schematics/angular:application": {
           "strict": true
         }
@@ -25,24 +28,22 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/animate.css/animate.css",
-              "./node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
-              "./node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
-              "./node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
-              "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
-              "./node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
-              "./node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
-              "src/styles.css"
+              "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
+              "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "node_modules/animate.css/animate.css",
+              "src/styles.scss",
+              "./node_modules/codemirror/lib/codemirror.css",
+              "./node_modules/codemirror/theme/material.css"
             ],
             "scripts": [
-              "./node_modules/chart.js/dist/Chart.js",
-              "./node_modules/hammerjs/hammer.min.js"
+              "node_modules/chart.js/dist/Chart.js",
+              "node_modules/hammerjs/hammer.min.js"
             ]
           },
           "configurations": {
@@ -103,25 +104,15 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/animate.css/animate.css",
-              "./node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
-              "./node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
-              "./node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
-              "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
-              "./node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
-              "./node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
-              "src/styles.css"
+              "src/styles.scss"
             ],
-            "scripts": [
-              "./node_modules/chart.js/dist/Chart.js",
-              "./node_modules/hammerjs/hammer.min.js"
-            ]
+            "scripts": []
           }
         }
       }
