@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import Controlador from 'src/Clases/Controlador';
+import Evaluar from 'src/Clases/Evaluar';
+import { TablaSimbols } from 'src/Clases/Tabla_de_Simbolos/TablaSimbols';
+
+import *as analice from '../Clases/Analisis'
 
 
 @Component({
@@ -57,4 +62,26 @@ CrearArchivo(){
       document.body.removeChild(element);
   }
 }
+
+Ejecutar():void{
+  let cons = ""
+  cons += "Analizando..\n"
+  this.consola = cons;
+  let analitico = new analice.Analisis();
+  this.consola = "Analizando...\n";
+  if(this.entrada != ""){
+    let execute = analitico.ejecutar(this.entrada);
+
+    this.consola = execute.consola;
+  }
+}
+
+NewWindow(){
+  window.open("/", "_blank");
+}
+
+CloseWindow(){
+  window.close();
+}
+
 }

@@ -160,7 +160,6 @@ instruccion : declaracion   {}
                                     + "linea: " + this._$.first_line 
                                     + "columna: " + this._$.first_column);           
                             }
- 
             ;
 
 declaracion : tipo lista_simbolos PYC   {}

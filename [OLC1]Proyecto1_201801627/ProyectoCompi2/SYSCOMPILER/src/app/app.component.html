@@ -10,10 +10,8 @@
           <button mdbBtn (click)="GuardarArchivo()" type="button" color="success"   mdbWavesEffect>Guardar Archivo</button>
         </form>
 
-
-        <!--</button>(click)="ejecutar()"-->
         <form class="form-inline">          
-            <button mdbBtn color="success"  class="waves-light" mdbWavesEffect type="button"><i class="fas fa-play"></i>Ejecutar</button>
+            <button mdbBtn (click)="Ejecutar()" color="success"  class="waves-light" mdbWavesEffect type="button"><i class="fas fa-play"></i>Ejecutar</button>
         </form>
         
         <!--(click)="GenerarReporteTabla('TablaSim')"-->
@@ -38,11 +36,11 @@
         </form>
 
         <form class="form-inline">
-          <button mdbBtn color="success" class="waves-light" mdbWavesEffect type="button" >Crear Pestaña</button>
+          <button mdbBtn (click)="NewWindow()" color="success" class="waves-light" mdbWavesEffect type="button" >Crear Pestaña</button>
         </form>
 
         <form class="form-inline">
-          <button mdbBtn color="success" class="waves-light" mdbWavesEffect type="button" >Eliminar Pestaña</button>
+          <button mdbBtn (click)="CloseWindow()" color="success" class="waves-light" mdbWavesEffect type="button" >Eliminar Pestaña</button>
         </form>
     </form>
 
@@ -51,7 +49,7 @@
 <div class="row">
 
 
-  <!-- EDITORES DE TEXTO -->
+  <!-- Editor de Texto -->
    
   <div class="col-sm-6">
     <h3 style="color: aqua;"><i class="fas fa-file-code"></i> Entrada</h3> 
