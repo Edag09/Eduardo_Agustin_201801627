@@ -6,16 +6,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppService {
 
-  _url = "http://localhost:3080";
+  conectar = "http://localhost:3080";
 
   constructor(private http: HttpClient) { }
 
-  compile(input: any) {
-    return this.http.post<any>(this._url + '/compile', input);
+  Interprete(input: any) {
+    return this.http.post<any>(this.conectar + '/Compiler', input);
   }
 
-  getAST(input: any) {
-    return this.http.post(this._url + '/AST_report', input, {
+  ReporteAST(input: any) {
+    return this.http.post(this.conectar + '/ReportarAST', input, {
       responseType: 'blob',
     });
   }

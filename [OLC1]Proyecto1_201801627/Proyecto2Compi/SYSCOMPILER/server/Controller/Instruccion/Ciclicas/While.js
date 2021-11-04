@@ -13,7 +13,7 @@ function cicloWhile(_instruccion, _ambito) {
     if (operacion.tipo === TIPO_DATO.BOOLEANO) {
         while (operacion.valor && max < LIMIT) {
             var nuevoAmbito = new Ambito(_ambito, "ciclo")
-            const Bloque = require('../Bloque')
+            const Bloque = require('../Block')
             var bloque = Bloque(_instruccion.instrucciones, nuevoAmbito)
             cadena.cadena += bloque.cadena;
             if (bloque.retorno) cadena.retorno = bloque.retorno;

@@ -14,7 +14,7 @@ function nuevaOperacion(_opIzq, _opDer, _tipo, _linea, _columna) {
 const Instruccion = {
     nuevoImprimir: function (_expresion, _linea, _columna) {
         return {
-            tipo: TIPO_INSTRUCCION.PRINT,
+            tipo: TIPO_INSTRUCCION.WRITELINE,
             expresion: _expresion,
             linea: _linea,
             columna: _columna

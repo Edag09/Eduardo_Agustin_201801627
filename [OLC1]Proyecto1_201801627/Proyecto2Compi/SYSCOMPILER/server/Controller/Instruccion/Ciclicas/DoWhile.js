@@ -14,7 +14,7 @@ function cicloDoWhile(_instruccion, _ambito) {
     if (operacion.tipo === TIPO_DATO.BOOLEANO) {
         do {
             var nuevoAmbito = new Ambito(_ambito, "ciclo")
-            const Bloque = require('../Bloque')
+            const Bloque = require('../Block')
             var bloque = Bloque(_instruccion.instrucciones, nuevoAmbito);
             cadena.cadena += bloque.cadena;
             if (bloque.retorno) cadena.retorno = bloque.retorno;

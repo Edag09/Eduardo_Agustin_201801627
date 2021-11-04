@@ -18,7 +18,7 @@ function sentenciaSwitch(_instruccion, _ambito) {
             else comparacion = comparar;
             if (evaluar.valor == comparacion.valor) {
                 var nuevoAmbito = new Ambito(_ambito, "switch")
-                const Bloque = require('../Bloque')
+                const Bloque = require('../Block')
                 var bloque = Bloque(caso.instrucciones, nuevoAmbito);
                 cadena.cadena += bloque.cadena;
                 if (bloque.retorno) cadena.retorno = bloque.retorno;
@@ -28,7 +28,7 @@ function sentenciaSwitch(_instruccion, _ambito) {
     }
     if (_instruccion.casoDefault != null) {
         var nuevoAmbito = new Ambito(_ambito, "switch")
-        const Bloque = require('../Bloque')
+        const Bloque = require('../Block')
         var bloque = Bloque(_instruccion.casoDefault.instrucciones, nuevoAmbito);
         cadena.cadena += bloque.cadena;
         if (bloque.retorno) cadena.retorno = bloque.retorno;

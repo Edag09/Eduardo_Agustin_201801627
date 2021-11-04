@@ -8,9 +8,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const parser = require('./analizador')
-require('./routes/compile.js')(parser, app)
-require('./routes/ast.js')(parser, app)
+const parser = require('./Analizador')
+require('./routes/Compiler.js')(parser, app)
+require('./routes/AST.js')(parser, app)
 
 app.get('/', (req, res) => {
   res.send('Hello from server!');

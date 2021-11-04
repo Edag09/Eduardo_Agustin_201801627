@@ -1,5 +1,5 @@
 const TIPO_INSTRUCCION = require("../../Controller/Principales/TInstrucciones");
-const Asignacion = require("../../Controller/Instruccion/Asignacion");
+const Asignacion = require("../../Controller/Instruccion/Asignaciones");
 const Declaracion = require("../../Controller/Instruccion/Declaracion");
 const Metodo = require("../../Controller/Instruccion/Metodo");
 const Funcion = require("../../Controller/Instruccion/Funcion");

@@ -1,4 +1,4 @@
-const procesarCadena = require("../../Model/Operacion/procesarCadena")
+const procesarCadena = require("../../Model/Operacion/Cadena")
 
 function Wirteline(_instruccion, _ambito) {
     const cadena = procesarCadena(_instruccion.expresion, _ambito);

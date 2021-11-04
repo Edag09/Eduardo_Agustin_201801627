@@ -1,6 +1,6 @@
 const TIPO_DATO = require("../../Controller/Principales/Tipos");
 const TIPO_OPERACION = require("../../Controller/Principales/TOperaciones");
-const TipoResultado = require("./TipoResultado")
+const TipoResultado = require("./Resultados")
 
 function Aritmetica(_expresion, _ambito) {
     switch (_expresion.tipo) {

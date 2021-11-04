@@ -1,4 +1,4 @@
-const { Metodo } = require("../../Model/Ambito/Funcion_Metodo");
+const { Metodo } = require("../../Model/Ambito/FunMet");
 
 function DecMetodo(_instruccion, _ambito) {
     const nuevoMetodo = new Metodo(_instruccion.nombre, _instruccion.lista_parametros, _instruccion.instrucciones, _instruccion.linea, _instruccion.columna)

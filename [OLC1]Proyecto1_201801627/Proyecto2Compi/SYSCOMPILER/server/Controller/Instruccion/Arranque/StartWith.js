@@ -1,9 +1,7 @@
 const Ambito = require("../../../Model/Ambito/Ambito");
-//const TIPO_DATO = require("../../Enum/Tipados");
 const TIPO_DATO = require("../../Principales/Tipos");
-//const TIPO_INSTRUCCION = require("../../Enum/TipoInstrucciones");
 const TIPO_INSTRUCCION = require("../../Principales/TInstrucciones");
-const Bloque = require("../Bloque")
+const Bloque = require("../Block")
 
 function StartWith(_instruccion, _ambito) {
     var funcionEjecutar = _ambito.getFuncion(_instruccion.nombre);

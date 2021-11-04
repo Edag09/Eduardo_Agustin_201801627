@@ -2,7 +2,7 @@ const TIPO_OPERACION = require("../../Controller/Principales/TOperaciones");
 const TIPO_VALOR = require("../../Controller/Principales/TValores");
 const TIPO_INSTRUCCION = require("../../Controller/Principales/TInstrucciones");
 const TIPO_DATO = require("../../Controller/Principales/Tipos");
-const ValorExpresion = require("./ValorExpresion");
+const ValorExpresion = require("./VExpresion");
 const Aritmetica = require("./Aritmetica");
 const Relacional = require("./Relacional");
 const Logica = require("./Logica");
@@ -32,49 +32,49 @@ function Operacion(_expresion, _ambito) {
         return Ternario(_expresion, _ambito)
     }
     else if (_expresion.tipo === TIPO_INSTRUCCION.CASTEO) {
-        const { Casteo } = require("../Funciones/Reservadas");
+        const { Casteo } = require("../Ambito/Reservadas");
         return Casteo(_expresion, _ambito)
     }
     else if (_expresion.tipo === TIPO_INSTRUCCION.ACCESO) {
         switch (_expresion.tipo_dato) {
             case TIPO_DATO.VECTOR:
-                const { AccesoVector } = require("./Acceso");
+                const { AccesoVector } = require("./Acceso_Vector_Lista");
                 return AccesoVector(_expresion, _ambito);
             case TIPO_DATO.LISTA:
-                const { AccesoLista } = require("./Acceso");
+                const { AccesoLista } = require("./Acceso_Vector_Lista");
                 return AccesoLista(_expresion, _ambito);
         }
     }
     else if (_expresion.tipo === TIPO_INSTRUCCION.TO_LOWER) {
-        const { ToLower } = require("../Funciones/Reservadas");
+        const { ToLower } = require("../Ambito/Reservadas");
         return ToLower(_expresion, _ambito);
     }
     else if (_expresion.tipo === TIPO_INSTRUCCION.TO_UPPER) {
-        const { ToUpper } = require("../Funciones/Reservadas");
+        const { ToUpper } = require("../Ambito/Reservadas");
         return ToUpper(_expresion, _ambito);
     }
     else if (_expresion.tipo === TIPO_INSTRUCCION.LENGTH) {
-        const { Length } = require("../Funciones/Reservadas");
+        const { Length } = require("../Ambito/Reservadas");
         return Length(_expresion, _ambito);
     }
     else if (_expresion.tipo === TIPO_INSTRUCCION.TRUNCATE) {
-        const { Truncate } = require("../Funciones/Reservadas");
+        const { Truncate } = require("../Ambito/Reservadas");
         return Truncate(_expresion, _ambito);
     }
     else if (_expresion.tipo === TIPO_INSTRUCCION.ROUND) {
-        const { Round } = require("../Funciones/Reservadas");
+        const { Round } = require("../Ambito/Reservadas");
         return Round(_expresion, _ambito);
     }
     else if (_expresion.tipo === TIPO_INSTRUCCION.TYPEOF) {
-        const { TypeOf } = require("../Funciones/Reservadas");
+        const { TypeOf } = require("../Ambito/Reservadas");
         return TypeOf(_expresion, _ambito);
     }
     else if (_expresion.tipo === TIPO_INSTRUCCION.TOSTRING) {
-        const { ToString } = require("../Funciones/Reservadas");
+        const { ToString } = require("../Ambito/Reservadas");
         return ToString(_expresion, _ambito);
     }
     else if (_expresion.tipo === TIPO_INSTRUCCION.TOCHARLIST) {
-        const { ToCharList } = require("../Funciones/Reservadas");
+        const { ToCharList } = require("../Ambito/Reservadas");
         return ToCharList(_expresion, _ambito);
     }
     else if (_expresion.tipo === TIPO_INSTRUCCION.LLAMADA) {

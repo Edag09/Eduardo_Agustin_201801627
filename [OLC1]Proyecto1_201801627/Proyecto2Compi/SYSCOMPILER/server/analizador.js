@@ -71,7 +71,7 @@
     recoverable: (boolean: TRUE when the parser has a error recovery rule available for this particular error)
   }
 */
-var analizador = (function(){
+var Analizador = (function(){
 var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,15],$V1=[1,13],$V2=[1,14],$V3=[1,19],$V4=[1,16],$V5=[1,17],$V6=[1,20],$V7=[1,21],$V8=[1,22],$V9=[1,23],$Va=[1,24],$Vb=[5,14,24,25,65,68,69,71,72,73,74,75],$Vc=[1,39],$Vd=[1,36],$Ve=[1,37],$Vf=[1,38],$Vg=[2,14,16,21,67],$Vh=[1,46],$Vi=[1,45],$Vj=[1,48],$Vk=[1,51],$Vl=[1,53],$Vm=[1,69],$Vn=[1,60],$Vo=[1,59],$Vp=[1,61],$Vq=[1,62],$Vr=[1,63],$Vs=[1,64],$Vt=[1,65],$Vu=[1,66],$Vv=[1,67],$Vw=[1,68],$Vx=[1,82],$Vy=[1,83],$Vz=[1,84],$VA=[1,85],$VB=[1,86],$VC=[1,87],$VD=[1,88],$VE=[1,89],$VF=[2,5,14,15,19,24,25,37,38,40,44,45,50,56,58,61,63,65,68,69,71,72,73,74,75,77,88,89,90,91,92,93,94,95,108,109,110,111,112,113,114,115,116],$VG=[2,5,14,19,24,25,37,38,40,44,45,50,56,58,61,63,65,68,69,71,72,73,74,75,108],$VH=[1,121],$VI=[1,123],$VJ=[1,113],$VK=[1,114],$VL=[1,115],$VM=[1,116],$VN=[1,117],$VO=[1,118],$VP=[1,119],$VQ=[1,120],$VR=[1,122],$VS=[1,124],$VT=[1,125],$VU=[1,126],$VV=[1,127],$VW=[16,19,22,27,29,62,66,67,76,77,78,79,80,81,82,83,84,85,86,87,99],$VX=[1,134],$VY=[1,149],$VZ=[16,29],$V_=[1,153],$V$=[1,156],$V01=[16,19,22,27,29,62,86,87,99],$V11=[2,14],$V21=[1,210],$V31=[1,212],$V41=[1,219],$V51=[1,220],$V61=[1,221],$V71=[1,228],$V81=[1,229],$V91=[1,230],$Va1=[1,226],$Vb1=[1,227],$Vc1=[1,222],$Vd1=[1,248],$Ve1=[16,19,29],$Vf1=[16,19,22,27,29,62,66,67,76,77,82,83,84,85,86,87,99],$Vg1=[16,19,22,27,29,62,66,67,76,77,78,79,81,82,83,84,85,86,87,99],$Vh1=[16,19,22,27,29,62,66,67,82,83,84,85,86,87,99],$Vi1=[2,14,19,37,38,40,44,45,50,56,58,61,63,65,68,69,71,72,73,74,75,108],$Vj1=[1,271],$Vk1=[1,375],$Vl1=[19,61,63];
 var parser = {trace: function trace () { },
 yy: {},
@@ -1277,9 +1277,9 @@ return new Parser;
 
 
 if (typeof require !== 'undefined' && typeof exports !== 'undefined') {
-exports.parser = analizador;
-exports.Parser = analizador.Parser;
-exports.parse = function () { return analizador.parse.apply(analizador, arguments); };
+exports.parser = Analizador;
+exports.Parser = Analizador.Parser;
+exports.parse = function () { return Analizador.parse.apply(Analizador, arguments); };
 exports.main = function commonjsMain (args) {
     if (!args[1]) {
         console.log('Usage: '+args[0]+' FILE');

@@ -9,7 +9,7 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private appService: AppService) { }
+  constructor(private conexion: AppService) { }
 
   EditorOptions = {
     theme: "vs-dark",
@@ -54,8 +54,8 @@ export class AppComponent {
   // Manda las peticiones a los servicios para ejecutar el compile.js
   Compilar() {
     if (this.entrada != "") {
-      const x = { "input": this.entrada }
-      this.appService.compile(x).subscribe(
+      const lenguaje = { "input": this.entrada }
+      this.conexion.Interprete(lenguaje).subscribe(
         data => {
           console.log('Procesando Datos');
           this.salida = data.output;
@@ -88,8 +88,8 @@ export class AppComponent {
     this.simbolos = [];
     this.errores = [];
     if (this.entrada != "") {
-      const x = { "input": this.entrada }
-      this.appService.getAST(x).subscribe(
+      const lenguaje = { "input": this.entrada }
+      this.conexion.ReporteAST(lenguaje).subscribe(
         data => {
           saveAs(data, "AST");
           this.salida = "Generando AST y Descargandolo... :D!";
@@ -108,7 +108,7 @@ export class AppComponent {
   GuardarArchivo() {
     var f = document.createElement('a');
     f.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.entrada));
-    f.setAttribute('download', this.fname ? this.fname.replace("C:\\fakepath\\", "") : 'Code.sc');
+    f.setAttribute('download', this.fname ? this.fname.replace("C:\\fakepath\\", "") : 'Nuevo Archivo.sc');
     if (document.createEvent) {
       var event = document.createEvent('MouseEvents');
       event.initEvent('click', true, true);

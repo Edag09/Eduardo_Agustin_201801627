@@ -12,7 +12,7 @@ function sentenciaIf(_instruccion, _ambito) {
     if (operacion.tipo === TIPO_DATO.BOOLEANO) {
         if (operacion.valor) {
             var nuevoAmbito = new Ambito(_ambito, "control")
-            const Bloque = require('../Bloque')
+            const Bloque = require('../Block')
             var bloque = Bloque(_instruccion.instrucciones, nuevoAmbito)
             cadena.cadena += bloque.cadena;
             if (bloque.retorno) cadena.retorno = bloque.retorno;
@@ -35,7 +35,7 @@ function sentenciaIfElse(_instruccion, _ambito) {
     if (operacion.tipo === TIPO_DATO.BOOLEANO) {
         if (operacion.valor) {
             var nuevoAmbito = new Ambito(_ambito, "control")
-            const Bloque = require('../Bloque')
+            const Bloque = require('../Block')
             var bloque = Bloque(_instruccion.instruccionesIF, nuevoAmbito)
             cadena.cadena += bloque.cadena;
             if (bloque.retorno) cadena.retorno = bloque.retorno;
@@ -45,7 +45,7 @@ function sentenciaIfElse(_instruccion, _ambito) {
         }
         else {
             var nuevoAmbito = new Ambito(_ambito, "control")
-            const Bloque = require('../Bloque')
+            const Bloque = require('../Block')
             var bloque = Bloque(_instruccion.instruccionesELSE, nuevoAmbito)
             cadena.cadena += bloque.cadena;
             if (bloque.retorno) cadena.retorno = bloque.retorno;
@@ -70,7 +70,7 @@ function sentenciaElseIf(_instruccion, _ambito) {
     if (operacion.tipo === TIPO_DATO.BOOLEANO) {
         if (operacion.valor) {
             var nuevoAmbito = new Ambito(_ambito, "control")
-            const Bloque = require('../Bloque')
+            const Bloque = require('../Block')
             var bloque = Bloque(_instruccion.instruccionesIF, nuevoAmbito)
             cadena.cadena += bloque.cadena;
             if (bloque.retorno) cadena.retorno = bloque.retorno;

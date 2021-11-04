@@ -1,10 +1,10 @@
 var fs = require('fs');
 const path = require('path');
-const Graph = require("../Controller/Arbol/Graph")
+const Graph = require("../Controller/Arbol/GraphAST")
 const { exec } = require('child_process');
 
 module.exports = (parser, app) => {
-    app.post('/AST_report', (req, res) => {
+    app.post('/ReportarAST', (req, res) => {
         try {
             var input = req.body.input;
             var ast = parser.parse(input);

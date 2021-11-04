@@ -3,7 +3,7 @@ const TIPO_DATO = require("../../Principales/Tipos");
 const LIMIT = require("../../Principales/TOperaciones").MAX
 const Operacion = require("../../../Model/Operacion/Operacion");
 const TIPO_INSTRUCCION = require("../../Principales/TInstrucciones");
-const Asignacion = require("../Asignacion");
+const Asignacion = require("../Asignaciones");
 const Declaracion = require("../Declaracion");
 
 function cicloFor(_instruccion, _ambito) {
@@ -29,7 +29,7 @@ function cicloFor(_instruccion, _ambito) {
     if (operacion.tipo === TIPO_DATO.BOOLEANO) {
         while (operacion.valor && max < LIMIT) {
             var nuevoAmbito = new Ambito(ambitoFor, "ciclo")
-            const Bloque = require('../Bloque')
+            const Bloque = require('../Block')
             var bloque = Bloque(_instruccion.instrucciones, nuevoAmbito);
             cadena.cadena += bloque.cadena;
             if (bloque.retorno) cadena.retorno = bloque.retorno;
