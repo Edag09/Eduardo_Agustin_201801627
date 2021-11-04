@@ -1,0 +1,93 @@
+.title {
+    background-color: #5F7A61;
+    font-family: 'Varela Round', sans-serif;
+    text-align: center;
+    color: #7FC8A9;
+}
+
+button {
+    text-align: center;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.subtitulo {
+    font-family: 'Varela Round', sans-serif;
+    font-size: large;
+}
+
+.foot {
+    font-family: 'Varela Round', sans-serif;
+    color: #6C4A4A;
+}
+
+.codebox {
+    width: 500px;
+    height: 420px;
+}
+
+.fila {
+    height: 420px;
+}
+
+hr {
+    border-width: 0.13em;
+    border-color: white;
+}
+
+.fc:first-letter{
+    text-transform: capitalize
+  }
+
+  .btn{
+	color: black;
+	background: #5F7A61;
+	border-radius: 10px;
+  }
+
+  .btn:hover{
+	background-image: linear-gradient(to right, #870000 0%, #190A05  51%, #870000  100%);
+	color: white;
+  }
+
+.padre {
+    height:100%;
+    width:100%;
+    text-align:center;
+    float: left;
+    margin-top: auto;
+}
+
+.saveFile{
+    float: left;
+    height:50px;
+    width:294px;
+    margin-top: 10px;
+}
+
+.newWindow{
+    float: left;
+    height:50px;
+    width:294px;
+    margin-top: 10px;
+}
+
+.closeWindow{
+    float: left;
+    height:50px;
+    width:294px;
+    margin-top: 10px;
+}
+
+.DrawAST{
+    float: left;
+    height:50px;
+    width:294px;
+    margin-top: 10px;
+}
+
+.limpiar{
+    float: left;
+    height:50px;
+    width:294px;
+    margin-top: 10px;
+}
