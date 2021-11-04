@@ -1,1 +1,0 @@
-const TIPOD = require("../../Controller/Principales/Tipos")
